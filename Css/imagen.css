@@ -1,0 +1,100 @@
+html, body {
+        height: 100%;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+ 
+    #full-screen-background-image {
+        z-index: -999;
+        width: 100%;
+        height: auto;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+    label{
+        color: #0a0a0a;
+    }
+    h2{
+        color: #0d0d0d;
+        float: left;
+        margin-top:1%;
+        margin-right:90%;
+        margin-left:40%;
+    }
+label {
+display: block;
+margin: .5em 0 0 0;
+}
+.btn usuario {/*pra que el booton de un saltode renglon*/
+display: block;
+margin: 1em 0;
+}
+div {
+margin: .4em 0;
+}
+div label {
+width: 25%;
+float: left;
+}
+
+input {
+    border: 1px dotted #004000;
+    color: #000088;
+    padding: .2em;
+}
+
+fieldset {/*para agrupar a un tamaño*/
+
+width: 90%;
+border-color: transparent;
+margin-top:1%;
+margin-right:0%;
+margin-left:40%;
+}
+
+
+
+.altas{
+position: absolute;
+margin-top:10%;
+margin-right:auto;
+margin-bottom:auto;
+margin-left:15%;
+background: transparent;
+}
+.login{
+margin-top:15%;
+margin-right:35%;
+margin-bottom:auto;
+margin-left:10%; 
+}
+.usuarios{
+        
+}
+.mov_logo{
+ border-color: transparent;
+}
+.reloj{
+        color: blue;
+}
+label{
+        color: #202020;
+}
+  
+ #mision{
+        float: right;
+ }
+ fieldset{
+         border-color: transparent;
+ }
+   
+   
+   
+   
+   
+   
+   
+   
+   
