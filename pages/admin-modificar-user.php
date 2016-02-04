@@ -45,7 +45,7 @@
     <?php require_once('menu.php'); ?> 
         <div id="page-wrapper">
             <div class="page-header">
-                <h1>Alta Usuario </h1>
+                <h1>Modificar Usuario</h1>
             </div>
             <div class="col-md-6 col-md-offset-3">
                 

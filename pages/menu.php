@@ -46,10 +46,10 @@
                                     <a href="admin-alta-user.php">Alta</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">Modificar</a>
+                                    <a href="admin-modificar-user.html">Modificar</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">Eliminar</a>
+                                    <a href="admin-eliminar-user.html">Eliminar</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

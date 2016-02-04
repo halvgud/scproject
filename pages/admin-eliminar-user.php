@@ -45,7 +45,7 @@
     <?php require_once('menu.php'); ?> 
         <div id="page-wrapper">
             <div class="page-header">
-                <h1>Alta Usuario </h1>
+                <h1>Eliminar Usuario</h1>
             </div>
             <div class="col-md-6 col-md-offset-3">
                 
@@ -62,7 +62,7 @@
                     <label for="tipo">Tipo</label>
                     <input type="text" class="form-control" id="tipo" maxlength="1" size = "1">
                   </div>
-                  <button type="submit" class="btn btn-outline btn-success"><i class="fa fa-floppy-o"></i> Guardar</button>
+                  <button type="submit" class="btn btn-outline btn-success"><i class="fa fa-floppy-o"></i> Agregar</button>
                 </form>
             </div>
         </div>
