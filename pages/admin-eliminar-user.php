@@ -50,19 +50,12 @@
             <div class="col-md-6 col-md-offset-3">
                 
                 <form>
+                    <h3>Buscar Usuario</h3>
                   <div class="form-group">
                     <label for="id">Id:</label>
                     <input type="text" class="form-control" id="id" placeholder="Id">
                   </div>
-                  <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="Password">
-                  </div>
-                  <div class="form-group">
-                    <label for="tipo">Tipo</label>
-                    <input type="text" class="form-control" id="tipo" maxlength="1" size = "1">
-                  </div>
-                  <button type="submit" class="btn btn-outline btn-success"><i class="fa fa-floppy-o"></i> Agregar</button>
+                  <button type="submit" class="btn btn-outline btn-primary"><i class="fa fa-search"></i> Buscar</button>
                 </form>
             </div>
         </div>

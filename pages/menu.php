@@ -8,7 +8,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php" data-toggle="collapse" data-target=".navbar-collapse">SysCo</a>
+                <a class="navbar-brand" href="index.php" data-toggle="collapse" data-target=".navbar-collapse"><i class="fa fa-heartbeat"></i> Sistema de Control</a>
             </div>
             <!-- /.navbar-header -->
             <ul class="nav navbar-top-links navbar-right">
@@ -46,10 +46,10 @@
                                     <a href="admin-alta-user.php">Alta</a>
                                 </li>
                                 <li>
-                                    <a href="admin-modificar-user.html">Modificar</a>
+                                    <a href="admin-modificar-user.php">Modificar</a>
                                 </li>
                                 <li>
-                                    <a href="admin-eliminar-user.html">Eliminar</a>
+                                    <a href="admin-eliminar-user.php">Eliminar</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -65,7 +65,19 @@
                                     <a href="morris.html">Pase de salida</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">Medicamento</a>
+                                    <a href="#">Medicamento <span class="fa arrow"></span></a>
+                                    <ul class="nav nav-third-level">
+                                        <li>
+                                            <a href="#">Nuevo</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Actualizar</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Eliminar</a>
+                                        </li>
+                                    </ul>
+                                    <!-- /.nav-third-level -->
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -95,36 +107,6 @@
                                 </li>
                                 <li>
                                     <a href="morris.html">Memo</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Third Level <span class="fa arrow"></span></a>
-                                    <ul class="nav nav-third-level">
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                    </ul>
-                                    <!-- /.nav-third-level -->
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
