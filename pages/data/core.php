@@ -1,6 +1,6 @@
 <?php
-include("pages/lib/adodb5/adodb-exceptions.inc.php"); //include de las excepciones
-include('pages/lib/adodb5/adodb.inc.php'); //include del adodb
+include("lib/adodb5/adodb-exceptions.inc.php"); //include de las excepciones
+include('lib/adodb5/adodb.inc.php'); //include del adodb
 class Conexion
 {
 	public static $conn; //variable estatica de conexion

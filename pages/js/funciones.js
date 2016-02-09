@@ -1,10 +1,9 @@
 
 	function peticionAjax (archivo,datos){
-		datos.algo = "something";
 		$.ajax({
         type: "POST",
         url: archivo,
-        data: datos,
+        data: JSON.stringify(datos),
         headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'}
 		})
 		.done(function(data) {

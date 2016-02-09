@@ -21,10 +21,10 @@
                         <form role="form" id='loginForm'>
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Usiario" name="usuario" type="usuario" autofocus>
+                                    <input class="form-control" placeholder="Usiario" name="usuario" id="usuario" type="usuario" autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                                    <input class="form-control" placeholder="Password" name="password" id="password" type="password" value="">
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
                                 <button type="submit" class="btn btn-lg btn-success btn-block"><i class="fa fa-sign-in"></i> Iniciar sesion</button>
@@ -37,10 +37,14 @@
     </div>
 
     <?php require_once('footer-comun.php'); ?> 
-    
+
     <script type="text/javascript">
         $("#loginForm").submit(function(){
-            var datos = $("#loginForm").serializeArray();
+            var form = $("#loginForm").serializeArray();
+            var datos = {};
+            form.forEach(function(input) {
+                datos[input.name] = input.value;
+            });
             console.log(datos);
             peticionAjax('data/login.php',datos);
             return false;
