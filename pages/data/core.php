@@ -6,7 +6,7 @@ class Conexion
 	public static $conn; //variable estatica de conexion
     private static $db_host = "localhost";  // variable estatica del host
     private static $db_user = "root";  // variable estatica del usuario de la db
-    private  static $db_pass = "";  // variable estatica del pw de la db
+    private static $db_pass = "";  // variable estatica del pw de la db
     private static $db_name = "sys_co_db";	// variable estatica del nombre de la db
     private $myQuery = "";
     private $numResults = "";
@@ -96,22 +96,19 @@ class Conexion
             }
         }
     }
+    public function obtenerResultado(){
+        return $this->result; //regresa el resultado
+    }
     public function obtenerResultadoJson(){
-        $val = $this->result;
-        $this->result = array();;
-        return json_encode($val);//regresa los valores en JSON
+        return json_encode($this->result); //regresa los valores en JSON
     }
     //regresa el SQL para efectos de debuggeo
     public function obtenerSQL(){
-        $val = $this->myQuery;
-        $this->myQuery = array();
-        return $val;
+        return $this->myQuery;
     }
     //Regresa el numero de registros
     public function numeroRegistros(){
-        $val = $this->numResults;
-        $this->numResults = 0;
-        return $val;
+        return $this->numResults;
     }
 
 
