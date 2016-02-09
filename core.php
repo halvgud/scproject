@@ -87,7 +87,7 @@ class Conexion
 
 
     private function existeTabla($table){
-        $tablesInDb = self::$conn->execute('SHOW TABLES FROM '.$this->db_name.' LIKE "'.$table.'"');
+        $tablesInDb = self::$conn->execute('SHOW TABLES FROM '.self::$db_name.' LIKE "'.$table.'"');
         if($tablesInDb){
             if($tablesInDb->RecordCount()==1){
                 return true; // The table exists
