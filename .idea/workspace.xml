@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5a9adb31-820b-4d1b-b2cb-c650b08990f1" name="Default" comment="core and test files">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/footer-comun.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/header-comun.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/js/funciones.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/tools/bootstrap-notify/bootstrap-notify.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sysco_db.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SCProject/.idea/workspace.xml" afterPath="$PROJECT_DIR$/SCProject/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/admin-alta-user.php" afterPath="$PROJECT_DIR$/pages/admin-alta-user.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/admin-eliminar-user.php" afterPath="$PROJECT_DIR$/pages/admin-eliminar-user.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/admin-modificar-user.php" afterPath="$PROJECT_DIR$/pages/admin-modificar-user.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/control-agendar-consulta.php" afterPath="$PROJECT_DIR$/pages/control-agendar-consulta.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/control-agendar-visita.php" afterPath="$PROJECT_DIR$/pages/control-agendar-visita.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/expediente-guardar.php" afterPath="$PROJECT_DIR$/pages/expediente-guardar.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/expediente-revisar-consulta.php" afterPath="$PROJECT_DIR$/pages/expediente-revisar-consulta.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/incapacidad-guardar.php" afterPath="$PROJECT_DIR$/pages/incapacidad-guardar.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/index.php" afterPath="$PROJECT_DIR$/pages/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/login.php" afterPath="$PROJECT_DIR$/pages/login.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/medicamento-eliminar.php" afterPath="$PROJECT_DIR$/pages/medicamento-eliminar.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/medicamento-modificar.php" afterPath="$PROJECT_DIR$/pages/medicamento-modificar.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/medicamento-nuevo.php" afterPath="$PROJECT_DIR$/pages/medicamento-nuevo.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/memo-guardar.php" afterPath="$PROJECT_DIR$/pages/memo-guardar.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/pase-salida.php" afterPath="$PROJECT_DIR$/pages/pase-salida.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/reportes-consulta-rango-fecha.php" afterPath="$PROJECT_DIR$/pages/reportes-consulta-rango-fecha.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/reportes-diagnosticos-rank.php" afterPath="$PROJECT_DIR$/pages/reportes-diagnosticos-rank.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/reportes-empleados-consultas.php" afterPath="$PROJECT_DIR$/pages/reportes-empleados-consultas.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/reportes-empleados-pases.php" afterPath="$PROJECT_DIR$/pages/reportes-empleados-pases.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/reportes-empleados-visitas.php" afterPath="$PROJECT_DIR$/pages/reportes-empleados-visitas.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/reportes-expediente-por-fecha.php" afterPath="$PROJECT_DIR$/pages/reportes-expediente-por-fecha.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/reportes-incapacidad-por-fecha.php" afterPath="$PROJECT_DIR$/pages/reportes-incapacidad-por-fecha.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/reportes-inventario.php" afterPath="$PROJECT_DIR$/pages/reportes-inventario.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/reportes-medicamentos-rank.php" afterPath="$PROJECT_DIR$/pages/reportes-medicamentos-rank.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/reportes-memo-por-fecha.php" afterPath="$PROJECT_DIR$/pages/reportes-memo-por-fecha.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/reportes-pase-por-fecha.php" afterPath="$PROJECT_DIR$/pages/reportes-pase-por-fecha.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/reportes-visita-rango-fecha.php" afterPath="$PROJECT_DIR$/pages/reportes-visita-rango-fecha.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sysco.sql" afterPath="$PROJECT_DIR$/sysco.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.php" afterPath="$PROJECT_DIR$/test.php" />
+    </list>
+    <ignored path="scproject.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="scproject" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="adodb-mysqli.inc.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pages/lib/adodb5/drivers/adodb-mysqli.inc.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.24876848">
+              <caret line="775" column="10" selection-start-line="775" selection-start-column="10" selection-end-line="775" selection-end-column="10" />
+              <folding>
+                <marker date="1454823015099" expanded="true" signature="1434:1565" placeholder="SELECT TABLE..TABLES..." />
+                <marker date="1454823015099" expanded="true" signature="6467:6509" placeholder="select ${$co..${$tables}..." />
+                <marker date="1454823015099" expanded="true" signature="8443:8490" placeholder="create table..if..." />
+                <marker date="1454823015099" expanded="true" signature="8518:8541" placeholder="select count..." />
+                <marker date="1454823015099" expanded="true" signature="8565:8591" placeholder="insert into ..." />
+                <marker date="1454823015099" expanded="true" signature="8615:8638" placeholder="drop table i..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="adodb-exceptions.inc.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/lib/adodb5/adodb-exceptions.inc.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.769231">
+              <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.8846154">
+              <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/core.php" />
+        <option value="$PROJECT_DIR$/test.php" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" />
+  <component name="JsBuildToolPackageJson" detection-done="true" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+  </component>
+  <component name="PhpServers">
+    <servers />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP 5.5" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1309" />
+    <option name="height" value="784" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scproject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scproject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scproject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+  </component>
+  <component name="RunManager" selected="PHP Script.test.php">
+    <configuration default="false" name="test.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/test.php">
+      <method />
+    </configuration>
+    <configuration default="false" name="core.php" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:23975/scproject/core.php">
+      <method />
+    </configuration>
+    <configuration default="false" name="core.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/core.php">
+      <method />
+    </configuration>
+    <configuration default="true" type="AppEnginePhpConfigurationType" factoryName="App Engine for PHP">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run-script" />
+      <scripts />
+      <envs />
+      <method />
+    </configuration>
+    <list size="3">
+      <item index="0" class="java.lang.String" itemvalue="PHP Script.test.php" />
+      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.core.php" />
+      <item index="2" class="java.lang.String" itemvalue="PHP Script.core.php" />
+    </list>
+    <recent_temporary>
+      <list size="3">
+        <item index="0" class="java.lang.String" itemvalue="PHP Script.test.php" />
+        <item index="1" class="java.lang.String" itemvalue="PHP Script.core.php" />
+        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.core.php" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5a9adb31-820b-4d1b-b2cb-c650b08990f1" name="Default" comment="" />
+      <created>1454873036009</created>
+      <option name="number" value="Default" />
+      <updated>1454873036009</updated>
+    </task>
+    <task id="LOCAL-00001" summary="core and test files">
+      <created>1454975188976</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1454975188976</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1309" height="784" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1904762" sideWeight="0.49719775" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29339477" sideWeight="0.30104083" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22427036" sideWeight="0.4939952" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25140113" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32937685" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29339477" sideWeight="0.6989592" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="core and test files" />
+    <option name="LAST_COMMIT_MESSAGE" value="core and test files" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/test.php</url>
+          <line>4</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="7" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/pages/lib/adodb5/drivers/adodb-mysqli.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1065" column="0" selection-start-line="1065" selection-start-column="0" selection-end-line="1065" selection-end-column="0" />
+          <folding>
+            <marker date="1454823015099" expanded="true" signature="1434:1565" placeholder="SELECT TABLE..TABLES..." />
+            <marker date="1454823015099" expanded="true" signature="6467:6509" placeholder="select ${$co..${$tables}..." />
+            <marker date="1454823015099" expanded="true" signature="8443:8490" placeholder="create table..if..." />
+            <marker date="1454823015099" expanded="true" signature="8518:8541" placeholder="select count..." />
+            <marker date="1454823015099" expanded="true" signature="8565:8591" placeholder="insert into ..." />
+            <marker date="1454823015099" expanded="true" signature="8615:8638" placeholder="drop table i..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="2" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/lib/adodb5/adodb-exceptions.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.769231">
+          <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/lib/adodb5/adodb.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33251232">
+          <caret line="1094" column="0" selection-start-line="1094" selection-start-column="0" selection-end-line="1094" selection-end-column="0" />
+          <folding>
+            <marker date="1454823011176" expanded="true" signature="40855:40876" placeholder="SELECT MAX($..${$table}..." />
+            <marker date="1454823011176" expanded="true" signature="48847:48875" placeholder="select count..${$table}..." />
+            <marker date="1454823011176" expanded="true" signature="48986:49029" placeholder="select ${$fi..${$table}..." />
+            <marker date="1454823011176" expanded="true" signature="60620:60634" placeholder="SELECT * FRO..${$table}..." />
+            <marker date="1454823011176" expanded="true" signature="63686:63720" placeholder="UPDATE ${$ta..." />
+            <marker date="1454823011176" expanded="true" signature="107662:107690" placeholder="SELECT COUNT..${$table}..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.8846154">
+          <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/data/core.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.08374384">
+          <caret line="2" column="37" selection-start-line="0" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
+          <folding>
+            <marker date="1454989107697" expanded="true" signature="2285:2397" placeholder="INSERT INTO `${$table}`..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/lib/adodb5/drivers/adodb-mysqli.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24876848">
+          <caret line="775" column="10" selection-start-line="775" selection-start-column="10" selection-end-line="775" selection-end-column="10" />
+          <folding>
+            <marker date="1454823015099" expanded="true" signature="1434:1565" placeholder="SELECT TABLE..TABLES..." />
+            <marker date="1454823015099" expanded="true" signature="6467:6509" placeholder="select ${$co..${$tables}..." />
+            <marker date="1454823015099" expanded="true" signature="8443:8490" placeholder="create table..if..." />
+            <marker date="1454823015099" expanded="true" signature="8518:8541" placeholder="select count..." />
+            <marker date="1454823015099" expanded="true" signature="8565:8591" placeholder="insert into ..." />
+            <marker date="1454823015099" expanded="true" signature="8615:8638" placeholder="drop table i..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

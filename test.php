@@ -7,7 +7,7 @@ $res = $cn->obtenerResultadoJson();
 print_r($res);
 ?>
 <!DOCTYPE html>
-<html lang="">
+<html lang="">s
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
