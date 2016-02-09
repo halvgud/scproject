@@ -45,7 +45,6 @@
             form.forEach(function(input) {
                 datos[input.name] = input.value;
             });
-            console.log(datos);
             peticionAjax('data/login.php',datos);
             return false;
         });
