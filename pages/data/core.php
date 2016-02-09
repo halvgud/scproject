@@ -45,7 +45,8 @@ class Conexion
 			$query = self::$conn->execute($q);
 			if($query){
 				//
-                if ($query->RecordCount()<0) {
+                $this->numResults = $query->RecordCount();
+                if ($this->numResults<0) {
                     print self::$conn->ErrorMsg();
                 }
                 else {
@@ -109,7 +110,7 @@ class Conexion
     //Regresa el numero de registros
     public function numeroRegistros(){
         $val = $this->numResults;
-        $this->numResults = array();
+        $this->numResults = 0;
         return $val;
     }
 
