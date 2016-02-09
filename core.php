@@ -1,31 +1,30 @@
 <?php
-include("pages/lib/adodb5/adodb-exceptions.inc.php");
-include('pages/lib/adodb5/adodb.inc.php');
+include("pages/lib/adodb5/adodb-exceptions.inc.php"); //include de las excepciones
+include('pages/lib/adodb5/adodb.inc.php'); //include del adodb
 class Conexion
 {
-	public static $conn;
-    private static $db_host = "localhost";  // Change as required
-    private static $db_user = "root";  // Change as required
-    private  static $db_pass = "";  // Change as required
-    private static $db_name = "sys_co_db";	// Change as required
-	public function abrirConexion()
-	{
-
-        self::$conn = NewADOConnection('mysqli');
-        try {
-            self::$conn->Connect(self::$db_host, self::$db_user, self::$db_pass, self::$db_name);
-          } 
-          catch (exception $e) {
-            print_r($e);
-            Debuggeo::enviarConsola($e.". Linea:".__LINE__);
-        }
-	}
-	private $myQuery = "";
+	public static $conn; //variable estatica de conexion
+    private static $db_host = "localhost";  // variable estatica del host
+    private static $db_user = "root";  // variable estatica del usuario de la db
+    private  static $db_pass = "";  // variable estatica del pw de la db
+    private static $db_name = "sys_co_db";	// variable estatica del nombre de la db
+    private $myQuery = "";
     private $numResults = "";
     private $result = array();
+
+	public function abrirConexion()
+	{
+        self::$conn = NewADOConnection('mysqli');//se inicializa constructor tipo  mysqli
+        try {
+            self::$conn->Connect(self::$db_host, self::$db_user, self::$db_pass, self::$db_name);//se realiza la conexion
+          } 
+          catch (exception $e) {//si la conexion falla se atrapa la excepcion
+            print_r($e);//se imprime el error
+        }
+	}
+
 	public function seleccion($tabla, $rows = '*', $join = null, $where = null, $order = null, $limit = null){
 		//Se crea query en base a los parametros
-        //$r= array();
 		$q = 'SELECT '.$rows.' FROM '.$tabla;
 		if($join != null){
 			$q .= ' JOIN '.$join;
@@ -51,17 +50,15 @@ class Conexion
                 }
                 else {
                     $this->result = $query->getRows();
-
                 }
-
-				return true; // Query was successful
+				return true; // El query fue ejecutado correctamente
 
 			}else{
-				//array_push($this->result,mysql_error());
+				array_push($this->result,ErrorMsg());
 				return false; // No rows where returned
 			}
 		}else{
-        return false; // Table does not exist
+        return false; // La tabla no existe
 		}
 	}
     // Function para insertar registros en la db
@@ -87,20 +84,21 @@ class Conexion
 
 
     private function existeTabla($table){
-        $tablesInDb = self::$conn->execute('SHOW TABLES FROM '.$this->db_name.' LIKE "'.$table.'"');
-        if($tablesInDb){
-            if($tablesInDb->RecordCount()==1){
-                return true; // The table exists
-            }else{
+
+        $tablesInDb = self::$conn->execute('SHOW TABLES FROM '.self::$db_name.' LIKE "'.$table.'"');//Ejecuta query para ver si existe la tabla en la base de datos
+        if($tablesInDb){//si si se realizo el query
+            if($tablesInDb->RecordCount()==1){//y si la cantidad de registros es = 1
+                return true; // Regresa true si la tabla existe
+            }else{//de otra manera
                 array_push($this->result,$table." no existe en la base de datos");
-                return false; // The table does not exist
+                return false; // Regresa false si la tabla no existe
             }
         }
     }
     public function obtenerResultadoJson(){
         $val = $this->result;
         $this->result = array();;
-        return json_encode($val);
+        return json_encode($val);//regresa los valores en JSON
     }
     //regresa el SQL para efectos de debuggeo
     public function obtenerSQL(){
@@ -120,19 +118,6 @@ class Conexion
 	public static function cerrarConexion(){
 		Debuggeo::enviarConsola("se cerro conexion. Linea:".__LINE__);
 		$conn = null;
-	}
-}
-
-class Debuggeo
-{
-	public static function enviarConsola( $data ) {
-
-		if ( is_array( $data ) )
-			$output = "<script>console.log( 'Debug Objects: " . implode( ',', $data) . "' );</script>";
-		else
-			$output = "<script>console.log( 'Debug Objects: " . $data . "' );</script>";
-
-		echo $output;
 	}
 }
 
