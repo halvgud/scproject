@@ -1,0 +1,6 @@
+*.name
+.idea/encodings.xml
+*.xml
+pages/tools/bootstrap/dist/css/bootstrap.cosmo.min.css
+pages/tools/bootstrap/dist/css/bootstrap.united.min.css
+*.iml

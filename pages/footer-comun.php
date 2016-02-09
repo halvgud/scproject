@@ -7,3 +7,5 @@
     <script src="tools/metisMenu/dist/metisMenu.min.js"></script>
     <!-- Custom Theme JavaScript -->
     <script src="tools/sb-admin/js/sb-admin-2.js"></script>
+    <!-- Funciones JavaScript -->
+    <script src="js/funciones.js"></script>
