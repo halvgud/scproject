@@ -1,10 +1,16 @@
-<?php ?>
+<?php session_start(); 
+if(!isset($_SESSION['id_usuario'])){
+   require_once('login.php');  
+}
+else
+{
+  ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
-    <?php require_once('header-comun.php'); ?> 
+    <?php require_once('header-comun.html'); ?> 
 
 </head>
 
@@ -16,6 +22,7 @@
             <div class="page-header">
                 <h1>Agendar Visita</h1>
             </div>
+            <div class="col-md-8 col-md-offset-2" id='calendario'></div>
             <form>
                 <table class="table">
                     <tbody>
@@ -75,10 +82,54 @@
     </div>
     <!-- /#wrapper -->
 
-    <?php require_once('footer-comun.php'); ?> 
-
+    <?php require_once('footer-comun.html'); ?> 
+    <script type="text/javascript" >
+        $(document).ready(function() {
+            $('#calendario').fullCalendar({
+                    header: {
+                        left: 'prev,next prevYear,nextYear today',
+                        center: 'title',
+                        // right: 'month,agendaWeek,agendaDay'
+                        right: 'month,agendaDay'
+                    },
+                    lang: 'es',
+                    selectable: true,
+                    selectHelper: true,
+                    select: function(start, end) {
+                        console.log(moment(start).format("LLLL")+'    '+moment(end).format("LLLL"));
+                        var view = $('#calendario').fullCalendar('getView');
+                        if (view.type !=='agendaDay'){
+                            $("#calendario").fullCalendar( 'gotoDate', start );
+                            $("#calendario").fullCalendar( 'changeView', 'agendaDay' )    
+                        }
+                        else{
+                            var title = prompt('Event Title:');
+                            var eventData;
+                            if (title) {
+                                eventData = {
+                                    title: title,
+                                    start: start,
+                                    end: end
+                                };
+                                $('#calendario').fullCalendar('renderEvent', eventData, true); // stick? = true
+                                $("#calendario").fullCalendar( 'gotoDate', start );
+                            }
+                        }
+                        // $('#calendario').fullCalendar('unselect');
+                    },
+                    weekNumbers: true,
+                    editable: true,
+                    eventLimit: true, // allow "more" link when too many events
+                    events: [
+                        {
+                            title: 'All Day Event',
+                            start: '2016-02-09'
+                        }
+                    ]
+            });
+        });
+    </script>
 </body>
 
 </html>
-
-            
+<?php } ?>

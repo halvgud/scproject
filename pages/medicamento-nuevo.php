@@ -1,10 +1,16 @@
-<?php ?>
+<?php session_start(); 
+if(!isset($_SESSION['id_usuario'])){
+   require_once('login.php');  
+}
+else
+{
+  ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
-    <?php require_once('header-comun.php'); ?> 
+    <?php require_once('header-comun.html'); ?> 
 
 </head>
 
@@ -91,6 +97,7 @@
     </div>
     <!-- /#wrapper -->
 
+<<<<<<< HEAD
     <?php require_once('footer-comun.php'); ?>
     <script>
         exitoso = function(datos){
@@ -108,10 +115,13 @@
             peticionAjax('data/testinsert.php',datos,exitoso,fallo);
             return false;
         });
+=======
+    <?php require_once('footer-comun.html'); ?> 
+>>>>>>> origin/master
 
     </script>
 </body>
 
 </html>
-
+<?php } ?>
             

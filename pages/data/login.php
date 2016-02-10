@@ -23,7 +23,8 @@ if(isset($data) && isset($data->usuario) && $data->usuario != "" && isset($data-
 		$_SESSION['id_usuario']= $res[0]['id_usuario'];
 		$_SESSION['usuario'] = $res[0]['usuario'];
 		$_SESSION['rol'] = $res[0]['rol'];
-		print $cn->obtenerResultadoJson();
+		$resArray['success'] = 'Se ha logueado correctamente';
+		print json_encode($resArray);
 	}
 	else{
 		http_response_code(403);
