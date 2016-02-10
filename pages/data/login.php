@@ -20,9 +20,9 @@ if(isset($data) && isset($data->usuario) && $data->usuario != "" && isset($data-
 
 	if($cn->numeroRegistros()>0){
 		$res = $cn->obtenerResultado();
-		// $_SESSION['id_usuario']= $res[0]['id_usuario'];
-		// $_SESSION['usuario'] = $res[0]['usuario'];
-		// $_SESSION['rol'] = $res[0]['rol'];
+		$_SESSION['id_usuario']= $res[0]['id_usuario'];
+		$_SESSION['usuario'] = $res[0]['usuario'];
+		$_SESSION['rol'] = $res[0]['rol'];
 		print $cn->obtenerResultadoJson();
 	}
 	else{

@@ -39,13 +39,19 @@
     <?php require_once('footer-comun.php'); ?> 
 
     <script type="text/javascript">
+        exitoso = function(datos){
+            window.location.reload();
+        };
+        fallo = function(datos){
+
+        };
         $("#loginForm").submit(function(){
             var form = $("#loginForm").serializeArray();
             var datos = {};
             form.forEach(function(input) {
                 datos[input.name] = input.value;
             });
-            peticionAjax('data/login.php',datos);
+            peticionAjax('data/login.php',datos,exitoso,fallo);
             return false;
         });
     </script>

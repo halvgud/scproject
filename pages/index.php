@@ -1,3 +1,10 @@
+<?php session_start(); 
+if(!isset($_SESSION['id_usuario'])){
+   require_once('login.php');  
+}
+else
+{
+  ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,3 +35,4 @@
 </body>
 
 </html>
+<?php } ?>

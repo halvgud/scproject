@@ -1,5 +1,5 @@
 
-	function peticionAjax (archivo,datos){
+	function peticionAjax (archivo,datos,successCallBack,errorCallBack){
 		$.ajax({
         type: "POST",
         url: archivo,
@@ -7,17 +7,25 @@
         dataType: 'json',
         // headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'}
 		})
-		.done(function(data) {
-			// alert("success "+data);
-			notificacionSuccess("success "+data);
-			// result = JSON.parse(data);
-			console.log(data);
+		.done(function(resultado) {
+			// alert("success "+resultado);
+			notificacionSuccess("success "+resultado);
+			// result = JSON.parse(resultado);
+			console.log(resultado);
+			if(successCallBack){
+				successCallBack(resultado);
+			}
+			return resultado;
 		})
 		.fail(function(jqXHR, textStatus,errorThrown) {
 			// alert(textStatus+" "+jqXHR.responseText);
-			result = JSON.parse(jqXHR.responseText);
-			console.log(result);
-			notificacionError(result.error);
+			resultado = JSON.parse(jqXHR.responseText);
+			console.log(resultado);
+			notificacionError(resultado.error);
+			if(errorCallBack){
+				errorCallBack(resultado);
+			}
+			return resultado;
 		});
 	}
 	function login(){
