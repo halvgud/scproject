@@ -3,7 +3,7 @@
 
 <head>
 
-    <?php require_once('header-comun.php'); ?> 
+    <?php require_once('header-comun.html'); ?> 
 
 </head>
 
@@ -36,7 +36,7 @@
         </div>
     </div>
 
-    <?php require_once('footer-comun.php'); ?> 
+    <?php require_once('footer-comun.html'); ?> 
 
     <script type="text/javascript">
         exitoso = function(datos){
@@ -59,3 +59,5 @@
 </body>
 
 </html>
+<?php } ?>
+

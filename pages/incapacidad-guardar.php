@@ -1,10 +1,16 @@
-<?php ?>
+<?php session_start(); 
+if(!isset($_SESSION['id_usuario'])){
+   require_once('login.php');  
+}
+else
+{
+  ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
-    <?php require_once('header-comun.php'); ?> 
+    <?php require_once('header-comun.html'); ?> 
 
 </head>
 
@@ -129,9 +135,8 @@
     </div>
     <!-- /#wrapper -->
 
-    <?php require_once('footer-comun.php'); ?> 
+    <?php require_once('footer-comun.html'); ?> 
 </body>
 
 </html>
-
-            
+<?php } ?>

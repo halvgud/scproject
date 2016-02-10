@@ -9,7 +9,7 @@ else
 <html lang="en">
 
 <head>
-    <?php require_once('header-comun.php'); ?> 
+    <?php require_once('header-comun.html'); ?> 
     
 
 </head>
@@ -30,7 +30,7 @@ else
     </div>
     <!-- /#wrapper -->
 
-    <?php require_once('footer-comun.php'); ?> 
+    <?php require_once('footer-comun.html'); ?> 
 
 </body>
 
