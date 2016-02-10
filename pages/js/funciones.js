@@ -28,8 +28,15 @@
 			return resultado;
 		});
 	}
-	function login(){
+	function logout(){
+		exitoso = function(datos){
+            window.location.reload();
+        };
+        fallo = function(datos){
 
+        };
+        
+        peticionAjax('data/logout.php','',exitoso,fallo);
 	}
 
 function notificacionError(mensaje){
