@@ -15,107 +15,136 @@ else
 </head>
 
 <body>
-<input type="text" id="horaInicio" />
     <div id="wrapper">
     <?php require_once('menu.php'); ?> 
         <div id="page-wrapper">
             <div class="page-header">
                 <h1>Agendar Consulta</h1>
             </div>
-            <form name="agendarConsulta">
-                <table class="table" name="agendarConsultaTabla">
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div class="form-group">
-                                    <label for="id_empleado">No. Empleado:</label>
-                                    <input type="text" class="form-control" id="id_empleado" placeholder="No. Empleado" required>
-                                </div>
-                            </td>
-                            <td colspan = "2">
-                                <div class="form-group">
-                                    <label for="nombre">Nombre</label>
-                                    <input type="text" class="form-control" id="nombre" readonly>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-group">
-                                    <label for="turno">Turno</label>
-                                    <input type="text" class="form-control" id="turno" maxlength="1" size = "1" readonly>
-                                </div>
-                            </td>
-                            <td >
-                                <div class="form-group">
-                                    <label for="departamento">Departamento</label>
-                                    <input type="text" class="form-control" id="departamento" readonly>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-group">
-                                    <label for="area">Area</label>
-                                    <input type="text" class="form-control" id="area" readonly>
-                                </div>
-                            </td>         
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="form-group">
-                                    <label for="diagnostico">Diagnostico</label>
-                                    <select name="diagnostico" id ="diagnostico" class="form-control" required>
-                                        <option value="">Seleccione un valor</option>
-                                        <option value="1">Dolor de Cabeza</option>
-                                        <option value="2">Gripa</option>
-                                        <option value="3">Infeccion</option>
-                                        <option value="4">Espalda</option>
-                                    </select>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-group">
-                                    <label for="peso">Peso (Kg)</label>
-                                    <input type="number" class="form-control"  step="any" id="peso" required>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-group">
-                                    <label for="talla">Talla</label>
-                                    <input type="number" class="form-control"  step="any" id="talla" required>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-group">
-                                    <label for="temperatura">Temperatura</label>
-                                    <input type="number" class="form-control"  step="any" id="temperatura" required>
-                                </div>
-                            </td>   
-                            <td>
-                                <div class="form-group">
-                                    <label for="frecuencia_cardiaca">Frec. Cardiaca</label>
-                                    <input type="number" class="form-control"  step="1" id="frecuencia_cardiaca" required>
-                                </div>
-                            </td>  
-                            <td>
-                                <div class="form-group">
-                                    <label for="frecuencia_respiratoria">Frec. Respiratoria</label>
-                                    <input type="number" class="form-control"  step="1" id="frecuencia_respiratoria" required>
-                                </div>
-                            </td>    
-                        </tr>
-                    </tbody>
-                </table>
-                <table class="table" name="listaMedicamento" id="listaMedicamento">
-
-                </table>
-                <p>
-                    <input type="hidden" value="" name="id">
-                    <input type="input" value="1" name="cantidad" id="cantidad">
-                    <select name='clklst' id='clklst' size='1'></select>
-                    <select name='unidad' id='unidad' size='1'></select>
-
-                    <input type="button" value="Agregar a Receta">
-                </p>
-              <button type="submit" class="btn btn-outline btn-success"><i class="fa fa-floppy-o"></i> Guardar</button>
-            </form>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div  id='calendario'></div>  
+                </div>
+            </div>
+            <div class="modal fade" id="agregarVisitasModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Agregar Visita</h4>
+                            </div>
+                        <div class="modal-body">
+                        <form>
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_empleado">No. Empleado:</label>
+                                                <input type="text" class="form-control" id="id_empleado" placeholder="No. Empleado" required>
+                                            </div>
+                                        </td>
+                                        <td colspan = "2">
+                                            <div class="form-group">
+                                                <label for="nombre">Nombre</label>
+                                                <input type="text" class="form-control" id="nombre" readonly>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="turno">Turno</label>
+                                                <input type="text" class="form-control" id="turno" maxlength="1" size = "1" readonly>
+                                            </div>
+                                        </td>
+                                        <td >
+                                            <div class="form-group">
+                                                <label for="departamento">Departamento</label>
+                                                <input type="text" class="form-control" id="departamento" readonly>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="area">Area</label>
+                                                <input type="text" class="form-control" id="area" readonly>
+                                            </div>
+                                        </td>         
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="diagnostico">Diagnostico</label>
+                                                <select name="diagnostico" id ="diagnostico" class="form-control" required>
+                                                    <option value="">Seleccione un valor</option>
+                                                    <option value="1">Dolor de Cabeza</option>
+                                                    <option value="2">Gripa</option>
+                                                    <option value="3">Infeccion</option>
+                                                    <option value="4">Espalda</option>
+                                                </select>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="peso">Peso (Kg)</label>
+                                                <input type="number" class="form-control"  step="any" id="peso" required>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="talla">Talla</label>
+                                                <input type="number" class="form-control"  step="any" id="talla" required>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="temperatura">Temperatura</label>
+                                                <input type="number" class="form-control"  step="any" id="temperatura" required>
+                                            </div>
+                                        </td>   
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="frecuencia_cardiaca">Frec. Cardiaca</label>
+                                                <input type="number" class="form-control"  step="1" id="frecuencia_cardiaca" required>
+                                            </div>
+                                        </td>  
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="frecuencia_respiratoria">Frec. Respiratoria</label>
+                                                <input type="number" class="form-control"  step="1" id="frecuencia_respiratoria" required>
+                                            </div>
+                                        </td>    
+                                    </tr>
+                                    <tr>
+                                         <td >
+                                            <div class="form-group">
+                                                <label for="fecha">Fecha</label>
+                                                <input type="text" class="form-control" id="fecha" readonly/>
+                                            </div>
+                                        </td> 
+                                        <td >
+                                            <div class="form-group">
+                                                <label for="hora_inicio">Hora Inicio</label>
+                                                <input type="text" class="form-control" id="hora_inicio" />
+                                            </div>
+                                        </td>   
+                                        <td >
+                                            <div class="form-group">
+                                                <label for="hora_fin">Hora Fin</label>
+                                                <input type="text" class="form-control" id="hora_fin" />
+                                            </div>
+                                        </td>     
+                                    </tr>       
+                                </tbody>
+                            </table>
+                          <button type="submit" class="btn btn-outline btn-success"><i class="fa fa-floppy-o"></i> Guardar</button>
+                        </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal"><i class="fa fa-ban"></i> Cancelar</button>
+                            <button type="submit" class="btn btn-outline btn-success"><i class="fa fa-floppy-o"></i> Guardar</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
         </div>
         <!-- /#page-wrapper -->
 
@@ -123,57 +152,93 @@ else
     <!-- /#wrapper -->
 
     <?php require_once('footer-comun.html'); ?> 
-    <script>
-        exitoso = function(datos){
-            window.location.reload();
-        };
-        fallo = function(datos){
 
-        };
-        $("#agendarConsulta").submit(function(){
-            var form = $("#agendarConsultaTabla").serializeArray();
-            console.log(form);
-
-            var datos = {};
-            form.forEach(function(input) {
-                datos[input.name] = input.value;
-            });
-            console.log(datos);
-            alert('kek');
-            //peticionAjax('data/testinsert.php',datos,exitoso,fallo);
-            return false;
-        });
-
-        var contador = 0;
-        $('#listaMedicamento').on('click', 'input[type="button"]', function () {
-            $(this).closest('tr').remove();
-        })
-        $('p input[type="button"]').click(function () {
-           contador++;
-            $('#listaMedicamento').append("" +
-                "<tr><td><input type='hidden' value='"+$('#clklst').val()+"' name='id_medicamento"+contador+"'>" +
-                "<input type='text' class='fname' value='"+$('#cantidad').val()+"' name='cantidad"+contador+"'/>" +
-                "<input type='text' class='fname' value='"+$('#clklst option:selected').text()+"'/>" +
-                "<input type='button' value='Remover de la lista' /></td></tr>")
-        });
-        $(function() {
-            cargarDropDownList(('#clklst'),'id_medicamento','descripcion',1,$('#clklst').val());
-
-<<<<<<< HEAD
-        });
-        $('#clklst').on('change', function() {
-            cargarDropDownList(('#unidad'),'id_presentacion_medicamento','descripcion',2,$('#clklst').val());
-        });
-    </script>
-=======
     <script type="text/javascript" >
         $(document).ready(function() {
             $.datetimepicker.setLocale('es');
-            $('#horaInicio').datetimepicker();
+            $('#hora_inicio').datetimepicker({
+                datepicker:false,
+                format:'H:i',
+                step:10
+            });
+            $('#hora_fin').datetimepicker({
+                datepicker:false,
+                format:'H:i',
+                step:10
+            });
+            $('#calendario').fullCalendar({
+                    header: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        // right: 'month,agendaWeek,agendaDay'
+                        right: 'month,agendaDay'
+                    },
+                    lang: 'es',
+                    allDaySlot:false,
+                    slotDuration:moment.duration(10, 'minutes'),
+                    slotLabelInterval:moment.duration(20, 'minutes'),
+                    // snapDuration:moment.    duration(10, 'minutes'),
+                    // selectOverlap:false,
+                    selectable: true,
+                    selectHelper: true,
+                    fixedWeekCount:false,
+                    eventOverlap :false,
+                    slotEventOverlap:false,
+                    eventClick:function(calEvent, jsEvent, view) {
+                        if (view.type ==='agendaDay'){
+                            console.log('Event: ' + calEvent.title);
+                            console.log('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
+                            console.log('View: ' + view.name);
+                        }
+                    },
+                    // weekNumberTitle:'Semana ',
+                    select: function(start, end) {
+                        console.log(moment(start).format("LLLL")+'    '+moment(end).format("LLLL"));
+                        console.log(moment(start).format("l")+'    '+moment(end).format("l"));
+                        var view = $('#calendario').fullCalendar('getView');
+                        if (view.type !=='agendaDay'){
+                            $("#calendario").fullCalendar( 'gotoDate', start );
+                            $("#calendario").fullCalendar( 'changeView', 'agendaDay' )    
+                        }
+                        else{
+                            $("#fecha").val(moment(start).format("l"));
+                            $("#hora_inicio").val(moment(start).format("LT"));
+                            $("#hora_fin").val(moment(end).format("LT"));
+                            $("#agregarVisitasModal").modal();
+                             eventData = {
+                                    title: 'test',
+                                    start: start,
+                                    end: end
+                                };
+                                $('#calendario').fullCalendar('renderEvent', eventData, true); // stick? = true
+                            // var title = prompt('Event Title:');
+                            // var eventData;
+                            // if (title) {
+                            //     eventData = {
+                            //         title: title,
+                            //         start: start,
+                            //         end: end
+                            //     };
+                            //     $('#calendario').fullCalendar('renderEvent', eventData, true); // stick? = true
+                            //     $("#calendario").fullCalendar( 'gotoDate', start );
+                            // }
+                        }
+                        // $('#calendario').fullCalendar('unselect');
+                    },
+                    // weekNumbers: true,
+                    editable: true,
+                    eventLimit: true, // allow "more" link when too many events
+                    events: [
+                        {
+                            title: 'All Day Event',
+                            start: '2016-02-09',
+                            end: '2016-02-10'
+                        }
+                    ]
+            });
         });
     </script>
 
->>>>>>> e0304ed1dacebd908670e0f0d990fb20b3b1160f
 </body>
 
 </html>
