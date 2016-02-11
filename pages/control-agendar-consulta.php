@@ -16,14 +16,14 @@ else
 
 <body>
     <div id="wrapper">
-    <?php require_once('menu.php'); ?> 
+    <?php require_once('menu.php'); ?>
         <div id="page-wrapper">
             <div class="page-header">
                 <h1>Agendar Consulta</h1>
             </div>
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <div  id='calendario'></div>  
+                    <div  id='calendario'></div>
                 </div>
             </div>
             <div class="modal fade" id="agregarVisitasModal" tabindex="-1" role="dialog">
@@ -35,7 +35,7 @@ else
                             </div>
                         <div class="modal-body">
                         <form>
-                            <table class="table">
+                            <table class="table" id="tabl1_consulta">
                                 <tbody>
                                     <tr>
                                         <td>
@@ -67,7 +67,7 @@ else
                                                 <label for="area">Area</label>
                                                 <input type="text" class="form-control" id="area" readonly>
                                             </div>
-                                        </td>         
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>
@@ -99,19 +99,19 @@ else
                                                 <label for="temperatura">Temperatura</label>
                                                 <input type="number" class="form-control"  step="any" id="temperatura" required>
                                             </div>
-                                        </td>   
+                                        </td>
                                         <td>
                                             <div class="form-group">
                                                 <label for="frecuencia_cardiaca">Frec. Cardiaca</label>
                                                 <input type="number" class="form-control"  step="1" id="frecuencia_cardiaca" required>
                                             </div>
-                                        </td>  
+                                        </td>
                                         <td>
                                             <div class="form-group">
                                                 <label for="frecuencia_respiratoria">Frec. Respiratoria</label>
                                                 <input type="number" class="form-control"  step="1" id="frecuencia_respiratoria" required>
                                             </div>
-                                        </td>    
+                                        </td>
                                     </tr>
                                     <tr>
                                          <td >
@@ -119,22 +119,36 @@ else
                                                 <label for="fecha">Fecha</label>
                                                 <input type="text" class="form-control" id="fecha" readonly/>
                                             </div>
-                                        </td> 
+                                        </td>
                                         <td >
                                             <div class="form-group">
                                                 <label for="hora_inicio">Hora Inicio</label>
                                                 <input type="text" class="form-control" id="hora_inicio" />
                                             </div>
-                                        </td>   
+                                        </td>
                                         <td >
                                             <div class="form-group">
                                                 <label for="hora_fin">Hora Fin</label>
                                                 <input type="text" class="form-control" id="hora_fin" />
                                             </div>
-                                        </td>     
-                                    </tr>       
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
+
+                            <div class="form-group">
+                                <label for="agregar_medicamento">Agregar Medicamento</label>
+                                <select name='clklst' id='clklst' size='1'></select>
+                                <button type="button" id="agregar_medicamento" class="btn btn-outline btn-primary"><i class="fa fa-plus-square"></i> Agregar Medicamento</button>
+                            </div>
+                           <!-- <p>
+                                <input type="hidden" value="" name="id">
+                                <input type="input" value="1" name="cantidad" id="cantidad">
+                                <select name='clklst' id='clklst' size='1'></select>
+                                <select name='unidad' id='unidad' size='1'></select>
+
+                                <input type="button" value="Agregar a Receta">
+                            </p>-->
                           <button type="submit" class="btn btn-outline btn-success"><i class="fa fa-floppy-o"></i> Guardar</button>
                         </form>
                         </div>
@@ -151,9 +165,80 @@ else
     </div>
     <!-- /#wrapper -->
 
-    <?php require_once('footer-comun.html'); ?> 
+    <?php require_once('footer-comun.html'); ?>
 
     <script type="text/javascript" >
+        exitoso = function(datos){
+            window.location.reload();
+        };
+        fallo = function(datos){
+
+        };
+        $("#agendarConsulta").submit(function(){
+            var form = $("#agendarConsultaTabla").serializeArray();
+            console.log(form);
+
+            var datos = {};
+            form.forEach(function(input) {
+                datos[input.name] = input.value;
+            });
+            console.log(datos);
+            alert('kek');
+            //peticionAjax('data/testinsert.php',datos,exitoso,fallo);
+            return false;
+        });
+
+        var contador = 0;
+        $('#listaMedicamento').on('click', 'input[type="button"]', function () {
+            $(this).closest('tr').remove();
+        })
+        /*$('p input[type="button"]').click(function () {
+            contador++;
+            $('#listaMedicamento').append("" +
+                "<tr><td><input type='hidden' value='"+$('#clklst').val()+"' name='id_medicamento"+contador+"'>" +
+                "<input type='text' class='fname' value='"+$('#cantidad').val()+"' name='cantidad"+contador+"'/>" +
+                "<input type='text' class='fname' value='"+$('#clklst option:selected').text()+"'/>" +
+                "<input type='button' value='Remover de la lista' /></td></tr>")
+        });*/
+        $("#agregar_medicamento").click(function(){
+            contador++;
+            var row = $("<tr></tr>");
+            var td = $("<td></td>");
+            var medicamento = $("<input>",{id:"descripcion"+contador,class:'form-control',value:$("#clklst option:selected").text()+contador });
+            td.append(medicamento);
+            row.append(td);
+            var idmedicamento = $("<input>",{type:'hidden',id:"id_medicamento"+contador,class:'form-control',value:$('#clklst').val()+contador});
+            td.append(idmedicamento);
+            row.append(td);
+
+            var cantidad = $("<input>",{id:"cantidad"+contador,type:'number',class:'form-control'});
+            td = $("<td></td>");
+            td.append(cantidad);
+            row.append(td);
+            var icono = $("<i></i>",{class:'fa fa-minus-square'});
+            var remover = $("<button></button>",{id:"cantidad"+contador,type:'button',class:'btn btn-outline btn-danger'});
+            $(remover).click(function(){
+                $(row).remove();
+                contador--;
+            });
+            remover.append(icono);
+            // remover.append(' Remover');
+            var td = $("<td></td>");
+            td.append(remover);
+            console.log(contador)
+            row.append(td);
+            console.log(row);
+            $("#tabl1_consulta tbody").append(row);
+        });
+        $(function() {
+            cargarDropDownList(('#clklst'),'id_medicamento','descripcion',1,$('#clklst').val());
+
+        });
+        /*$('#clklst').on('change', function() {
+            cargarDropDownList(('#unidad'),'id_presentacion_medicamento','descripcion',2,$('#clklst').val());
+        });*/
+
+    ////////////////////////////////////////////////
         $(document).ready(function() {
             $.datetimepicker.setLocale('es');
             $('#hora_inicio').datetimepicker({
@@ -198,7 +283,7 @@ else
                         var view = $('#calendario').fullCalendar('getView');
                         if (view.type !=='agendaDay'){
                             $("#calendario").fullCalendar( 'gotoDate', start );
-                            $("#calendario").fullCalendar( 'changeView', 'agendaDay' )    
+                            $("#calendario").fullCalendar( 'changeView', 'agendaDay' )
                         }
                         else{
                             $("#fecha").val(moment(start).format("l"));
@@ -211,7 +296,7 @@ else
                                     end: end
                                 };
                                 $('#calendario').fullCalendar('renderEvent', eventData, true); // stick? = true
-                            // var title = prompt('Event Title:');
+                            // var title = prompt('Event Title:');n
                             // var eventData;
                             // if (title) {
                             //     eventData = {
