@@ -15,7 +15,7 @@ else
 </head>
 
 <body>
-
+<input type="text" id="horaInicio" />
     <div id="wrapper">
     <?php require_once('menu.php'); ?> 
         <div id="page-wrapper">
@@ -159,11 +159,21 @@ else
         $(function() {
             cargarDropDownList(('#clklst'),'id_medicamento','descripcion',1,$('#clklst').val());
 
+<<<<<<< HEAD
         });
         $('#clklst').on('change', function() {
             cargarDropDownList(('#unidad'),'id_presentacion_medicamento','descripcion',2,$('#clklst').val());
         });
     </script>
+=======
+    <script type="text/javascript" >
+        $(document).ready(function() {
+            $.datetimepicker.setLocale('es');
+            $('#horaInicio').datetimepicker();
+        });
+    </script>
+
+>>>>>>> e0304ed1dacebd908670e0f0d990fb20b3b1160f
 </body>
 
 </html>
