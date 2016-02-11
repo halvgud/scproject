@@ -34,14 +34,16 @@ else
                             <h4 class="modal-title">Agregar Visita</h4>
                             </div>
                         <div class="modal-body">
-                        <form>
+                        <form name="agendarConsultaForm" id="agendarConsultaForm" >
                             <table class="table" id="tabl1_consulta">
+
                                 <tbody>
                                     <tr>
                                         <td>
                                             <div class="form-group">
+                                                <input type="hidden" name="id_empleado" value="1">
                                                 <label for="id_empleado">No. Empleado:</label>
-                                                <input type="text" class="form-control" id="id_empleado" placeholder="No. Empleado" required>
+                                                <input type="text" class="form-control" name="id_empleado" id="id_empleado" placeholder="No. Empleado" required>
                                             </div>
                                         </td>
                                         <td colspan = "2">
@@ -53,19 +55,19 @@ else
                                         <td>
                                             <div class="form-group">
                                                 <label for="turno">Turno</label>
-                                                <input type="text" class="form-control" id="turno" maxlength="1" size = "1" readonly>
+                                                <input type="text" class="form-control"  id="turno" maxlength="1" size = "1" readonly>
                                             </div>
                                         </td>
                                         <td >
                                             <div class="form-group">
                                                 <label for="departamento">Departamento</label>
-                                                <input type="text" class="form-control" id="departamento" readonly>
+                                                <input type="text" class="form-control"  id="departamento" readonly>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="form-group">
                                                 <label for="area">Area</label>
-                                                <input type="text" class="form-control" id="area" readonly>
+                                                <input type="text" class="form-control"  id="area" readonly>
                                             </div>
                                         </td>
                                     </tr>
@@ -73,7 +75,7 @@ else
                                         <td>
                                             <div class="form-group">
                                                 <label for="diagnostico">Diagnostico</label>
-                                                <select name="diagnostico" id ="diagnostico" class="form-control" required>
+                                                <select name="id_diagnostico" id ="id_diagnostico" class="form-control" required>
                                                     <option value="">Seleccione un valor</option>
                                                     <option value="1">Dolor de Cabeza</option>
                                                     <option value="2">Gripa</option>
@@ -85,31 +87,31 @@ else
                                         <td>
                                             <div class="form-group">
                                                 <label for="peso">Peso (Kg)</label>
-                                                <input type="number" class="form-control"  step="any" id="peso" required>
+                                                <input type="number" class="form-control"  step="any" id="peso" name="peso" required>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="form-group">
                                                 <label for="talla">Talla</label>
-                                                <input type="number" class="form-control"  step="any" id="talla" required>
+                                                <input type="number" class="form-control"  step="any" id="talla" name="peso" required>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="form-group">
                                                 <label for="temperatura">Temperatura</label>
-                                                <input type="number" class="form-control"  step="any" id="temperatura" required>
+                                                <input type="number" class="form-control"  step="any" id="temperatura" name="temperatura" required>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="form-group">
                                                 <label for="frecuencia_cardiaca">Frec. Cardiaca</label>
-                                                <input type="number" class="form-control"  step="1" id="frecuencia_cardiaca" required>
+                                                <input type="number" class="form-control"  step="1" id="frecuencia_cardiaca" name="frecuencia_cardiaca" required>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="form-group">
                                                 <label for="frecuencia_respiratoria">Frec. Respiratoria</label>
-                                                <input type="number" class="form-control"  step="1" id="frecuencia_respiratoria" required>
+                                                <input type="number" class="form-control"  step="1" id="frecuencia_respiratoria" name="frecuencia_respiratoria" required>
                                             </div>
                                         </td>
                                     </tr>
@@ -117,25 +119,29 @@ else
                                          <td >
                                             <div class="form-group">
                                                 <label for="fecha">Fecha</label>
-                                                <input type="text" class="form-control" id="fecha" readonly/>
+                                                <input type="text" class="form-control" id="fecha" readonly name="fecha"/>
                                             </div>
                                         </td>
                                         <td >
                                             <div class="form-group">
                                                 <label for="hora_inicio">Hora Inicio</label>
-                                                <input type="text" class="form-control" id="hora_inicio" />
+                                                <input type="text" class="form-control" id="hora_inicio" name="hora_inicio"/>
                                             </div>
                                         </td>
                                         <td >
                                             <div class="form-group">
                                                 <label for="hora_fin">Hora Fin</label>
-                                                <input type="text" class="form-control" id="hora_fin" />
+                                                <input type="text" class="form-control" id="hora_fin"  name="hora_fin"/>
                                             </div>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
+                            <table name="tabl2_consulta" id="tabl2_consulta">
+                                <tbody>
 
+                                </tbody>
+                            </table>
                             <div class="form-group">
                                 <label for="agregar_medicamento">Agregar Medicamento</label>
                                 <select class='form-control' name='clklst' id='clklst' size='1'></select>
@@ -149,13 +155,14 @@ else
 
                                 <input type="button" value="Agregar a Receta">
                             </p>-->
-                          <button type="submit" class="btn btn-outline btn-success"><i class="fa fa-floppy-o"></i> Guardar</button>
-                        </form>
+                      <!--    <button type="submit" class="btn btn-outline btn-success"><i class="fa fa-floppy-o"></i> Guardar</button>-->
+
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal"><i class="fa fa-ban"></i> Cancelar</button>
                             <button type="submit" class="btn btn-outline btn-success"><i class="fa fa-floppy-o"></i> Guardar</button>
                         </div>
+                        </form><!--se cambia el tamaño del form-->
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
             </div><!-- /.modal -->
@@ -174,24 +181,31 @@ else
         fallo = function(datos){
 
         };
-        $("#agendarConsulta").submit(function(){
-            var form = $("#agendarConsultaTabla").serializeArray();
-            console.log(form);
+        $("#agendarConsultaForm").submit(function(){
+            var form1 = $("#tabl1_consulta").find("select, input").serializeArray();
+            var form2 = $('#tabl2_consulta').find("input").serializeArray();
 
-            var datos = {};
-            form.forEach(function(input) {
-                datos[input.name] = input.value;
+            var datosTabla1 = {};
+            var datosTabla2 = {};
+            form1.forEach(function(input) {
+                datosTabla1[input.name] = input.value;
             });
-            console.log(datos);
-            alert('kek');
+            form2.forEach(function(input) {
+                datosTabla2[input.name] = input.value;
+            });
+            var datosUnion = {};
+            datosUnion['consulta'] = datosTabla1;
+            datosUnion['relacion_consulta_medicamento']=datosTabla2;
+            console.log(datosUnion);
+
             //peticionAjax('data/testinsert.php',datos,exitoso,fallo);
             return false;
         });
 
         var contador = 0;
-        $('#listaMedicamento').on('click', 'input[type="button"]', function () {
+        /*$('#listaMedicamento').on('click', 'input[type="button"]', function () {
             $(this).closest('tr').remove();
-        })
+        })*/
         /*$('p input[type="button"]').click(function () {
             contador++;
             $('#listaMedicamento').append("" +
@@ -204,19 +218,19 @@ else
             contador++;
             var row = $("<tr></tr>");
             var td = $("<td></td>");
-            var medicamento = $("<input>",{id:"descripcion"+contador,class:'form-control',value:$("#clklst option:selected").text()+contador });
+            var medicamento = $("<input>",{name:"descripcion"+contador,id:"descripcion"+contador,class:'form-control',value:$("#clklst option:selected").text() });
             td.append(medicamento);
             row.append(td);
-            var idmedicamento = $("<input>",{type:'hidden',id:"id_medicamento"+contador,class:'form-control',value:$('#clklst').val()+contador});
+            var idmedicamento = $("<input>",{type:'hidden',id:"id_medicamento"+contador,name:"id_medicamento"+contador,class:'form-control',value:$('#clklst').val()});
             td.append(idmedicamento);
             row.append(td);
 
-            var cantidad = $("<input>",{id:"cantidad"+contador,type:'number',class:'form-control'});
+            var cantidad = $("<input>",{id:"cantidad"+contador,name:"cantidad"+contador,type:'number',class:'form-control', value:'1'});
             td = $("<td></td>");
             td.append(cantidad);
             row.append(td);
             var icono = $("<i></i>",{class:'fa fa-minus-square'});
-            var remover = $("<button></button>",{id:"cantidad"+contador,type:'button',class:'btn btn-outline btn-danger'});
+            var remover = $("<button></button>",{id:"cantidad"+contador,name:"cantidad"+contador,type:'button',class:'btn btn-outline btn-danger'});
             $(remover).click(function(){
                 $(row).remove();
                 contador--;
@@ -225,10 +239,10 @@ else
             // remover.append(' Remover');
             var td = $("<td></td>");
             td.append(remover);
-            console.log(contador)
+            //console.log(contador)
             row.append(td);
-            console.log(row);
-            $("#tabl1_consulta tbody").append(row);
+           // console.log(row);
+            $("#tabl2_consulta tbody").append(row);
         });
         $(function() {
             cargarDropDownList(('#clklst'),'id_medicamento','descripcion',1,$('#clklst').val());
@@ -271,15 +285,15 @@ else
                     slotEventOverlap:false,
                     eventClick:function(calEvent, jsEvent, view) {
                         if (view.type ==='agendaDay'){
-                            console.log('Event: ' + calEvent.title);
-                            console.log('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-                            console.log('View: ' + view.name);
+                            //console.log('Event: ' + calEvent.title);
+                           // console.log('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
+                           // console.log('View: ' + view.name);
                         }
                     },
                     // weekNumberTitle:'Semana ',
                     select: function(start, end) {
-                        console.log(moment(start).format("LLLL")+'    '+moment(end).format("LLLL"));
-                        console.log(moment(start).format("l")+'    '+moment(end).format("l"));
+                        ////console.log(moment(start).format("LLLL")+'    '+moment(end).format("LLLL"));
+                       // console.log(moment(start).format("l")+'    '+moment(end).format("l"));
                         var view = $('#calendario').fullCalendar('getView');
                         if (view.type !=='agendaDay'){
                             $("#calendario").fullCalendar( 'gotoDate', start );
