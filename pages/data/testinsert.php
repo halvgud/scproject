@@ -33,16 +33,17 @@ if(isset($data) /*&& isset($data->tabla)*/ &&isset($data->tipo_transaccion)) {
             $datosVisita['id_empleado'] = $visita->id_empleado;
             $datosVisita['id_usuario'] = $visita->id_usuario;
             $arregloVisitaMedico= json_decode(json_encode($relacion_visita_medicamento), true);
-            //var_dump($arregloVisitaMedico);
+            var_dump($arregloVisitaMedico);
             if ($db->Insertar($tabla1,$datosVisita)) {
                 $separado_por_comas = implode(",", $db->obtenerResultado());
                 for ($x = 1; $x <= $data->contador; $x++) {
                     $datosMedicamento['id_visita']=$separado_por_comas;
-                    $datosMedicamento['id_medicamento'] =$arregloVisitaMedico['id_medicamento'.$data->contador];
-                    $datosMedicamento['cantidad'] = $arregloVisitaMedico['cantidad'.$data->contador];
-                    var_dump($datosMedicamento);
+                    $datosMedicamento['id_medicamento'] =$arregloVisitaMedico['id_medicamento'.$x];
+                    $datosMedicamento['cantidad'] = $arregloVisitaMedico['cantidad'.$x];
+                   // var_dump($datosMedicamento);
                     if($db->Insertar('relacion_visita_medicamento',$datosMedicamento))
                     {
+                        //update de medicamento
                      $bandera=true;
                     }
                     else{
