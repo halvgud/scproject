@@ -103,6 +103,17 @@ else
                         </tr>
                     </tbody>
                 </table>
+                <table class="table" name="listaMedicamento" id="listaMedicamento">
+
+                </table>
+                <p>
+                    <input type="hidden" value="" name="id">
+                    <input type="input" value="1" name="cantidad" id="cantidad">
+                    <select name='clklst' id='clklst' size='1'></select>
+                    <select name='unidad' id='unidad' size='1'></select>
+
+                    <input type="button" value="Agregar a Receta">
+                </p>
               <button type="submit" class="btn btn-outline btn-success"><i class="fa fa-floppy-o"></i> Guardar</button>
             </form>
         </div>
@@ -112,7 +123,27 @@ else
     <!-- /#wrapper -->
 
     <?php require_once('footer-comun.html'); ?> 
+    <script>
+        var contador = 0;
+        $('#listaMedicamento').on('click', 'input[type="button"]', function () {
+            $(this).closest('tr').remove();
+        })
+        $('p input[type="button"]').click(function () {
+           contador++;
+            $('#listaMedicamento').append("" +
+                "<tr><td><input type='hidden' value='"+$('#clklst').val()+"' name='id_medicamento"+contador+"'>" +
+                "<input type='text' class='fname' value='"+$('#cantidad').val()+"' name='cantidad"+contador+"'/>" +
+                "<input type='text' class='fname' value='"+$('#clklst option:selected').text()+"'/>" +
+                "<input type='button' value='Remover de la lista' /></td></tr>")
+        });
+        $(function() {
+            cargarDropDownList(('#clklst'),'id_medicamento','descripcion',1,$('#clklst').val());
 
+        });
+        $('#clklst').on('change', function() {
+            cargarDropDownList(('#unidad'),'id_presentacion_medicamento','descripcion',2,$('#clklst').val());
+        });
+    </script>
 </body>
 
 </html>

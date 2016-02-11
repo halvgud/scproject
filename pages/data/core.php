@@ -22,6 +22,28 @@ class Conexion
             print_r($e);//se imprime el error
         }
 	}
+    public function iniciarTransaccion()
+    {
+        if(self::$conn) {
+            self::$conn->StartTrans();
+            return true;
+        }
+        else{
+            array_push($this->result,'fallo de transaccion, conexion no establecida');
+            return false;
+        }
+    }
+    public function finalizarTransaccion()//rollback y commit dentro de este
+    {
+        if(self::$conn) {
+            self::$conn->CompleteTrans();
+            return true;
+        }
+        else{
+            array_push($this->result,'fallo de transaccion, conexion no establecida');
+            return false;
+        }
+    }
 
 	public function seleccion($tabla, $rows = '*', $join = null, $where = null, $order = null, $limit = null){
 		//Se crea query en base a los parametros
@@ -70,12 +92,14 @@ class Conexion
             $insertSQL = self::$conn->AutoExecute($table, $arreglo, 'INSERT');
             if($insertSQL)
             {
-                array_push($this->result,$insertSQL);
+                array_push($this->result,self::$conn->Insert_ID());
                 return true;
             }else {
+                self::$conn->FailTrans( );//forza rollback
                 array_push($this->result, self::$conn->ErrorMsg());
                 return false; // error
             }
+
         }else{
             return false; // Tabla no existe
         }
@@ -85,16 +109,24 @@ class Conexion
 
 
     private function existeTabla($table){
-
-        $tablesInDb = self::$conn->execute('SHOW TABLES FROM '.self::$db_name.' LIKE "'.$table.'"');//Ejecuta query para ver si existe la tabla en la base de datos
-        if($tablesInDb){//si si se realizo el query
-            if($tablesInDb->RecordCount()==1){//y si la cantidad de registros es = 1
+    try {
+        if(self::$conn){
+        $tablesInDb = self::$conn->Execute('SHOW TABLES FROM ' . self::$db_name . ' LIKE "' . $table . '"');//Ejecuta query para ver si existe la tabla en la base de datos
+        if ($tablesInDb) {//si si se realizo el query
+            if ($tablesInDb->RecordCount() == 1) {//y si la cantidad de registros es = 1
                 return true; // Regresa true si la tabla existe
-            }else{//de otra manera
-                array_push($this->result,$table." no existe en la base de datos");
+            } else {//de otra manera
+                array_push($this->result, $table . " no existe en la base de datos");
                 return false; // Regresa false si la tabla no existe
             }
+            }
+        }else{
+            array_push($this->result,'conexion no establecida');//se imprime el error
         }
+    }
+    catch (exception $e) {//si la conexion falla se atrapa la excepcion
+        array_push($this->result,($e));//se imprime el error
+    }
     }
     public function obtenerResultado(){
         return $this->result; //regresa el resultado

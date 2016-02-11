@@ -4,28 +4,24 @@
         type: "POST",
         url: archivo,
         data: JSON.stringify(datos),
-        dataType: 'json',
-        // headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'}
-		})
+        dataType: 'json'
+      	})
 		.done(function(resultado) {
-			// alert("success "+resultado);
-			notificacionSuccess("success "+resultado);
-			// result = JSON.parse(resultado);
+			notificacionSuccess(resultado['success']);
 			console.log(resultado);
 			if(successCallBack){
 				successCallBack(resultado);
 			}
 			return resultado;
 		})
-		.fail(function(jqXHR, textStatus,errorThrown) {
-			// alert(textStatus+" "+jqXHR.responseText);
-			resultado = JSON.parse(jqXHR.responseText);
-			console.log(resultado);
-			notificacionError(resultado.error);
+		.fail(function(jqXHR) {
+			resulta = jQuery.parseJSON(jqXHR.responseText);
+            console.log(resulta);
+			notificacionError(resulta['error']);
 			if(errorCallBack){
-				errorCallBack(resultado);
+				errorCallBack(resulta['error']);
 			}
-			return resultado;
+			return resulta;
 		});
 	}
 	function logout(){
@@ -97,3 +93,32 @@ function notificacionSuccess(mensaje){
 
 }
 
+
+
+function cargarDropDownList(nameattr,id,value,transaccion,otro)
+{
+    arreglo={};
+    arreglo['idBusqueda']=otro;
+    arreglo['idTransaccion']=transaccion;
+    console.log(arreglo);
+    $.ajax({
+            type: "POST",
+            url: 'data/testselect.php',
+            data: JSON.stringify(arreglo),
+            dataType: 'text'
+        })
+        .done(function(result){
+            console.log(result);
+            var obj1 = $.parseJSON(result);
+            var options = '';
+            console.log(result);
+            for (var i = 0; i < obj1.length; i++) {
+                options += '<option value="' + obj1[i][id] + '">' + obj1[i][value] + '</option>';
+            }
+            $(nameattr).html(options);
+        })
+.fail(function(jqXHR) {
+        resulta = (jqXHR.responseText);
+        console.log(resulta);
+    })   ;
+}

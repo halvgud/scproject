@@ -26,6 +26,7 @@ else
                 <input type="hidden" name="tabla" id="tabla" value="medicamento">
                 <input type="hidden" name="estado"  value="A">
                 <input type="hidden" name="id_usuario"  value="1">
+                <input type="hidden" name="tipo_transaccion"  value="1">
                 <table class="table">
                     <tbody>
                         <tr>
@@ -97,8 +98,7 @@ else
     </div>
     <!-- /#wrapper -->
 
-<<<<<<< HEAD
-    <?php require_once('footer-comun.php'); ?>
+    <?php require_once('footer-comun.html'); ?>
     <script>
         exitoso = function(datos){
             window.location.reload();
@@ -115,9 +115,7 @@ else
             peticionAjax('data/testinsert.php',datos,exitoso,fallo);
             return false;
         });
-=======
-    <?php require_once('footer-comun.html'); ?> 
->>>>>>> origin/master
+
 
     </script>
 </body>

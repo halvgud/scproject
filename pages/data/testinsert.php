@@ -4,24 +4,40 @@ include('core.php');
 
 $data = json_decode(file_get_contents('php://input'));
 
-if(isset($data) && isset($data->tabla)) {
+if(isset($data) && isset($data->tabla) &&isset($data->tipo_transaccion)) {
     $db = new Conexion();
     $db->abrirConexion();
-    $tabla = $data->tabla;
-    unset($data->tabla);
-    //$db->Insertar($tabla,$data);
-    //return json_encode(0);
-   if($db->Insertar($tabla,$data)){
-       return json_encode(0);
-      // return json_encode('Exito: Se a registrado');
-   }
-    else{
-        //return json_encode('error: fallo al insertar');
+    if($data->tipo_transaccion==1){
+        $tabla = $data->tabla;
+        unset($data->tabla);
+        if($db->iniciarTransaccion()){
+            if($db->Insertar($tabla,$data)){
+                $separado_por_comas = implode(",", $db->obtenerResultado());
+                $resArray['success'] = 'Se ha insertado el registro No. '.$separado_por_comas;
+                print json_encode($resArray);
+           }
+            else{
+                http_response_code(403);
+                $resArray = array();
+                $separado_por_comas = implode(",", $db->obtenerResultado());
+                $resArray['error'] = $separado_por_comas;
+                print json_encode($resArray);
+            }
+        }
+        else{
+            http_response_code(403);
+            $separado_por_comas = implode(",", $db->obtenerResultado());
+            $resArray['error'] = $separado_por_comas;
+            print json_encode($resArray);
+        }
+        $db->finalizarTransaccion();
+    }else if($data->tipo_transaccion>1){
+
     }
-   // return json_encode($db->Insertar($tabla,$data));
 }
 else
 {
-    return json_encode(0);
+    http_response_code(403);
+    $resArray['error'] = 'informacion no recibida';
 }
 ?>
