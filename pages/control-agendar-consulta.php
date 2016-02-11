@@ -15,7 +15,7 @@ else
 </head>
 
 <body>
-
+<input type="text" id="horaInicio" />
     <div id="wrapper">
     <?php require_once('menu.php'); ?> 
         <div id="page-wrapper">
@@ -112,6 +112,13 @@ else
     <!-- /#wrapper -->
 
     <?php require_once('footer-comun.html'); ?> 
+
+    <script type="text/javascript" >
+        $(document).ready(function() {
+            $.datetimepicker.setLocale('es');
+            $('#horaInicio').datetimepicker();
+        });
+    </script>
 
 </body>
 
