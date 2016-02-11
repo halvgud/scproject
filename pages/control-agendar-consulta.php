@@ -22,8 +22,8 @@ else
             <div class="page-header">
                 <h1>Agendar Consulta</h1>
             </div>
-            <form>
-                <table class="table">
+            <form name="agendarConsulta">
+                <table class="table" name="agendarConsultaTabla">
                     <tbody>
                         <tr>
                             <td>
@@ -124,6 +124,26 @@ else
 
     <?php require_once('footer-comun.html'); ?> 
     <script>
+        exitoso = function(datos){
+            window.location.reload();
+        };
+        fallo = function(datos){
+
+        };
+        $("#agendarConsulta").submit(function(){
+            var form = $("#agendarConsultaTabla").serializeArray();
+            console.log(form);
+
+            var datos = {};
+            form.forEach(function(input) {
+                datos[input.name] = input.value;
+            });
+            console.log(datos);
+            alert('kek');
+            //peticionAjax('data/testinsert.php',datos,exitoso,fallo);
+            return false;
+        });
+
         var contador = 0;
         $('#listaMedicamento').on('click', 'input[type="button"]', function () {
             $(this).closest('tr').remove();
