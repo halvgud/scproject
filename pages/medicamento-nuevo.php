@@ -22,64 +22,74 @@ else
             <div class="page-header">
                 <h1>Nuevo Medicamento</h1>
             </div>
-            <form>
+            <form id='medicinanuevoForm' name="medicinanuevoForm">
+                <input type="hidden" name="tabla" id="tabla" value="medicamento">
+                <input type="hidden" name="estado"  value="A">
+                <input type="hidden" name="id_usuario"  value="1">
                 <table class="table">
                     <tbody>
                         <tr>
                             <td>
                                 <div class="form-group">
                                     <label for="clave">Clave:</label>
-                                    <input type="text" class="form-control" id="clave" placeholder="Clave del medicamento" required>
+                                    <input type="text" class="form-control" name="clave" placeholder="Clave del medicamento" required>
                                 </div>
                             </td>
                             <td>
                                 <div class="form-group">
                                     <label for="nombre">Nombre</label>
-                                    <input type="text" class="form-control" id="nombre">
+                                    <input type="text" class="form-control" name="descripcion">
                                 </div>
                             </td>
                             <td>
                                 <div class="form-group">
-                                    <label for="presentacion">Presentacion:</label>
-                                    <input type="text" class="form-control" id="presentacion" placeholder="Presentacion" required>
+                                    <label for="presentacion">Presentacion de Compra:</label>
+                                    <input type="text" class="form-control" name="id_presentacion_entrada" placeholder="Presentacion" required>
                                 </div>
                             </td>
                             <td>
+                                <div class="form-group">
+                                    <label for="presentacion">Presentacion de Salida:</label>
+                                    <input type="text" class="form-control" name="id_presentacion_salida" placeholder="Presentacion" required>
+                                </div>
+                            </td>
+                            <!--<td>
                                 <div class="form-group">
                                     <label for="cantidad">Cantidad:</label>
-                                    <input type="text" class="form-control" id="cantidad" placeholder="cantidad" required>
+                                    <input type="text" class="form-control" name="cantidad" placeholder="cantidad" required>
                                 </div>
-                            </td>        
+                            </td>  -->
+
                         </tr>
                         <tr>
                             <td>
                                 <div class="form-group">
-                                    <label for="costo_total">Costo Total:</label>
-                                    <input type="text" class="form-control" id="costo_total" placeholder="Costo Total" required>
+                                    <label for="costo_total">Precio :</label>
+                                    <input type="text" class="form-control" name="precio" placeholder="Precio Total" required>
                                 </div>
                             </td>
-                            <td>
+                            <!--<td>
                                 <div class="form-group">
                                     <label for="costo_unitario">Costo Unitario</label>
-                                    <input type="text" class="form-control" id="costo_unitario">
-                                </div>
-                            </td>
+                                    <input type="text" class="form-control" name="costo_unitario">
+                                </div> ps si no las vendemos jaja
+                            </td>-->
                             <td>
                                 <div class="form-group">
                                     <label for="fecha_ingresp">Fecha Ingreso:</label>
-                                    <input type="date" class="form-control" id="fecha_ingresp" placeholder="Fecha de ingreso" required>
+                                    <input type="date" class="form-control" name="fecha_alta" placeholder="Fecha de ingreso" required>
                                 </div>
                             </td>
                             <td>
                                 <div class="form-group">
                                     <label for="fecha_caducidad">Fecha Caducidad:</label>
-                                    <input type="date" class="form-control" id="fecha_caducidad" placeholder="Fecha de caducidad" required>
+                                    <input type="date" class="form-control" name="fecha_baja" placeholder="Fecha de caducidad" required>
                                 </div>
                             </td>        
                         </tr>
                     </tbody>
                 </table>
-              <button type="submit" class="btn btn-outline btn-success"><i class="fa fa-floppy-o"></i> Guardar</button>
+              <button type="submit" class="btn btn-outline btn-success" name="agregarMedicamento" name="agregarMedicamento"><i class="fa fa-floppy-o"></i> Guardar</button>
             </form>
         </div>
         <!-- /#page-wrapper -->
@@ -87,8 +97,29 @@ else
     </div>
     <!-- /#wrapper -->
 
-    <?php require_once('footer-comun.html'); ?> 
+<<<<<<< HEAD
+    <?php require_once('footer-comun.php'); ?>
+    <script>
+        exitoso = function(datos){
+            window.location.reload();
+        };
+        fallo = function(datos){
 
+        };
+        $("#medicinanuevoForm").submit(function(){
+            var form = $("#medicinanuevoForm").serializeArray();
+            var datos = {};
+            form.forEach(function(input) {
+                datos[input.name] = input.value;
+            });
+            peticionAjax('data/testinsert.php',datos,exitoso,fallo);
+            return false;
+        });
+=======
+    <?php require_once('footer-comun.html'); ?> 
+>>>>>>> origin/master
+
+    </script>
 </body>
 
 </html>

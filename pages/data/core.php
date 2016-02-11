@@ -63,17 +63,17 @@ class Conexion
 		}
 	}
     // Function para insertar registros en la db
-    public function Insertar($table,$params=array()){
+    public function Insertar($table,$params){
+       $arreglo= json_decode(json_encode($params), true);
         // Revisar si la tabla existe
         if($this->existeTabla($table)){
-            $sql='INSERT INTO `'.$table.'` (`'.implode('`, `',array_keys($params)).'`) VALUES ("' . implode('", "', $params) . '")';
-            $this->myQuery = $sql;
-            // se ejecuta query
-            if($ins =self::$conn->Execute($sql)){
-                array_push($this->result,self::$conn->Insert_ID());
-                return true; // la info a sido insertada
-            }else{
-                array_push($this->result,self::$conn->ErrorMsg());
+            $insertSQL = self::$conn->AutoExecute($table, $arreglo, 'INSERT');
+            if($insertSQL)
+            {
+                array_push($this->result,$insertSQL);
+                return true;
+            }else {
+                array_push($this->result, self::$conn->ErrorMsg());
                 return false; // error
             }
         }else{
