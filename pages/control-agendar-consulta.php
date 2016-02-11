@@ -138,7 +138,7 @@ else
 
                             <div class="form-group">
                                 <label for="agregar_medicamento">Agregar Medicamento</label>
-                                <select name='clklst' id='clklst' size='1'></select>
+                                <select class='form-control' name='clklst' id='clklst' size='1'></select>
                                 <button type="button" id="agregar_medicamento" class="btn btn-outline btn-primary"><i class="fa fa-plus-square"></i> Agregar Medicamento</button>
                             </div>
                            <!-- <p>
