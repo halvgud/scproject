@@ -22,5 +22,20 @@ else if($data->idTransaccion=='3'){
     $db->seleccion('empleado','id_medicamento,descripcion',null,null,'id_medicamento asc',null);
 
 }
+else if($data->idTransaccion=='4'){
+    $db = new Conexion();
+    $db->abrirConexion();
+    $db->seleccion('diagnostico','id_diagnostico,descripcion',null,'estado="A"','id_diagnostico asc',null);
+    print json_encode($db->obtenerResultado());
+}
+else if($data->idTransaccion=='5'){
+    $db = new Conexion();
+    $db->abrirConexion();
+    $db->seleccion('empleado','e.id_empleado,concat(e.nombre," ",e.paterno," ",e.materno) nombre,t.descripcion turno, a.descripcion area, d.descripcion departamento'
+        ,'e inner join turno t on e.id_turno = t.id_turno inner join area a on e.id_area = a.id_area inner join departamento d on e.id_departamento = d.id_departamento'
+        ,'e.id_empleado="'.$data->idBusqueda.'"','e.id_empleado asc',null);
+    print json_encode($db->obtenerResultado());
+}
+
 
 ?>
