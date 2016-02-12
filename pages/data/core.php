@@ -60,7 +60,7 @@ class Conexion
 		//Se crea query en base a los parametros
 		$q = 'SELECT '.$rows.' FROM '.$tabla;
 		if($join != null){
-			$q .= ' JOIN '.$join;
+			$q .= ' '.$join;
 		}
 		if($where != null){
 			$q .= ' WHERE '.$where;

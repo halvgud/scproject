@@ -6,7 +6,7 @@
         url: archivo,
         data: JSON.stringify(datos),
         dataType: 'text'
-      	})
+		})
 		.done(function(resultado) {
 			notificacionSuccess(resultado['success']);
 			console.log(resultado);
@@ -115,9 +115,8 @@ function cargarDropDownList(nameattr,id,value,transaccion,otro)
             var options = '';
             console.log(result);
             for (var i = 0; i < obj1.length; i++) {
-                options += '<option value="' + obj1[i][id] + '">' + obj1[i][value] + '</option>';
+                $(nameattr).append($("<option></option>",{value:obj1[i][id],text:obj1[i][value]}));
             }
-            $(nameattr).html(options);
         })
 .fail(function(jqXHR) {
         resulta = (jqXHR.responseText);
@@ -131,9 +130,9 @@ function cargarDropDownList(nameattr,id,value,transaccion,otro)
                 if (keycode == '13') {
                     fnc.call(this, ev);
                 }
-            })
-        })
-    }
+            });
+        });
+    };
 function cargarInputs(arregloConInputs,idTransaccion,idBusqueda)
 {
     arregloConInputs['idBusqueda']=idBusqueda;
@@ -147,16 +146,28 @@ function cargarInputs(arregloConInputs,idTransaccion,idBusqueda)
     })
         .done(function(result){
             console.log(result);
-            var obj1 = $.parseJSON(result);
+            // var obj1 = $.parseJSON(result);
             var options = '';
-            console.log(result);
-            for (var i = 0; i < obj1.length; i++) {
-                $("#"+obj['']).val(obj[i]);
-            }
-            $(nameattr).html(options);
+            result.forEach( function(element, index) {
+				console.error(element);
+				Object.keys(element).forEach(function (key) {
+					var value = element[key];
+					try {
+						$("#"+key).val(value);
+					} catch(e) {
+						// statements
+						console.log(e);
+					}
+					// iteration code
+				});
+            });
+            // for (var i = 0; i < result[0].length; i++) {
+
+            // }
+            // $(nameattr).html(options);
         })
         .fail(function(jqXHR) {
             resulta = (jqXHR.responseText);
             console.log(resulta);
-        })
+        });
 }

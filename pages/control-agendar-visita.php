@@ -65,13 +65,10 @@ else
                                     <label for="diagnostico">Diagnostico</label>
                                     <select name="diagnostico" id ="diagnostico" class="form-control" required>
                                         <option value="">Seleccione un valor</option>
-                                        <option value="1">Dolor de Cabeza</option>
-                                        <option value="2">Gripa</option>
-                                        <option value="3">Infeccion</option>
-                                        <option value="4">Espalda</option>
                                     </select>
                                 </div>
                             </td>
+<<<<<<< HEAD
                         </tr>-->
                     </tbody>
                 </table>
@@ -80,6 +77,22 @@ else
 
                     </tbody>
                 </table>
+=======
+                            <td>
+                                <div class="form-group">
+                                    <label for="fecha_visita">Fecha de Visita</label>
+                                    <input type="text" class="form-control" id="fecha_visita" name="fecha_visita" required>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table name="tabl2_visita" id="tabl2_visita">
+                    <tbody>
+
+                    </tbody>
+                </table>
+>>>>>>> origin/master
                 <div class="form-group">
                     <label for="agregar_medicamento">Agregar Medicamento</label>
                     <select class='form-control' name='clklst' id='clklst' size='1'></select>
@@ -94,6 +107,7 @@ else
 
     <?php require_once('footer-comun.html'); ?>
     <script type="text/javascript">
+<<<<<<< HEAD
         $("#id_empleado").enterKey(function () {
             var arreglo={};
             var form1 = $("#tabl1_visita").find('input[data-empleado]').serializeArray();
@@ -112,26 +126,67 @@ else
             var form1 = $("#tabl1_visita").find("input").serializeArray();
             var form2 = $('#tabl2_visita').find("input").serializeArray();
 
+=======
+        // $("#id_empleado").enterKey(function () {
+        //     var arreglo={};
+        //     var form1 = $("#tabl1_visita").find('input[data-empleado]').serializeArray();
+        //     form1.forEach(function(input) {
+        //         arreglo[input.name] = input.value;
+        //     });
+        //    // cargarInputs(arreglo,3);
+        // })
+        var contador = 0;
+        $("#agendarVisitaForm").submit(function(){
+            var form1 = $("#tabl1_visita").find("input").serializeArray();
+            var form2 = $('#tabl2_visita').find("input").serializeArray();
+>>>>>>> origin/master
             var datosTabla1 = {};
             var datosTabla2 = {};
             form1.forEach(function(input) {
                 datosTabla1[input.name] = input.value;
+<<<<<<< HEAD
             });
             form2.forEach(function(input) {
                 datosTabla2[input.name] = input.value;
             });
+=======
+            });
+            form2.forEach(function(input) {
+                datosTabla2[input.name] = input.value;
+            });
+>>>>>>> origin/master
             var datosUnion = {};
             datosUnion['contador'] = contador;
             datosUnion['tipo_transaccion'] = 2;
             datosUnion['visita'] = datosTabla1;
             datosUnion['relacion_visita_medicamento']=datosTabla2;
             //console.log(datosUnion);
+<<<<<<< HEAD
             peticionAjax('data/testinsert.php',datosUnion,exitoso,fallo);
             return false;
         });
 
         var contador = 0;
 
+=======
+            if($("#nombre").val() === ''){
+                notificacionError('el usuario no existe por favor introdusca un id valido');
+            }
+            else{
+                exitoso = function(datos){
+                    $("#agendarVisitaForm")[0].reset();
+                    $("#tabl2_visita tbody").empty();
+                    contador = 0;
+                };
+                fallo = function(datos){
+
+                };
+                peticionAjax('data/testinsert.php',datosUnion,exitoso,fallo);
+            }
+            return false;
+        });
+        
+>>>>>>> origin/master
         $("#agregar_medicamento").click(function(){
             contador++;
             var row = $("<tr></tr>");
@@ -142,7 +197,10 @@ else
             var idmedicamento = $("<input>",{type:'hidden',id:"id_medicamento"+contador,name:"id_medicamento"+contador,class:'form-control',value:$('#clklst').val()});
             td.append(idmedicamento);
             row.append(td);
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
             var cantidad = $("<input>",{id:"cantidad"+contador,name:"cantidad"+contador,type:'number',class:'form-control', value:'1'});
             td = $("<td></td>");
             td.append(cantidad);
@@ -158,12 +216,37 @@ else
             td.append(remover);
             row.append(td);
             $("#tabl2_visita tbody").append(row);
+<<<<<<< HEAD
         });
         $(function() {
             cargarDropDownList(('#clklst'),'id_medicamento','descripcion',1,$('#clklst').val());
 
+=======
+>>>>>>> origin/master
         });
+        $(function() {
+            $("#id_empleado").focusout(function(){
+                cargatDatosEmpleado();
+            });
+            $("#id_empleado").enterKey(function(e){
+                e.preventDefault();
+                cargatDatosEmpleado();
+            });
+            function cargatDatosEmpleado(){
+                $('input[data-empleado]').val('');
+                var form1 = $("#tabl1_visita").find('input[data-empleado]').serializeArray();
+                var datosTabla1 = {};
+                form1.forEach(function(input) {
+                    datosTabla1[input.name] = input.value;
+                });
+                console.warn(datosTabla1);
+                cargarInputs(datosTabla1,5,$("#id_empleado").val())
+            }
+            $("#fecha_visita").datetimepicker();
+            cargarDropDownList(('#diagnostico'),'id_diagnostico','descripcion',4,null);
+            cargarDropDownList(('#clklst'),'id_medicamento','descripcion',1,$('#clklst').val());
 
+        });
     </script>
 </body>
 
