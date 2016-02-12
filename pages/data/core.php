@@ -33,6 +33,17 @@ class Conexion
             return false;
         }
     }
+    public function fallarTransaccion(){
+        if(self::$conn) {
+            self::$conn->FailTrans();
+            return true;
+        }
+        else{
+            array_push($this->result,'fallo al hacer rollback, conexion no establecida');
+            return false;
+        }
+
+    }
     public function finalizarTransaccion()//rollback y commit dentro de este
     {
         if(self::$conn) {
@@ -77,7 +88,7 @@ class Conexion
 				return true; // El query fue ejecutado correctamente
 
 			}else{
-				array_push($this->result,ErrorMsg());
+				array_push($this->result,self::$conn->ErrorMsg());
 				return false; // No rows where returned
 			}
 		}else{
@@ -86,37 +97,38 @@ class Conexion
 	}
     // Function para insertar registros en la db
     public function Insertar($table,$params){
-       $arreglo= json_decode(json_encode($params), true);
-        // Revisar si la tabla existe
-        if($this->existeTabla($table)){
-            $insertSQL = self::$conn->AutoExecute($table, $arreglo, 'INSERT');
-            if($insertSQL)
-            {
-                array_push($this->result,self::$conn->Insert_ID());
-                return true;
-            }else {
-                self::$conn->FailTrans( );//forza rollback
-                array_push($this->result, self::$conn->ErrorMsg());
-                return false; // error
-            }
+        try{
+           $arreglo= json_decode(json_encode($params), true);
+            // Revisar si la tabla existe
+            if($this->existeTabla($table)){
+                $insertSQL = self::$conn->AutoExecute($table, $arreglo, 'INSERT');
+                if($insertSQL)
+                {
+                    array_push($this->result,self::$conn->Insert_ID());
+                    return true;
+                }else {
+                   fallarTransaccion();//forza rollback
+                    array_push($this->result, self::$conn->ErrorMsg());
+                    return false; // error
+                }
 
-        }else{
-            return false; // Tabla no existe
+            }else{
+                fallarTransaccion();
+                return false; // Tabla no existe
+            }
+        }catch(exception $e){
+            fallarTransaccion();//forza rollback
+            array_push($this->result,self::$conn->ErrorMsg());
         }
     }
 
-    public function Actualizar($table,$params=array(),$where){
+    public function Actualizar($table,$params,$where){
         // Revisa si la tabla existe
         if($this->existeTabla($table)){
-            // crea un arreglo con los argumentos
-            $args=array();
-            foreach($params as $field=>$value){
-                // Separa una columna para su valor correspondiente
-                $args[]=$field.'="'.$value.'"';
-            }
             // se crea el query
-            $sql='UPDATE '.$table.' SET '.implode(',',$args).' WHERE '.$where;
+            $sql='UPDATE '.$table.' SET '.$params.' WHERE '.$where;
             // ejecuta
+            var_dump($sql);
             $this->myQuery = $sql; // se regresa el query para efectos de debug
             if(self::$conn->Execute($sql)){
                 array_push($this->result,self::$conn->Affected_Rows());
@@ -169,7 +181,6 @@ class Conexion
 
 
 	public static function cerrarConexion(){
-		Debuggeo::enviarConsola("se cerro conexion. Linea:".__LINE__);
 		$conn = null;
 	}
 }
