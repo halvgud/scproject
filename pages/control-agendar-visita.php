@@ -1,75 +1,80 @@
-<?php session_start(); 
+<?php session_start();
 if(!isset($_SESSION['id_usuario'])){
-   require_once('login.php');  
+    require_once('login.php');
 }
 else
 {
-  ?>
-<!DOCTYPE html>
-<html lang="en">
+    ?>
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
+    <head>
 
-    <?php require_once('header-comun.html'); ?> 
+        <?php require_once('header-comun.html'); ?>
 
-</head>
+    </head>
 
-<body>
+    <body>
 
     <div id="wrapper">
-    <?php require_once('menu.php'); ?> 
+        <?php require_once('menu.php'); ?>
         <div id="page-wrapper">
             <br/>
-                <h1>Agendar Visita</h1>
+            <h1>Agendar Visita</h1>
             <hr>
             <form id="agendarVisitaForm">
                 <table class="table" name="tabl1_visita" id="tabl1_visita">
                     <tbody>
-                        <tr>
-                            <td>
-                                <div class="form-group">
-                                    <input type="hidden" name = 'id_usuario' value='1'>
-                                    <input type="hidden" name = 'fecha' value="11-02-2016">
-                                    <label for="id_empleado">No. Empleado:</label>
-                                    <input type="text" class="form-control" id="id_empleado" name="id_empleado" placeholder="No. Empleado" required>
-                                </div>
-                            </td>
-                            <td colspan = "2">
-                                <div class="form-group">
-                                    <label for="nombre">Nombre</label>
-                                    <input type="text" class="form-control" id="nombre" name="nombre" readonly required data-empleado="">
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-group">
-                                    <label for="turno">Turno</label>
-                                    <input type="text" class="form-control" name="turno"  id="turno" maxlength="1" size = "1" readonly data-empleado="">
-                                </div>
-                            </td>
-                            <td >
-                                <div class="form-group">
-                                    <label for="departamento">Departamento</label>
-                                    <input type="text" class="form-control" id="departamento" name="departamento" readonly data-empleado="">
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-group">
-                                    <label for="area">Area</label>
-                                    <input type="text" class="form-control" id="area" name="area" readonly data-empleado="">
-                                </div>
-                            </td>
-                        </tr>
-                       <!-- <tr>
-                            <td>
-                                <div class="form-group">
-                                    <label for="diagnostico">Diagnostico</label>
-                                    <select name="diagnostico" id ="diagnostico" class="form-control" required>
-                                        <option value="">Seleccione un valor</option>
-                                    </select>
-                                </div>
-                            </td>
-<<<<<<< HEAD
-                        </tr>-->
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <input type="hidden" name = 'id_usuario' value='1'>
+                                <input type="hidden" name = 'fecha' value="11-02-2016">
+                                <label for="id_empleado">No. Empleado:</label>
+                                <input type="text" class="form-control" id="id_empleado" name="id_empleado" placeholder="No. Empleado" required>
+                            </div>
+                        </td>
+                        <td colspan = "2">
+                            <div class="form-group">
+                                <label for="nombre">Nombre</label>
+                                <input type="text" class="form-control" id="nombre" name="nombre" readonly required data-empleado="">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <label for="turno">Turno</label>
+                                <input type="text" class="form-control" name="turno"  id="turno" maxlength="1" size = "1" readonly data-empleado="">
+                            </div>
+                        </td>
+                        <td >
+                            <div class="form-group">
+                                <label for="departamento">Departamento</label>
+                                <input type="text" class="form-control" id="departamento" name="departamento" readonly data-empleado="">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <label for="area">Area</label>
+                                <input type="text" class="form-control" id="area" name="area" readonly data-empleado="">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <label for="diagnostico">Diagnostico</label>
+                                <select name="diagnostico" id ="diagnostico" class="form-control" required>
+                                    <option value="">Seleccione un valor</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <label for="fecha_visita">Fecha de Visita</label>
+                                <input type="text" class="form-control" id="fecha_visita" name="fecha_visita" required>
+                            </div>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
                 <table name="tabl2_visita" id="tabl2_visita">
@@ -77,22 +82,6 @@ else
 
                     </tbody>
                 </table>
-=======
-                            <td>
-                                <div class="form-group">
-                                    <label for="fecha_visita">Fecha de Visita</label>
-                                    <input type="text" class="form-control" id="fecha_visita" name="fecha_visita" required>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table name="tabl2_visita" id="tabl2_visita">
-                    <tbody>
-
-                    </tbody>
-                </table>
->>>>>>> origin/master
                 <div class="form-group">
                     <label for="agregar_medicamento">Agregar Medicamento</label>
                     <select class='form-control' name='clklst' id='clklst' size='1'></select>
@@ -107,26 +96,6 @@ else
 
     <?php require_once('footer-comun.html'); ?>
     <script type="text/javascript">
-<<<<<<< HEAD
-        $("#id_empleado").enterKey(function () {
-            var arreglo={};
-            var form1 = $("#tabl1_visita").find('input[data-empleado]').serializeArray();
-            form1.forEach(function(input) {
-                arreglo[input.name] = input.value;
-            });
-           // cargarInputs(arreglo,3);
-        })
-        exitoso = function(datos){
-            //window.location.reload();
-        };
-        fallo = function(datos){
-
-        };
-        $("#agendarVisitaForm").submit(function(){
-            var form1 = $("#tabl1_visita").find("input").serializeArray();
-            var form2 = $('#tabl2_visita').find("input").serializeArray();
-
-=======
         // $("#id_empleado").enterKey(function () {
         //     var arreglo={};
         //     var form1 = $("#tabl1_visita").find('input[data-empleado]').serializeArray();
@@ -139,36 +108,20 @@ else
         $("#agendarVisitaForm").submit(function(){
             var form1 = $("#tabl1_visita").find("input").serializeArray();
             var form2 = $('#tabl2_visita').find("input").serializeArray();
->>>>>>> origin/master
             var datosTabla1 = {};
             var datosTabla2 = {};
             form1.forEach(function(input) {
                 datosTabla1[input.name] = input.value;
-<<<<<<< HEAD
             });
             form2.forEach(function(input) {
                 datosTabla2[input.name] = input.value;
             });
-=======
-            });
-            form2.forEach(function(input) {
-                datosTabla2[input.name] = input.value;
-            });
->>>>>>> origin/master
             var datosUnion = {};
             datosUnion['contador'] = contador;
             datosUnion['tipo_transaccion'] = 2;
             datosUnion['visita'] = datosTabla1;
             datosUnion['relacion_visita_medicamento']=datosTabla2;
             //console.log(datosUnion);
-<<<<<<< HEAD
-            peticionAjax('data/testinsert.php',datosUnion,exitoso,fallo);
-            return false;
-        });
-
-        var contador = 0;
-
-=======
             if($("#nombre").val() === ''){
                 notificacionError('el usuario no existe por favor introdusca un id valido');
             }
@@ -185,8 +138,7 @@ else
             }
             return false;
         });
-        
->>>>>>> origin/master
+
         $("#agregar_medicamento").click(function(){
             contador++;
             var row = $("<tr></tr>");
@@ -197,11 +149,7 @@ else
             var idmedicamento = $("<input>",{type:'hidden',id:"id_medicamento"+contador,name:"id_medicamento"+contador,class:'form-control',value:$('#clklst').val()});
             td.append(idmedicamento);
             row.append(td);
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
-            var cantidad = $("<input>",{id:"cantidad"+contador,name:"cantidad"+contador,type:'number',class:'form-control', value:'1'});
+            var cantidad = $("<input>",{id:"cantidad"+contador,name:"cantidad"+contador,type:'number',class:'form-control', value:'1',required:'required',min:'1'});
             td = $("<td></td>");
             td.append(cantidad);
             row.append(td);
@@ -216,13 +164,6 @@ else
             td.append(remover);
             row.append(td);
             $("#tabl2_visita tbody").append(row);
-<<<<<<< HEAD
-        });
-        $(function() {
-            cargarDropDownList(('#clklst'),'id_medicamento','descripcion',1,$('#clklst').val());
-
-=======
->>>>>>> origin/master
         });
         $(function() {
             $("#id_empleado").focusout(function(){
@@ -248,7 +189,7 @@ else
 
         });
     </script>
-</body>
+    </body>
 
-</html>
+    </html>
 <?php } ?>
