@@ -65,29 +65,28 @@ else
                                     <label for="diagnostico">Diagnostico</label>
                                     <select name="diagnostico" id ="diagnostico" class="form-control" required>
                                         <option value="">Seleccione un valor</option>
-                                        <option value="1">Dolor de Cabeza</option>
-                                        <option value="2">Gripa</option>
-                                        <option value="3">Infeccion</option>
-                                        <option value="4">Espalda</option>
                                     </select>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <label for="fecha_visita">Fecha de Visita</label>
+                                    <input type="text" class="form-control" id="fecha_visita" name="fecha_visita" required>
                                 </div>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <table class="table" name="tabl2_visita" id="tabl2_visita">
+                <table name="tabl2_visita" id="tabl2_visita">
                     <tbody>
-                        <tr>
-                            <td>
-                                <div class="form-group">
-                                    <label for="agregar_medicamento">Agregar Medicamento</label>
-                                    <select class='form-control' name='clklst' id='clklst' size='1'></select>
-                                    <button type="button" id="agregar_medicamento" class="btn btn-outline btn-primary"><i class="fa fa-plus-square"></i> Agregar Medicamento</button>
-                                </div>
-                            </td> 
-                        </tr>
+
                     </tbody>
                 </table>
+                <div class="form-group">
+                    <label for="agregar_medicamento">Agregar Medicamento</label>
+                    <select class='form-control' name='clklst' id='clklst' size='1'></select>
+                    <button type="button" id="agregar_medicamento" class="btn btn-outline btn-primary"><i class="fa fa-plus-square"></i> Agregar Medicamento</button>
+                </div>
                 <button type="submit" class="btn btn-outline btn-success"><i class="fa fa-floppy-o"></i> Guardar</button>
             </form>
         </div>
@@ -97,19 +96,15 @@ else
 
     <?php require_once('footer-comun.html'); ?> 
     <script type="text/javascript">
-        $("#id_empleado").enterKey(function () {
-            var arreglo={};
-            var form1 = $("#tabl1_visita").find('input[data-empleado]').serializeArray();
-            form1.forEach(function(input) {
-                arreglo[input.name] = input.value;
-            });
-           // cargarInputs(arreglo,3);
-        })
-        exitoso = function(datos){
-            //window.location.reload();
-        };
-        fallo = function(datos){
-        };
+        // $("#id_empleado").enterKey(function () {
+        //     var arreglo={};
+        //     var form1 = $("#tabl1_visita").find('input[data-empleado]').serializeArray();
+        //     form1.forEach(function(input) {
+        //         arreglo[input.name] = input.value;
+        //     });
+        //    // cargarInputs(arreglo,3);
+        // })
+        var contador = 0;
         $("#agendarVisitaForm").submit(function(){
             var form1 = $("#tabl1_visita").find("input").serializeArray();
             var form2 = $('#tabl2_visita').find("input").serializeArray();
@@ -127,10 +122,23 @@ else
             datosUnion['visita'] = datosTabla1;
             datosUnion['relacion_visita_medicamento']=datosTabla2;
             //console.log(datosUnion);
-            peticionAjax('data/testinsert.php',datosUnion,exitoso,fallo);
+            if($("#nombre").val() === ''){
+                notificacionError('el usuario no existe por favor introdusca un id valido');
+            }
+            else{
+                exitoso = function(datos){
+                    $("#agendarVisitaForm")[0].reset();
+                    $("#tabl2_visita tbody").empty();
+                    contador = 0;
+                };
+                fallo = function(datos){
+
+                };
+                peticionAjax('data/testinsert.php',datosUnion,exitoso,fallo);
+            }
             return false;
         });
-        var contador = 0;
+        
         $("#agregar_medicamento").click(function(){
             contador++;
             var row = $("<tr></tr>");
@@ -158,7 +166,27 @@ else
             $("#tabl2_visita tbody").append(row);
         });
         $(function() {
+            $("#id_empleado").focusout(function(){
+                cargatDatosEmpleado();
+            });
+            $("#id_empleado").enterKey(function(e){
+                e.preventDefault();
+                cargatDatosEmpleado();
+            });
+            function cargatDatosEmpleado(){
+                $('input[data-empleado]').val('');
+                var form1 = $("#tabl1_visita").find('input[data-empleado]').serializeArray();
+                var datosTabla1 = {};
+                form1.forEach(function(input) {
+                    datosTabla1[input.name] = input.value;
+                });
+                console.warn(datosTabla1);
+                cargarInputs(datosTabla1,5,$("#id_empleado").val())
+            }
+            $("#fecha_visita").datetimepicker();
+            cargarDropDownList(('#diagnostico'),'id_diagnostico','descripcion',4,null);
             cargarDropDownList(('#clklst'),'id_medicamento','descripcion',1,$('#clklst').val());
+
         });
     </script>
 </body>
