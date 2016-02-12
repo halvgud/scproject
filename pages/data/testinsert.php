@@ -33,24 +33,25 @@ if(isset($data) /*&& isset($data->tabla)*/ &&isset($data->tipo_transaccion)) {
             $datosVisita['id_empleado'] = $visita->id_empleado;
             $datosVisita['id_usuario'] = $visita->id_usuario;
             $arregloVisitaMedico= json_decode(json_encode($relacion_visita_medicamento), true);
-            var_dump($arregloVisitaMedico);
             if ($db->Insertar($tabla1,$datosVisita)) {
                 $separado_por_comas = implode(",", $db->obtenerResultado());
                 for ($x = 1; $x <= $data->contador; $x++) {
                     $datosMedicamento['id_visita']=$separado_por_comas;
                     $datosMedicamento['id_medicamento'] =$arregloVisitaMedico['id_medicamento'.$x];
                     $datosMedicamento['cantidad'] = $arregloVisitaMedico['cantidad'.$x];
-                   // var_dump($datosMedicamento);
+                    var_dump($datosMedicamento);
                     if($db->Insertar('relacion_visita_medicamento',$datosMedicamento))
                     {
-                        //update de medicamento
-                     $bandera=true;
+                        if($db->Actualizar('medicamento','cantidad=cantidad-'.$datosMedicamento['cantidad'],'id_medicamento='.$datosMedicamento['id_medicamento'])){
+                            $bandera=true;
+                        }
                     }
                     else{
+                        mensajeError(1,$db->obtenerResultado());
                         $bandera=false;
                         break;
                     }
-                }
+                }//for
             }else{
                 mensajeError(1,$db->obtenerResultado());
             }
@@ -76,7 +77,6 @@ function mensajeError($error,$arreglo){
     $resArray = array();
     http_response_code(403);
     if($error=1){
-
         $separado_por_comas = implode(",", $arreglo);
         $resArray['error'] = $separado_por_comas;
         print json_encode($resArray);
