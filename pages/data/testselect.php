@@ -19,8 +19,14 @@ else if($data->idTransaccion=='2'){
 else if($data->idTransaccion=='3'){
     $db = new Conexion();
     $db->abrirConexion();
-    $db->seleccion('empleado','id_medicamento,descripcion',null,null,'id_medicamento asc',null);
-
+    $db->seleccion('empleado','id_empleado,nombre,id_turno,id_departamento,id_area',null,'id_empleado='.$data->idBusqueda,'id_empleado asc',null);
+    print json_encode($db->obtenerResultado());
+}
+else if($data->idTransaccion=='4'){
+    $db = new Conexion();
+    $db->abrirConexion();
+    $db->seleccion('diagnostico','id_diagnostico,descripcion',null,'estado="A"','id_diagnostico asc',null);
+    print json_encode($db->obtenerResultado());
 }
 
 ?>
