@@ -105,7 +105,30 @@ class Conexion
         }
     }
 
-
+    public function Actualizar($table,$params=array(),$where){
+        // Revisa si la tabla existe
+        if($this->existeTabla($table)){
+            // crea un arreglo con los argumentos
+            $args=array();
+            foreach($params as $field=>$value){
+                // Separa una columna para su valor correspondiente
+                $args[]=$field.'="'.$value.'"';
+            }
+            // se crea el query
+            $sql='UPDATE '.$table.' SET '.implode(',',$args).' WHERE '.$where;
+            // ejecuta
+            $this->myQuery = $sql; // se regresa el query para efectos de debug
+            if(self::$conn->Execute($sql)){
+                array_push($this->result,self::$conn->Affected_Rows());
+                return true; // regresa que fue correcto
+            }else{
+                array_push($this->result,self::$conn->ErrorMsg());
+                return false; // regresa que fue incorrecto
+            }
+        }else{
+            return false; // la tabla no existe
+        }
+    }
 
 
     private function existeTabla($table){

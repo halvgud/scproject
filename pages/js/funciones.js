@@ -1,10 +1,11 @@
 
 	function peticionAjax (archivo,datos,successCallBack,errorCallBack){
-		$.ajax({
+		//console.log(datos);
+        $.ajax({
         type: "POST",
         url: archivo,
         data: JSON.stringify(datos),
-        dataType: 'json'
+        dataType: 'text'
       	})
 		.done(function(resultado) {
 			notificacionSuccess(resultado['success']);
@@ -15,13 +16,14 @@
 			return resultado;
 		})
 		.fail(function(jqXHR) {
-			resulta = jQuery.parseJSON(jqXHR.responseText);
-            console.log(resulta);
-			notificacionError(resulta['error']);
+			//resulta = jQuery.parseJSON(jqXHR.responseText);
+            console.log(jqXHR.responseText);
+			/*notificacionError(resulta['error']);
 			if(errorCallBack){
 				errorCallBack(resulta['error']);
-			}
-			return resulta;
+			}*/
+            return false;
+			//return resulta;
 		});
 	}
 	function logout(){
@@ -55,7 +57,7 @@ function notificacionError(mensaje){
 	},
 	z_index: 1031,
 	delay: 5000,
-	timer: 1000,
+	timer: 4500,
 	animate: {
 		enter: 'animated fadeInDown',
 		exit: 'animated fadeOutUp'
@@ -84,7 +86,7 @@ function notificacionSuccess(mensaje){
 	},
 	z_index: 1031,
 	delay: 5000,
-	timer: 1000,
+	timer: 4500,
 	animate: {
 		enter: 'animated fadeInDown',
 		exit: 'animated fadeOutUp'
@@ -121,4 +123,40 @@ function cargarDropDownList(nameattr,id,value,transaccion,otro)
         resulta = (jqXHR.responseText);
         console.log(resulta);
     })   ;
+}
+    $.fn.enterKey = function (fnc) {
+        return this.each(function () {
+            $(this).keypress(function (ev) {
+                var keycode = (ev.keyCode ? ev.keyCode : ev.which);
+                if (keycode == '13') {
+                    fnc.call(this, ev);
+                }
+            })
+        })
+    }
+function cargarInputs(arregloConInputs,idTransaccion,idBusqueda)
+{
+    arregloConInputs['idBusqueda']=idBusqueda;
+    arregloConInputs['idTransaccion']=idTransaccion;
+
+    $.ajax({
+        type:"POST",
+        url:'data/testselect.php',
+        data:JSON.stringify(arregloConInputs),
+        dataType:'json'
+    })
+        .done(function(result){
+            console.log(result);
+            var obj1 = $.parseJSON(result);
+            var options = '';
+            console.log(result);
+            for (var i = 0; i < obj1.length; i++) {
+                $("#"+obj['']).val(obj[i]);
+            }
+            $(nameattr).html(options);
+        })
+        .fail(function(jqXHR) {
+            resulta = (jqXHR.responseText);
+            console.log(resulta);
+        })
 }
