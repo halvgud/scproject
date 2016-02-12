@@ -72,6 +72,12 @@ else
                             </td>
                             <td>
                                 <div class="form-group">
+                                    <label for="fecha">Fecha</label>
+                                    <input type="text" class="form-control" id="fecha" readonly>
+                                </div>
+                            </td> 
+                            <td>
+                                <div class="form-group">
                                     <label for="agregar_medicamento">Agregar Medicamento</label>
                                     <button type="button" id="agregar_medicamento" class="btn btn-outline btn-primary"><i class="fa fa-plus-square"></i> Agregar Medicamento</button>
                                 </div>
@@ -90,9 +96,16 @@ else
     <?php require_once('footer-comun.html'); ?> 
     <script type="text/javascript">
         $(function () {
+            $('#fecha').datetimepicker({
+                step:10
+            });
             var contador = 0;
+            var array_medicamentos = []
             $("#agregar_medicamento").click(function(){
                 contador++;
+                var medicamento_hash = {id:contador,descripcion:'',cantidad:''};
+                array_medicamentos.push(medicamento_hash);
+                console.log(array_medicamentos);
                 var row = $("<tr></tr>");
                 var medicamento = $("<select>",{id:"select"+contador,class:'form-control'});
                 var td = $("<td></td>");
@@ -106,6 +119,7 @@ else
                 var remover = $("<button></button>",{id:"cantidad"+contador,type:'button',class:'btn btn-outline btn-danger'});
                 $(remover).click(function(){
                     $(row).remove();
+                    array_medicamentos[contador].pull();
                     contador--;    
                 });
                 remover.append(icono);
