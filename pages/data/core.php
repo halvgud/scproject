@@ -1,6 +1,7 @@
 <?php
 include("lib/adodb5/adodb-exceptions.inc.php"); //include de las excepciones
 include('lib/adodb5/adodb.inc.php'); //include del adodb
+$ADODB_FETCH_MODE = ADODB_FETCH_ASSOC;
 class Conexion
 {
 	public static $conn; //variable estatica de conexion

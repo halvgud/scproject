@@ -55,7 +55,7 @@ function notificacionError(mensaje){
 		from: "top",
 		align: "right"
 	},
-	z_index: 1031,
+	z_index: 2000,
 	delay: 5000,
 	timer: 4500,
 	animate: {
@@ -84,7 +84,7 @@ function notificacionSuccess(mensaje){
 		from: "top",
 		align: "right"
 	},
-	z_index: 1031,
+	z_index: 2000,
 	delay: 5000,
 	timer: 4500,
 	animate: {
@@ -102,7 +102,6 @@ function cargarDropDownList(nameattr,id,value,transaccion,otro)
     arreglo={};
     arreglo['idBusqueda']=otro;
     arreglo['idTransaccion']=transaccion;
-    console.log(arreglo);
     $.ajax({
             type: "POST",
             url: 'data/testselect.php',
@@ -110,10 +109,8 @@ function cargarDropDownList(nameattr,id,value,transaccion,otro)
             dataType: 'text'
         })
         .done(function(result){
-            console.log(result);
             var obj1 = $.parseJSON(result);
             var options = '';
-            console.log(result);
             for (var i = 0; i < obj1.length; i++) {
                 $(nameattr).append($("<option></option>",{value:obj1[i][id],text:obj1[i][value]}));
             }
@@ -145,18 +142,16 @@ function cargarInputs(arregloConInputs,idTransaccion,idBusqueda)
         dataType:'json'
     })
         .done(function(result){
-            console.log(result);
             // var obj1 = $.parseJSON(result);
             var options = '';
             result.forEach( function(element, index) {
-				console.error(element);
 				Object.keys(element).forEach(function (key) {
 					var value = element[key];
 					try {
 						$("#"+key).val(value);
 					} catch(e) {
 						// statements
-						console.log(e);
+						console.error(e);
 					}
 					// iteration code
 				});
@@ -171,3 +166,43 @@ function cargarInputs(arregloConInputs,idTransaccion,idBusqueda)
             console.log(resulta);
         });
 }
+
+	function cargarEventos(fecha_inicio,fecha_fin)
+	{
+		datos= {};
+		datos.idTransaccion=6;
+		datos.fecha_inicio=fecha_inicio;
+		datos.fecha_fin=fecha_fin;
+		console.warn(datos);
+		$.ajax({
+					type:"POST",
+					url:'data/testselect.php',
+					data:JSON.stringify(datos),
+					dataType:'json'
+				})
+				.done(function(result){
+					// var obj1 = $.parseJSON(result);
+					console.error(result);
+					var options = '';
+					/*result.forEach( function(element, index) {
+						Object.keys(element).forEach(function (key) {
+							var value = element[key];
+							try {
+								$("#"+key).val(value);
+							} catch(e) {
+								// statements
+								console.error(e);
+							}
+							// iteration code
+						});
+					});*/
+					// for (var i = 0; i < result[0].length; i++) {
+
+					// }
+					// $(nameattr).html(options);
+				})
+				.fail(function(jqXHR) {
+					resulta = (jqXHR.responseText);
+					console.log(resulta);
+				});
+	}

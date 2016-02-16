@@ -42,6 +42,14 @@ else if($data->idTransaccion=='5'){
         ,'e.id_empleado="'.$data->idBusqueda.'"','e.id_empleado asc',null);
     print json_encode($db->obtenerResultado());
 }
-
+else if($data->idTransaccion=='6'){
+    $db = new Conexion();
+    $db->abrirConexion();
+    $db->seleccion('consulta','id_consulta,id_empleado,id_empleado,peso,talla,altura,frecuencia_respiratoria,frecuencia_cardiaca,temperatura,asistencia,fecha_inicio,fecha_fin'
+        ,null,'fecha_inicio>="'.$data->fecha_inicio.'" and fecha_fin<="'.$data->fecha_fin.'"','fecha_inicio asc',null);
+    ///print $db->obtenerSQL();
+    $consultas = $db->obtenerResultado();
+    print json_encode($consultas);
+}
 
 ?>

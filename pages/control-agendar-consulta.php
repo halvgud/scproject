@@ -26,7 +26,7 @@ else
                     <div  id='calendario'></div>
                 </div>
             </div>
-            <div class="modal fade" id="agregarVisitasModal" tabindex="-1" role="dialog">
+            <div class="modal fade" id="agregarConsultasModal" tabindex="-1" role="dialog">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -46,28 +46,28 @@ else
                                                 <input type="text" class="form-control" name="id_empleado" id="id_empleado" placeholder="No. Empleado" required>
                                             </div>
                                         </td>
-                                        <td colspan = "2">
+                                        <td>
                                             <div class="form-group">
                                                 <label for="nombre">Nombre</label>
-                                                <input type="text" class="form-control" id="nombre" readonly>
+                                                <input type="text" class="form-control" id="nombre" readonly tabindex="-1">
                                             </div>
                                         </td>
                                         <td>
                                             <div class="form-group">
                                                 <label for="turno">Turno</label>
-                                                <input type="text" class="form-control"  id="turno" maxlength="1" size = "1" readonly>
+                                                <input type="text" class="form-control"  id="turno" maxlength="1" size = "1" readonly tabindex="-1">
                                             </div>
                                         </td>
                                         <td >
                                             <div class="form-group">
                                                 <label for="departamento">Departamento</label>
-                                                <input type="text" class="form-control"  id="departamento" readonly>
+                                                <input type="text" class="form-control"  id="departamento" readonly tabindex="-1">
                                             </div>
                                         </td>
                                         <td>
                                             <div class="form-group">
                                                 <label for="area">Area</label>
-                                                <input type="text" class="form-control"  id="area" readonly>
+                                                <input type="text" class="form-control"  id="area" readonly tabindex="-1">
                                             </div>
                                         </td>
                                     </tr>
@@ -89,7 +89,13 @@ else
                                         <td>
                                             <div class="form-group">
                                                 <label for="talla">Talla</label>
-                                                <input type="number" class="form-control"  step="any" id="talla" name="peso" required>
+                                                <input type="number" class="form-control"  step="any" id="talla" name="talla" required>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="altura">Talla</label>
+                                                <input type="number" class="form-control"  step="any" id="altura" name="altura" required>
                                             </div>
                                         </td>
                                         <td>
@@ -98,6 +104,8 @@ else
                                                 <input type="number" class="form-control"  step="any" id="temperatura" name="temperatura" required>
                                             </div>
                                         </td>
+                                    </tr>
+                                    <tr>
                                         <td>
                                             <div class="form-group">
                                                 <label for="frecuencia_cardiaca">Frec. Cardiaca</label>
@@ -110,25 +118,24 @@ else
                                                 <input type="number" class="form-control"  step="1" id="frecuencia_respiratoria" name="frecuencia_respiratoria" required>
                                             </div>
                                         </td>
-                                    </tr>
-                                    <tr>
                                          <td >
                                             <div class="form-group">
-                                                <label for="fecha">Fecha</label>
-                                                <input type="text" class="form-control" id="fecha" readonly name="fecha"/>
+                                                <label for="fecha_consulta">Fecha</label>
+                                                <input type="text" class="form-control" id="fecha_consulta" readonly name="fecha_consulta"/>
                                             </div>
                                         </td>
                                         <td >
                                             <div class="form-group">
                                                 <label for="hora_inicio">Hora Inicio</label>
-                                                <input type="text" class="form-control" id="hora_inicio" name="hora_inicio"/>
+                                                <input type="text" class="form-control" id="hora_inicio" name="hora_inicio" readonly/>
                                             </div>
                                         </td>
                                         <td >
                                             <div class="form-group">
                                                 <label for="hora_fin">Hora Fin</label>
-                                                <input type="text" class="form-control" id="hora_fin"  name="hora_fin"/>
+                                                <input type="text" class="form-control" id="hora_fin"  name="hora_fin" readonly/>
                                             </div>
+                                            <input type="hidden" id="fecha"  name="fecha"/>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -171,34 +178,8 @@ else
     <?php require_once('footer-comun.html'); ?>
 
     <script type="text/javascript" >
-        exitoso = function(datos){
-            window.location.reload();
-        };
-        fallo = function(datos){
-
-        };
-        $("#agendarConsultaForm").submit(function(){
-            var form1 = $("#tabl1_consulta").find("select, input").serializeArray();
-            var form2 = $('#tabl2_consulta').find("input").serializeArray();
-
-            var datosTabla1 = {};
-            var datosTabla2 = {};
-            form1.forEach(function(input) {
-                datosTabla1[input.name] = input.value;
-            });
-            form2.forEach(function(input) {
-                datosTabla2[input.name] = input.value;
-            });
-            var datosUnion = {};
-            datosUnion['consulta'] = datosTabla1;
-            datosUnion['relacion_consulta_medicamento']=datosTabla2;
-            console.log(datosUnion);
-
-            //peticionAjax('data/testinsert.php',datos,exitoso,fallo);
-            return false;
-        });
-
-        var contador = 0;
+                var contador = 0;
+                var eventData = {};
         $("#agregar_medicamento").click(function(){
             contador++;
             var row = $("<tr></tr>");
@@ -229,9 +210,50 @@ else
            // console.log(row);
             $("#tabl2_consulta tbody").append(row);
         });
+        //El siguietne codigo sirve para enviar los datos a el php que realiza los inserts
+        $("#agendarConsultaForm").submit(function(e){
+            e.preventDefault();
+            var form1 = $("#tabl1_consulta").find("select, input").serializeArray();
+            var form2 = $('#tabl2_consulta').find("input").serializeArray();
+
+            var datosTabla1 = {};
+            var datosTabla2 = {};
+            form1.forEach(function(input) {
+                datosTabla1[input.name] = input.value;
+            });
+            form2.forEach(function(input) {
+                datosTabla2[input.name] = input.value;
+            });
+            var datosUnion = {};
+            datosUnion['contador'] = contador;
+            datosUnion['tipo_transaccion'] = 3;
+            datosUnion['consulta'] = datosTabla1;
+            datosUnion['relacion_consulta_medicamento']=datosTabla2;
+            console.log(datosUnion);
+            if($("#nombre").val() === ''){
+                notificacionError('el usuario no existe por favor introdusca un id valido');
+            }
+            else{
+                eventData.title = $("#id_empleado").val()+' - '+$("#nombre").val();
+                exitoso = function(datos){
+                    $("#agendarConsultaForm")[0].reset();
+                    $("#tabl2_consulta tbody").empty();
+                    $('#agregarConsultasModal').modal('toggle');
+                    $('#calendario').fullCalendar('renderEvent', eventData, true); // stick? = true
+                    contador = 0;
+                };
+                fallo = function(datos){
+
+                };
+                peticionAjax('data/testinsert.php',datosUnion,exitoso,fallo);
+            }
+            return false;
+        });
     ////////////////////////////////////////////////
         $(document).ready(function() {
+            cargarEventos(moment().subtract(2,'months').format("YYYY/MM/DD"),moment().add(2,'months').format("YYYY/MM/DD"));
             $.datetimepicker.setLocale('es');
+            /*
             $('#hora_inicio').datetimepicker({
                 datepicker:false,
                 format:'H:i',
@@ -242,6 +264,7 @@ else
                 format:'H:i',
                 step:10
             });
+            */
             $('#calendario').fullCalendar({
                     header: {
                         left: 'prev,next today',
@@ -278,16 +301,15 @@ else
                             $("#calendario").fullCalendar( 'changeView', 'agendaDay' )
                         }
                         else{
-                            $("#fecha").val(moment(start).format("l"));
-                            $("#hora_inicio").val(moment(start).format("LT"));
-                            $("#hora_fin").val(moment(end).format("LT"));
-                            $("#agregarVisitasModal").modal();
-                             eventData = {
-                                    title: 'test',
-                                    start: start,
-                                    end: end
-                                };
-                                $('#calendario').fullCalendar('renderEvent', eventData, true); // stick? = true
+                            $("#fecha").val(moment().format("YYYY/MM/DD hh:mm:ss"));
+                            $("#fecha_consulta").val(moment(start).format("YYYY/MM/DD"));
+                            $("#hora_inicio").val(moment(start).format("hh:mm:ss"));
+                            $("#hora_fin").val(moment(end).format("hh:mm:ss"));
+                            $("#agregarConsultasModal").modal();
+                            eventData = {
+                                start: start,
+                                end: end
+                            };
                             // var title = prompt('Event Title:');n
                             // var eventData;
                             // if (title) {

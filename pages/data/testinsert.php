@@ -1,4 +1,4 @@
-<?php
+<?php  session_start();
 include('lib/adodb5/adodb.inc.php'); //include del adodb
 include('core.php');
 
@@ -67,6 +67,63 @@ if(isset($data) /*&& isset($data->tabla)*/ &&isset($data->tipo_transaccion)) {
             //mensajeError(1,$db->obtenerResultado());
         }
     }//transaccion 2
+    else if ($data->tipo_transaccion == 3) {//insertar consulta
+        var_dump($data );
+        foreach ($data as $key => $value) {
+            $$key = $value;
+        }
+        $bandera =false;
+        if ($db->iniciarTransaccion()) {
+            $tabla1 = 'consulta';
+            $datosConsulta = array();
+            $datosMedicamento=array();
+            $datosConsulta['fecha'] = $consulta->fecha;
+            $datosConsulta['fecha_inicio'] = $consulta->fecha_consulta.' '.$consulta->hora_inicio;
+            $datosConsulta['fecha_fin'] = $consulta->fecha_consulta.' '.$consulta->hora_fin;
+            $datosConsulta['asistencia'] = 'N';
+            $datosConsulta['id_empleado'] = $consulta->id_empleado;
+            $datosConsulta['id_usuario'] = $_SESSION['id_usuario'];
+            $datosConsulta['peso'] = $consulta->peso;
+            $datosConsulta['talla'] = $consulta->talla;
+            $datosConsulta['altura'] = $consulta->altura;
+            $datosConsulta['frecuenca_respiratoria'] = $consulta->frecuenca_respiratoria;
+            $datosConsulta['frecuencia_cardiaca'] = $consulta->frecuencia_cardiaca;
+            $datosConsulta['temperatura'] = $consulta->temperatura;
+            $arregloVisitaMedico= json_decode(json_encode($relacion_consulta_medicamento), true);
+            if ($db->Insertar($tabla1,$datosConsulta)) {
+                $separado_por_comas = implode(",", $db->obtenerResultado());
+                for ($x = 1; $x <= $data->contador; $x++) {
+                    $datosMedicamento['id_consulta']=$separado_por_comas;
+                    $datosMedicamento['id_medicamento'] =$arregloVisitaMedico['id_medicamento'.$x];
+                    $datosMedicamento['cantidad'] = $arregloVisitaMedico['cantidad'.$x];
+                    var_dump($datosMedicamento);
+                    if($db->Insertar('relacion_consulta_medicamento',$datosMedicamento))
+                    {
+                        if($db->Actualizar('medicamento','cantidad=cantidad-'.$datosMedicamento['cantidad'],'id_medicamento='.$datosMedicamento['id_medicamento'])){
+                            $bandera=true;
+                        }
+                    }
+                    else{
+                        mensajeError(1,$db->obtenerResultado());
+                        $bandera=false;
+                        break;
+                    }
+                }//for
+            }else{
+                mensajeError(1,$db->obtenerResultado());
+            }
+            $db->finalizarTransaccion();
+        }//iniciarTransaccion
+        else {
+            mensajeError(1,$db->obtenerResultado());
+        }
+        if($bandera){
+            mensajeSuccess();
+        }else
+        {
+            //mensajeError(1,$db->obtenerResultado());
+        }
+    }//transaccion 3
 }
 else
 {
