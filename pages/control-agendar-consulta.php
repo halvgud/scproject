@@ -75,12 +75,8 @@ else
                                         <td>
                                             <div class="form-group">
                                                 <label for="diagnostico">Diagnostico</label>
-                                                <select name="id_diagnostico" id ="id_diagnostico" class="form-control" required>
+                                                <select name="diagnostico" id ="diagnostico" class="form-control" required>
                                                     <option value="">Seleccione un valor</option>
-                                                    <option value="1">Dolor de Cabeza</option>
-                                                    <option value="2">Gripa</option>
-                                                    <option value="3">Infeccion</option>
-                                                    <option value="4">Espalda</option>
                                                 </select>
                                             </div>
                                         </td>
@@ -203,17 +199,6 @@ else
         });
 
         var contador = 0;
-        /*$('#listaMedicamento').on('click', 'input[type="button"]', function () {
-            $(this).closest('tr').remove();
-        })*/
-        /*$('p input[type="button"]').click(function () {
-            contador++;
-            $('#listaMedicamento').append("" +
-                "<tr><td><input type='hidden' value='"+$('#clklst').val()+"' name='id_medicamento"+contador+"'>" +
-                "<input type='text' class='fname' value='"+$('#cantidad').val()+"' name='cantidad"+contador+"'/>" +
-                "<input type='text' class='fname' value='"+$('#clklst option:selected').text()+"'/>" +
-                "<input type='button' value='Remover de la lista' /></td></tr>")
-        });*/
         $("#agregar_medicamento").click(function(){
             contador++;
             var row = $("<tr></tr>");
@@ -244,14 +229,6 @@ else
            // console.log(row);
             $("#tabl2_consulta tbody").append(row);
         });
-        $(function() {
-            cargarDropDownList(('#clklst'),'id_medicamento','descripcion',1,$('#clklst').val());
-
-        });
-        /*$('#clklst').on('change', function() {
-            cargarDropDownList(('#unidad'),'id_presentacion_medicamento','descripcion',2,$('#clklst').val());
-        });*/
-
     ////////////////////////////////////////////////
         $(document).ready(function() {
             $.datetimepicker.setLocale('es');
@@ -335,6 +312,29 @@ else
                         }
                     ]
             });
+        });
+        $(function() {
+            $("#id_empleado").focusout(function(){
+                cargatDatosEmpleado();
+            });
+            $("#id_empleado").enterKey(function(e){
+                e.preventDefault();
+                cargatDatosEmpleado();
+            });
+            function cargatDatosEmpleado(){
+                $('input[data-empleado]').val('');
+                var form1 = $("#tabl1_visita").find('input[data-empleado]').serializeArray();
+                var datosTabla1 = {};
+                form1.forEach(function(input) {
+                    datosTabla1[input.name] = input.value;
+                });
+                console.warn(datosTabla1);
+                cargarInputs(datosTabla1,5,$("#id_empleado").val())
+            }
+            $("#fecha_visita").datetimepicker();
+            cargarDropDownList(('#diagnostico'),'id_diagnostico','descripcion',4,null);
+            cargarDropDownList(('#clklst'),'id_medicamento','descripcion',1,$('#clklst').val());
+
         });
     </script>
 
