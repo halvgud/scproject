@@ -251,8 +251,8 @@ else
                     },
                     lang: 'es',
                     allDaySlot:false,
-                    slotDuration:moment.duration(10, 'minutes'),
-                    slotLabelInterval:moment.duration(20, 'minutes'),
+                    slotDuration:moment.duration(5, 'minutes'),
+                    slotLabelInterval:moment.duration(15, 'minutes'),
                     // snapDuration:moment.    duration(10, 'minutes'),
                     // selectOverlap:false,
                     selectable: true,
@@ -260,6 +260,7 @@ else
                     fixedWeekCount:false,
                     eventOverlap :false,
                     slotEventOverlap:false,
+                    scrollTime:moment().format("hh:mm:ss"),
                     eventClick:function(calEvent, jsEvent, view) {
                         if (view.type ==='agendaDay'){
                             //console.log('Event: ' + calEvent.title);
