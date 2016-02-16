@@ -49,6 +49,14 @@ else if($data->idTransaccion=='6'){
         ,null,'fecha_inicio>="'.$data->fecha_inicio.'" and fecha_fin<="'.$data->fecha_fin.'"','fecha_inicio asc',null);
     ///print $db->obtenerSQL();
     $consultas = $db->obtenerResultado();
+    foreach($consultas as &$consulta){
+        $db->seleccion('medicamento','m.id_medicamento,m.descripcion'
+            ,'m inner join relacion_consulta_medicamento rcm on m.id_medicamento = rcm.id_medicamento',
+            'rcm.id_consulta="'.$consulta['id_consulta'].'"',null,null);
+        $medicamentos = $db->obtenerResultado();
+        //var_dump($medicamentos);
+        $consulta['medicamentos'] = $medicamentos;
+    }
     print json_encode($consultas);
 }
 
