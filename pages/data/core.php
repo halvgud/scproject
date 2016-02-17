@@ -26,8 +26,6 @@ class Conexion
 
 	public function abrirConexion()
 	{
-        throw new Exception('Excepción No Capturada');
-        echo "No Ejecutado\n";
         self::$conn = NewADOConnection('mysqli');//se inicializa constructor tipo  mysqli
         try {
             self::$conn->Connect(self::$db_host, self::$db_user, self::$db_pass, self::$db_name);//se realiza la conexion
