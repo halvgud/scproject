@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5a9adb31-820b-4d1b-b2cb-c650b08990f1" name="Default" comment="core and test files">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/control-agendar-consulta.php" afterPath="$PROJECT_DIR$/pages/control-agendar-consulta.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/data/core.php" afterPath="$PROJECT_DIR$/pages/data/core.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/data/testinsert.php" afterPath="$PROJECT_DIR$/pages/data/testinsert.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/js/funciones.js" afterPath="$PROJECT_DIR$/pages/js/funciones.js" />
     </list>
     <ignored path="scproject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,11 +27,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="core.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="core.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/data/core.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.58870965">
-              <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+            <state vertical-scroll-proportion="-7.4545455">
+              <caret line="237" column="49" selection-start-line="237" selection-start-column="43" selection-end-line="237" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -37,8 +40,8 @@
       <file leaf-file-name="funciones.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/js/funciones.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="-11.333333">
+              <caret line="18" column="33" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -54,11 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="control-agendar-consulta.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="control-agendar-consulta.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pages/control-agendar-consulta.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.076923">
-              <caret line="116" column="75" selection-start-line="116" selection-start-column="71" selection-end-line="116" selection-end-column="75" />
+            <state vertical-scroll-proportion="0.33190578">
+              <caret line="285" column="50" selection-start-line="285" selection-start-column="48" selection-end-line="285" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -67,8 +70,8 @@
       <file leaf-file-name="testinsert.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/data/testinsert.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.509091">
-              <caret line="132" column="4" selection-start-line="132" selection-start-column="4" selection-end-line="132" selection-end-column="28" />
+            <state vertical-scroll-proportion="-6.490909">
+              <caret line="138" column="44" selection-start-line="138" selection-start-column="44" selection-end-line="138" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -87,8 +90,8 @@
       <file leaf-file-name="testselect.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/data/testselect.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.192307">
-              <caret line="48" column="155" selection-start-line="48" selection-start-column="155" selection-end-line="48" selection-end-column="155" />
+            <state vertical-scroll-proportion="-9.576923">
+              <caret line="50" column="4" selection-start-line="50" selection-start-column="4" selection-end-line="50" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -109,10 +112,10 @@
         <option value="$PROJECT_DIR$/data/contact.php" />
         <option value="$PROJECT_DIR$/pages/control-agendar-visita.php" />
         <option value="$PROJECT_DIR$/pages/data/testselect.php" />
-        <option value="$PROJECT_DIR$/pages/control-agendar-consulta.php" />
-        <option value="$PROJECT_DIR$/pages/data/testinsert.php" />
         <option value="$PROJECT_DIR$/pages/js/funciones.js" />
         <option value="$PROJECT_DIR$/pages/data/core.php" />
+        <option value="$PROJECT_DIR$/pages/data/testinsert.php" />
+        <option value="$PROJECT_DIR$/pages/control-agendar-consulta.php" />
       </list>
     </option>
   </component>
@@ -467,38 +470,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/data/testselect.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.192307">
-          <caret line="48" column="155" selection-start-line="48" selection-start-column="155" selection-end-line="48" selection-end-column="155" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/data/testinsert.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.509091">
-          <caret line="132" column="4" selection-start-line="132" selection-start-column="4" selection-end-line="132" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/js/funciones.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/control-agendar-consulta.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.076923">
-          <caret line="116" column="75" selection-start-line="116" selection-start-column="71" selection-end-line="116" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/control-agendar-visita.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.0181818">
@@ -515,10 +486,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pages/data/testselect.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.576923">
+          <caret line="50" column="4" selection-start-line="50" selection-start-column="4" selection-end-line="50" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/js/funciones.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.333333">
+          <caret line="18" column="33" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pages/data/core.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.58870965">
-          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+        <state vertical-scroll-proportion="-7.4545455">
+          <caret line="237" column="49" selection-start-line="237" selection-start-column="43" selection-end-line="237" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/data/testinsert.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.490909">
+          <caret line="138" column="44" selection-start-line="138" selection-start-column="44" selection-end-line="138" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/control-agendar-consulta.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33190578">
+          <caret line="285" column="50" selection-start-line="285" selection-start-column="48" selection-end-line="285" selection-end-column="50" />
           <folding />
         </state>
       </provider>

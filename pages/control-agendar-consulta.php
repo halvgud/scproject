@@ -236,6 +236,7 @@ else
             else{
                 eventData.title = $("#id_empleado").val()+' - '+$("#nombre").val();
                 exitoso = function(datos){
+                    notificacionSuccess(datos.success);
                     $("#agendarConsultaForm")[0].reset();
                     $("#tabl2_consulta tbody").empty();
                     $('#agregarConsultasModal').modal('toggle');
@@ -282,7 +283,7 @@ else
                     fixedWeekCount:false,
                     eventOverlap :false,
                     slotEventOverlap:false,
-                    scrollTime:moment().format("hh:mm:ss"),
+                    scrollTime:moment().format("HH:mm:ss"),
                     eventClick:function(calEvent, jsEvent, view) {
                         if (view.type ==='agendaDay'){
                             //console.log('Event: ' + calEvent.title);
@@ -300,10 +301,10 @@ else
                             $("#calendario").fullCalendar( 'changeView', 'agendaDay' )
                         }
                         else{
-                            $("#fecha").val(moment().format("YYYY/MM/DD hh:mm:ss"));
+                            $("#fecha").val(moment().format("YYYY/MM/DD HH:mm:ss"));
                             $("#fecha_consulta").val(moment(start).format("YYYY/MM/DD"));
-                            $("#hora_inicio").val(moment(start).format("hh:mm:ss"));
-                            $("#hora_fin").val(moment(end).format("hh:mm:ss"));
+                            $("#hora_inicio").val(moment(start).format("HH:mm:ss"));
+                            $("#hora_fin").val(moment(end).format("HH:mm:ss"));
                             $("#agregarConsultasModal").modal();
                             eventData = {
                                 start: start,
@@ -313,9 +314,7 @@ else
                         }
                     },
                     viewRender:function(view,element){
-                      console.warn(view);
                         cargarEventos('calendario',moment(view.start).subtract(1,'months').format("YYYY/MM/DD"),moment(view.end).add(1,'months').format("YYYY/MM/DD"));
-                        console.warn(element);
                     },
                     // weekNumbers: true,
                     editable: true,

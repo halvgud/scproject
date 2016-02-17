@@ -8,6 +8,7 @@
         dataType: 'json'
 		})
 		.done(function(resultado) {
+			console.log(resultado);
 			if(successCallBack){
 				successCallBack(resultado);
 			}
@@ -146,6 +147,7 @@ function notificacionSuccess(mensaje){
 		datos.fecha_inicio=fecha_inicio;
 		datos.fecha_fin=fecha_fin;
 		exitoso = function(datos){
+			$('#'+id_calendario).fullCalendar( 'removeEvents');
 			$('#'+id_calendario).fullCalendar('addEventSource', datos, true); // stick? = true
 		};
 		fallo = function(datos){

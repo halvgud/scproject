@@ -10,8 +10,56 @@ function manejador_excepciones($excepción) {
     print json_encode($result);
 
 }
-
 set_exception_handler('manejador_excepciones');
+// función de gestión de errores
+function GestorDeErrores($errno, $errstr, $errfile, $errline)
+{
+    if (!(error_reporting() & $errno)) {
+        // Este código de error no está incluido en error_reporting
+        return;
+    }
+    $result['error'] = '';
+    switch ($errno) {
+        case E_USER_ERROR:
+            $result['error'] .= "[$errno] $errstr\n";
+            $result['error'] .= "  Error fatal en la línea $errline en el archivo $errfile";
+            $result['error'] .= ", PHP " . PHP_VERSION . " (" . PHP_OS . ")<br />\n";
+            http_response_code(500);
+            print json_encode($result);
+            exit(1);
+            break;
+
+        case E_USER_WARNING:
+            $result['error'] .=  "<b>Mi WARNING</b> [$errno] $errstr<br />\n";
+            $result['error'] .= "  Error fatal en la línea $errline en el archivo $errfile";
+            $result['error'] .= ", PHP " . PHP_VERSION . " (" . PHP_OS . ")<br />\n";
+            http_response_code(500);
+            print json_encode($result);
+            exit(1);
+            break;
+
+        case E_USER_NOTICE:
+            $result['error'] .=   "<b>Mi NOTICE</b> [$errno] $errstr<br />\n";
+            $result['error'] .= "  Error fatal en la línea $errline en el archivo $errfile";
+            $result['error'] .= ", PHP " . PHP_VERSION . " (" . PHP_OS . ")<br />\n";
+            http_response_code(500);
+            print json_encode($result);
+            exit(1);
+            break;
+
+        default:
+            $result['error'] .=   "Tipo de error desconocido: [$errno] $errstr<br />\n";
+            $result['error'] .= "  Error fatal en la línea $errline en el archivo $errfile";
+            $result['error'] .= ", PHP " . PHP_VERSION . " (" . PHP_OS . ")<br />\n";
+            http_response_code(500);
+            print json_encode($result);
+            exit(1);
+            break;
+    }
+    /* No ejecutar el gestor de errores interno de PHP */
+    return true;
+}
+set_error_handler('GestorDeErrores');
 
 class Conexion
 {
@@ -41,6 +89,7 @@ class Conexion
             return true;
         }
         else{
+            $this->result = array();
             array_push($this->result,'fallo de transaccion, conexion no establecida');
             return false;
         }
@@ -51,6 +100,7 @@ class Conexion
             return true;
         }
         else{
+            $this->result = array();
             array_push($this->result,'fallo al hacer rollback, conexion no establecida');
             return false;
         }
@@ -63,6 +113,7 @@ class Conexion
             return true;
         }
         else{
+            $this->result = array();
             array_push($this->result,'fallo de transaccion, conexion no establecida');
             return false;
         }
@@ -95,11 +146,13 @@ class Conexion
                     print self::$conn->ErrorMsg();
                 }
                 else {
+                    $this->result = array();
                     $this->result = $query->getRows();
                 }
 				return true; // El query fue ejecutado correctamente
 
 			}else{
+                $this->result = array();
 				array_push($this->result,self::$conn->ErrorMsg());
 				return false; // No rows where returned
 			}
@@ -116,10 +169,12 @@ class Conexion
                 $insertSQL = self::$conn->AutoExecute($table, $arreglo, 'INSERT');
                 if($insertSQL)
                 {
+                    $this->result = array();
                     array_push($this->result,self::$conn->Insert_ID());
                     return true;
                 }else {
                    fallarTransaccion();//forza rollback
+                    $this->result = array();
                     array_push($this->result, self::$conn->ErrorMsg());
                     return false; // error
                 }
@@ -142,9 +197,11 @@ class Conexion
             // ejecuta
             $this->myQuery = $sql; // se regresa el query para efectos de debug
             if(self::$conn->Execute($sql)){
+                $this->result = array();
                 array_push($this->result,self::$conn->Affected_Rows());
                 return true; // regresa que fue correcto
             }else{
+                $this->result = array();
                 array_push($this->result,self::$conn->ErrorMsg());
                 return false; // regresa que fue incorrecto
             }
@@ -162,15 +219,18 @@ class Conexion
             if ($tablesInDb->RecordCount() == 1) {//y si la cantidad de registros es = 1
                 return true; // Regresa true si la tabla existe
             } else {//de otra manera
+                $this->result = array();
                 array_push($this->result, $table . " no existe en la base de datos");
                 return false; // Regresa false si la tabla no existe
             }
             }
         }else{
+            $this->result = array();
             array_push($this->result,'conexion no establecida');//se imprime el error
         }
     }
     catch (exception $e) {//si la conexion falla se atrapa la excepcion
+        $this->result = array();
         array_push($this->result,($e));//se imprime el error
     }
     }
