@@ -251,7 +251,6 @@ else
         });
     ////////////////////////////////////////////////
         $(document).ready(function() {
-            cargarEventos(moment().subtract(2,'months').format("YYYY/MM/DD"),moment().add(2,'months').format("YYYY/MM/DD"));
             $.datetimepicker.setLocale('es');
             /*
             $('#hora_inicio').datetimepicker({
@@ -310,30 +309,17 @@ else
                                 start: start,
                                 end: end
                             };
-                            // var title = prompt('Event Title:');n
-                            // var eventData;
-                            // if (title) {
-                            //     eventData = {
-                            //         title: title,
-                            //         start: start,
-                            //         end: end
-                            //     };
-                            //     $('#calendario').fullCalendar('renderEvent', eventData, true); // stick? = true
                             //     $("#calendario").fullCalendar( 'gotoDate', start );
-                            // }
                         }
-                        // $('#calendario').fullCalendar('unselect');
+                    },
+                    viewRender:function(view,element){
+                      console.warn(view);
+                        cargarEventos('calendario',moment(view.start).subtract(1,'months').format("YYYY/MM/DD"),moment(view.end).add(1,'months').format("YYYY/MM/DD"));
+                        console.warn(element);
                     },
                     // weekNumbers: true,
                     editable: true,
-                    eventLimit: true, // allow "more" link when too many events
-                    events: [
-                        {
-                            title: 'All Day Event',
-                            start: '2016-02-09',
-                            end: '2016-02-10'
-                        }
-                    ]
+                    eventLimit: true // allow "more" link when too many events
             });
         });
         $(function() {

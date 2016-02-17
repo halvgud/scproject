@@ -2,6 +2,17 @@
 include("lib/adodb5/adodb-exceptions.inc.php"); //include de las excepciones
 include('lib/adodb5/adodb.inc.php'); //include del adodb
 $ADODB_FETCH_MODE = ADODB_FETCH_ASSOC;
+
+function manejador_excepciones($excepción) {
+    $result['error'] = "Excepción no capturada: ".$excepción->getMessage();
+    //header('Content-Type: application/json');
+    http_response_code(500);
+    print json_encode($result);
+
+}
+
+set_exception_handler('manejador_excepciones');
+
 class Conexion
 {
 	public static $conn; //variable estatica de conexion
@@ -15,6 +26,8 @@ class Conexion
 
 	public function abrirConexion()
 	{
+        throw new Exception('Excepción No Capturada');
+        echo "No Ejecutado\n";
         self::$conn = NewADOConnection('mysqli');//se inicializa constructor tipo  mysqli
         try {
             self::$conn->Connect(self::$db_host, self::$db_user, self::$db_pass, self::$db_name);//se realiza la conexion
@@ -129,7 +142,6 @@ class Conexion
             // se crea el query
             $sql='UPDATE '.$table.' SET '.$params.' WHERE '.$where;
             // ejecuta
-            var_dump($sql);
             $this->myQuery = $sql; // se regresa el query para efectos de debug
             if(self::$conn->Execute($sql)){
                 array_push($this->result,self::$conn->Affected_Rows());

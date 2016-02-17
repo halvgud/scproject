@@ -68,7 +68,6 @@ if(isset($data) /*&& isset($data->tabla)*/ &&isset($data->tipo_transaccion)) {
         }
     }//transaccion 2
     else if ($data->tipo_transaccion == 3) {//insertar consulta
-        var_dump($data );
         foreach ($data as $key => $value) {
             $$key = $value;
         }
@@ -86,7 +85,7 @@ if(isset($data) /*&& isset($data->tabla)*/ &&isset($data->tipo_transaccion)) {
             $datosConsulta['peso'] = $consulta->peso;
             $datosConsulta['talla'] = $consulta->talla;
             $datosConsulta['altura'] = $consulta->altura;
-            $datosConsulta['frecuenca_respiratoria'] = $consulta->frecuenca_respiratoria;
+            $datosConsulta['frecuencia_respiratoria'] = $consulta->frecuencia_respiratoria;
             $datosConsulta['frecuencia_cardiaca'] = $consulta->frecuencia_cardiaca;
             $datosConsulta['temperatura'] = $consulta->temperatura;
             $arregloVisitaMedico= json_decode(json_encode($relacion_consulta_medicamento), true);
@@ -96,7 +95,6 @@ if(isset($data) /*&& isset($data->tabla)*/ &&isset($data->tipo_transaccion)) {
                     $datosMedicamento['id_consulta']=$separado_por_comas;
                     $datosMedicamento['id_medicamento'] =$arregloVisitaMedico['id_medicamento'.$x];
                     $datosMedicamento['cantidad'] = $arregloVisitaMedico['cantidad'.$x];
-                    var_dump($datosMedicamento);
                     if($db->Insertar('relacion_consulta_medicamento',$datosMedicamento))
                     {
                         if($db->Actualizar('medicamento','cantidad=cantidad-'.$datosMedicamento['cantidad'],'id_medicamento='.$datosMedicamento['id_medicamento'])){
@@ -121,7 +119,7 @@ if(isset($data) /*&& isset($data->tabla)*/ &&isset($data->tipo_transaccion)) {
             mensajeSuccess();
         }else
         {
-            //mensajeError(1,$db->obtenerResultado());
+            mensajeError(1,$db->obtenerResultado());
         }
     }//transaccion 3
 }

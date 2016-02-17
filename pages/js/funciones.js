@@ -5,25 +5,21 @@
         type: "POST",
         url: archivo,
         data: JSON.stringify(datos),
-        dataType: 'text'
+        dataType: 'json'
 		})
 		.done(function(resultado) {
-			notificacionSuccess(resultado['success']);
-			console.log(resultado);
 			if(successCallBack){
 				successCallBack(resultado);
 			}
-			return resultado;
 		})
-		.fail(function(jqXHR) {
-			//resulta = jQuery.parseJSON(jqXHR.responseText);
-            console.log(jqXHR.responseText);
-			/*notificacionError(resulta['error']);
+		.fail(function(jqXHR, status, thrownError) {
+			//resulta = $.parseJSON(jqXHR.responseText);
+			resulta = jqXHR.responseJSON;
+            console.log(resulta);
+			notificacionError(resulta['error']);
 			if(errorCallBack){
-				errorCallBack(resulta['error']);
-			}*/
-            return false;
-			//return resulta;
+				errorCallBack(resulta);
+			}
 		});
 	}
 	function logout(){
@@ -31,9 +27,7 @@
             window.location.reload();
         };
         fallo = function(datos){
-
         };
-        
         peticionAjax('data/logout.php','',exitoso,fallo);
 	}
 
@@ -97,29 +91,21 @@ function notificacionSuccess(mensaje){
 
 
 
-function cargarDropDownList(nameattr,id,value,transaccion,otro)
-{
-    arreglo={};
-    arreglo['idBusqueda']=otro;
-    arreglo['idTransaccion']=transaccion;
-    $.ajax({
-            type: "POST",
-            url: 'data/testselect.php',
-            data: JSON.stringify(arreglo),
-            dataType: 'text'
-        })
-        .done(function(result){
-            var obj1 = $.parseJSON(result);
-            var options = '';
-            for (var i = 0; i < obj1.length; i++) {
-                $(nameattr).append($("<option></option>",{value:obj1[i][id],text:obj1[i][value]}));
-            }
-        })
-.fail(function(jqXHR) {
-        resulta = (jqXHR.responseText);
-        console.log(resulta);
-    })   ;
-}
+	function cargarDropDownList(nameattr,id,value,transaccion,otro) {
+		arreglo={};
+		arreglo['idBusqueda']=otro;
+		arreglo['idTransaccion']=transaccion;
+		exitoso = function(result){
+			var options = '';
+			for (var i = 0; i < result.length; i++) {
+				$(nameattr).append($("<option></option>",{value:result[i][id],text:result[i][value]}));
+			}
+		};
+		fallo = function(datos){
+			resulta = datos;
+		};
+		peticionAjax('data/testselect.php',arreglo,exitoso,fallo);
+	}
     $.fn.enterKey = function (fnc) {
         return this.each(function () {
             $(this).keypress(function (ev) {
@@ -130,79 +116,40 @@ function cargarDropDownList(nameattr,id,value,transaccion,otro)
             });
         });
     };
-function cargarInputs(arregloConInputs,idTransaccion,idBusqueda)
-{
-    arregloConInputs['idBusqueda']=idBusqueda;
-    arregloConInputs['idTransaccion']=idTransaccion;
-
-    $.ajax({
-        type:"POST",
-        url:'data/testselect.php',
-        data:JSON.stringify(arregloConInputs),
-        dataType:'json'
-    })
-        .done(function(result){
-            // var obj1 = $.parseJSON(result);
-            var options = '';
-            result.forEach( function(element, index) {
+	//funcion engargada de cargar informacion en los lugares donde se mete informacion del empleado
+	function cargarInputs(arregloConInputs,idTransaccion,idBusqueda) {
+		arregloConInputs['idBusqueda']=idBusqueda;
+		arregloConInputs['idTransaccion']=idTransaccion;
+		exitoso = function(result){
+			var options = '';
+			result.forEach( function(element, index) {
 				Object.keys(element).forEach(function (key) {
 					var value = element[key];
 					try {
 						$("#"+key).val(value);
 					} catch(e) {
-						// statements
 						console.error(e);
 					}
-					// iteration code
 				});
-            });
-            // for (var i = 0; i < result[0].length; i++) {
+			});
+		};
+		fallo = function(datos){
+			resulta = (datos);
+		};
+		peticionAjax('data/testselect.php',arregloConInputs,exitoso,fallo);
+	}
 
-            // }
-            // $(nameattr).html(options);
-        })
-        .fail(function(jqXHR) {
-            resulta = (jqXHR.responseText);
-            console.log(resulta);
-        });
-}
-
-	function cargarEventos(fecha_inicio,fecha_fin)
+	function cargarEventos(id_calendario,fecha_inicio,fecha_fin)
 	{
 		datos= {};
 		datos.idTransaccion=6;
 		datos.fecha_inicio=fecha_inicio;
 		datos.fecha_fin=fecha_fin;
-		console.warn(datos);
-		$.ajax({
-					type:"POST",
-					url:'data/testselect.php',
-					data:JSON.stringify(datos),
-					dataType:'json'
-				})
-				.done(function(result){
-					// var obj1 = $.parseJSON(result);
-					console.error(result);
-					var options = '';
-					/*result.forEach( function(element, index) {
-						Object.keys(element).forEach(function (key) {
-							var value = element[key];
-							try {
-								$("#"+key).val(value);
-							} catch(e) {
-								// statements
-								console.error(e);
-							}
-							// iteration code
-						});
-					});*/
-					// for (var i = 0; i < result[0].length; i++) {
-
-					// }
-					// $(nameattr).html(options);
-				})
-				.fail(function(jqXHR) {
-					resulta = (jqXHR.responseText);
-					console.log(resulta);
-				});
+		exitoso = function(datos){
+			$('#'+id_calendario).fullCalendar('addEventSource', datos, true); // stick? = true
+		};
+		fallo = function(datos){
+			resulta = (datos.responseText);
+		};
+		peticionAjax('data/testselect.php',datos,exitoso,fallo);
 	}

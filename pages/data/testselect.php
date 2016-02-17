@@ -45,8 +45,8 @@ else if($data->idTransaccion=='5'){
 else if($data->idTransaccion=='6'){
     $db = new Conexion();
     $db->abrirConexion();
-    $db->seleccion('consulta','id_consulta,id_empleado,id_empleado,peso,talla,altura,frecuencia_respiratoria,frecuencia_cardiaca,temperatura,asistencia,fecha_inicio,fecha_fin'
-        ,null,'fecha_inicio>="'.$data->fecha_inicio.'" and fecha_fin<="'.$data->fecha_fin.'"','fecha_inicio asc',null);
+    $db->seleccion('consulta','c.id_consulta,c.id_empleado,e.nombre,e.paterno,e.materno,c.peso,c.talla,c.altura,c.frecuencia_respiratoria,c.frecuencia_cardiaca,c.temperatura,c.asistencia,c.fecha_inicio,c.fecha_fin'
+        ,'c inner join empleado e on c.id_empleado = e.id_empleado','c.fecha_inicio>="'.$data->fecha_inicio.'" and c.fecha_fin<="'.$data->fecha_fin.'"','c.fecha_inicio asc',null);
     ///print $db->obtenerSQL();
     $consultas = $db->obtenerResultado();
     foreach($consultas as &$consulta){
@@ -56,6 +56,9 @@ else if($data->idTransaccion=='6'){
         $medicamentos = $db->obtenerResultado();
         //var_dump($medicamentos);
         $consulta['medicamentos'] = $medicamentos;
+        $consulta['title'] = $consulta['nombre'].' '.$consulta['paterno'].' '.$consulta['materno'];
+        $consulta['start'] = $consulta['fecha_inicio'];
+        $consulta['end'] = $consulta['fecha_fin'];
     }
     print json_encode($consultas);
 }
