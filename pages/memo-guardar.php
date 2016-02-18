@@ -22,14 +22,14 @@ else
             <div class="page-header">
                 <h1>Guardar Memo</h1>
             </div>
-            <form>
+            <form id="guardarMemo">
                 <table class="table">
                     <tbody>
                         <tr>
                             <td>
                                 <div class="form-group">
                                     <label for="id_empleado">No. Empleado:</label>
-                                    <input type="text" class="form-control" id="id_empleado" placeholder="No. Empleado" required>
+                                    <input type="text" class="form-control" name="id_empleado" id="id_empleado" placeholder="No. Empleado" required>
                                 </div>
                             </td>
                             <td>
@@ -60,24 +60,22 @@ else
                         <tr> 
                             <td>
                                 <div class="form-group">
-                                    <label for="entrega">Solicita</label>
-                                    <select name="entrega" id ="entrega" class="form-control" required>
+                                    <label for="id_solicita">Solicita</label>
+                                    <select name="id_solicita" id ="id_solicita" class="form-control" required>
                                         <option value="">Seleccione un valor</option>
-                                        <option value="1">Enfermeria</option>
-                                        <option value="2">Relaciones Laborales</option>
                                     </select>
                                 </div>
                             </td>
                             <td>
                                 <div class="form-group">
-                                    <label for="dias">Semana</label>
-                                    <input type="number" step="1" class="form-control" id="dias" placeholder="Dias Autorizados">
+                                    <label for="semana">Semana</label>
+                                    <input type="number" step="1" class="form-control" id="semana" name="semana" placeholder="Semana">
                                 </div>
                             </td>
                             <td colspan="3">
                                 <div class="form-group">
                                     <label for="respetar">Respetar</label>
-                                    <input type="text" class="form-control" id="respetar" required>
+                                    <input type="text" class="form-control" id="respetar" name="respetar" required>
                                 </div>
                             </td>
                         </tr>
@@ -85,13 +83,13 @@ else
                             <td colspan="3">
                                 <div class="form-group">
                                     <label for="motivo">Motivo</label>
-                                    <input type="text" class="form-control" id="motivo" required>
+                                    <input type="text" class="form-control" name="motivo" id="motivo" required>
                                 </div>
                             </td>
                             <td colspan="2">
                                 <div class="form-group">
                                     <label for="supervisor">Sup. de Produccion</label>
-                                    <input type="text" class="form-control" id="supervisor" required>
+                                    <input type="text" class="form-control" name="supervisor" id="supervisor" required>
                                 </div>
                             </td>  
                         </tr>
@@ -105,8 +103,76 @@ else
     </div>
     <!-- /#wrapper -->
 
-    <?php require_once('footer-comun.html'); ?> 
+    <?php require_once('footer-comun.html'); ?>
 
+
+    <script type="text/javascript">
+        var contador = 0;
+        $("#guardarMemo").submit(function(){
+            var form1 = $("#guardarMemo").find("select,input").serializeArray();
+            var datosTabla1 = {};
+            form1.forEach(function(input) {
+                datosTabla1[input.name] = input.value;
+            });
+            datosTabla1['fecha_creacion'] = moment().format("YYYY/MM/DD HH:mm:ss");
+            var datosUnion = {};
+            datosUnion['tipo_transaccion'] = 5;
+            datosUnion['memo'] = datosTabla1;
+            //console.log(datosUnion);
+            if($("#nombre").val() === ''){
+                notificacionError('El usuario no existe por favor introdusca un id valido');
+            }
+            else if($("#inicio").val() === ''){
+                notificacionError('Por favor selecciona la fecha de inicio');
+            }
+            else if($("#fin").val() === ''){
+                notificacionError('Por favor seleccione la fecha de fin');
+            }
+            else{
+                exitoso = function(datos){
+                    notificacionSuccess(datos.success);
+                    $("#guardarMemo")[0].reset();
+                    contador = 0;
+                };
+                fallo = function(datos){
+                    notificacionError(datos.error);
+                };
+                peticionAjax('data/testinsert.php',datosUnion,exitoso,fallo);
+            }
+            return false;
+        });
+
+        $(function() {
+            $.datetimepicker.setLocale('es');
+            $("#inicio").datetimepicker({
+                timepicker:false,
+                format:'Y/m/d'
+            });
+            $("#fin").datetimepicker({
+                timepicker:false,
+                format:'Y/m/d'
+            });
+            $("#id_empleado").focusout(function(){
+                cargatDatosEmpleado();
+            });
+            $("#id_empleado").enterKey(function(e){
+                e.preventDefault();
+                cargatDatosEmpleado();
+            });
+            function cargatDatosEmpleado(){
+                $('input[data-empleado]').val('');
+                var form1 = $("#tabl1_visita").find('input[data-empleado]').serializeArray();
+                var datosTabla1 = {};
+                form1.forEach(function(input) {
+                    datosTabla1[input.name] = input.value;
+                });
+                console.warn(datosTabla1);
+                cargarInputs(datosTabla1,5,$("#id_empleado").val())
+            }
+            $("#fecha").datetimepicker();
+            cargarDropDownListDescripcion(('#id_solicita'),'memo_solicita');
+        });
+    </script>
 </body>
 
 </html>

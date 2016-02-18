@@ -7,42 +7,30 @@ $data = json_decode(file_get_contents('php://input'));
 if($data->idTransaccion=='1'){
     $db = new Conexion();
     $db->abrirConexion();
+    $db->seleccion('descripcion','id_descripcion,descripcion',null,'tipo="'.$data->tipo.'"','id_descripcion asc',null);
+    print json_encode($db->obtenerResultado());
+}
+if($data->idTransaccion=='2'){
+    $db = new Conexion();
+    $db->abrirConexion();
     $db->seleccion('medicamento','id_medicamento,descripcion',null,null,'id_medicamento asc',null);
      print json_encode($db->obtenerResultado());
 }
-else if($data->idTransaccion=='2'){
+else if($data->idTransaccion=='3'){
     $db = new Conexion();
     $db->abrirConexion();
     $db->seleccion('presentacion_medicamento','id_presentacion,presentacion_medicamento.descripcion',"medicamento md on (md.id_presentacion_salida=presentacion_medicamento.id_presentacion)","md.id_medicamento='".$data->idBusqueda."'",'id_presentacion asc',null);
     print json_encode($db->obtenerResultado());
 }
-else if($data->idTransaccion=='3'){
+else if($data->idTransaccion=='5'){//Select de los datos del empleado
     $db = new Conexion();
     $db->abrirConexion();
-    $db->seleccion('empleado','id_empleado,nombre,id_turno,id_departamento,id_area',null,'id_empleado='.$data->idBusqueda,'id_empleado asc',null);
-    print json_encode($db->obtenerResultado());
-}
-else if($data->idTransaccion=='4'){
-    $db = new Conexion();
-    $db->abrirConexion();
-    $db->seleccion('diagnostico','id_diagnostico,descripcion',null,'estado="A"','id_diagnostico asc',null);
-    print json_encode($db->obtenerResultado());
-}
-else if($data->idTransaccion=='4'){
-    $db = new Conexion();
-    $db->abrirConexion();
-    $db->seleccion('diagnostico','id_diagnostico,descripcion',null,'estado="A"','id_diagnostico asc',null);
-    print json_encode($db->obtenerResultado());
-}
-else if($data->idTransaccion=='5'){
-    $db = new Conexion();
-    $db->abrirConexion();
-    $db->seleccion('empleado','e.id_empleado,concat(e.nombre," ",e.paterno," ",e.materno) nombre,t.descripcion turno, a.descripcion area, d.descripcion departamento'
+    $db->seleccion('empleado','e.id_empleado,concat(e.nombre," ",e.paterno," ",e.materno) nombre,t.descripcion turno, a.descripcion area, d.descripcion departamento, e.nss'
         ,'e inner join turno t on e.id_turno = t.id_turno inner join area a on e.id_area = a.id_area inner join departamento d on e.id_departamento = d.id_departamento'
-        ,'e.id_empleado="'.$data->idBusqueda.'"','e.id_empleado asc',null);
+        ,'e.id_empleado="'.$data->idBusqueda.'" and e.id_estado="A"','e.id_empleado asc',null);
     print json_encode($db->obtenerResultado());
 }
-else if($data->idTransaccion=='6'){
+else if($data->idTransaccion=='6'){//select de los datos de la consulta para generar los eventos del calendario
     $db = new Conexion();
     $db->abrirConexion();
     $db->seleccion('consulta','c.id_consulta,c.id_empleado,e.nombre,e.paterno,e.materno,c.peso,c.talla,c.altura,c.frecuencia_respiratoria,c.frecuencia_cardiaca,c.temperatura,c.asistencia,c.fecha_inicio,c.fecha_fin'

@@ -144,12 +144,20 @@ else
                                 <tbody>
 
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="agregar_medicamento">Agregar Medicamento</label>
+                                                <select class='form-control' name='clklst' id='clklst' size='1'></select>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <button type="button" id="agregar_medicamento" class="btn btn-outline btn-primary"><i class="fa fa-plus-square"></i> Agregar Medicamento</button>
+                                        </td>
+                                    </tr>
+                                </tfoot>
                             </table>
-                            <div class="form-group">
-                                <label for="agregar_medicamento">Agregar Medicamento</label>
-                                <select class='form-control' name='clklst' id='clklst' size='1'></select>
-                                <button type="button" id="agregar_medicamento" class="btn btn-outline btn-primary"><i class="fa fa-plus-square"></i> Agregar Medicamento</button>
-                            </div>
                            <!-- <p>
                                 <input type="hidden" value="" name="id">
                                 <input type="input" value="1" name="cantidad" id="cantidad">
@@ -340,9 +348,8 @@ else
                 cargarInputs(datosTabla1,5,$("#id_empleado").val())
             }
             $("#fecha_visita").datetimepicker();
-            cargarDropDownList(('#diagnostico'),'id_diagnostico','descripcion',4,null);
-            cargarDropDownList(('#clklst'),'id_medicamento','descripcion',1,$('#clklst').val());
-
+            cargarDropDownListDescripcion(('#diagnostico'),'diagnostico');
+            cargarDropDownList(('#clklst'),'id_medicamento','descripcion',2);
         });
     </script>
 

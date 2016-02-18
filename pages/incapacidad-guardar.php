@@ -19,20 +19,20 @@ else
     <div id="wrapper">
     <?php require_once('menu.php'); ?> 
         <div id="page-wrapper">
-            <div class="page-header">
-                <h1>Guardar Incapacidad</h1>
-            </div>
-            <form>
+            <br/>
+            <h1>Guardar Incapacidad</h1>
+            <hr>
+            <form id="guardarIncapacidad">
                 <table class="table">
                     <tbody>
                         <tr>
                             <td>
                                 <div class="form-group">
                                     <label for="id_empleado">No. Empleado:</label>
-                                    <input type="text" class="form-control" id="id_empleado" placeholder="No. Empleado" required>
+                                    <input type="text" class="form-control" id="id_empleado" name="id_empleado" placeholder="No. Empleado" required>
                                 </div>
                             </td>
-                            <td colspan = "2">
+                            <td >
                                 <div class="form-group">
                                     <label for="nombre">Nombre</label>
                                     <input type="text" class="form-control" id="nombre" readonly>
@@ -67,60 +67,50 @@ else
                             <td>
                                 <div class="form-group">
                                     <label for="folio">Folio</label>
-                                    <input type="text" class="form-control" id="folio" placeholder="Folio">
-                                </div>
-                            </td>  
-                            <td>
-                                <div class="form-group">
-                                    <label for="entrega">Entrega</label>
-                                    <select name="entrega" id ="entrega" class="form-control" required>
-                                        <option value="">Seleccione un valor</option>
-                                        <option value="1">Atrasada</option>
-                                        <option value="2">Normal</option>
-                                    </select>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-group">
-                                    <label for="dias">Dias autorizados</label>
-                                    <input type="number" step="1" class="form-control" id="dias" placeholder="Dias Autorizados">
+                                    <input type="text" class="form-control" name="folio" id="folio" placeholder="Folio" required>
                                 </div>
                             </td>
                             <td>
                                 <div class="form-group">
                                     <label for="inicio">Inicia:</label>
-                                    <input type="date" class="form-control" id="inicio" required>
+                                    <input type="text" class="form-control" id="inicio" name="inicio" readonly required>
                                 </div>
                             </td>
                             <td>
                                 <div class="form-group">
-                                    <label for="finaliza">Finaliza:</label>
-                                    <input type="date" class="form-control" id="finaliza" required>
+                                    <label for="fin">Finaliza:</label>
+                                    <input type="text" class="form-control" id="fin" name="fin" readonly required>
                                 </div>
-                            </td>  
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <label for="dias">Dias autorizados</label>
+                                    <input type="number" step="1" class="form-control" id="dias" name="dias" placeholder="Dias Autorizados" required>
+                                </div>
+                            </td>
                         </tr>
                         <tr>
                             <td>
                                 <div class="form-group">
-                                    <label for="clasificacion">Clasificacion</label>
-                                    <select name="clasificacion" id ="clasificacion" class="form-control" required>
+                                    <label for="id_entrega">Entrega</label>
+                                    <select name="id_entrega" id ="id_entrega" class="form-control" required>
                                         <option value="">Seleccione un valor</option>
-                                        <option value="1">Inicial</option>
-                                        <option value="2">Subsecuente</option>
-                                        <option value="3">Recaida</option>
                                     </select>
                                 </div>
                             </td>
                             <td>
                                 <div class="form-group">
-                                    <label for="clasificacion">Ramo de Seguro</label>
-                                    <select name="clasificacion" id ="clasificacion" class="form-control" required>
+                                    <label for="id_clasificacion">Clasificacion</label>
+                                    <select name="id_clasificacion" id ="id_clasificacion" class="form-control" required>
                                         <option value="">Seleccione un valor</option>
-                                        <option value="1">Riesgo de Trabajo</option>
-                                        <option value="2">Enfermedad</option>
-                                        <option value="3">Maternidad Prenatal</option>
-                                        <option value="4">Maternidad Posnatal</option>
-                                        <option value="5">Maternidad Enlace</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <label for="id_ramo_seguro">Ramo de Seguro</label>
+                                    <select name="id_ramo_seguro" id ="id_ramo_seguro" class="form-control" required>
+                                        <option value="">Seleccione un valor</option>
                                     </select>
                                 </div>
                             </td>
@@ -135,7 +125,77 @@ else
     </div>
     <!-- /#wrapper -->
 
-    <?php require_once('footer-comun.html'); ?> 
+    <?php require_once('footer-comun.html'); ?>
+
+    <script type="text/javascript">
+        var contador = 0;
+        $("#guardarIncapacidad").submit(function(){
+            var form1 = $("#guardarIncapacidad").find("select,input").serializeArray();
+            var datosTabla1 = {};
+            form1.forEach(function(input) {
+                datosTabla1[input.name] = input.value;
+            });
+            datosTabla1['fecha'] = moment().format("YYYY/MM/DD HH:mm:ss");
+            var datosUnion = {};
+            datosUnion['tipo_transaccion'] = 4;
+            datosUnion['incapacidad'] = datosTabla1;
+            //console.log(datosUnion);
+            if($("#nombre").val() === ''){
+                notificacionError('El usuario no existe por favor introdusca un id valido');
+            }
+            else if($("#inicio").val() === ''){
+                notificacionError('Por favor selecciona la fecha de inicio');
+            }
+            else if($("#fin").val() === ''){
+                notificacionError('Por favor seleccione la fecha de fin');
+            }
+            else{
+                exitoso = function(datos){
+                    notificacionSuccess(datos.success);
+                    $("#guardarIncapacidad")[0].reset();
+                    contador = 0;
+                };
+                fallo = function(datos){
+                    notificacionError(datos.error);
+                };
+                peticionAjax('data/testinsert.php',datosUnion,exitoso,fallo);
+            }
+            return false;
+        });
+
+        $(function() {
+            $.datetimepicker.setLocale('es');
+            $("#inicio").datetimepicker({
+               timepicker:false,
+                format:'Y/m/d'
+            });
+            $("#fin").datetimepicker({
+                timepicker:false,
+                format:'Y/m/d'
+            });
+            $("#id_empleado").focusout(function(){
+                cargatDatosEmpleado();
+            });
+            $("#id_empleado").enterKey(function(e){
+                e.preventDefault();
+                cargatDatosEmpleado();
+            });
+            function cargatDatosEmpleado(){
+                $('input[data-empleado]').val('');
+                var form1 = $("#tabl1_visita").find('input[data-empleado]').serializeArray();
+                var datosTabla1 = {};
+                form1.forEach(function(input) {
+                    datosTabla1[input.name] = input.value;
+                });
+                console.warn(datosTabla1);
+                cargarInputs(datosTabla1,5,$("#id_empleado").val())
+            }
+            $("#fecha").datetimepicker();
+            cargarDropDownListDescripcion(('#id_entrega'),'incapacidad_entrega');
+            cargarDropDownListDescripcion(('#id_clasificacion'),'incapacidad_clasificacion');
+            cargarDropDownListDescripcion(('#id_ramo_seguro'),'incapacidad_ramo_seguro');
+        });
+    </script>
 </body>
 
 </html>

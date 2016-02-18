@@ -90,11 +90,13 @@ function notificacionSuccess(mensaje){
 
 }
 
+	function cargarDropDownListDescripcion(nameattr,tipo) {
+		cargarDropDownList(nameattr,'id_descripcion','descripcion',1,tipo);
+	}
 
-
-	function cargarDropDownList(nameattr,id,value,transaccion,otro) {
+	function cargarDropDownList(nameattr,id,value,transaccion,tipo) {
 		arreglo={};
-		arreglo['idBusqueda']=otro;
+		arreglo['tipo']=tipo;
 		arreglo['idTransaccion']=transaccion;
 		exitoso = function(result){
 			var options = '';

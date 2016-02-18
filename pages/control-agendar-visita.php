@@ -28,8 +28,6 @@ else
                     <tr>
                         <td>
                             <div class="form-group">
-                                <input type="hidden" name = 'id_usuario' value='1'>
-                                <input type="hidden" name = 'fecha' value="11-02-2016">
                                 <label for="id_empleado">No. Empleado:</label>
                                 <input type="text" class="form-control" id="id_empleado" name="id_empleado" placeholder="No. Empleado" required>
                             </div>
@@ -70,8 +68,8 @@ else
                         </td>
                         <td>
                             <div class="form-group">
-                                <label for="fecha_visita">Fecha de Visita</label>
-                                <input type="text" class="form-control" id="fecha_visita" name="fecha_visita" required>
+                                <label for="fecha">Fecha de Visita</label>
+                                <input type="text" class="form-control" id="fecha" name="fecha" required>
                             </div>
                         </td>
                     </tr>
@@ -106,7 +104,7 @@ else
         // })
         var contador = 0;
         $("#agendarVisitaForm").submit(function(){
-            var form1 = $("#tabl1_visita").find("input").serializeArray();
+            var form1 = $("#tabl1_visita").find("select, input").serializeArray();
             var form2 = $('#tabl2_visita').find("input").serializeArray();
             var datosTabla1 = {};
             var datosTabla2 = {};
@@ -117,6 +115,7 @@ else
                 datosTabla2[input.name] = input.value;
             });
             var datosUnion = {};
+            console.warn(datosTabla1);
             datosUnion['contador'] = contador;
             datosUnion['tipo_transaccion'] = 2;
             datosUnion['visita'] = datosTabla1;
@@ -127,12 +126,13 @@ else
             }
             else{
                 exitoso = function(datos){
+                    notificacionSuccess(datos.success);
                     $("#agendarVisitaForm")[0].reset();
                     $("#tabl2_visita tbody").empty();
                     contador = 0;
                 };
                 fallo = function(datos){
-
+                    notificacionError(datos.error);
                 };
                 peticionAjax('data/testinsert.php',datosUnion,exitoso,fallo);
             }
@@ -183,9 +183,10 @@ else
                 console.warn(datosTabla1);
                 cargarInputs(datosTabla1,5,$("#id_empleado").val())
             }
-            $("#fecha_visita").datetimepicker();
-            cargarDropDownList(('#diagnostico'),'id_diagnostico','descripcion',4,null);
-            cargarDropDownList(('#clklst'),'id_medicamento','descripcion',1,$('#clklst').val());
+            $.datetimepicker.setLocale('es');
+            $("#fecha").datetimepicker();
+            cargarDropDownListDescripcion(('#diagnostico'),'diagnostico');
+            cargarDropDownList(('#clklst'),'id_medicamento','descripcion',2);
 
         });
     </script>
