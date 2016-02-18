@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5a9adb31-820b-4d1b-b2cb-c650b08990f1" name="Default" comment="core and test files">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EER Diagram SysCo.mwb" afterPath="$PROJECT_DIR$/EER Diagram SysCo.mwb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EER Diagram SysCo.mwb.bak" afterPath="$PROJECT_DIR$/EER Diagram SysCo.mwb.bak" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/control-agendar-consulta.php" afterPath="$PROJECT_DIR$/pages/control-agendar-consulta.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/control-agendar-visita.php" afterPath="$PROJECT_DIR$/pages/control-agendar-visita.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/data/testinsert.php" afterPath="$PROJECT_DIR$/pages/data/testinsert.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/data/testselect.php" afterPath="$PROJECT_DIR$/pages/data/testselect.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/incapacidad-guardar.php" afterPath="$PROJECT_DIR$/pages/incapacidad-guardar.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/js/funciones.js" afterPath="$PROJECT_DIR$/pages/js/funciones.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/memo-guardar.php" afterPath="$PROJECT_DIR$/pages/memo-guardar.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sysco_db.sql" afterPath="$PROJECT_DIR$/sysco_db.sql" />
-    </list>
+    <list default="true" id="5a9adb31-820b-4d1b-b2cb-c650b08990f1" name="Default" comment="core and test files" />
     <ignored path="scproject.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -262,7 +250,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25220883" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
