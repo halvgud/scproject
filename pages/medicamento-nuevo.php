@@ -81,7 +81,7 @@ else
                             <td>
                                 <div class="form-group">
                                     <label for="costo_total">Precio :</label>
-                                    <input type="text" class="form-control" name="precio" placeholder="Precio Total" required>
+                                    <input type="number" step="any" class="form-control" name="precio" placeholder="Precio Total" required>
                                 </div>
                             </td>
                             <td>

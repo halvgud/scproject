@@ -70,12 +70,6 @@
                                         <li>
                                             <a href="medicamento-edicion.php"><i class="fa fa-pencil-square-o fa-fw"></i> Edicion</a>
                                         </li>
-                                        <li>
-                                            <a href="medicamento-modificar.php"><i class="fa fa-pencil fa-fw"></i> Actualizar</a>
-                                        </li>
-                                        <li>
-                                            <a href="medicamento-eliminar.php"><i class="fa fa-minus fa-fw"></i> Eliminar</a>
-                                        </li>
                                     </ul>
                                     <!-- /.nav-third-level -->
                                 </li>

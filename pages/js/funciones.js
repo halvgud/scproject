@@ -124,6 +124,7 @@ function notificacionSuccess(mensaje){
 		arregloConInputs['idBusqueda']=idBusqueda;
 		arregloConInputs['idTransaccion']=idTransaccion;
 		exitoso = function(result){
+			console.log(result);
 			var options = '';
 			result.forEach( function(element, index) {
 				Object.keys(element).forEach(function (key) {
@@ -137,7 +138,7 @@ function notificacionSuccess(mensaje){
 			});
 		};
 		fallo = function(datos){
-			resulta = (datos);
+			console.log(datos);
 		};
 		peticionAjax('data/testselect.php',arregloConInputs,exitoso,fallo);
 	}
@@ -156,4 +157,9 @@ function notificacionSuccess(mensaje){
 			resulta = (datos.responseText);
 		};
 		peticionAjax('data/testselect.php',datos,exitoso,fallo);
+	}
+
+
+	function deleteModal(){
+
 	}
