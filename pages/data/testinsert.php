@@ -10,6 +10,9 @@ if(isset($data) /*&& isset($data->tabla)*/ &&isset($data->tipo_transaccion)) {
     if ($data->tipo_transaccion == 1) {
         $tabla = $data->tabla;
         unset($data->tabla);
+        if(isset($data->id_usuario)){
+            $data->id_usuario = $_SESSION['id_usuario'];
+        }
         if ($db->iniciarTransaccion()) {
             if ($db->Insertar($tabla, $data)) {
                 mensajeSuccess();
@@ -134,25 +137,21 @@ if(isset($data) /*&& isset($data->tabla)*/ &&isset($data->tipo_transaccion)) {
             mensajeError(2,"Existen problemas para agendar el evento, posiblemente ocurra un confilcto con otro evento por favor seleccione una fecha sin conflictos.");
         }
     }//transaccion 3
-    else if ($data->tipo_transaccion == 4) {//insertar consulta
+    else if ($data->tipo_transaccion == 4) {//insertar medicamento nuevo
         foreach ($data as $key => $value) {
             $$key = $value;
         }
         $bandera =false;
+        $tabla = $data->tabla;
+        if($data->cantidad >0){
+            $db->seleccion('presentacion_medicamento','cantidad',null,' id_presentacion = "'.$data->id_presentacion_entrada.'"',null,null);
+            $cantidad_entrada = $db->obtenerResultado();
+            $data->cantidad = $data->cantidad*$cantidad_entrada['0']['cantidad'];
+        }
+        unset($data->tabla);
         if ($db->iniciarTransaccion()) {
-            $tabla = 'incapacidad';
-            $datosIncapacidad = array();
-            $datosIncapacidad['id_empleado'] = $incapacidad->id_empleado;
-            $datosIncapacidad['folio'] = $incapacidad->folio;
-            $datosIncapacidad['inicio'] = $incapacidad->inicio;
-            $datosIncapacidad['fin'] = $incapacidad->fin;
-            $datosIncapacidad['dias_autorizados'] = $incapacidad->dias;
-            $datosIncapacidad['id_entrega'] = $incapacidad->id_entrega;
-            $datosIncapacidad['id_clasificacion'] = $incapacidad->id_clasificacion;
-            $datosIncapacidad['id_ramo_seguro'] = $incapacidad->id_ramo_seguro;
-            $datosIncapacidad['id_usuario'] = $_SESSION['id_usuario'];
-            $datosIncapacidad['fecha_creacion'] = $incapacidad->fecha;
-            if ($db->Insertar($tabla,$datosIncapacidad)) {
+
+            if ($db->Insertar($tabla,$data)) {
                 $bandera = true;
             }else{
                 $bandera=false;
@@ -166,36 +165,6 @@ if(isset($data) /*&& isset($data->tabla)*/ &&isset($data->tipo_transaccion)) {
             mensajeError(1,$db->obtenerResultado());
         }
     }//transaccion 4
-    else if ($data->tipo_transaccion == 5) {//insertar consulta
-        foreach ($data as $key => $value) {
-            $$key = $value;
-        }
-        $bandera =false;
-        if ($db->iniciarTransaccion()) {
-            $tabla = 'memo';
-            $datosMemo = array();
-            $datosMemo['id_empleado'] = $memo->id_empleado;
-            $datosMemo['id_solicita'] = $memo->id_solicita;
-            $datosMemo['semana'] = $memo->semana;
-            $datosMemo['respetar'] = $memo->respetar;
-            $datosMemo['motivo'] = $memo->motivo;
-            $datosMemo['supervisor'] = $memo->supervisor;
-            $datosMemo['id_usuario'] = $_SESSION['id_usuario'];
-            $datosMemo['fecha_creacion'] = $memo->fecha_creacion;
-            if ($db->Insertar($tabla,$datosMemo)) {
-                $bandera = true;
-            }else{
-                $bandera=false;
-            }
-            $db->finalizarTransaccion();
-        }//iniciarTransaccion
-        if($bandera){
-            mensajeSuccess();
-        }else
-        {
-            mensajeError(1,$db->obtenerResultado());
-        }
-    }//transaccion 5
     else{
         mensajeError(2,"Numero de transaccion invalido");
     }

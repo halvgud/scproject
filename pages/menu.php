@@ -1,4 +1,4 @@
-<!-- Navigation -->
+    <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -28,6 +28,7 @@
 
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
+                    <p><img src="img/header.png" class="img-responsive" alt="Responsive image"></p>
                     <ul class="nav" id="side-menu">
                         <li>
                             <a href="index.php"><i class="fa fa-home fa-fw"></i> Home</a>
@@ -65,6 +66,9 @@
                                     <ul class="nav nav-third-level">
                                         <li>
                                             <a href="medicamento-nuevo.php"><i class="fa fa-plus fa-fw"></i> Nuevo</a>
+                                        </li>
+                                        <li>
+                                            <a href="medicamento-edicion.php"><i class="fa fa-pencil-square-o fa-fw"></i> Edicion</a>
                                         </li>
                                         <li>
                                             <a href="medicamento-modificar.php"><i class="fa fa-pencil fa-fw"></i> Actualizar</a>

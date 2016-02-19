@@ -14,7 +14,7 @@
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
-                        <p><img src="img/oficial.png" class="img-responsive" alt="Responsive image"></p>
+                        <p><img src="img/login.png" class="img-responsive" alt="Responsive image"></p>
                         <h3><i class="fa fa-user-md"></i> Por Favor Inicie Sesion</h3>
                     </div>
                     <div class="panel-body">

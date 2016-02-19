@@ -23,6 +23,9 @@ else
             <h1>Guardar Incapacidad</h1>
             <hr>
             <form id="guardarIncapacidad">
+                <input type="hidden" name="tabla" id="tabla" value="incapacidad">
+                <input type="hidden" name="id_usuario"  value="N">
+                <input type="hidden" name="tipo_transaccion"  value="1">
                 <table class="table">
                     <tbody>
                         <tr>
@@ -84,8 +87,8 @@ else
                             </td>
                             <td>
                                 <div class="form-group">
-                                    <label for="dias">Dias autorizados</label>
-                                    <input type="number" step="1" class="form-control" id="dias" name="dias" placeholder="Dias Autorizados" required>
+                                    <label for="dias_autorizados">Dias autorizados</label>
+                                    <input type="number" step="1" min="1" max="53" class="form-control" id="dias_autorizados" name="dias_autorizados" placeholder="Dias Autorizados" required>
                                 </div>
                             </td>
                         </tr>
@@ -135,11 +138,7 @@ else
             form1.forEach(function(input) {
                 datosTabla1[input.name] = input.value;
             });
-            datosTabla1['fecha'] = moment().format("YYYY/MM/DD HH:mm:ss");
-            var datosUnion = {};
-            datosUnion['tipo_transaccion'] = 4;
-            datosUnion['incapacidad'] = datosTabla1;
-            //console.log(datosUnion);
+            datosTabla1['fecha_creacion'] = moment().format("YYYY/MM/DD HH:mm:ss");
             if($("#nombre").val() === ''){
                 notificacionError('El usuario no existe por favor introdusca un id valido');
             }
@@ -158,7 +157,7 @@ else
                 fallo = function(datos){
                     notificacionError(datos.error);
                 };
-                peticionAjax('data/testinsert.php',datosUnion,exitoso,fallo);
+                peticionAjax('data/testinsert.php',datosTabla1,exitoso,fallo);
             }
             return false;
         });
@@ -190,7 +189,6 @@ else
                 console.warn(datosTabla1);
                 cargarInputs(datosTabla1,5,$("#id_empleado").val())
             }
-            $("#fecha").datetimepicker();
             cargarDropDownListDescripcion(('#id_entrega'),'incapacidad_entrega');
             cargarDropDownListDescripcion(('#id_clasificacion'),'incapacidad_clasificacion');
             cargarDropDownListDescripcion(('#id_ramo_seguro'),'incapacidad_ramo_seguro');
