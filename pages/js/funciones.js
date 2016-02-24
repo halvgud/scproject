@@ -8,7 +8,7 @@
         dataType: 'json'
 		})
 		.done(function(resultado) {
-			console.log(resultado);
+			//console.log(resultado);
 			if(successCallBack){
 				successCallBack(resultado);
 			}
@@ -124,7 +124,7 @@ function notificacionSuccess(mensaje){
 		arregloConInputs['idBusqueda']=idBusqueda;
 		arregloConInputs['idTransaccion']=idTransaccion;
 		exitoso = function(result){
-			console.log(result);
+			//console.log(result);
 			var options = '';
 			result.forEach( function(element, index) {
 				Object.keys(element).forEach(function (key) {

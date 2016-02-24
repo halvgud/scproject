@@ -11,8 +11,8 @@ if(isset($data) /*&& isset($data->tabla)*/ &&isset($data->idTransaccion)) {
     $db = new Conexion();
     $db->abrirConexion();
     if ($data->idTransaccion == 1) {
-        if(isset($data->id_usuario)){
-            $data->id_usuario = $_SESSION['id_usuario'];
+        if(isset($data->id_usuario_creacion)){
+            $data->id_usuario_creacion = $_SESSION['id_usuario'];
         }
         if ($db->iniciarTransaccion()) {
             if($db->Actualizar('medicamento','cantidad=cantidad+'.$data->cantidad,'id_medicamento='.$data->id_medicamento)){
@@ -26,8 +26,8 @@ if(isset($data) /*&& isset($data->tabla)*/ &&isset($data->idTransaccion)) {
         $db->finalizarTransaccion();
     }
     else if ($data->idTransaccion == 2) {
-        if(isset($data->id_usuario)){
-            $data->id_usuario = $_SESSION['id_usuario'];
+        if(isset($data->id_usuario_creacion)){
+            $data->id_usuario_creacion = $_SESSION['id_usuario'];
         }
         if ($db->iniciarTransaccion()) {
             if($db->Actualizar('medicamento','estado="I"','id_medicamento='.$data->id_medicamento)){
@@ -41,11 +41,41 @@ if(isset($data) /*&& isset($data->tabla)*/ &&isset($data->idTransaccion)) {
         $db->finalizarTransaccion();
     }
     else if ($data->idTransaccion == 3) {
-        if(isset($data->id_usuario)){
-            $data->id_usuario = $_SESSION['id_usuario'];
+        if(isset($data->id_usuario_creacion)){
+            $data->id_usuario_creacion = $_SESSION['id_usuario'];
         }
         if ($db->iniciarTransaccion()) {
             if($db->Actualizar('medicamento','clave="'.$data->clave.'",descripcion="'.$data->descripcion.'",precio='.$data->precio,'id_medicamento='.$data->id_medicamento)){
+                mensajeSuccess();
+            } else {
+                mensajeError(1,$db->obtenerResultado());
+            }
+        } else {
+            mensajeError(1,$db->obtenerResultado());
+        }
+        $db->finalizarTransaccion();
+    }
+    else if ($data->idTransaccion == 4) {
+        if(isset($data->id_usuario_creacion)){
+            $data->id_usuario_creacion = $_SESSION['id_usuario'];
+        }
+        if ($db->iniciarTransaccion()) {
+            if($db->Actualizar('usuario','estado="I"','id_usuario='.$data->id_usuario)){
+                mensajeSuccess();
+            } else {
+                mensajeError(1,$db->obtenerResultado());
+            }
+        } else {
+            mensajeError(1,$db->obtenerResultado());
+        }
+        $db->finalizarTransaccion();
+    }
+    else if ($data->idTransaccion == 5) {
+        if(isset($data->id_usuario_creacion)){
+            $data->id_usuario_creacion = $_SESSION['id_usuario'];
+        }
+        if ($db->iniciarTransaccion()) {
+            if($db->Actualizar('usuario','usuario="'.$data->usuario.'",password="'.$data->password.'",rol='.$data->rol,'id_usuario='.$data->id_usuario)){
                 mensajeSuccess();
             } else {
                 mensajeError(1,$db->obtenerResultado());

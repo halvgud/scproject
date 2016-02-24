@@ -10,8 +10,8 @@ if(isset($data) /*&& isset($data->tabla)*/ &&isset($data->tipo_transaccion)) {
     if ($data->tipo_transaccion == 1) {
         $tabla = $data->tabla;
         unset($data->tabla);
-        if(isset($data->id_usuario)){
-            $data->id_usuario = $_SESSION['id_usuario'];
+        if(isset($data->id_usuario_creacion)){
+            $data->id_usuario_creacion = $_SESSION['id_usuario'];
         }
         if ($db->iniciarTransaccion()) {
             if ($db->Insertar($tabla, $data)) {
@@ -35,7 +35,7 @@ if(isset($data) /*&& isset($data->tabla)*/ &&isset($data->tipo_transaccion)) {
             $datosVisita['fecha'] = $visita->fecha;
             $datosVisita['id_empleado'] = $visita->id_empleado;
             $datosVisita['id_descripcion'] = $visita->diagnostico;
-            $datosVisita['id_usuario'] = $_SESSION['id_usuario'];
+            $datosVisita['id_usuario_creacion'] = $_SESSION['id_usuario'];
             $arregloVisitaMedico= json_decode(json_encode($relacion_visita_medicamento), true);
             if ($db->Insertar($tabla1,$datosVisita)) {
                 $separado_por_comas = implode(",", $db->obtenerResultado());
@@ -95,7 +95,7 @@ if(isset($data) /*&& isset($data->tabla)*/ &&isset($data->tipo_transaccion)) {
                 $datosConsulta['fecha_fin'] = $consulta->fecha_consulta.' '.$consulta->hora_fin;
                 $datosConsulta['asistencia'] = 'N';
                 $datosConsulta['id_empleado'] = $consulta->id_empleado;
-                $datosConsulta['id_usuario'] = $_SESSION['id_usuario'];
+                $datosConsulta['id_usuario_creacion'] = $_SESSION['id_usuario'];
                 $datosConsulta['peso'] = $consulta->peso;
                 $datosConsulta['talla'] = $consulta->talla;
                 $datosConsulta['altura'] = $consulta->altura;
@@ -150,6 +150,7 @@ if(isset($data) /*&& isset($data->tabla)*/ &&isset($data->tipo_transaccion)) {
         }
         unset($data->tabla);
         if ($db->iniciarTransaccion()) {
+            $data->id_usuario_creacion = $_SESSION['id_usuario'];
 
             if ($db->Insertar($tabla,$data)) {
                 $bandera = true;

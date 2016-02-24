@@ -24,7 +24,7 @@ else
             <hr>
             <form id="guardarIncapacidad">
                 <input type="hidden" name="tabla" id="tabla" value="incapacidad">
-                <input type="hidden" name="id_usuario"  value="N">
+                <input type="hidden" name="id_usuario_creacion"  value="N">
                 <input type="hidden" name="tipo_transaccion"  value="1">
                 <table class="table">
                     <tbody>
@@ -186,7 +186,6 @@ else
                 form1.forEach(function(input) {
                     datosTabla1[input.name] = input.value;
                 });
-                console.warn(datosTabla1);
                 cargarInputs(datosTabla1,5,$("#id_empleado").val())
             }
             cargarDropDownListDescripcion(('#id_entrega'),'incapacidad_entrega');

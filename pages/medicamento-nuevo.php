@@ -25,7 +25,7 @@ else
             <form id='medicinanuevoForm' name="medicinanuevoForm">
                 <input type="hidden" name="tabla" id="tabla" value="medicamento">
                 <input type="hidden" name="estado"  value="A">
-                <input type="hidden" name="id_usuario"  value="N">
+                <input type="hidden" name="id_usuario_creacion"  value="N">
                 <input type="hidden" name="tipo_transaccion"  value="4">
                 <table class="table">
                     <tbody>
@@ -116,20 +116,19 @@ else
                 format:'Y/m/d'
             });
         });
-        exitoso = function(datos){
-            notificacionSuccess(datos.success);
-            $("#medicinanuevoForm")[0].reset();
-        };
-        fallo = function(datos){
-            notificacionError(datos.error);
-        };
         $("#medicinanuevoForm").submit(function(){
+            exitoso = function(datos){
+                notificacionSuccess(datos.success);
+                $("#medicinanuevoForm")[0].reset();
+            };
+            fallo = function(datos){
+                notificacionError(datos.error);
+            };
             var form = $("#medicinanuevoForm").serializeArray();
             var datos = {};
             form.forEach(function(input) {
                 datos[input.name] = input.value;
             });
-            console.log(datos);
             peticionAjax('data/testinsert.php',datos,exitoso,fallo);
             return false;
         });

@@ -40,10 +40,7 @@
                                     <a href="admin-alta-user.php"><i class="fa fa-plus fa-fw"></i> Alta</a>
                                 </li>
                                 <li>
-                                    <a href="admin-modificar-user.php"><i class="fa fa-pencil fa-fw"></i> Modificar</a>
-                                </li>
-                                <li>
-                                    <a href="admin-eliminar-user.php"><i class="fa fa-minus fa-fw"></i> Eliminar</a>
+                                    <a href="admin-editar-user.php"><i class="fa fa-pencil-square-o fa-fw"></i> Edicion</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
