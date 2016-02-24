@@ -1,3 +1,10 @@
+<?php
+require_once "data/Roles.php";
+require_once "data/PrivilegedUser.php";
+
+$u = PrivilegedUser::getByUsername($_SESSION["id_usuario"]);
+
+?>
     <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -33,6 +40,7 @@
                         <li>
                             <a href="index.php"><i class="fa fa-home fa-fw"></i> Home</a>
                         </li>
+<?php if ($u->hasPrivilege("agregarUsuario")) { ?>
                         <li>
                             <a href="#"><i class="fa fa-users fa-fw"></i> Administrador<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -42,9 +50,13 @@
                                 <li>
                                     <a href="admin-editar-user.php"><i class="fa fa-pencil-square-o fa-fw"></i> Edicion</a>
                                 </li>
+                                <li>
+                                    <a href="admin-permisos.php"><i class="fa fa-cogs fa-fw"></i> Permisos</a>
+                                </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+<?php } if ($u->hasPrivilege("nuevoMedicamento")) { ?>
                         <li>
                             <!-- <i class="fa fa-bar-chart-o fa-fw"></i> -->
                             <a href="#"><i class="fa fa-medkit fa-fw"></i> Control de Medicamentos<span class="fa arrow"></span></a>
@@ -73,6 +85,7 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+<?php } if ($u->hasPrivilege("paseDeSalida")) { ?>
                         <li>
                             <!-- <i class="fa fa-bar-chart-o fa-fw"></i> -->
                             <a href="#"><i class="fa fa-file-text fa-fw"></i> Expediente M&eacute;dico<span class="fa arrow"></span></a>
@@ -89,6 +102,7 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+<?php } if ($u->hasPrivilege("guardarIncapacidad")) { ?>
                         <li>
                             <!-- <i class="fa fa-bar-chart-o fa-fw"></i> -->
                             <a href="#"><i class="fa fa-ambulance fa-fw"></i> Incapacidades<span class="fa arrow"></span></a>
@@ -102,6 +116,7 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+<?php } if ($u->hasPrivilege("leerReportes")) { ?>
                         <li>
                             <!-- <i class="fa fa-bar-chart-o fa-fw"></i> -->
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i></i> Reportes<span class="fa arrow"></span></a>
@@ -145,6 +160,7 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+<?php } ?>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

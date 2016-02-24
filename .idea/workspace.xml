@@ -2,22 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5a9adb31-820b-4d1b-b2cb-c650b08990f1" name="Default" comment="core and test files">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/admin-eliminar-user.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/admin-modificar-user.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/medicamento-eliminar.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/medicamento-modificar.php" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/admin-permisos.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/data/PrivilegedUser.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EER Diagram SysCo.mwb" afterPath="$PROJECT_DIR$/EER Diagram SysCo.mwb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EER Diagram SysCo.mwb.bak" afterPath="$PROJECT_DIR$/EER Diagram SysCo.mwb.bak" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/admin-alta-user.php" afterPath="$PROJECT_DIR$/pages/admin-alta-user.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/data/test-actualizar.php" afterPath="$PROJECT_DIR$/pages/data/test-actualizar.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/data/testinsert.php" afterPath="$PROJECT_DIR$/pages/data/testinsert.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/data/testselect.php" afterPath="$PROJECT_DIR$/pages/data/testselect.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/incapacidad-guardar.php" afterPath="$PROJECT_DIR$/pages/incapacidad-guardar.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/js/funciones.js" afterPath="$PROJECT_DIR$/pages/js/funciones.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/medicamento-nuevo.php" afterPath="$PROJECT_DIR$/pages/medicamento-nuevo.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/memo-guardar.php" afterPath="$PROJECT_DIR$/pages/memo-guardar.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/expediente-revisar-consulta.php" afterPath="$PROJECT_DIR$/pages/expediente-revisar-consulta.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/menu.php" afterPath="$PROJECT_DIR$/pages/menu.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sysco_db.sql" afterPath="$PROJECT_DIR$/sysco_db.sql" />
     </list>
     <ignored path="scproject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,8 +36,20 @@
       <file leaf-file-name="menu.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/menu.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.9615384">
-              <caret line="30" column="83" selection-start-line="30" selection-start-column="83" selection-end-line="30" selection-end-column="83" />
+            <state vertical-scroll-proportion="-11.769231">
+              <caret line="39" column="28" selection-start-line="39" selection-start-column="28" selection-end-line="39" selection-end-column="28" />
+              <folding>
+                <element signature="n#style#0;n#nav#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin-permisos.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pages/admin-permisos.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.5201613">
+              <caret line="178" column="36" selection-start-line="178" selection-start-column="36" selection-end-line="178" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -52,28 +58,8 @@
       <file leaf-file-name="admin-editar-user.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/admin-editar-user.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.709091">
-              <caret line="21" column="11" selection-start-line="21" selection-start-column="11" selection-end-line="23" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="admin-alta-user.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pages/admin-alta-user.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.23991935">
-              <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="funciones.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/js/funciones.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="126" column="14" selection-start-line="126" selection-start-column="14" selection-end-line="126" selection-end-column="14" />
+            <state vertical-scroll-proportion="3.9230769">
+              <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -82,8 +68,40 @@
       <file leaf-file-name="test-actualizar.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/data/test-actualizar.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.690908">
-              <caret line="75" column="9" selection-start-line="75" selection-start-column="9" selection-end-line="75" selection-end-column="9" />
+            <state vertical-scroll-proportion="-4.0384617">
+              <caret line="91" column="12" selection-start-line="91" selection-start-column="12" selection-end-line="99" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Roles.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/data/Roles.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.5">
+              <caret line="16" column="162" selection-start-line="16" selection-start-column="162" selection-end-line="16" selection-end-column="162" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PrivilegedUser.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/data/PrivilegedUser.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.576923">
+              <caret line="38" column="79" selection-start-line="38" selection-start-column="79" selection-end-line="38" selection-end-column="79" />
+              <folding>
+                <marker date="1456297343425" expanded="true" signature="219:265" placeholder="SELECT * FRO..users..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="testinsert.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/data/testinsert.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-12.423077">
+              <caret line="65" column="8" selection-start-line="65" selection-start-column="8" selection-end-line="70" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -92,18 +110,18 @@
       <file leaf-file-name="testselect.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/data/testselect.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.7090907">
-              <caret line="83" column="79" selection-start-line="83" selection-start-column="79" selection-end-line="83" selection-end-column="79" />
+            <state vertical-scroll-proportion="-8.615385">
+              <caret line="84" column="4" selection-start-line="84" selection-start-column="4" selection-end-line="84" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="testinsert.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/data/testinsert.php">
+      <file leaf-file-name="core.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/data/core.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="22.23077">
-              <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+            <state vertical-scroll-proportion="-6.3461537">
+              <caret line="191" column="20" selection-start-line="191" selection-start-column="20" selection-end-line="191" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -131,11 +149,16 @@
         <option value="$PROJECT_DIR$/pages/js/funciones.js" />
         <option value="$PROJECT_DIR$/pages/incapacidad-guardar.php" />
         <option value="$PROJECT_DIR$/pages/memo-guardar.php" />
-        <option value="$PROJECT_DIR$/pages/menu.php" />
-        <option value="$PROJECT_DIR$/pages/data/testselect.php" />
-        <option value="$PROJECT_DIR$/pages/data/test-actualizar.php" />
         <option value="$PROJECT_DIR$/pages/admin-editar-user.php" />
         <option value="$PROJECT_DIR$/pages/admin-alta-user.php" />
+        <option value="$PROJECT_DIR$/pages/expediente-revisar-consulta.php" />
+        <option value="$PROJECT_DIR$/pages/data/roles.php" />
+        <option value="$PROJECT_DIR$/pages/data/testselect.php" />
+        <option value="$PROJECT_DIR$/pages/data/Roles.php" />
+        <option value="$PROJECT_DIR$/pages/data/test-actualizar.php" />
+        <option value="$PROJECT_DIR$/pages/data/PrivilegedUser.php" />
+        <option value="$PROJECT_DIR$/pages/menu.php" />
+        <option value="$PROJECT_DIR$/pages/admin-permisos.php" />
       </list>
     </option>
   </component>
@@ -187,7 +210,7 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
   </component>
-  <component name="RunManager" selected="PHP Script.testinsert.php">
+  <component name="RunManager" selected="JavaScript Debug.core.php">
     <configuration default="false" name="test.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/test.php">
       <method />
     </configuration>
@@ -334,37 +357,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pages/data/testselect.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="23" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/data/testinsert.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="187" column="5" selection-start-line="187" selection-start-column="5" selection-end-line="187" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/data/core.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="237" column="49" selection-start-line="237" selection-start-column="43" selection-end-line="237" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/js/funciones.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="84" column="14" selection-start-line="84" selection-start-column="14" selection-end-line="84" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/incapacidad-guardar.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -609,21 +601,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/data/core.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.769231">
-          <caret line="72" column="30" selection-start-line="72" selection-start-column="30" selection-end-line="72" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/control-agendar-consulta.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33190578">
-          <caret line="241" column="45" selection-start-line="241" selection-start-column="38" selection-end-line="241" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/control-agendar-visita.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.03640257">
@@ -642,7 +619,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/js/funciones.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.1532567">
           <caret line="126" column="14" selection-start-line="126" selection-start-column="14" selection-end-line="126" selection-end-column="14" />
           <folding />
         </state>
@@ -672,50 +649,102 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/menu.php">
+    <entry file="file://$PROJECT_DIR$/pages/admin-alta-user.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.9615384">
-          <caret line="30" column="83" selection-start-line="30" selection-start-column="83" selection-end-line="30" selection-end-column="83" />
+        <state vertical-scroll-proportion="-4.576923">
+          <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/control-agendar-consulta.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.3846154">
+          <caret line="239" column="36" selection-start-line="0" selection-start-column="0" selection-end-line="358" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/expediente-revisar-consulta.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.9615383">
+          <caret line="25" column="48" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/data/core.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.3461537">
+          <caret line="191" column="20" selection-start-line="191" selection-start-column="20" selection-end-line="191" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/data/testselect.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.7090907">
-          <caret line="83" column="79" selection-start-line="83" selection-start-column="79" selection-end-line="83" selection-end-column="79" />
+        <state vertical-scroll-proportion="-8.615385">
+          <caret line="84" column="4" selection-start-line="84" selection-start-column="4" selection-end-line="84" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/data/testinsert.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="22.23077">
-          <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+        <state vertical-scroll-proportion="-12.423077">
+          <caret line="65" column="8" selection-start-line="65" selection-start-column="8" selection-end-line="70" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/data/test-actualizar.php">
+    <entry file="file://$PROJECT_DIR$/pages/data/Roles.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.690908">
-          <caret line="75" column="9" selection-start-line="75" selection-start-column="9" selection-end-line="75" selection-end-column="9" />
+        <state vertical-scroll-proportion="-8.5">
+          <caret line="16" column="162" selection-start-line="16" selection-start-column="162" selection-end-line="16" selection-end-column="162" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/admin-editar-user.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.709091">
-          <caret line="21" column="11" selection-start-line="21" selection-start-column="11" selection-end-line="23" selection-end-column="16" />
+        <state vertical-scroll-proportion="3.9230769">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/admin-alta-user.php">
+    <entry file="file://$PROJECT_DIR$/pages/data/test-actualizar.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23991935">
-          <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+        <state vertical-scroll-proportion="-4.0384617">
+          <caret line="91" column="12" selection-start-line="91" selection-start-column="12" selection-end-line="99" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/data/PrivilegedUser.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.576923">
+          <caret line="38" column="79" selection-start-line="38" selection-start-column="79" selection-end-line="38" selection-end-column="79" />
+          <folding>
+            <marker date="1456297343425" expanded="true" signature="219:265" placeholder="SELECT * FRO..users..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/menu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.769231">
+          <caret line="39" column="28" selection-start-line="39" selection-start-column="28" selection-end-line="39" selection-end-column="28" />
+          <folding>
+            <element signature="n#style#0;n#nav#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/admin-permisos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5201613">
+          <caret line="178" column="36" selection-start-line="178" selection-start-column="36" selection-end-line="178" selection-end-column="36" />
           <folding />
         </state>
       </provider>

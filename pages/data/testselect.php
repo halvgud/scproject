@@ -1,7 +1,7 @@
 <?php
-include('lib/adodb5/adodb.inc.php'); //include del adodb
-include('core.php');
-
+require_once 'core.php';
+require_once "Roles.php";
+require_once "PrivilegedUser.php";
 
 $data = json_decode(file_get_contents('php://input'));
 if($data->idTransaccion=='1'){
@@ -80,8 +80,22 @@ else if($data->idTransaccion=='9'){//Select de los datos del empleado
 else if($data->idTransaccion=='10'){//Select de los datos del empleado
     $db = new Conexion();
     $db->abrirConexion();
-    $db->seleccion('usuario','id_usuario,usuario,password,rol'
-        ,null ,'estado="A" and usuario like "%'.$data->usuario.'%"','id_usuario asc',null);
-    print json_encode($db->obtenerResultado());
+    $db->seleccion('roles','id_rol,descripcion',null,null,'id_rol asc',null);
+    $roles = $db->obtenerResultado();
+    foreach($roles as &$rol){
+        $permisoDelRol = Role::getRolePerms($rol["id_rol"]);
+        $db->seleccion('permisos','id_permiso,descripcion',null,null,'id_permiso asc',null);
+        $permisos = $db->obtenerResultado();
+        foreach($permisos as &$permiso) {
+            if ($permisoDelRol->hasPerm($permiso['descripcion'])) {
+                $permiso['activo'] = true;
+            }
+            else{
+                $permiso['activo'] = false;
+            }
+        }
+        $rol['permisos'] = $permisos;
+    }
+    print json_encode($roles);
 }
 ?>

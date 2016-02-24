@@ -85,6 +85,30 @@ if(isset($data) /*&& isset($data->tabla)*/ &&isset($data->idTransaccion)) {
         }
         $db->finalizarTransaccion();
     }
+    else if ($data->idTransaccion == 6) {
+        $bandera =false;
+        if ($db->iniciarTransaccion()) {
+            $rol = $data->rol;
+            foreach($rol->permisos as &$permiso) {
+                $estado = $permiso->activo?'A':'I';
+                if ($db->Actualizar('relacion_rol_permiso', 'estado="'.$estado.'"', 'id_rol=' . $rol->id_rol . ' and id_permiso=' . $permiso->id_permiso)) {
+                    $bandera=true;
+                } else {
+                    $bandera=false;
+                    break;
+                }
+            }
+        } else {
+            mensajeError(1,$db->obtenerResultado());
+        }
+        if($bandera){
+            mensajeSuccess("Se ha actualizado la informacion");
+        }else
+        {
+            mensajeError(1, $db->obtenerResultado());
+        }
+        $db->finalizarTransaccion();
+    }
     else{
         mensajeError(2,"Numero de transaccion invalido");
     }
@@ -111,10 +135,16 @@ function mensajeError($error,$object){
         print json_encode($resArray);
     }
 }
-function mensajeSuccess(){
+function mensajeSuccess($mensaje){
     $resArray = array();
-    $resArray['success'] = 'Se ha actualizado el registro. ';
+    if($mensaje){
+        $resArray['success'] = $mensaje;
+    }
+    else{
+        $resArray['success'] = 'Se ha actualizado el registro. ';
+    }
     print json_encode($resArray);
 }
+
 ?>
 
