@@ -16,7 +16,7 @@ if(isset($data) /*&& isset($data->tabla)*/ &&isset($data->idTransaccion)) {
         }
         if ($db->iniciarTransaccion()) {
             if($db->Actualizar('medicamento','cantidad=cantidad+'.$data->cantidad,'id_medicamento='.$data->id_medicamento)){
-                mensajeSuccess();
+                mensajeSuccess(null);
             } else {
                 mensajeError(1,$db->obtenerResultado());
             }
@@ -31,7 +31,7 @@ if(isset($data) /*&& isset($data->tabla)*/ &&isset($data->idTransaccion)) {
         }
         if ($db->iniciarTransaccion()) {
             if($db->Actualizar('medicamento','estado="I"','id_medicamento='.$data->id_medicamento)){
-                mensajeSuccess();
+                mensajeSuccess(null);
             } else {
                 mensajeError(1,$db->obtenerResultado());
             }
@@ -46,7 +46,7 @@ if(isset($data) /*&& isset($data->tabla)*/ &&isset($data->idTransaccion)) {
         }
         if ($db->iniciarTransaccion()) {
             if($db->Actualizar('medicamento','clave="'.$data->clave.'",descripcion="'.$data->descripcion.'",precio='.$data->precio,'id_medicamento='.$data->id_medicamento)){
-                mensajeSuccess();
+                mensajeSuccess(null);
             } else {
                 mensajeError(1,$db->obtenerResultado());
             }
@@ -61,7 +61,7 @@ if(isset($data) /*&& isset($data->tabla)*/ &&isset($data->idTransaccion)) {
         }
         if ($db->iniciarTransaccion()) {
             if($db->Actualizar('usuario','estado="I"','id_usuario='.$data->id_usuario)){
-                mensajeSuccess();
+                mensajeSuccess(null);
             } else {
                 mensajeError(1,$db->obtenerResultado());
             }
@@ -76,7 +76,7 @@ if(isset($data) /*&& isset($data->tabla)*/ &&isset($data->idTransaccion)) {
         }
         if ($db->iniciarTransaccion()) {
             if($db->Actualizar('usuario','usuario="'.$data->usuario.'",password="'.$data->password.'",rol='.$data->rol,'id_usuario='.$data->id_usuario)){
-                mensajeSuccess();
+                mensajeSuccess(null);
             } else {
                 mensajeError(1,$db->obtenerResultado());
             }

@@ -1,7 +1,7 @@
 <?php
 require_once 'core.php';
 require_once "Roles.php";
-require_once "PrivilegedUser.php";
+require_once "PrivilegiosUsuario.php";
 
 $data = json_decode(file_get_contents('php://input'));
 if($data->idTransaccion=='1'){
@@ -80,6 +80,13 @@ else if($data->idTransaccion=='9'){//Select de los datos del empleado
 else if($data->idTransaccion=='10'){//Select de los datos del empleado
     $db = new Conexion();
     $db->abrirConexion();
+    $db->seleccion('usuario','u.id_usuario,u.usuario,u.password,u.rol,r.descripcion'
+        ,'u inner join roles r on u.rol=r.id_rol' ,'estado="A" and usuario like "%'.$data->usuario.'%"','id_usuario asc',null);
+    print json_encode($db->obtenerResultado());
+}
+else if($data->idTransaccion=='11'){//Select de los datos del empleado
+    $db = new Conexion();
+    $db->abrirConexion();
     $db->seleccion('roles','id_rol,descripcion',null,null,'id_rol asc',null);
     $roles = $db->obtenerResultado();
     foreach($roles as &$rol){
@@ -97,5 +104,11 @@ else if($data->idTransaccion=='10'){//Select de los datos del empleado
         $rol['permisos'] = $permisos;
     }
     print json_encode($roles);
+}
+else if($data->idTransaccion=='12'){
+    $db = new Conexion();
+    $db->abrirConexion();
+    $db->seleccion('roles','id_rol,descripcion',null,null,'id_rol asc',null);
+    print json_encode($db->obtenerResultado());
 }
 ?>
