@@ -111,4 +111,24 @@ else if($data->idTransaccion=='12'){
     $db->seleccion('roles','id_rol,descripcion',null,null,'id_rol asc',null);
     print json_encode($db->obtenerResultado());
 }
+else if($data->idTransaccion=='13'){//select de los datos de la consulta para generar los eventos del calendario
+    $db = new Conexion();
+    $db->abrirConexion();
+    $db->seleccion('consulta','c.id_consulta,c.id_empleado,e.nombre,e.paterno,e.materno,c.peso,c.talla,c.altura,c.frecuencia_respiratoria,c.frecuencia_cardiaca,c.temperatura,c.asistencia,c.fecha_inicio,c.fecha_fin'
+        ,'c inner join empleado e on c.id_empleado = e.id_empleado','c.fecha_inicio>="'.$data->fecha_inicio.'" and c.fecha_fin<="'.$data->fecha_fin.'" and c.asistencia = "N"','c.fecha_inicio asc',null);
+    ///print $db->obtenerSQL();
+    $consultas = $db->obtenerResultado();
+    foreach($consultas as &$consulta){
+        $db->seleccion('medicamento','m.id_medicamento,m.descripcion'
+            ,'m inner join relacion_consulta_medicamento rcm on m.id_medicamento = rcm.id_medicamento',
+            'rcm.id_consulta="'.$consulta['id_consulta'].'"',null,null);
+        $medicamentos = $db->obtenerResultado();
+        //var_dump($medicamentos);
+        $consulta['medicamentos'] = $medicamentos;
+        $consulta['title'] = $consulta['nombre'].' '.$consulta['paterno'].' '.$consulta['materno'];
+        $consulta['start'] = $consulta['fecha_inicio'];
+        $consulta['end'] = $consulta['fecha_fin'];
+    }
+    print json_encode($consultas);
+}
 ?>

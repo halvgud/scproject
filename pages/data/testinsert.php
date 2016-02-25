@@ -166,6 +166,34 @@ if(isset($data) /*&& isset($data->tabla)*/ &&isset($data->tipo_transaccion)) {
             mensajeError(1,$db->obtenerResultado());
         }
     }//transaccion 4
+    else if ($data->tipo_transaccion == 5) {//Guardar Expediente
+        foreach ($data as $key => $value) {
+            $$key = $value;
+        }
+        $bandera =false;
+        if ($db->iniciarTransaccion()) {
+            $tabla1 = 'expediente';
+            $tabla2 = 'consulta';
+            $expediente->id_usuario_creacion = $_SESSION['id_usuario'];
+
+            if ($db->Insertar($tabla1,$expediente)) {
+                if($db->Actualizar($tabla2,'asistencia="A"','id_consulta='.$consulta->id_consulta)){
+                    $bandera=true;
+                }else{
+                    $bandera = false;
+                }
+            }else{
+                $bandera=false;
+            }
+            $db->finalizarTransaccion();
+        }//iniciarTransaccion
+        if($bandera){
+            mensajeSuccess();
+        }else
+        {
+            mensajeError(1,$db->obtenerResultado());
+        }
+    }//transaccion 5
     else{
         mensajeError(2,"Numero de transaccion invalido");
     }
