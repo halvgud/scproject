@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-02-2016 a las 08:11:25
+-- Tiempo de generación: 25-02-2016 a las 07:55:57
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -19,7 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `sys_co_db`
 --
-DROP DATABASE `sys_co_db`;
 CREATE DATABASE IF NOT EXISTS `sys_co_db` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
 USE `sys_co_db`;
 
@@ -45,8 +44,13 @@ CREATE TABLE IF NOT EXISTS `consulta` (
   `asistencia` char(1) COLLATE utf8_spanish_ci DEFAULT NULL,
   `fecha_inicio` datetime DEFAULT NULL,
   `fecha_fin` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Truncar tablas antes de insertar `consulta`
+--
+
+TRUNCATE TABLE `consulta`;
 --
 -- Volcado de datos para la tabla `consulta`
 --
@@ -54,7 +58,11 @@ CREATE TABLE IF NOT EXISTS `consulta` (
 INSERT INTO `consulta` (`id_consulta`, `fecha`, `id_descripcion`, `id_usuario_creacion`, `id_empleado`, `peso`, `talla`, `altura`, `frecuencia_respiratoria`, `frecuencia_cardiaca`, `temperatura`, `asistencia`, `fecha_inicio`, `fecha_fin`) VALUES
 (1, '2016-02-17 22:33:11', NULL, 1, '1', '1.000', '1.000', '1.000', 1, 1, '1.000', 'N', '2016-02-18 10:15:00', '2016-02-18 10:25:00'),
 (2, '2016-02-17 22:34:27', 5, 1, '1', '1.000', '1.000', '1.000', 1, 1, '1.000', 'N', '2016-02-18 10:25:00', '2016-02-18 10:35:00'),
-(3, '2016-02-23 19:33:00', 3, 1, '1', '2.000', '2.000', '2.000', 2, 2, '2.000', 'N', '2016-02-24 18:50:00', '2016-02-24 19:00:00');
+(3, '2016-02-23 19:33:00', 3, 1, '1', '2.000', '2.000', '2.000', 2, 2, '2.000', 'A', '2016-02-24 18:50:00', '2016-02-24 19:00:00'),
+(4, '2016-02-24 21:42:46', 3, 1, '1', '1.000', '1.000', '1.000', 1, 1, '1.000', 'N', '2016-02-25 22:45:00', '2016-02-25 22:50:00'),
+(5, '2016-02-24 21:43:05', 4, 1, '1', '1.000', '1.000', '1.000', 1, 1, '1.000', 'N', '2016-02-25 22:50:00', '2016-02-25 23:00:00'),
+(6, '2016-02-24 22:07:08', 4, 1, '1', '1.000', '1.000', '1.000', 1, 1, '1.000', 'A', '2016-02-24 19:05:00', '2016-02-24 19:15:00'),
+(7, '2016-02-24 22:48:53', 3, 1, '2', '2.000', '2.000', '2.000', 2, 2, '2.000', 'A', '2016-02-24 19:20:00', '2016-02-24 19:30:00');
 
 -- --------------------------------------------------------
 
@@ -68,8 +76,13 @@ CREATE TABLE IF NOT EXISTS `descripcion` (
   `tipo` varchar(30) COLLATE utf8_spanish_ci DEFAULT NULL,
   `descripcion` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
   `estado` char(1) COLLATE utf8_spanish_ci DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Truncar tablas antes de insertar `descripcion`
+--
+
+TRUNCATE TABLE `descripcion`;
 --
 -- Volcado de datos para la tabla `descripcion`
 --
@@ -95,7 +108,18 @@ INSERT INTO `descripcion` (`id_descripcion`, `tipo`, `descripcion`, `estado`) VA
 (18, 'memo_solicita', 'Enfermeria', 'A'),
 (19, 'memo_solicita', 'Relaciones Laborales', 'A'),
 (20, 'pase_autorizacion', 'Relaciones Laborales', 'A'),
-(21, 'pase_autorizacion', 'Departamento Medico', 'A');
+(21, 'pase_autorizacion', 'Departamento Medico', 'A'),
+(22, 'expediente_ramo_seguro', 'Enfermedad General', 'A'),
+(23, 'expediente_ramo_seguro', 'Enfermedad Profesional', 'A'),
+(24, 'expediente_ramo_seguro', 'Accidente de Trabajo', 'A'),
+(25, 'expediente_ramo_seguro', 'Incidente', 'A'),
+(26, 'expediente_otras_indicaciones', 'Laboratorio', 'A'),
+(27, 'expediente_otras_indicaciones', 'Fisoterapia', 'A'),
+(28, 'expediente_otras_indicaciones', 'Cambio de Proceso(TEMPORAL)', 'A'),
+(29, 'expediente_otras_indicaciones', 'Cambio de Area(TEMPORAL)', 'A'),
+(30, 'expediente_otras_indicaciones', 'Cambio de Area(DEFINITIVO)', 'A'),
+(31, 'expediente_pase_imss', 'SI', 'A'),
+(32, 'expediente_pase_imss', 'NO', 'A');
 
 -- --------------------------------------------------------
 
@@ -118,11 +142,17 @@ CREATE TABLE IF NOT EXISTS `empleado` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
+-- Truncar tablas antes de insertar `empleado`
+--
+
+TRUNCATE TABLE `empleado`;
+--
 -- Volcado de datos para la tabla `empleado`
 --
 
 INSERT INTO `empleado` (`id_empleado`, `nombre`, `materno`, `paterno`, `sexo`, `id_turno`, `id_area`, `id_departamento`, `estado`, `nss`) VALUES
-('1', 'roberto', 'santelices', 'rivera', 'M', 6, 1, 2, 'A', '9112193816123');
+('1', 'roberto', 'santelices', 'rivera', 'M', 6, 1, 2, 'A', '9912373627183'),
+('2', 'Mariano', 'Miramontes', 'Gutierrez', 'M', 6, 1, 2, 'A', '9912373627186');
 
 -- --------------------------------------------------------
 
@@ -136,21 +166,35 @@ CREATE TABLE IF NOT EXISTS `expediente` (
   `fecha` datetime DEFAULT NULL,
   `id_usuario_creacion` int(11) DEFAULT NULL,
   `id_empleado` varchar(10) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `peso` decimal(10,0) DEFAULT NULL,
-  `talla` decimal(10,0) DEFAULT NULL,
-  `altura` decimal(10,0) DEFAULT NULL,
-  `frecuenca_respiratoria` int(11) DEFAULT NULL,
+  `peso` decimal(6,3) DEFAULT NULL,
+  `talla` decimal(6,3) DEFAULT NULL,
+  `altura` decimal(6,3) DEFAULT NULL,
+  `frecuencia_respiratoria` int(11) DEFAULT NULL,
   `frecuencia_cardiaca` int(11) DEFAULT NULL,
-  `temperatura` decimal(10,0) DEFAULT NULL,
-  `imc` decimal(10,0) DEFAULT NULL,
+  `temperatura` decimal(6,3) DEFAULT NULL,
+  `imc` decimal(6,3) DEFAULT NULL,
   `interrogatorio` varchar(1000) COLLATE utf8_spanish_ci DEFAULT NULL,
   `exploracion_fisica` varchar(1000) COLLATE utf8_spanish_ci DEFAULT NULL,
   `tratamiento` varchar(1000) COLLATE utf8_spanish_ci DEFAULT NULL,
   `diagnostico` varchar(1000) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `ramo_seguro` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `otras_indicaciones` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `pase_imss` char(1) COLLATE utf8_spanish_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `id_ramo_seguro` int(11) DEFAULT NULL,
+  `id_otras_indicaciones` int(11) DEFAULT NULL,
+  `id_pase_imss` int(11) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Truncar tablas antes de insertar `expediente`
+--
+
+TRUNCATE TABLE `expediente`;
+--
+-- Volcado de datos para la tabla `expediente`
+--
+
+INSERT INTO `expediente` (`id_expediente`, `fecha`, `id_usuario_creacion`, `id_empleado`, `peso`, `talla`, `altura`, `frecuencia_respiratoria`, `frecuencia_cardiaca`, `temperatura`, `imc`, `interrogatorio`, `exploracion_fisica`, `tratamiento`, `diagnostico`, `id_ramo_seguro`, `id_otras_indicaciones`, `id_pase_imss`) VALUES
+(1, '2016-02-24 23:39:46', 1, '1', '1.000', '1.000', NULL, NULL, 1, '1.000', '1.000', 'lo que sea', 'aksdaksdjasjdajsdklj|', 'asdaldÃ±asdÃ±asdÃ±lasldÃ±kasldlÃ±askd', '4', 22, 27, 32),
+(2, '2016-02-24 23:48:50', 1, '1', '62.500', '32.400', '175.400', 12, 12, '37.500', '24.300', 'estamos haciendo una pruebba para guardar la consulta 6 de Roberto', 'Este texto es una prueba de lo que se guardarÃ¡ en una exploraciÃ³n fisica', 'Este texto es una prueba de lo que se guardarÃ¡ en una tratamiento recomendado por el doctor', '3', 23, 28, 31),
+(3, '2016-02-24 23:51:13', 1, '2', '1.000', '1.000', '1.000', 1, 1, '1.000', '1.000', 'asdasd', '1', '1', '5', 22, 28, 31);
 
 -- --------------------------------------------------------
 
@@ -173,6 +217,11 @@ CREATE TABLE IF NOT EXISTS `incapacidad` (
   `fecha_creacion` datetime DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Truncar tablas antes de insertar `incapacidad`
+--
+
+TRUNCATE TABLE `incapacidad`;
 --
 -- Volcado de datos para la tabla `incapacidad`
 --
@@ -205,13 +254,18 @@ CREATE TABLE IF NOT EXISTS `medicamento` (
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
+-- Truncar tablas antes de insertar `medicamento`
+--
+
+TRUNCATE TABLE `medicamento`;
+--
 -- Volcado de datos para la tabla `medicamento`
 --
 
 INSERT INTO `medicamento` (`id_medicamento`, `clave`, `descripcion`, `precio`, `cantidad`, `id_presentacion_entrada`, `id_presentacion_salida`, `fecha_alta`, `fecha_baja`, `estado`, `id_usuario_creacion`) VALUES
-(1, '705', 'Diclofenaco (20 tabletas 75 mg)', '40', 298, 0, 0, '2016-02-10 00:00:00', '2016-02-10 00:00:00', 'A', 1),
+(1, '705', 'Diclofenaco (20 tabletas 75 mg)', '40', 296, 0, 0, '2016-02-10 00:00:00', '2016-02-10 00:00:00', 'A', 1),
 (2, '41251', 'ketorolaco (25 tabletas 10 mg) ', '120', 293, 0, 0, '2016-02-10 00:00:00', '2016-02-10 00:00:00', 'A', 1),
-(3, 'PA500', 'Paracetamol (20 pastillas 500 mg)', '20', 400, 0, 0, '2016-02-10 00:00:00', '2016-02-10 00:00:00', 'A', 1),
+(3, 'PA500', 'Paracetamol (20 pastillas 500 mg)', '20', 396, 0, 0, '2016-02-10 00:00:00', '2016-02-10 00:00:00', 'A', 1),
 (4, '13123123', 'test the fucking medicamento catalog', '123', 12, 0, 0, '2016-02-18 00:00:00', '2016-02-18 00:00:00', 'A', 1),
 (5, 'testingsku', 'PruebaInsercion', '120', 20, 2, 1, '2016-02-18 00:00:00', '2016-10-19 00:00:00', 'I', 1),
 (6, 'qwe', 'qwe', '12', 12, 2, 2, '2016-02-02 00:00:00', '2016-02-03 00:00:00', 'I', 1),
@@ -240,6 +294,11 @@ CREATE TABLE IF NOT EXISTS `memo` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
+-- Truncar tablas antes de insertar `memo`
+--
+
+TRUNCATE TABLE `memo`;
+--
 -- Volcado de datos para la tabla `memo`
 --
 
@@ -265,6 +324,11 @@ CREATE TABLE IF NOT EXISTS `pase_salida` (
   `fecha_creacion` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Truncar tablas antes de insertar `pase_salida`
+--
+
+TRUNCATE TABLE `pase_salida`;
 -- --------------------------------------------------------
 
 --
@@ -277,6 +341,11 @@ CREATE TABLE IF NOT EXISTS `permisos` (
   `descripcion` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Truncar tablas antes de insertar `permisos`
+--
+
+TRUNCATE TABLE `permisos`;
 --
 -- Volcado de datos para la tabla `permisos`
 --
@@ -306,8 +375,13 @@ CREATE TABLE IF NOT EXISTS `presentacion_medicamento` (
   `descripcion` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
   `cantidad` int(11) DEFAULT NULL,
   `estado` char(1) COLLATE utf8_spanish_ci DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Truncar tablas antes de insertar `presentacion_medicamento`
+--
+
+TRUNCATE TABLE `presentacion_medicamento`;
 --
 -- Volcado de datos para la tabla `presentacion_medicamento`
 --
@@ -331,13 +405,22 @@ CREATE TABLE IF NOT EXISTS `relacion_consulta_medicamento` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
+-- Truncar tablas antes de insertar `relacion_consulta_medicamento`
+--
+
+TRUNCATE TABLE `relacion_consulta_medicamento`;
+--
 -- Volcado de datos para la tabla `relacion_consulta_medicamento`
 --
 
 INSERT INTO `relacion_consulta_medicamento` (`id_consulta`, `id_medicamento`, `cantidad`) VALUES
 (1, 2, 6),
 (2, 3, 1),
-(3, 1, 1);
+(3, 1, 1),
+(4, 1, 1),
+(5, 1, 1),
+(6, 3, 1),
+(7, 3, 3);
 
 -- --------------------------------------------------------
 
@@ -353,6 +436,11 @@ CREATE TABLE IF NOT EXISTS `relacion_rol_permiso` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
+-- Truncar tablas antes de insertar `relacion_rol_permiso`
+--
+
+TRUNCATE TABLE `relacion_rol_permiso`;
+--
 -- Volcado de datos para la tabla `relacion_rol_permiso`
 --
 
@@ -360,13 +448,13 @@ INSERT INTO `relacion_rol_permiso` (`id_rol`, `id_permiso`, `estado`) VALUES
 (1, 1, 'A'),
 (1, 2, 'A'),
 (1, 3, 'A'),
-(1, 4, 'I'),
-(1, 5, 'I'),
-(1, 6, 'I'),
-(1, 7, 'I'),
-(1, 8, 'I'),
-(1, 9, 'I'),
-(1, 10, 'I'),
+(1, 4, 'A'),
+(1, 5, 'A'),
+(1, 6, 'A'),
+(1, 7, 'A'),
+(1, 8, 'A'),
+(1, 9, 'A'),
+(1, 10, 'A'),
 (1, 11, 'A'),
 (2, 1, 'I'),
 (2, 2, 'I'),
@@ -416,6 +504,11 @@ CREATE TABLE IF NOT EXISTS `relacion_visita_medicamento` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
+-- Truncar tablas antes de insertar `relacion_visita_medicamento`
+--
+
+TRUNCATE TABLE `relacion_visita_medicamento`;
+--
 -- Volcado de datos para la tabla `relacion_visita_medicamento`
 --
 
@@ -435,6 +528,11 @@ CREATE TABLE IF NOT EXISTS `roles` (
   `descripcion` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Truncar tablas antes de insertar `roles`
+--
+
+TRUNCATE TABLE `roles`;
 --
 -- Volcado de datos para la tabla `roles`
 --
@@ -461,8 +559,13 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `fecha_alta` datetime DEFAULT NULL,
   `id_usuario_creacion` int(11) DEFAULT NULL,
   `fecha_baja` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Truncar tablas antes de insertar `usuario`
+--
+
+TRUNCATE TABLE `usuario`;
 --
 -- Volcado de datos para la tabla `usuario`
 --
@@ -470,7 +573,8 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 INSERT INTO `usuario` (`id_usuario`, `usuario`, `password`, `rol`, `estado`, `fecha_alta`, `id_usuario_creacion`, `fecha_baja`) VALUES
 (1, 'rafa', '123', '1', 'A', '2016-02-08 19:54:00', 1, NULL),
 (2, 'test', 'test', '2', 'A', '2016-02-23 19:55:55', 1, NULL),
-(3, 'test2', 'test2', '3', 'A', '2016-02-23 19:58:39', 1, NULL);
+(3, 'test2', 'test2', '3', 'A', '2016-02-23 19:58:39', 1, NULL),
+(4, 'admin', 'admin', '4', 'A', '2016-02-24 21:25:34', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -487,6 +591,11 @@ CREATE TABLE IF NOT EXISTS `visita` (
   `id_descripcion` int(11) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Truncar tablas antes de insertar `visita`
+--
+
+TRUNCATE TABLE `visita`;
 --
 -- Volcado de datos para la tabla `visita`
 --
@@ -604,17 +713,17 @@ ALTER TABLE `visita`
 -- AUTO_INCREMENT de la tabla `consulta`
 --
 ALTER TABLE `consulta`
-  MODIFY `id_consulta` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id_consulta` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `descripcion`
 --
 ALTER TABLE `descripcion`
-  MODIFY `id_descripcion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
+  MODIFY `id_descripcion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT de la tabla `expediente`
 --
 ALTER TABLE `expediente`
-  MODIFY `id_expediente` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_expediente` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `incapacidad`
 --
@@ -639,12 +748,12 @@ ALTER TABLE `pase_salida`
 -- AUTO_INCREMENT de la tabla `presentacion_medicamento`
 --
 ALTER TABLE `presentacion_medicamento`
-  MODIFY `id_presentacion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id_presentacion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `visita`
 --
