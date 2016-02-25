@@ -83,11 +83,11 @@ else if($data->idTransaccion=='10'){//Select de los datos del empleado
     $db->seleccion('roles','id_rol,descripcion',null,null,'id_rol asc',null);
     $roles = $db->obtenerResultado();
     foreach($roles as &$rol){
-        $permisoDelRol = Role::getRolePerms($rol["id_rol"]);
+        $permisoDelRol = Roles::obtenerPermisosDelRol($rol["id_rol"]);
         $db->seleccion('permisos','id_permiso,descripcion',null,null,'id_permiso asc',null);
         $permisos = $db->obtenerResultado();
         foreach($permisos as &$permiso) {
-            if ($permisoDelRol->hasPerm($permiso['descripcion'])) {
+            if ($permisoDelRol->tienePermiso($permiso['descripcion'])) {
                 $permiso['activo'] = true;
             }
             else{
