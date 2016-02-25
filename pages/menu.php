@@ -1,6 +1,6 @@
 <?php
 require_once "data/Roles.php";
-require_once "data/PrivilegedUser.php";
+require_once "data/PrivilegiosUsuario.php";
 
 $u = PrivilegiosUsuario::obtenerPorUsuario($_SESSION["id_usuario"]);
 

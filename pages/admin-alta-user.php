@@ -39,7 +39,9 @@ else
                   </div>
                   <div class="form-group">
                     <label for="rol">Rol</label>
-                    <input type="text" class="form-control" id="rol" name="rol" maxlength="1" size = "1" required>
+                    <select class="form-control" id="rol" name="rol" required>
+                        <option value="">Seleccione un Rol</option>
+                    </select>
                   </div>
                   <button type="submit" class="btn btn-outline btn-success"><i class="fa fa-floppy-o"></i> Guardar</button>
                 </form>
@@ -100,9 +102,7 @@ else
                 console.warn(datosTabla1);
                 cargarInputs(datosTabla1,5,$("#id_empleado").val())
             }
-            cargarDropDownListDescripcion(('#id_entrega'),'incapacidad_entrega');
-            cargarDropDownListDescripcion(('#id_clasificacion'),'incapacidad_clasificacion');
-            cargarDropDownListDescripcion(('#id_ramo_seguro'),'incapacidad_ramo_seguro');
+            cargarDropDownList(("#rol"),'id_rol','descripcion',12);
         });
     </script>
 </body>

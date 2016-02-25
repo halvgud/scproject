@@ -76,6 +76,7 @@ else
                 $("#resultados").hide();
                 var tbody = $("#resultados tbody").empty();
                 exitoso = function(result){
+                    console.log(result);
                     var find = false;
                     result.forEach( function(element, index) {
                         find = true;
@@ -84,7 +85,7 @@ else
                         var id_usuario = element['id_usuario'];
                         var usuario = element['usuario'];
                         var password = element['password'];
-                        var rol = element['rol'];
+                        var descripcionRol = element['descripcion'];
 
                         var editar = $("<button></button>",{class:'btn btn-primary'});
                         var icono_editar = $("<i></i>",{class:'fa fa-pencil-square-o'});
@@ -103,7 +104,7 @@ else
 
                         agregarTDaTR(tr,usuario);
                         agregarTDaTR(tr,password);
-                        agregarTDaTR(tr,rol);
+                        agregarTDaTR(tr,descripcionRol);
                         agregarTDaTR(tr,editar);
                         agregarTDaTR(tr,eliminar);
                         $(tbody).append(tr);
@@ -172,11 +173,15 @@ else
                 $contenido.append($form_group);
                 var $form_group = $("<div></div>",{class:'form-group'});
                 var label = $("<label></label>",{for:'rol',text:'Rol'});
-                var rol = $("<input>",{name:'rol',value:element['rol'],type:'number',class:'form-control'});
+                //var rol = $("<input>",{name:'rol',value:element['rol'],type:'number',class:'form-control'});
+                var option = $("<option></option>",{name:'empty',text:'Seleccione un Rol',value:''});
+                var rol = $("<select></select>",{name:'rol',class:'form-control'});
+                $(rol).append(option);
+                $(rol).val('');
                 $form_group.append(label);
                 $form_group.append(rol);
                 $contenido.append($form_group);
-
+                cargarDropDownList((rol),'id_rol','descripcion',12);
 
                 BootstrapDialog.show({
                     title: 'Esta a punto de modificat los siguientes datos',
@@ -184,6 +189,14 @@ else
                         return $contenido;
                     },
                     type: BootstrapDialog.TYPE_WARNING,
+                    onshown:function(){
+                        console.log($(rol).val());
+                        $(rol).val(element['rol']);
+                        //$(rol).val(2);
+                        //$(rol).find('option[value='+element['rol']+']').attr('selected','selected');
+                        console.log(element['rol'],rol);
+                        console.log($(rol).val());
+                    },
                     buttons: [{
                         id: 'btn-1',
                         label: 'Cancelar',

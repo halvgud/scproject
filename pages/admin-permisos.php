@@ -43,7 +43,7 @@ else
             //funcion engargada de cargar informacion en los lugares donde se mete informacion del empleado
             function cargarTabla() {
                 var arregloConInputs = {};
-                arregloConInputs['idTransaccion']=10;
+                arregloConInputs['idTransaccion']=11;
                 $("#resultados").hide();
                 var tbody = $("#resultados tbody").empty();
                 exitoso = function(result){
