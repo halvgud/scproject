@@ -131,4 +131,31 @@ else if($data->idTransaccion=='13'){//select de los datos de la consulta para ge
     }
     print json_encode($consultas);
 }
+else if($data->idTransaccion=='14'){//Select para traerse las visitas en un rango de fechas
+    $db = new Conexion();
+    $db->abrirConexion();
+    $db->seleccion('visita','v.id_visita,v.fecha, v.id_empleado, v.id_usuario_creacion, v.id_descripcion,'.
+        'upper(d.descripcion),upper(concat(e.nombre," ",e.paterno," ",e.materno)) nombre,'.
+        't.descripcion turno,dep.descripcion departamento, a.descripcion area'
+        ,'v inner join descripcion d on v.id_descripcion = d.id_descripcion '.
+        'inner join empleado e on e.id_empleado = v.id_empleado '.
+        'inner join descripcion t on e.id_turno = t.id_descripcion '.
+        'inner join descripcion dep on e.id_departamento = dep.id_descripcion '.
+        'inner join descripcion a on e.id_area = a.id_descripcion',
+        'v.fecha>="'.$data->fecha_inicio.'" and v.fecha<="'.$data->fecha_fin.'"','v.fecha asc',null);
+    ///print $db->obtenerSQL();
+    $visitas = $db->obtenerResultado();
+    foreach($visitas as &$visita){
+        $db->seleccion('medicamento','m.id_medicamento,m.descripcion'
+            ,'m inner join relacion_visita_medicamento rvm on m.id_medicamento = rvm.id_medicamento',
+            'rvm.id_visita="'.$visita['id_visita'].'"',null,null);
+        $medicamentos = $db->obtenerResultado();
+        //var_dump($medicamentos);
+        $visita['medicamentos'] = $medicamentos;
+        /*$visita['title'] = $visita['nombre'].' '.$consulta['paterno'].' '.$consulta['materno'];
+        $visita['start'] = $visita['fecha_inicio'];
+        $visita['end'] = $visita['fecha_fin'];*/
+    }
+    print json_encode($visitas);
+}
 ?>

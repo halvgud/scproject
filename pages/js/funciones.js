@@ -160,6 +160,19 @@ function notificacionSuccess(mensaje){
 	}
 
 
-	function deleteModal(){
-
+	function agregarTDaTR (tr,element,cssClass){
+		if(cssClass)
+			var td = $("<td></td>",{class:cssClass});
+		else
+			var td = $("<td></td>");
+		$(td).append(element);
+		$(tr).append(td);
+	}
+	function agregarTHaTR (tr,element,cssClass){
+		if(cssClass)
+			var th = $("<th></th>",{class:cssClass});
+		else
+			var th = $("<th></th>");
+		$(th).append(element);
+		$(tr).append(th);
 	}
