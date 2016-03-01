@@ -124,22 +124,26 @@ function notificacionSuccess(mensaje){
 		arregloConInputs['idBusqueda']=idBusqueda;
 		arregloConInputs['idTransaccion']=idTransaccion;
 		exitoso = function(result){
-			//console.log(result);
-			var options = '';
-			result.forEach( function(element, index) {
+			try{
+			result.forEach( function(element) {
 				Object.keys(element).forEach(function (key) {
 					var value = element[key];
 					try {
 						$("#"+key).val(value);
 					} catch(e) {
-						console.error(e);
+						throw e;
 					}
 				});
 			});
+			}
+			catch(e){
+				console.error(e);
+			}
 		};
 		fallo = function(datos){
 			console.log(datos);
 		};
+
 		peticionAjax('data/testselect.php',arregloConInputs,exitoso,fallo);
 	}
 
@@ -157,6 +161,9 @@ function notificacionSuccess(mensaje){
 			resulta = (datos.responseText);
 		};
 		peticionAjax('data/testselect.php',datos,exitoso,fallo);
+	}
+	function generarPDF(){
+
 	}
 
 
