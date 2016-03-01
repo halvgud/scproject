@@ -10,6 +10,7 @@ $data->fecha_fin = $_POST['fecha_fin'];
 $visitas = obtenerSelect($data);
 //var_dump($visitas );
 $tabla = '';
+
 foreach ($visitas as &$visita) {
     $tabla .= '<tr><td>'.$visita['id_empleado'].'</td>'
     .'<td>'.$visita['nombre'].'</td>'
@@ -20,9 +21,14 @@ foreach ($visitas as &$visita) {
     foreach($visita['medicamentos'] as $medicamento){
         $tabla .= $medicamento['descripcion'].'<br>';
     }
-    $tabla .= '</td><td>Something</td></tr>';
+    $tabla .= '</td></tr>';
 }
-$tabla = '<table class="bpmTopnTail" border="1"><thead></thead><tbody>'.$tabla.'</tbody></table>';
+$tabla = '<table class="bpmTopnTail" border="1"><thead><tr><th>ID EMPLEADO	EMPLEADO</th><th>Nombre</th>
+<th>TURNO</th>
+<th>AREA</th>
+<th>DEPARTAMENTO</th>
+<th>MEDICAMENTO(S)</th>
+<th>FECHA</th></tr></thead><tbody>'.$tabla.'</tbody></table>';
 $html = '
 <h1>mPDF</h1>
 <h2>Tables</h2>

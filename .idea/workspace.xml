@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5a9adb31-820b-4d1b-b2cb-c650b08990f1" name="Default" comment="core and test files">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/pdf_visita_rango_fecha.php" afterPath="$PROJECT_DIR$/pages/pdf_visita_rango_fecha.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/reportes-visita-rango-fecha.php" afterPath="$PROJECT_DIR$/pages/reportes-visita-rango-fecha.php" />
     </list>
     <ignored path="scproject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -71,9 +70,13 @@
       <file leaf-file-name="pdf_visita_rango_fecha.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pages/pdf_visita_rango_fecha.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.48122066">
-              <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.5586854">
+              <caret line="23" column="20" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
+              <folding>
+                <marker date="1456814308494" expanded="true" signature="735:926" placeholder="..." />
+                <marker date="1456814308494" expanded="true" signature="742:893" placeholder="..." />
+                <marker date="1456814308494" expanded="true" signature="746:885" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -112,8 +115,11 @@
         <entry file="file://$PROJECT_DIR$/pages/js/funciones.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="174" column="34" selection-start-line="174" selection-start-column="34" selection-end-line="174" selection-end-column="34" />
-              <folding />
+              <caret line="180" column="12" selection-start-line="180" selection-start-column="12" selection-end-line="180" selection-end-column="12" />
+              <folding>
+                <marker date="1456813578825" expanded="true" signature="2787:2918" placeholder="{...}" />
+                <marker date="1456813578825" expanded="true" signature="2913:2918" placeholder="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -356,7 +362,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/pages/pdf_visita_rango_fecha.php</url>
-          <line>32</line>
+          <line>38</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -374,7 +380,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="33" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
-          <folding />
+          <folding>
+            <marker date="1456813578825" expanded="true" signature="2787:2918" placeholder="{...}" />
+            <marker date="1456813578825" expanded="true" signature="2913:2918" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -426,7 +435,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="175" column="28" selection-start-line="175" selection-start-column="28" selection-end-line="175" selection-end-column="28" />
-          <folding />
+          <folding>
+            <marker date="1456813578825" expanded="true" signature="2787:2918" placeholder="{...}" />
+            <marker date="1456813578825" expanded="true" signature="2913:2918" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -478,7 +490,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="136" column="1" selection-start-line="136" selection-start-column="1" selection-end-line="136" selection-end-column="1" />
-          <folding />
+          <folding>
+            <marker date="1456813578825" expanded="true" signature="2787:2918" placeholder="{...}" />
+            <marker date="1456813578825" expanded="true" signature="2913:2918" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -685,8 +700,11 @@
     <entry file="file://$PROJECT_DIR$/pages/js/funciones.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="174" column="34" selection-start-line="174" selection-start-column="34" selection-end-line="174" selection-end-column="34" />
-          <folding />
+          <caret line="180" column="12" selection-start-line="180" selection-start-column="12" selection-end-line="180" selection-end-column="12" />
+          <folding>
+            <marker date="1456813578825" expanded="true" signature="2787:2918" placeholder="{...}" />
+            <marker date="1456813578825" expanded="true" signature="2913:2918" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -748,9 +766,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/pdf_visita_rango_fecha.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48122066">
-          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.5586854">
+          <caret line="23" column="20" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
+          <folding>
+            <marker date="1456814308494" expanded="true" signature="735:926" placeholder="..." />
+            <marker date="1456814308494" expanded="true" signature="742:893" placeholder="..." />
+            <marker date="1456814308494" expanded="true" signature="746:885" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
