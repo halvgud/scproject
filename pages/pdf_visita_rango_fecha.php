@@ -1,10 +1,12 @@
 <?php
 
+
+
 require_once 'data/testselect.php';
 $data =  new ArrayObject();
 $data->idTransaccion = '14';
-$data->fecha_inicio = '2016/02/01';
-$data->fecha_fin = '2016/02/29';
+$data->fecha_inicio = $_POST['fecha_inicio'];
+$data->fecha_fin = $_POST['fecha_fin'];
 $visitas = obtenerSelect($data);
 //var_dump($visitas );
 $tabla = '';
@@ -48,7 +50,7 @@ $stylesheet = file_get_contents('mpdfstyletables.css');
 $mpdf->WriteHTML($stylesheet,1);	// The parameter 1 tells that this is css/style only and no body/html/text
 
 $mpdf->WriteHTML($html,2);
-//var_dump($html);
+
 
 $mpdf->Output('mpdf.pdf','I');
 exit;

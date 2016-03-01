@@ -73,8 +73,8 @@ else
                 </tfoot>
             </table>
             <form id="abrirPdf" action="pdf_visita_rango_fecha.php" method="post" target="_blank">
-                <input id="fecha_inicio" name="fecha_inicio" type="hidden" value="default">
-                <input id="fecha_fin" name="fecha_fin" type="hidden" value="default">
+                <input id="fecha_inicio" name="fecha_inicio" type="hidden" value="">
+                <input id="fecha_fin" name="fecha_fin" type="hidden" value="">
             </form>
         </div>
         <!-- /#page-wrapper -->
@@ -127,7 +127,7 @@ else
                                 titleAttr: 'Genera un archivo PDF',
                                 className:'btn btn-danger',
                                 action: function ( e, dt, node, config ) {
-                                    alert( 'Button activated' );
+                                    $("#abrirPdf").submit();
                                 }
                             }
                         ],
@@ -174,6 +174,8 @@ else
                      //$("#resultados table").DataTable();*/
                     if(datos.success)
                         notificacionSuccess(datos.success);
+                    $("#abrirPdf #fecha_inicio").val($("#reporteVisitas #fecha_inicio").val());
+                    $("#abrirPdf #fecha_fin").val($("#reporteVisitas #fecha_fin").val());
                     $("#reporteVisitas")[0].reset();
                 };
                 fallo = function(datos){

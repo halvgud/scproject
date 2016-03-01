@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a9adb31-820b-4d1b-b2cb-c650b08990f1" name="Default" comment="core and test files">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/pdf_visita_rango_fecha.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/data/testselect.php" afterPath="$PROJECT_DIR$/pages/data/testselect.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/footer-comun.html" afterPath="$PROJECT_DIR$/pages/footer-comun.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/header-comun.html" afterPath="$PROJECT_DIR$/pages/header-comun.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/reportes-consulta-rango-fecha.php" afterPath="$PROJECT_DIR$/pages/reportes-consulta-rango-fecha.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/pdf_visita_rango_fecha.php" afterPath="$PROJECT_DIR$/pages/pdf_visita_rango_fecha.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/reportes-visita-rango-fecha.php" afterPath="$PROJECT_DIR$/pages/reportes-visita-rango-fecha.php" />
     </list>
     <ignored path="scproject.iws" />
@@ -66,8 +61,8 @@
       <file leaf-file-name="reportes-visita-rango-fecha.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/reportes-visita-rango-fecha.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.6923077">
-              <caret line="74" column="40" selection-start-line="74" selection-start-column="40" selection-end-line="74" selection-end-column="66" />
+            <state vertical-scroll-proportion="-3.7692308">
+              <caret line="129" column="36" selection-start-line="129" selection-start-column="36" selection-end-line="129" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -76,8 +71,8 @@
       <file leaf-file-name="pdf_visita_rango_fecha.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pages/pdf_visita_rango_fecha.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.2989011">
-              <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.48122066">
+              <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -126,8 +121,8 @@
       <file leaf-file-name="testselect.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/data/testselect.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="25.108435">
-              <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
+            <state vertical-scroll-proportion="-1.0240964">
+              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -169,8 +164,8 @@
         <option value="$PROJECT_DIR$/pages/header-comun.html" />
         <option value="$PROJECT_DIR$/pages/footer-comun.html" />
         <option value="$PROJECT_DIR$/pages/reportes-consulta-rango-fecha.php" />
-        <option value="$PROJECT_DIR$/pages/reportes-visita-rango-fecha.php" />
         <option value="$PROJECT_DIR$/pages/data/testselect.php" />
+        <option value="$PROJECT_DIR$/pages/reportes-visita-rango-fecha.php" />
         <option value="$PROJECT_DIR$/pages/pdf_visita_rango_fecha.php" />
       </list>
     </option>
@@ -308,7 +303,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25220883" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -361,7 +356,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/pages/pdf_visita_rango_fecha.php</url>
-          <line>30</line>
+          <line>32</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -719,14 +714,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/reportes-visita-rango-fecha.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.6923077">
-          <caret line="74" column="40" selection-start-line="74" selection-start-column="40" selection-end-line="74" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/header-comun.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.230769">
@@ -745,16 +732,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/data/testselect.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="25.108435">
-          <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
+        <state vertical-scroll-proportion="-1.0240964">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/reportes-visita-rango-fecha.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.7692308">
+          <caret line="129" column="36" selection-start-line="129" selection-start-column="36" selection-end-line="129" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/pdf_visita_rango_fecha.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.2989011">
-          <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
+        <state vertical-scroll-proportion="0.48122066">
+          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
           <folding />
         </state>
       </provider>
