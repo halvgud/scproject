@@ -116,9 +116,17 @@ else
                     $('#example').DataTable( {
                         destroy: true,
                         data: datos,
+                        dom: 'Bfrtip',
                         buttons: [
-                            'copy', 'excel', 'pdf'
-                        ]
+                            {
+                                text: '<i class="fa fa-file-pdf-o"></i> PDF',
+                                titleAttr: 'Genera un archivo PDF',
+                                className:'btn btn-danger',
+                                action: function ( e, dt, node, config ) {
+                                    alert( 'Button activated' );
+                                }
+                            }
+                        ],
                         columns: [
                             { "data": "id_empleado" },
                             { "data": "nombre" },
