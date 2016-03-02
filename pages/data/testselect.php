@@ -15,7 +15,7 @@ function obtenerSelect($data)
         $db->seleccion('descripcion', 'id_descripcion,descripcion', null, 'estado="A" and tipo="' . $data->tipo . '"', 'id_descripcion asc', null);
         return ($db->obtenerResultado());
     }
-    if ($data->idTransaccion == '2') {
+    else if ($data->idTransaccion == '2') {
         $db = new Conexion();
         $db->abrirConexion();
         $db->seleccion('medicamento', 'id_medicamento,descripcion', null, 'estado="A"', 'id_medicamento asc', null);
@@ -31,12 +31,12 @@ function obtenerSelect($data)
         $db->seleccion('presentacion_medicamento', 'id_presentacion,descripcion', null, 'estado="A"', 'id_presentacion asc', null);
         return ($db->obtenerResultado());
     } else if ($data->idTransaccion == '5') {//Select de los datos del empleado
-        $db = new Conexion();
-        $db->abrirConexion();
-        $db->seleccion('empleado', 'e.id_empleado,concat(e.nombre," ",e.paterno," ",e.materno) nombre,t.descripcion turno, a.descripcion area, d.descripcion departamento, e.nss'
-            , 'e inner join descripcion t on e.id_turno = t.id_descripcion inner join descripcion a on e.id_area = a.id_descripcion inner join descripcion d on e.id_departamento = d.id_descripcion'
-            , 'e.id_empleado="' . $data->idBusqueda . '" and e.estado="A"', 'e.id_empleado asc', null);
-        return ($db->obtenerResultado());
+            $db = new Conexion();
+            $db->abrirConexion();
+            $db->seleccion('empleado', 'e.id_empleado,concat(e.nombre," ",e.paterno," ",e.materno) nombre,t.descripcion turno, a.descripcion area, d.descripcion departamento, e.nss'
+                , 'e inner join descripcion t on e.id_turno = t.id_descripcion inner join descripcion a on e.id_area = a.id_descripcion inner join descripcion d on e.id_departamento = d.id_descripcion'
+                , 'e.id_empleado="' . $data->idBusqueda . '" and e.estado="A"', 'e.id_empleado asc', null);
+            return ($db->obtenerResultado());
     } else if ($data->idTransaccion == '6') {//select de los datos de la consulta para generar los eventos del calendario
         $db = new Conexion();
         $db->abrirConexion();
@@ -149,6 +149,11 @@ function obtenerSelect($data)
             $visita['end'] = $visita['fecha_fin'];*/
         }
         return ($visitas);
+    }else if ($data->idTransaccion == '15') {
+        $db = new Conexion();
+        $db->abrirConexion();
+        $db->seleccion('pase_salida', "ps.fecha_creacion as fecha,concat(e.nombre,' ',materno,' ',paterno) as nombre_completo,e.id_empleado,de.descripcion as turno,de2.descripcion as departamento,ps.motivo as motivo","ps inner join empleado e on (e.id_empleado = ps.id_empleado) inner join descripcion de on (de.tipo = 'turno' and e.id_turno = de.id_descripcion) inner join descripcion de2 on (de2.tipo='depatrtamento' and de2.id_descripcion=e.id_departamento)", null, 'id_pase desc', '1');
+        return ($db->obtenerResultado());
     }
-}
+}//function
 ?>
