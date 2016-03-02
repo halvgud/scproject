@@ -23,19 +23,20 @@ foreach ($visitas as &$visita) {
     }
     $tabla .= '</td></tr>';
 }
-$tabla = '<table class="bpmTopnTail" border="1"><thead><tr><th>ID EMPLEADO	EMPLEADO</th><th>Nombre</th>
+$tabla = '<table class="bpmTopnTail" border="1" style="margin:0 auto;"><thead><tr class="headerrow"><th>ID EMPLEADO</th><th>NOMBRE</th>
 <th>TURNO</th>
 <th>AREA</th>
 <th>DEPARTAMENTO</th>
 <th>MEDICAMENTO(S)</th>
 <th>FECHA</th></tr></thead><tbody>'.$tabla.'</tbody></table>';
 $html = '
-<h1>mPDF</h1>
-<h2>Tables</h2>
-<h3>CSS Styles</h3>
+<div style="text-align: right; position: fixed; top: 0pt;right: 20pt;"><img src="img/header.png" style="height 80pt; width: 110pt;" alt="Cardinal Healt"></div>
+<h1>Cirpro de Delicias</h1>
+<h2>Visitas de '.$_POST['fecha_inicio_mostrar'].' a '.$_POST['fecha_fin_mostrar'].' </h2>
 
-<h4>Reporte de Visitas</h4>'
-.$tabla.'
+<h4>Reporte de Visitas</h4>
+ <div style="text-align: center;">'
+.$tabla.'</div>
 ';
 
 //==============================================================
@@ -58,6 +59,7 @@ $mpdf->WriteHTML($stylesheet,1);	// The parameter 1 tells that this is css/style
 $mpdf->WriteHTML($html,2);
 
 
+//print $html;
 $mpdf->Output('mpdf.pdf','I');
 exit;
 //==============================================================

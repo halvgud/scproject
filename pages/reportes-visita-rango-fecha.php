@@ -75,6 +75,8 @@ else
             <form id="abrirPdf" action="pdf_visita_rango_fecha.php" method="post" target="_blank">
                 <input id="fecha_inicio" name="fecha_inicio" type="hidden" value="">
                 <input id="fecha_fin" name="fecha_fin" type="hidden" value="">
+                <input id="fecha_inicio_mostrar" name="fecha_inicio_mostrar" type="hidden" value="">
+                <input id="fecha_fin_mostrar" name="fecha_fin_mostrar" type="hidden" value="">
             </form>
         </div>
         <!-- /#page-wrapper -->
@@ -176,6 +178,11 @@ else
                         notificacionSuccess(datos.success);
                     $("#abrirPdf #fecha_inicio").val($("#reporteVisitas #fecha_inicio").val());
                     $("#abrirPdf #fecha_fin").val($("#reporteVisitas #fecha_fin").val());
+                    moment.locale('es');
+                    var inicio = moment($("#reporteVisitas #fecha_inicio").val(),'YYYY/MM/DD');
+                    var fin = moment($("#reporteVisitas #fecha_fin").val(),'YYYY/MM/DD');
+                    $("#abrirPdf #fecha_inicio_mostrar").val(moment(inicio).format('LL'));
+                    $("#abrirPdf #fecha_fin_mostrar").val(moment(fin).format('LL'));
                     $("#reporteVisitas")[0].reset();
                 };
                 fallo = function(datos){
