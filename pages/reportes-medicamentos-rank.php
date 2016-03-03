@@ -20,7 +20,7 @@ else
         <?php require_once('menu.php'); ?>
         <div id="page-wrapper">
             <br/>
-            <h1>Reporte Visitas Guardadas</h1>
+            <h1>Reporte Rango Medicamentos</h1>
             <hr>
             <div class="col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4">
                 <form id="reporteMedicamentosRank">
@@ -123,6 +123,7 @@ else
                                 }
                             }
                         ],
+                        "order": [[ 1, "desc" ]],
                         columns: [
                             { "data": "descripcion" },
                             { "data": "total" },

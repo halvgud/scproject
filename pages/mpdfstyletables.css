@@ -51,9 +51,8 @@ body { font-family: 'Trebuchet MS'; font-size: 11pt;  }
 
 		h1 {	font-weight: normal; font-size: 26pt; color: #090909; font-style: italic;
 			font-family: 'FreeSerifItalic'; margin-top: 18pt; margin-bottom: 6pt; 
-			/*border-top: 0.075cm solid #000000; border-bottom: 0.075cm solid #000000; */
 			text-align: ; page-break-after:avoid; }
-		h2 {	font-weight: bold; font-size: 12pt; color: #000066; 
+		h2 {	font-weight: normal; font-size: 12pt; color: #000000; 
 			font-family: 'Trebuchet MS'; margin-top: 6pt; margin-bottom: 6pt; 
 			border-top: 0.07cm solid #000000; border-bottom: 0.07cm solid #000000; 
 			text-align: ;  text-transform:uppercase; page-break-after:avoid; }

@@ -1427,13 +1427,13 @@ function StartProgressBarOutput($mode=1) {
 			</div>
 			<span class="code" id="box1"></span>
 			</td><td style="width: 50%;">
-			<span class="barheading">Elementos de tamaño automatico</span> <br/>
+			<span class="barheading">Autosizing elements</span> <br/>
 			<div class="progressBar">
 			<div id="element4"  class="innerBar">&nbsp;</div>
 			</div>
 			<span class="code" id="box4"></span>
 			<br/><br/>
-			<span class="barheading">Escribiendo tablas</span> <br/>
+			<span class="barheading">Writing Tables</span> <br/>
 			<div class="progressBar">
 			<div id="element7"  class="innerBar">&nbsp;</div>
 			</div>
@@ -1442,8 +1442,7 @@ function StartProgressBarOutput($mode=1) {
 			<tr><td><br /><br /></td><td></td></tr>
 			<tr><td style="width: 50%;"> 
 	'; }
-	//echo '			<span class="barheading">Writing PDF file</span> <br/>
-	echo '			<span class="barheading">Escribiendo archivo PDF</span> <br/>
+	echo '			<span class="barheading">Writing PDF file</span> <br/>
 			<div class="progressBar">
 			<div id="element2"  class="innerBar">&nbsp;</div>
 			</div>
@@ -1451,13 +1450,13 @@ function StartProgressBarOutput($mode=1) {
 	   ';
 	   if ($this->progressBar==2) { echo '
 			</td><td style="width: 50%;">
-			<span class="barheading">Uso de memoria</span> <br/>
+			<span class="barheading">Memory usage</span> <br/>
 			<div class="progressBar">
 			<div id="element5"  class="innerBar">&nbsp;</div>
 			</div>
 			<span id="box5">0</span> '.ini_get("memory_limit").'<br />
 			<br/><br/>
-			<span class="barheading">Uso de memoria (peak)</span> <br/>
+			<span class="barheading">Memory usage (peak)</span> <br/>
 			<div class="progressBar">
 			<div id="element6"  class="innerBar">&nbsp;</div>
 			</div>
@@ -1756,7 +1755,7 @@ function Close() {
 	if (isset($this->useLang)) { $this->Error('$mpdf->useLang is depracated as of mPDF 6. Please use $mpdf->autoLangToFont instead.'); }
 	if (isset($this->useAutoFont)) { $this->Error('$mpdf->useAutoFont is depracated. Please use $mpdf->autoScriptToLang instead.'); }
 
-	if ($this->progressBar) { $this->UpdateProgressBar(2,'2','Cerrando la ultima pagina'); }	// *PROGRESS-BAR*
+	if ($this->progressBar) { $this->UpdateProgressBar(2,'2','Closing last page'); }	// *PROGRESS-BAR*
 	//Terminate document
 	if($this->state==3)	return;
 	if($this->page==0) $this->AddPage($this->CurOrientation);
@@ -8179,9 +8178,9 @@ function Output($name='',$dest='')
 		echo '<div>Generated in '.sprintf('%.2F',(microtime(true) - $this->time0)).' seconds</div>';
 	}
 	//Finish document if necessary
-	if ($this->progressBar) { $this->UpdateProgressBar(1,'100','Terminado'); }	// *PROGRESS-BAR*
+	if ($this->progressBar) { $this->UpdateProgressBar(1,'100','Finished'); }	// *PROGRESS-BAR*
 	if($this->state < 3) $this->Close();
-	if ($this->progressBar) { $this->UpdateProgressBar(2,'100','Terminado'); }	// *PROGRESS-BAR*
+	if ($this->progressBar) { $this->UpdateProgressBar(2,'100','Finished'); }	// *PROGRESS-BAR*
 	// fn. error_get_last is only in PHP>=5.2
 	if ($this->debug && function_exists('error_get_last') && error_get_last()) {
 	   $e = error_get_last(); 
@@ -8244,7 +8243,7 @@ function Output($name='',$dest='')
 		if(!$f) $this->Error('Unable to create temporary output file: '.$tempfile.'.pdf');
 		fwrite($f,$this->buffer,strlen($this->buffer));
 		fclose($f);
-		$this->UpdateProgressBar(3,'','Terminado');
+		$this->UpdateProgressBar(3,'','Finished');
 
 		echo '<script type="text/javascript">
 
@@ -8286,7 +8285,7 @@ function Output($name='',$dest='')
 		exit;
 	}
 	else {
-		if ($this->progressBar) { $this->UpdateProgressBar(3,'','Terminado'); }
+		if ($this->progressBar) { $this->UpdateProgressBar(3,'','Finished'); }
 /*-- END PROGRESS-BAR --*/
 
 		switch($dest) {
@@ -9114,7 +9113,7 @@ function _putfonts() {
 		$type=$font['type'];
 		$name=$font['name'];
 		if ((!isset($font['used']) || !$font['used']) && $type=='TTF') { continue; }
-		if ($this->progressBar) { $this->UpdateProgressBar(2,intval($fctr*100/$nfonts),'Escribiendo Fuentes'); $fctr++; }	// *PROGRESS-BAR*
+		if ($this->progressBar) { $this->UpdateProgressBar(2,intval($fctr*100/$nfonts),'Writing Fonts'); $fctr++; }	// *PROGRESS-BAR*
 		if (isset($font['asSubset'])) { $asSubset = $font['asSubset']; }
 		else { $asSubset = ''; }
 /*-- CJK-FONTS --*/
@@ -9991,9 +9990,9 @@ function SetUserRights($enable=true, $annots="", $form="", $signature="") {
 }
 
 function _enddoc() {
-	if ($this->progressBar) { $this->UpdateProgressBar(2,'10','Escribiendo Encabezados y Pies de pagina'); }	// *PROGRESS-BAR*
+	if ($this->progressBar) { $this->UpdateProgressBar(2,'10','Writing Headers & Footers'); }	// *PROGRESS-BAR*
 	$this->_puthtmlheaders();
-	if ($this->progressBar) { $this->UpdateProgressBar(2,'20','Escribiendo paginas'); }	// *PROGRESS-BAR*
+	if ($this->progressBar) { $this->UpdateProgressBar(2,'20','Writing Pages'); }	// *PROGRESS-BAR*
 
 	// Remove references to unused fonts (usually default font)
 	foreach($this->fonts as $fk=>$font) {
@@ -10042,14 +10041,14 @@ function _enddoc() {
 	}
 
 	$this->_putpages();
-	if ($this->progressBar) { $this->UpdateProgressBar(2,'30','Escribiendo Recursos del documento'); }	// *PROGRESS-BAR*
+	if ($this->progressBar) { $this->UpdateProgressBar(2,'30','Writing document resources'); }	// *PROGRESS-BAR*
 
 	$this->_putresources();
 	//Info
 	$this->_newobj();
 	$this->InfoRoot = $this->n;
 	$this->_out('<<');
-	if ($this->progressBar) { $this->UpdateProgressBar(2,'80','Escribiendo informacion del documento'); }	// *PROGRESS-BAR*
+	if ($this->progressBar) { $this->UpdateProgressBar(2,'80','Writing document info'); }	// *PROGRESS-BAR*
 	$this->_putinfo();
 	$this->_out('>>');
 	$this->_out('endobj');
@@ -10062,7 +10061,7 @@ function _enddoc() {
 	//Catalog
 	$this->_newobj();
 	$this->_out('<<');
-	if ($this->progressBar) { $this->UpdateProgressBar(2,'90','Escribiendo catalogo del documento'); }	// *PROGRESS-BAR*
+	if ($this->progressBar) { $this->UpdateProgressBar(2,'90','Writing document catalog'); }	// *PROGRESS-BAR*
 	$this->_putcatalog();
 	$this->_out('>>');
 	$this->_out('endobj');
@@ -13939,7 +13938,7 @@ function WriteHTML($html,$sub=0,$init=true,$close=true) {
 				// $init - Clears and sets buffers to Top level block etc.
 
 	if (empty($html)) { $html = ''; }
-	if ($this->progressBar) { $this->UpdateProgressBar(1,0,'Convirtiendo CSS y encabezados'); }	// *PROGRESS-BAR*
+	if ($this->progressBar) { $this->UpdateProgressBar(1,0,'Parsing CSS & Headers'); }	// *PROGRESS-BAR*
 
 	if ($init) {
 		$this->headerbuffer='';
@@ -28142,9 +28141,9 @@ function _putresources() {
 		$this->_putocg();
 	$this->_putextgstates();
 	$this->_putspotcolors();
-	if ($this->progressBar) { $this->UpdateProgressBar(2,'40','Compilando fuenres'); }	// *PROGRESS-BAR*
+	if ($this->progressBar) { $this->UpdateProgressBar(2,'40','Compiling Fonts'); }	// *PROGRESS-BAR*
 	$this->_putfonts();
-	if ($this->progressBar) { $this->UpdateProgressBar(2,'50','Compilando Imagenes'); }	// *PROGRESS-BAR*
+	if ($this->progressBar) { $this->UpdateProgressBar(2,'50','Compiling Images'); }	// *PROGRESS-BAR*
 	$this->_putimages();
 	$this->_putformobjects();	// *IMAGES-CORE*
 

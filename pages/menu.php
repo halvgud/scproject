@@ -149,7 +149,7 @@ $u = PrivilegiosUsuario::obtenerPorUsuario($_SESSION["id_usuario"]);
                                     <a href="reportes-diagnosticos-rank.php"><i class="fa fa-list-ol fa-fw"></i> Rango de Diagnosticos</a>
                                 </li>
                                 <li>
-                                    <a href="reportes-empleados-consultas.php"><i class="fa fa-list-alt fa-fw"></i> Consultas Emmpleados</a>
+                                    <a href="reportes-empleados-consultas.php"><i class="fa fa-list-alt fa-fw"></i> Consultas Empleados</a>
                                 </li>
                                 <li>
                                     <a href="reportes-empleados-visitas.php"><i class="fa fa-list-alt fa-fw"></i> Visitas Emmpleados</a>

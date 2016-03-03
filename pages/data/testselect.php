@@ -140,7 +140,7 @@ function obtenerSelect($data)
         foreach ($visitas as &$visita) {
             $db->seleccion('medicamento', 'm.id_medicamento,m.descripcion'
                 , 'm inner join relacion_medicamento_tablas rmt on m.id_medicamento = rmt.id_medicamento',
-                'rmt.id_visita="' . $visita['id_visita'] . '" and rmt.descripcion_tabla = "visita"', null, null);
+                'rmt.id_tabla="' . $visita['id_visita'] . '" and rmt.descripcion_tabla = "visita"', null, null);
             $medicamentos = $db->obtenerResultado();
             //var_dump($medicamentos);
             $visita['medicamentos'] = $medicamentos;
@@ -158,8 +158,35 @@ function obtenerSelect($data)
     else if ($data->idTransaccion == '16') {
         $db = new Conexion();
         $db->abrirConexion();
-        $db->seleccion('relacion_medicamento_tablas', "m.descripcion,count(*) total",
+        $db->seleccion('relacion_medicamento_tablas', "m.descripcion,sum(rmt.cantidad) total",
         "rmt inner join medicamento m on rmt.id_medicamento = m.id_medicamento", ' rmt.fecha >= "'.$data->fecha_inicio.'" and rmt.fecha <= "'.$data->fecha_fin.'" group by m.descripcion'
+            , null, null);
+        return ($db->obtenerResultado());
+    }
+    else if ($data->idTransaccion == '18') {
+        $db = new Conexion();
+        $db->abrirConexion();
+        $db->seleccion('empleado', "e.id_empleado,concat(e.nombre,' ',materno,' ',paterno) as nombre_completo,count(*) total",
+            "e inner join consulta c on e.id_empleado = c.id_empleado",
+            ' c.fecha >= "'.$data->fecha_inicio.'" and c.fecha <= "'.$data->fecha_fin.'" group by nombre_completo,e.id_empleado'
+            , null, null);
+        return ($db->obtenerResultado());
+    }
+    else if ($data->idTransaccion == '19') {
+        $db = new Conexion();
+        $db->abrirConexion();
+        $db->seleccion('empleado', "e.id_empleado,concat(e.nombre,' ',materno,' ',paterno) as nombre_completo,count(*) total",
+            "e inner join visita v on e.id_empleado = v.id_empleado",
+            ' v.fecha >= "'.$data->fecha_inicio.'" and v.fecha <= "'.$data->fecha_fin.'" group by nombre_completo,e.id_empleado'
+            , null, null);
+        return ($db->obtenerResultado());
+    }
+    else if ($data->idTransaccion == '20') {
+        $db = new Conexion();
+        $db->abrirConexion();
+        $db->seleccion('empleado', "concat(e.nombre,' ',materno,' ',paterno) as nombre_completo,e.id_empleado,d.descripcion solicita,m.respetar,m.motivo,m.supervisor,m.fecha_creacion fecha",
+            "e inner join memo m on e.id_empleado = m.id_empleado inner join descripcion d on d.id_descripcion = m.id_solicita",
+            ' m.fecha_creacion >= "'.$data->fecha_inicio.'" and m.fecha_creacion <= "'.$data->fecha_fin.'"'
             , null, null);
         return ($db->obtenerResultado());
     }

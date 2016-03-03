@@ -183,7 +183,7 @@ else
                     var fin = moment($("#reporteVisitas #fecha_fin").val(),'YYYY/MM/DD');
                     $("#abrirPdf #fecha_inicio_mostrar").val(moment(inicio).format('LL'));
                     $("#abrirPdf #fecha_fin_mostrar").val(moment(fin).format('LL'));
-                    $("#reporteVisitas")[0].reset();
+                    //$("#reporteVisitas")[0].reset();
                 };
                 fallo = function(datos){
                     if(datos.error)
