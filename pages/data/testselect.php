@@ -155,19 +155,17 @@ function obtenerSelect($data)
         $db->seleccion('pase_salida', "ps.fecha_creacion as fecha,concat(e.nombre,' ',materno,' ',paterno) as nombre_completo,e.id_empleado,de.descripcion as turno,de2.descripcion as departamento,ps.motivo as motivo","ps inner join empleado e on (e.id_empleado = ps.id_empleado) inner join descripcion de on (de.tipo = 'turno' and e.id_turno = de.id_descripcion) inner join descripcion de2 on (de2.tipo='depatrtamento' and de2.id_descripcion=e.id_departamento)", null, 'id_pase desc', '1');
         return ($db->obtenerResultado());
     }
-<<<<<<< HEAD
     else if ($data->idTransaccion == '17') {
         $db = new Conexion();
         $db->abrirConexion();
         $db->seleccion('pase_salida', "ps.fecha_creacion as fecha,concat(e.nombre,' ',materno,' ',paterno) as nombre_completo,e.id_empleado,de.descripcion as turno,de2.descripcion as departamento,de3.descripcion as area,ps.motivo as motivo","ps inner join empleado e on (e.id_empleado = ps.id_empleado) left join descripcion de on (de.tipo = 'turno' and e.id_turno = de.id_descripcion) left join descripcion de2 on (de2.tipo='depatrtamento' and de2.id_descripcion=e.id_departamento) left join descripcion de3 on (de2.tipo='area' and de2.id_descripcion=e.id_area)", null, 'ps.fecha_creacion desc', null);
-=======
+
     else if ($data->idTransaccion == '16') {
         $db = new Conexion();
         $db->abrirConexion();
         $db->seleccion('relacion_medicamento_tablas', "m.descripcion,count(*) total",
         "rmt inner join medicamento m on rmt.id_medicamento = m.id_medicamento", ' rmt.fecha >= "'.$data->fecha_inicio.'" and rmt.fecha <= "'.$data->fecha_fin.'" group by m.descripcion'
             , null, null);
->>>>>>> origin/master
         return ($db->obtenerResultado());
     }
 }//function
