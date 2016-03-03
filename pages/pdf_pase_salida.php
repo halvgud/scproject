@@ -4,7 +4,7 @@ require_once 'data/testselect.php';
 $data =  new ArrayObject();
 $data->idTransaccion = '15';
 $visitas = obtenerSelect($data);
-
+var_dump($visitas);
 $plantilla = file_get_contents('/pdf_template_pase_salida.html', FILE_USE_INCLUDE_PATH);
 foreach ($visitas[0] as $key => $item) {
     $plantilla =preg_replace('/'.$key.'/',$item,$plantilla);

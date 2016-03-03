@@ -76,7 +76,7 @@ else
                     </tbody>
                 </table>
                 <button type="submit" class="btn btn-outline btn-success"><i class="fa fa-floppy-o"></i> Guardar</button>
-                <button type="button" class="btn btn-outline btn-info"><i class="fa fa-print"></i> Re Imprimir último</button>
+                <button type="button" class="btn btn-outline btn-info" name="reimprimir" id="reimprimir"><i class="fa fa-print"></i> Re Imprimir último</button>
             </form>
         </div>
         <!-- /#page-wrapper -->
@@ -92,6 +92,9 @@ else
           rel="stylesheet" type="text/css" />
     <script>
         $(function() {
+            $("#reimprimir").click(function(){
+                mostrarMensaje(null);
+            });
             $("#id_empleado").focusout(function(){
                 cargatDatosEmpleado();
             });
@@ -120,51 +123,13 @@ else
                 var datosUnion = {};
                 datosUnion['tipo_transaccion'] = 6;
                 datosUnion['pase_salida'] = datosTabla1;
-                console.log(datosUnion);
-
                 if($("#nombre").val() === ''){
                     notificacionError('El usuario no existe por favor introdusca un id valido');
                 }
                 else{
                     exitoso = function(datos){
-
-                        var $textAndPic = $('<div></div>');
-                        $textAndPic.append('<iframe width="580" height="370" src="pdf_pase_salida.php"></iframe>');
-                        notificacionSuccess(datos.success);
-                        BootstrapDialog.show({
-                            title: 'Imprimir Pase',
-                            message: $textAndPic,
-                            type: BootstrapDialog.TYPE_DEFAULT,
-                            buttons: [{
-                                id: 'btn-1',
-                                label: 'Cancelar',
-                                cssClass: 'btn-primary',
-                                action: function(dialog) {
-                                    dialog.close();
-                                }
-                            }/*,{
-                                id: 'btn-2',
-                                label: 'Aceptar',
-                                cssClass: 'btn-danger',
-                                action: function(dialog) {
-                                    var datos = {};
-                                    datos.id_medicamento = '1'//element.id_medicamento;
-                                    datos.idTransaccion = 2;
-                                    exitoso = function(datos){
-                                        notificacionSuccess(datos.success);
-                                        $(tr).remove();
-                                        buscar();
-                                        dialog.close();
-                                    };
-                                    fallo = function(datos){
-                                        notificacionError(datos.error);
-                                    };
-                                    peticionAjax('data/test-actualizar.php',datos,exitoso,fallo);
-                                }
-                            }*/]
-                        });
-
-                        $("#pase_salida")[0].reset();
+                            mostrarMensaje(datos);
+                           $("#pase_salida")[0].reset();
                         contador = 0;
 
                     };
@@ -176,7 +141,25 @@ else
                 return false;
             });
 
-
+    function mostrarMensaje(datos){
+        var $textAndPic = $('<div></div>');
+        $textAndPic.append('<iframe width="580" height="370" src="pdf_pase_salida.php"></iframe>');
+        if(datos!=null){
+            notificacionSuccess(datos.success);
+        }
+        BootstrapDialog.show({
+            title: 'Imprimir Pase',
+            message: $textAndPic,
+            type: BootstrapDialog.TYPE_DEFAULT,
+            buttons: [{
+                id: 'btn-1',
+                label: 'Cancelar',
+                cssClass: 'btn-primary',
+                action: function(dialog) {
+                    dialog.close();
+                }
+            }]
+    })};
     </script>
 </body>
 
