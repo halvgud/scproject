@@ -164,6 +164,16 @@ else
                         </tr>
                     </tbody>
                 </table>
+                <table name="tabl2_visita" id="tabl2_visita">
+                    <tbody>
+
+                    </tbody>
+                </table>
+                <div class="form-group">
+                    <label for="agregar_medicamento">Agregar Medicamento</label>
+                    <select class='form-control' name='clklst' id='clklst' size='1'></select>
+                    <button type="button" id="agregar_medicamento" class="btn btn-outline btn-primary"><i class="fa fa-plus-square"></i> Agregar Medicamento</button>
+                </div>
               <button type="submit" class="btn btn-outline btn-success"><i class="fa fa-floppy-o"></i> Guardar</button>
             </form>
         </div>
@@ -175,22 +185,28 @@ else
     <?php require_once('footer-comun.html'); ?>
 
     <script type="text/javascript" >
+        var contador = 0;
         //El siguietne codigo sirve para enviar los datos a el php que realiza los inserts
         $("#guardarExpediente").submit(function(e){
             e.preventDefault();
             var form1 = $("#guardarExpediente").find("select, input, textarea").serializeArray();
+            var form2 = $('#tabl2_visita').find("input").serializeArray();
             var datosTabla1 = {};
+            var datosTabla2 = {};
             form1.forEach(function(input) {
                 datosTabla1[input.name] = input.value;
             });
+
+            form2.forEach(function(input) {
+                datosTabla2[input.name] = input.value;
+            });
             datosTabla1['fecha'] = moment().format("YYYY/MM/DD HH:mm:ss");
-            var datosTabla2 = {};
-            datosTabla2['id_consulta'] = $("#id_consulta").val();
+            datosTabla1['id_consulta'] = $("#id_consulta").val();
             var datosUnion = {};
+            datosUnion['contador'] = contador;
             datosUnion['tipo_transaccion'] = 5;
             datosUnion['expediente'] = datosTabla1;
-            datosUnion['consulta']=datosTabla2;
-            console.log(datosUnion);
+            datosUnion['relacion_medicamento_tablas']=datosTabla2;
             if($("#nombre").val() === ''){
                 notificacionError('No ha seleccionado un empleado para guardar su expediente.');
             }
@@ -199,6 +215,8 @@ else
                     if(datos.success)
                         notificacionSuccess(datos.success);
                     $("#guardarExpediente")[0].reset();
+                    $("#tabl2_visita tbody").empty();
+                    contador = 0;
                     $("#id_consulta").val('N');
                 };
                 fallo = function(datos){
@@ -309,6 +327,32 @@ else
             cargarDropDownListDescripcion(('#id_otras_indicaciones'),'expediente_otras_indicaciones');
             cargarDropDownListDescripcion(('#id_pase_imss'),'expediente_pase_imss');
             cargarDropDownList(('#clklst'),'id_medicamento','descripcion',2);
+        });
+        $("#agregar_medicamento").click(function(){
+            contador++;
+            var row = $("<tr></tr>");
+            var td = $("<td></td>");
+            var medicamento = $("<input>",{name:"descripcion"+contador,id:"descripcion"+contador,class:'form-control',value:$("#clklst option:selected").text() });
+            td.append(medicamento);
+            row.append(td);
+            var idmedicamento = $("<input>",{type:'hidden',id:"id_medicamento"+contador,name:"id_medicamento"+contador,class:'form-control',value:$('#clklst').val()});
+            td.append(idmedicamento);
+            row.append(td);
+            var cantidad = $("<input>",{id:"cantidad"+contador,name:"cantidad"+contador,type:'number',class:'form-control', value:'1',required:'required',min:'1'});
+            td = $("<td></td>");
+            td.append(cantidad);
+            row.append(td);
+            var icono = $("<i></i>",{class:'fa fa-minus-square'});
+            var remover = $("<button></button>",{id:"cantidad"+contador,name:"cantidad"+contador,type:'button',class:'btn btn-outline btn-danger'});
+            $(remover).click(function(){
+                $(row).remove();
+                contador--;
+            });
+            remover.append(icono);
+            var td = $("<td></td>");
+            td.append(remover);
+            row.append(td);
+            $("#tabl2_visita tbody").append(row);
         });
     </script>
 </body>
