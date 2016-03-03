@@ -40,10 +40,12 @@ if(isset($data) /*&& isset($data->tabla)*/ &&isset($data->tipo_transaccion)) {
             if ($db->Insertar($tabla1,$datosVisita)) {
                 $separado_por_comas = implode(",", $db->obtenerResultado());
                 for ($x = 1; $x <= $data->contador; $x++) {
-                    $datosMedicamento['id_visita']=$separado_por_comas;
+                    $datosMedicamento['id_tabla']=$separado_por_comas;
                     $datosMedicamento['id_medicamento'] =$arregloVisitaMedico['id_medicamento'.$x];
                     $datosMedicamento['cantidad'] = $arregloVisitaMedico['cantidad'.$x];
-                    if($db->Insertar('relacion_visita_medicamento',$datosMedicamento))
+                    $datosMedicamento['fecha'] = $visita->fecha;
+                    $datosMedicamento['descripcion_tabla'] = 'visita';
+                    if($db->Insertar('relacion_medicamento_tablas',$datosMedicamento))
                     {
                         if($db->Actualizar('medicamento','cantidad=cantidad-'.$datosMedicamento['cantidad'],'id_medicamento='.$datosMedicamento['id_medicamento'])){
                             $bandera=true;
@@ -106,10 +108,12 @@ if(isset($data) /*&& isset($data->tabla)*/ &&isset($data->tipo_transaccion)) {
                 if ($db->Insertar($tabla1,$datosConsulta)) {
                     $separado_por_comas = implode(",", $db->obtenerResultado());
                     for ($x = 1; $x <= $data->contador; $x++) {
-                        $datosMedicamento['id_consulta']=$separado_por_comas;
+                        $datosMedicamento['id_tabla']=$separado_por_comas;
                         $datosMedicamento['id_medicamento'] =$arregloVisitaMedico['id_medicamento'.$x];
                         $datosMedicamento['cantidad'] = $arregloVisitaMedico['cantidad'.$x];
-                        if($db->Insertar('relacion_consulta_medicamento',$datosMedicamento))
+                        $datosMedicamento['fecha'] = $consulta->fecha;
+                        $datosMedicamento['descripcion_tabla'] = 'consulta';
+                        if($db->Insertar('relacion_medicamento_tablas',$datosMedicamento))
                         {
                             if($db->Actualizar('medicamento','cantidad=cantidad-'.$datosMedicamento['cantidad'],'id_medicamento='.$datosMedicamento['id_medicamento'])){
                                 $bandera=true;

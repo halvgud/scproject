@@ -46,8 +46,8 @@ function obtenerSelect($data)
         $consultas = $db->obtenerResultado();
         foreach ($consultas as &$consulta) {
             $db->seleccion('medicamento', 'm.id_medicamento,m.descripcion'
-                , 'm inner join relacion_consulta_medicamento rcm on m.id_medicamento = rcm.id_medicamento',
-                'rcm.id_consulta="' . $consulta['id_consulta'] . '"', null, null);
+                , 'm inner join relacion_medicamento_tablas rmt on m.id_medicamento = rmt.id_medicamento',
+                'rmt.id_tabla="' . $consulta['id_consulta'] . '" and rmt.descripcion_tabla = "consulta"', null, null);
             $medicamentos = $db->obtenerResultado();
             //var_dump($medicamentos);
             $consulta['medicamentos'] = $medicamentos;
@@ -113,8 +113,8 @@ function obtenerSelect($data)
         $consultas = $db->obtenerResultado();
         foreach ($consultas as &$consulta) {
             $db->seleccion('medicamento', 'm.id_medicamento,m.descripcion'
-                , 'm inner join relacion_consulta_medicamento rcm on m.id_medicamento = rcm.id_medicamento',
-                'rcm.id_consulta="' . $consulta['id_consulta'] . '"', null, null);
+                , 'm inner join relacion_medicamento_tablas rmt on m.id_medicamento = rmt.id_medicamento',
+                'rmt.id_tabla="' . $consulta['id_consulta'] . '" and rmt.descripcion_tabla = "consulta"', null, null);
             $medicamentos = $db->obtenerResultado();
             //var_dump($medicamentos);
             $consulta['medicamentos'] = $medicamentos;
@@ -139,8 +139,8 @@ function obtenerSelect($data)
         $visitas = $db->obtenerResultado();
         foreach ($visitas as &$visita) {
             $db->seleccion('medicamento', 'm.id_medicamento,m.descripcion'
-                , 'm inner join relacion_visita_medicamento rvm on m.id_medicamento = rvm.id_medicamento',
-                'rvm.id_visita="' . $visita['id_visita'] . '"', null, null);
+                , 'm inner join relacion_medicamento_tablas rmt on m.id_medicamento = rmt.id_medicamento',
+                'rmt.id_visita="' . $visita['id_visita'] . '" and rmt.descripcion_tabla = "visita"', null, null);
             $medicamentos = $db->obtenerResultado();
             //var_dump($medicamentos);
             $visita['medicamentos'] = $medicamentos;
