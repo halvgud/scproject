@@ -162,10 +162,6 @@ function notificacionSuccess(mensaje){
 		};
 		peticionAjax('data/testselect.php',datos,exitoso,fallo);
 	}
-	function generarPDF(){
-
-	}
-
 
 	function agregarTDaTR (tr,element,cssClass){
 		if(cssClass)
