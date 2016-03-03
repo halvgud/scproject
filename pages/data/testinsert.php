@@ -179,9 +179,28 @@ if(isset($data) /*&& isset($data->tabla)*/ &&isset($data->tipo_transaccion)) {
             $tabla1 = 'expediente';
             $tabla2 = 'consulta';
             $expediente->id_usuario_creacion = $_SESSION['id_usuario'];
-
+            $arregloMedicamentoTabla= json_decode(json_encode($relacion_medicamento_tablas), true);
             if ($db->Insertar($tabla1,$expediente)) {
-                if($db->Actualizar($tabla2,'asistencia="A"','id_consulta='.$consulta->id_consulta)){
+                $separado_por_comas = implode(",", $db->obtenerResultado());
+                for ($x = 1; $x <= $data->contador; $x++) {
+                    $datosMedicamento['id_tabla']=$separado_por_comas;
+                    $datosMedicamento['id_medicamento'] =$arregloMedicamentoTabla['id_medicamento'.$x];
+                    $datosMedicamento['cantidad'] = $arregloMedicamentoTabla['cantidad'.$x];
+                    $datosMedicamento['fecha'] = $expediente->fecha;
+                    $datosMedicamento['descripcion_tabla'] = 'expediente';
+                    if($db->Insertar('relacion_medicamento_tablas',$datosMedicamento))
+                    {
+                        if($db->Actualizar('medicamento','cantidad=cantidad-'.$datosMedicamento['cantidad'],'id_medicamento='.$datosMedicamento['id_medicamento'])){
+                            $bandera=true;
+                        }
+                    }
+                    else{
+                        mensajeError(1,$db->obtenerResultado());
+                        $bandera=false;
+                        break;
+                    }
+                }//for
+                if($bandera && $db->Actualizar($tabla2,'asistencia="A"','id_consulta='.$expediente->id_consulta)){
                     $bandera=true;
                 }else{
                     $bandera = false;
