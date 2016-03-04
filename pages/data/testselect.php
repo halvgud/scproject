@@ -158,8 +158,8 @@ function obtenerSelect($data)
     else if ($data->idTransaccion == '17') {
         $db = new Conexion();
         $db->abrirConexion();
-        $db->seleccion('pase_salida', "ps.fecha_creacion as fecha,concat(e.nombre,' ',materno,' ',paterno) as nombre_completo,e.id_empleado,de.descripcion as turno,de2.descripcion as departamento,de3.descripcion as area,ps.motivo as motivo","ps inner join empleado e on (e.id_empleado = ps.id_empleado) left join descripcion de on (de.tipo = 'turno' and e.id_turno = de.id_descripcion) left join descripcion de2 on (de2.tipo='depatrtamento' and de2.id_descripcion=e.id_departamento) left join descripcion de3 on (de2.tipo='area' and de2.id_descripcion=e.id_area)", null, 'ps.fecha_creacion desc', null);
-
+        $db->seleccion('pase_salida', "ps.fecha_creacion as fecha,concat(e.nombre,' ',materno,' ',paterno) as nombre_completo,e.id_empleado,de.descripcion as turno,de2.descripcion as departamento,de3.descripcion as area,ps.motivo as motivo", "ps inner join empleado e on (e.id_empleado = ps.id_empleado) left join descripcion de on (de.tipo = 'turno' and e.id_turno = de.id_descripcion) left join descripcion de2 on (de2.tipo='depatrtamento' and de2.id_descripcion=e.id_departamento) left join descripcion de3 on (de2.tipo='area' and de2.id_descripcion=e.id_area)", null, 'ps.fecha_creacion desc', null);
+    }
     else if ($data->idTransaccion == '16') {
         $db = new Conexion();
         $db->abrirConexion();
@@ -195,5 +195,24 @@ function obtenerSelect($data)
             , null, null);
         return ($db->obtenerResultado());
     }
+    else if ($data->idTransaccion == '22') {
+        $db = new Conexion();
+        $db->abrirConexion();
+        $db->SQLLibre(''.
+            " select 'CONSULTA' AS LUGAR,d.descripcion AS DESCRIPCION ,count(*) AS CANTIDAD from consulta c".
+            " inner join descripcion d on (d.id_descripcion = c.id_descripcion)".
+            " where".
+            " c.fecha>= '".$data->fecha_inicio."' and c.fecha<='".$data->fecha_fin."'".
+            " group by d.id_descripcion".
+            " union all".
+            " select 'EXPEDIENTE',d.descripcion,count(*) from expediente e".
+            " inner join descripcion d on (d.id_descripcion = e.diagnostico)".
+            " where".
+            " e.fecha>= '".$data->fecha_inicio."' and e.fecha<='".$data->fecha_fin."'".
+            " group by d.id_descripcion ");
+
+        return ($db->obtenerResultado());
+    }
+
 }//function
 ?>
