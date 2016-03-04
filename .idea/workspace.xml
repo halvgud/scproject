@@ -5,8 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a9adb31-820b-4d1b-b2cb-c650b08990f1" name="Default" comment="core and test files">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/js/funciones.js" afterPath="$PROJECT_DIR$/pages/js/funciones.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/mpdfstyletables.css" afterPath="$PROJECT_DIR$/pages/mpdfstyletables.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/reportes-empleados-consultas.php" afterPath="$PROJECT_DIR$/pages/reportes-empleados-consultas.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/reportes-empleados-visitas.php" afterPath="$PROJECT_DIR$/pages/reportes-empleados-visitas.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/reportes-medicamentos-rank.php" afterPath="$PROJECT_DIR$/pages/reportes-medicamentos-rank.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/reportes-memo-por-fecha.php" afterPath="$PROJECT_DIR$/pages/reportes-memo-por-fecha.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/reportes-visita-rango-fecha.php" afterPath="$PROJECT_DIR$/pages/reportes-visita-rango-fecha.php" />
     </list>
     <ignored path="scproject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -51,8 +57,8 @@
       <file leaf-file-name="testselect.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/data/testselect.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.346154">
-              <caret line="199" column="29" selection-start-line="199" selection-start-column="29" selection-end-line="199" selection-end-column="29" />
+            <state vertical-scroll-proportion="-14.230769">
+              <caret line="208" column="21" selection-start-line="208" selection-start-column="21" selection-end-line="208" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -61,18 +67,38 @@
       <file leaf-file-name="reportes-memo-por-fecha.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/reportes-memo-por-fecha.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.653846">
-              <caret line="185" column="11" selection-start-line="185" selection-start-column="11" selection-end-line="185" selection-end-column="11" />
+            <state vertical-scroll-proportion="-2.6153846">
+              <caret line="132" column="29" selection-start-line="132" selection-start-column="29" selection-end-line="152" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="funciones.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="reportes-empleados-visitas.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/reportes-empleados-visitas.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.65384614">
+              <caret line="125" column="29" selection-start-line="125" selection-start-column="29" selection-end-line="141" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="reportes-empleados-consultas.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pages/reportes-empleados-consultas.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.47692308">
+              <caret line="138" column="71" selection-start-line="138" selection-start-column="71" selection-end-line="138" selection-end-column="71" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="funciones.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/js/funciones.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="3.4713657">
-              <caret line="256" column="5" selection-start-line="256" selection-start-column="5" selection-end-line="256" selection-end-column="5" />
+            <state vertical-scroll-proportion="-13.037037">
+              <caret line="243" column="47" selection-start-line="243" selection-start-column="47" selection-end-line="243" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -81,7 +107,7 @@
       <file leaf-file-name="pdf_memo_rango_fecha.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/pdf_memo_rango_fecha.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.653846">
+            <state vertical-scroll-proportion="-6.730769">
               <caret line="61" column="21" selection-start-line="61" selection-start-column="21" selection-end-line="61" selection-end-column="21" />
               <folding>
                 <marker date="1456992728805" expanded="true" signature="723:737" placeholder="..." />
@@ -118,17 +144,7 @@
         <entry file="file://$PROJECT_DIR$/pages/data/core.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-12.423077">
-              <caret line="61" column="37" selection-start-line="61" selection-start-column="37" selection-end-line="61" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test-actualizar.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/data/test-actualizar.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="93" column="45" selection-start-line="93" selection-start-column="37" selection-end-line="93" selection-end-column="45" />
+              <caret line="82" column="9" selection-start-line="82" selection-start-column="9" selection-end-line="82" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -168,20 +184,20 @@
         <option value="$PROJECT_DIR$/pages/data/testinsert.php" />
         <option value="$PROJECT_DIR$/pages/pdf_ran_medicamento_rango_fecha.php" />
         <option value="$PROJECT_DIR$/pages/menu.php" />
-        <option value="$PROJECT_DIR$/pages/reportes-medicamentos-rank.php" />
-        <option value="$PROJECT_DIR$/pages/reportes-empleados-consultas.php" />
         <option value="$PROJECT_DIR$/pages/pdf_visita_empleado_rango_fecha.php" />
         <option value="$PROJECT_DIR$/pages/pdf_consulta_empleado_rango_fecha.php" />
-        <option value="$PROJECT_DIR$/pages/reportes-empleados-visitas.php" />
         <option value="$PROJECT_DIR$/pages/pdf_visita_rango_fecha.php" />
-        <option value="$PROJECT_DIR$/pages/reportes-visita-rango-fecha.php" />
         <option value="$PROJECT_DIR$/pages/pdf_memo_rango_fecha.php" />
         <option value="$PROJECT_DIR$/pages/reportes-incapacidad-por-fecha.php" />
         <option value="$PROJECT_DIR$/pages/data/core.php" />
         <option value="$PROJECT_DIR$/pages/data/testselect.php" />
         <option value="$PROJECT_DIR$/pages/footer-comun.html" />
+        <option value="$PROJECT_DIR$/pages/reportes-medicamentos-rank.php" />
         <option value="$PROJECT_DIR$/pages/reportes-memo-por-fecha.php" />
+        <option value="$PROJECT_DIR$/pages/reportes-empleados-visitas.php" />
+        <option value="$PROJECT_DIR$/pages/reportes-visita-rango-fecha.php" />
         <option value="$PROJECT_DIR$/pages/js/funciones.js" />
+        <option value="$PROJECT_DIR$/pages/reportes-empleados-consultas.php" />
       </list>
     </option>
   </component>
@@ -621,20 +637,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/reportes-medicamentos-rank.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7098901">
-          <caret line="22" column="42" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/reportes-empleados-consultas.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.423077">
-          <caret line="55" column="21" selection-start-line="55" selection-start-column="21" selection-end-line="55" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/pdf_visita_empleado_rango_fecha.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.5">
@@ -649,25 +651,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/reportes-empleados-visitas.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.51428574">
-          <caret line="65" column="71" selection-start-line="65" selection-start-column="71" selection-end-line="65" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/pdf_visita_rango_fecha.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5604396">
           <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/reportes-visita-rango-fecha.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.346154">
-          <caret line="172" column="41" selection-start-line="172" selection-start-column="41" selection-end-line="172" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -690,15 +677,7 @@
     <entry file="file://$PROJECT_DIR$/pages/data/core.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.423077">
-          <caret line="61" column="37" selection-start-line="61" selection-start-column="37" selection-end-line="61" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/data/testselect.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.346154">
-          <caret line="199" column="29" selection-start-line="199" selection-start-column="29" selection-end-line="199" selection-end-column="29" />
+          <caret line="82" column="9" selection-start-line="82" selection-start-column="9" selection-end-line="82" selection-end-column="9" />
           <folding />
         </state>
       </provider>
@@ -735,9 +714,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pages/data/testselect.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.230769">
+          <caret line="208" column="21" selection-start-line="208" selection-start-column="21" selection-end-line="208" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pages/pdf_memo_rango_fecha.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.653846">
+        <state vertical-scroll-proportion="-6.730769">
           <caret line="61" column="21" selection-start-line="61" selection-start-column="21" selection-end-line="61" selection-end-column="21" />
           <folding>
             <marker date="1456992728805" expanded="true" signature="723:737" placeholder="..." />
@@ -759,18 +746,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/reportes-memo-por-fecha.php">
+    <entry file="file://$PROJECT_DIR$/pages/reportes-medicamentos-rank.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.653846">
-          <caret line="185" column="11" selection-start-line="185" selection-start-column="11" selection-end-line="185" selection-end-column="11" />
+        <state vertical-scroll-proportion="-5.076923">
+          <caret line="128" column="74" selection-start-line="128" selection-start-column="74" selection-end-line="128" selection-end-column="74" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/js/funciones.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.4713657">
-          <caret line="256" column="5" selection-start-line="256" selection-start-column="5" selection-end-line="256" selection-end-column="5" />
+        <state vertical-scroll-proportion="-13.037037">
+          <caret line="243" column="47" selection-start-line="243" selection-start-column="47" selection-end-line="243" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/reportes-visita-rango-fecha.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.192308">
+          <caret line="158" column="87" selection-start-line="158" selection-start-column="87" selection-end-line="158" selection-end-column="87" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/reportes-memo-por-fecha.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.6153846">
+          <caret line="132" column="29" selection-start-line="132" selection-start-column="29" selection-end-line="152" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/reportes-empleados-visitas.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.65384614">
+          <caret line="125" column="29" selection-start-line="125" selection-start-column="29" selection-end-line="141" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/reportes-empleados-consultas.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47692308">
+          <caret line="138" column="71" selection-start-line="138" selection-start-column="71" selection-end-line="138" selection-end-column="71" />
           <folding />
         </state>
       </provider>

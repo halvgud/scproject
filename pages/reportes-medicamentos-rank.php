@@ -121,6 +121,21 @@ else
                                 action: function ( e, dt, node, config ) {
                                     $("#abrirPdf").submit();
                                 }
+                            },
+                            {
+                                text: '<i class="fa fa-file-pdf-o"></i> jsPDF ',
+                                titleAttr: 'Genera un archivo PDF con JavaScript',
+                                className:'btn btn-danger',
+                                action: function ( e, dt, node, config ) {
+                                    var columnas = [
+                                        {title:"MEDICAMENTO",dataKey:"descripcion"},
+                                        {title:"TOTAL",dataKey:"total"}
+                                    ];
+                                    var nombre = 'Medicamentos_Usados_'+$('#fecha_inicio').val()+'_'+$('#fecha_inicio').val();
+                                    var header1 = 'Medicamentos Usados de  '+$("#abrirPdf #fecha_inicio_mostrar").val()+' a '+$("#abrirPdf #fecha_fin_mostrar").val();
+                                    var header2 = 'Reporte de Medicamentos';
+                                    generarPDF(columnas,datos,nombre,header1,header2,'p' );
+                                }
                             }
                         ],
                         "order": [[ 1, "desc" ]],

@@ -10,7 +10,7 @@ body { font-family: 'Trebuchet MS'; font-size: 11pt;  }
 		thead td { font-weight: bold; }
 		tfoot td { font-weight: bold; }
 
-		.headerrow td, .headerrow th { background-gradient: linear #b7cebd #f5f8f5 0 1 0 0.2; text-align: center;font-size: 10pt; }
+		.headerrow td, .headerrow th { background-color: #000000;color:#FFFFFF; text-align: center;font-size: 10pt; }
 		.footerrow td, .footerrow th { background-gradient: linear #b7cebd #f5f8f5 0 1 0 0.2;  }
 
 		th {	font-weight: bold; 

@@ -146,9 +146,9 @@ else
                                         {title:"FECHA",dataKey:"fecha"}
                                     ];
                                     var nombre = 'Memos_'+$('#fecha_inicio').val()+'_'+$('#fecha_inicio').val();
-                                    var header1 = 'MEMOS DE '+$('#fecha_inicio').val()+' A '+$('#fecha_inicio').val();
+                                    var header1 = 'MEMOS DE '+$("#abrirPdf #fecha_inicio_mostrar").val()+' A '+$("#abrirPdf #fecha_fin_mostrar").val();
                                     var header2 = 'Reporte de Memos';
-                                    generarPDF(columnas,datos,nombre,header1,header2 );
+                                    generarPDF(columnas,datos,nombre,header1,header2,'l' );
                                 }
                             }
                         ],
