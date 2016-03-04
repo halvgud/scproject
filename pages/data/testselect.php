@@ -159,13 +159,7 @@ function obtenerSelect($data)
         $db = new Conexion();
         $db->abrirConexion();
         $db->seleccion('pase_salida', "ps.fecha_creacion as fecha,concat(e.nombre,' ',materno,' ',paterno) as nombre_completo,e.id_empleado,de.descripcion as turno,de2.descripcion as departamento,de3.descripcion as area,ps.motivo as motivo", "ps inner join empleado e on (e.id_empleado = ps.id_empleado) left join descripcion de on (de.tipo = 'turno' and e.id_turno = de.id_descripcion) left join descripcion de2 on (de2.tipo='depatrtamento' and de2.id_descripcion=e.id_departamento) left join descripcion de3 on (de2.tipo='area' and de2.id_descripcion=e.id_area)", null, 'ps.fecha_creacion desc', null);
-<<<<<<< HEAD
-    }
-    else if ($data->idTransaccion == '16') {
-=======
-
     }else if ($data->idTransaccion == '16') {
->>>>>>> origin/master
         $db = new Conexion();
         $db->abrirConexion();
         $db->seleccion('relacion_medicamento_tablas', "m.descripcion,sum(rmt.cantidad) total",
@@ -200,7 +194,6 @@ function obtenerSelect($data)
             , null, null);
         return ($db->obtenerResultado());
     }
-<<<<<<< HEAD
     else if ($data->idTransaccion == '22') {
         $db = new Conexion();
         $db->abrirConexion();
@@ -220,16 +213,6 @@ function obtenerSelect($data)
         return ($db->obtenerResultado());
     }
 
-=======
-    else if ($data->idTransaccion == '20') {
-        $db = new Conexion();
-        $db->abrirConexion();
-        $db->seleccion('empleado', "concat(e.nombre,' ',materno,' ',paterno) as nombre_completo,e.id_empleado,d.descripcion solicita,m.respetar,m.motivo,m.supervisor,m.fecha_creacion fecha",
-            "e inner join incapacidad m on e.id_empleado = m.id_empleado inner join descripcion d on d.id_descripcion = m.id_solicita",
-            ' m.fecha_creacion >= "'.$data->fecha_inicio.'" and m.fecha_creacion <= "'.$data->fecha_fin.'"'
-            , null, null);
-        return ($db->obtenerResultado());
-    }
->>>>>>> origin/master
+
 }//function
 ?>
