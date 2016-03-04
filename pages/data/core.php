@@ -118,6 +118,27 @@ class Conexion
             return false;
         }
     }
+    public function SQLLibre($sql)    {
+        $this->myQuery = $sql; // Pass back the SQL
+        $query = self::$conn->execute($sql);
+        if($query){
+            //
+            $this->numResults = $query->RecordCount();
+            if ($this->numResults<0) {
+                print self::$conn->ErrorMsg();
+            }
+            else {
+                $this->result = array();
+                $this->result = $query->getRows();
+            }
+            return true; // El query fue ejecutado correctamente
+
+        }else{
+            $this->result = array();
+            array_push($this->result,self::$conn->ErrorMsg());
+            return false; // No rows where returned
+        }
+    }
 
 	public function seleccion($tabla, $rows = '*', $join = null, $where = null, $order = null, $limit = null){
 		//Se crea query en base a los parametros
