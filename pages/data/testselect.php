@@ -159,6 +159,7 @@ function obtenerSelect($data)
         $db = new Conexion();
         $db->abrirConexion();
         $db->seleccion('pase_salida', "ps.fecha_creacion as fecha,concat(e.nombre,' ',materno,' ',paterno) as nombre_completo,e.id_empleado,de.descripcion as turno,de2.descripcion as departamento,de3.descripcion as area,ps.motivo as motivo", "ps inner join empleado e on (e.id_empleado = ps.id_empleado) left join descripcion de on (de.tipo = 'turno' and e.id_turno = de.id_descripcion) left join descripcion de2 on (de2.tipo='depatrtamento' and de2.id_descripcion=e.id_departamento) left join descripcion de3 on (de2.tipo='area' and de2.id_descripcion=e.id_area)", null, 'ps.fecha_creacion desc', null);
+        return ($db->obtenerResultado());
     }else if ($data->idTransaccion == '16') {
         $db = new Conexion();
         $db->abrirConexion();
@@ -211,7 +212,41 @@ function obtenerSelect($data)
             " group by d.id_descripcion ");
 
         return ($db->obtenerResultado());
+    }else if ($data->idTransaccion == '23') {
+        $db = new Conexion();
+        $db->abrirConexion();
+        $db->seleccion('empleado', "e.id_empleado,concat(e.nombre,' ',materno,' ',paterno) as nombre_completo,count(*) total",
+            "e left join pase_salida c on e.id_empleado = c.id_empleado",
+            ' c.fecha_creacion >= "'.$data->fecha_inicio.'" and c.fecha_creacion <= "'.$data->fecha_fin.'" group by nombre_completo,e.id_empleado'
+            , null, null);
+        return ($db->obtenerResultado());
+    }else if ($data->idTransaccion == '24') {
+        $db = new Conexion();
+        $db->abrirConexion();
+        $db->seleccion('empleado', "m.id_empleado,concat(e.nombre,' ',materno,' ',paterno) as nombre_completo,fecha,peso,talla,altura,frecuencia_respiratoria,
+        frecuencia_cardiaca,temperatura,imc,interrogatorio,exploracion_fisica,tratamiento,m.diagnostico,d1.descripcion as ramo_seguro,
+        d2.descripcion as otras_indicaciones, d3.descripcion as pase_imss",
+            "e inner join expediente m on (e.id_empleado = m.id_empleado)
+             inner join descripcion d1 on (m.id_ramo_seguro=d1.id_descripcion) inner join descripcion d2 on (m.id_otras_indicaciones = d2.id_descripcion)
+             inner join descripcion d3 on (m.id_pase_imss=d3.id_descripcion) ",
+            ' m.fecha >= "'.$data->fecha_inicio.'" and m.fecha <= "'.$data->fecha_fin.'"'
+            , null, null);
+        return ($db->obtenerResultado());
     }
+    else if ($data->idTransaccion == '25') {
+        $db = new Conexion();
+        $db->abrirConexion();
+        $db->seleccion('empleado', "m.id_empleado,concat(e.nombre,' ',materno,' ',paterno) as nombre_completo,fecha,peso,talla,altura,frecuencia_respiratoria,
+        frecuencia_cardiaca,temperatura,imc,interrogatorio,exploracion_fisica,tratamiento,d.descripcion as diagnostico,d1.descripcion as ramo_seguro,
+        d2.descripcion as otras_indicaciones, d3.descripcion as pase_imss",
+            "e inner join expediente m on (e.id_empleado = m.id_empleado) inner join descripcion d on (d.id_descripcion= m.diagnostico)
+             inner join descripcion d1 on (m.id_ramo_seguro=d1.id_descripcion) inner join descripcion d2 on (m.id_otras_indicaciones = d2.id_descripcion)
+             inner join descripcion d3 on (m.id_pase_imss=d3.id_descripcion) ",
+            ' m.fecha >= "'.$data->fecha_inicio.'" and m.fecha <= "'.$data->fecha_fin.'"'
+            , null, null);
+        return ($db->obtenerResultado());
+    }
+
 
 
 }//function

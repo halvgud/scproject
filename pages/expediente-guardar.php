@@ -123,9 +123,7 @@ else
                             <td>
                                 <div class="form-group">
                                     <label for="diagnostico">Diagnostico</label>
-                                    <select name="diagnostico" id ="diagnostico" class="form-control" required>
-                                        <option value="">Seleccione un valor</option>
-                                    </select>
+                                    <textarea name="diagnostico" id="diagnostico" class="form-control" maxlength="1000" rows="3" required="required"></textarea>
                                 </div>
                             </td>
                             <td>
@@ -322,7 +320,7 @@ else
             });
 
             $("#fecha_visita").datetimepicker();
-            cargarDropDownListDescripcion(('#diagnostico'),'diagnostico');
+            //cargarDropDownListDescripcion(('#diagnostico'),'diagnostico');
             cargarDropDownListDescripcion(('#id_ramo_seguro'),'expediente_ramo_seguro');
             cargarDropDownListDescripcion(('#id_otras_indicaciones'),'expediente_otras_indicaciones');
             cargarDropDownListDescripcion(('#id_pase_imss'),'expediente_pase_imss');

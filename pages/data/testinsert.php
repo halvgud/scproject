@@ -92,7 +92,7 @@ if(isset($data) /*&& isset($data->tabla)*/ &&isset($data->tipo_transaccion)) {
                 $datosConsulta = array();
                 $datosMedicamento=array();
                 $datosConsulta['fecha'] = $consulta->fecha;
-                $datosConsulta['id_descripcion'] = $consulta->diagnostico;
+                $datosConsulta['diagnostico'] = $consulta->diagnostico;
                 $datosConsulta['fecha_inicio'] = $consulta->fecha_consulta.' '.$consulta->hora_inicio;
                 $datosConsulta['fecha_fin'] = $consulta->fecha_consulta.' '.$consulta->hora_fin;
                 $datosConsulta['asistencia'] = 'N';
