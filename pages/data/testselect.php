@@ -158,7 +158,12 @@ function obtenerSelect($data)
     else if ($data->idTransaccion == '17') {
         $db = new Conexion();
         $db->abrirConexion();
-        $db->seleccion('pase_salida', "ps.fecha_creacion as fecha,concat(e.nombre,' ',materno,' ',paterno) as nombre_completo,e.id_empleado,de.descripcion as turno,de2.descripcion as departamento,de3.descripcion as area,ps.motivo as motivo", "ps inner join empleado e on (e.id_empleado = ps.id_empleado) left join descripcion de on (de.tipo = 'turno' and e.id_turno = de.id_descripcion) left join descripcion de2 on (de2.tipo='depatrtamento' and de2.id_descripcion=e.id_departamento) left join descripcion de3 on (de2.tipo='area' and de2.id_descripcion=e.id_area)", null, 'ps.fecha_creacion desc', null);
+        $db->seleccion('pase_salida', "ps.fecha_creacion as fecha,concat(e.nombre,' ',materno,' ',paterno) as nombre_completo,
+        e.id_empleado,de.descripcion as turno,de2.descripcion as departamento,de3.descripcion as area,ps.motivo as motivo",
+            "ps inner join empleado e on (e.id_empleado = ps.id_empleado)
+            left join descripcion de on (de.tipo = 'turno' and e.id_turno = de.id_descripcion)
+            left join descripcion de2 on (de2.tipo='depatrtamento' and de2.id_descripcion=e.id_departamento)
+            left join descripcion de3 on (de3.tipo='area' and de3.id_descripcion=e.id_area)", null, 'ps.fecha_creacion desc', null);
         return ($db->obtenerResultado());
     }else if ($data->idTransaccion == '16') {
         $db = new Conexion();
@@ -243,6 +248,39 @@ function obtenerSelect($data)
              inner join descripcion d1 on (m.id_ramo_seguro=d1.id_descripcion) inner join descripcion d2 on (m.id_otras_indicaciones = d2.id_descripcion)
              inner join descripcion d3 on (m.id_pase_imss=d3.id_descripcion) ",
             ' m.fecha >= "'.$data->fecha_inicio.'" and m.fecha <= "'.$data->fecha_fin.'"'
+            , null, null);
+        return ($db->obtenerResultado());
+    }else if ($data->idTransaccion == '26') {//Select para traerse las visitas en un rango de fechas
+        $db = new Conexion();
+        $db->abrirConexion();
+        $db->seleccion('consulta', 'c.id_consulta,c.fecha,c.id_empleado, c.id_usuario_creacion, c.id_descripcion,' .
+            'upper(d.descripcion),upper(concat(e.nombre," ",e.paterno," ",e.materno)) nombre,' .
+            't.descripcion turno,dep.descripcion departamento, a.descripcion area'
+            , 'c inner join descripcion d on c.id_descripcion = d.id_descripcion ' .
+            'inner join empleado e on e.id_empleado = c.id_empleado ' .
+            'inner join descripcion t on e.id_turno = t.id_descripcion ' .
+            'inner join descripcion dep on e.id_departamento = dep.id_descripcion ' .
+            'inner join descripcion a on e.id_area = a.id_descripcion',
+            'c.fecha>="' . $data->fecha_inicio . '" and c.fecha<="' . $data->fecha_fin . '"', 'c.fecha asc', null);
+        $consultas = $db->obtenerResultado();
+        foreach ($consultas as &$consulta) {
+            $db->seleccion('medicamento', 'm.id_medicamento,m.descripcion'
+                , 'm inner join relacion_medicamento_tablas rmt on m.id_medicamento = rmt.id_medicamento',
+                'rmt.id_tabla="' . $consulta['id_consulta'] . '" and rmt.descripcion_tabla = "consulta"', null, null);
+            $medicamentos = $db->obtenerResultado();
+            $consulta['medicamentos'] = $medicamentos;
+        }
+        return ($consultas);
+    } else if ($data->idTransaccion == '27') {
+        $db = new Conexion();
+        $db->abrirConexion();
+        $db->seleccion('empleado', "concat(e.nombre,' ',materno,' ',paterno) as nombre_completo,e.id_empleado,d.descripcion entrega,
+        d2.descripcion clasificacion,d3.descripcion ramo_seguro,i.folio,i.inicio,i.fin,i.fecha_creacion fecha",
+            "e inner join incapacidad i on e.id_empleado = i.id_empleado
+            inner join descripcion d on d.id_descripcion = i.id_entrega
+            inner join descripcion d2 on d2.id_descripcion = i.id_clasificacion
+            inner join descripcion d3 on d3.id_descripcion = i.id_ramo_seguro",
+            ' i.fecha_creacion >= "'.$data->fecha_inicio.'" and i.fecha_creacion <= "'.$data->fecha_fin.'"'
             , null, null);
         return ($db->obtenerResultado());
     }

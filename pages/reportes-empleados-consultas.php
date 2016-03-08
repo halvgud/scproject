@@ -123,6 +123,22 @@ else
                                 action: function ( e, dt, node, config ) {
                                     $("#abrirPdf").submit();
                                 }
+                            },
+                            {
+                                text: '<i class="fa fa-file-pdf-o"></i> jsPDF ',
+                                titleAttr: 'Genera un archivo PDF con JavaScript',
+                                className:'btn btn-danger',
+                                action: function ( e, dt, node, config ) {
+                                    var columnas = [
+                                        {title:"ID EMPLEADO",dataKey:"id_empleado"},
+                                        {title:"NOMBRE",dataKey:"nombre_completo"},
+                                        {title:"TOTAL",dataKey:"total"}
+                                    ];
+                                    var nombre = 'Consultas_'+$('#fecha_inicio').val()+'_'+$('#fecha_inicio').val();
+                                    var header1 = 'CONSULTAS DE '+$("#abrirPdf #fecha_inicio_mostrar").val()+' A '+$("#abrirPdf #fecha_fin_mostrar").val();
+                                    var header2 = 'Reporte de Consultas';
+                                    generarPDF(columnas,datos,nombre,header1,header2,'p' );
+                                }
                             }
                         ],
                         "order": [[ 2, "desc" ]],

@@ -23,8 +23,8 @@ else
             <h1>Reporte Incapacidad Guardados</h1>
             <hr>
             <div class="col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4">
-                <form id="reporteVisitas">
-                    <input type="hidden" name="idTransaccion"  value="20">
+                <form id="reporteIncapacidades">
+                    <input type="hidden" name="idTransaccion"  value="27">
                     <table class="table">
                         <tbody>
                         <tr>
@@ -52,26 +52,30 @@ else
                 <tr>
                     <th>ID EMPLEADO</th>
                     <th>EMPLEADO</th>
-                    <th>SOLICITA</th>
-                    <th>RESPETAR</th>
-                    <th>MOTIVO</th>
-                    <th>SUPERVISOR</th>
-                    <th>FECHA</th>
+                    <th>ENTREGA</th>
+                    <th>CLASIFICACION</th>
+                    <th>RAMO DEL SEGURO</th>
+                    <th>FOLIO</th>
+                    <th>INICIA</th>
+                    <th>TERMINA</th>
+                    <th>FECHA DE REGISTRO</th>
                 </tr>
                 </thead>
                 <tfoot>
                 <tr>
                     <th>ID EMPLEADO</th>
                     <th>EMPLEADO</th>
-                    <th>SOLICITA</th>
-                    <th>RESPETAR</th>
-                    <th>MOTIVO</th>
-                    <th>SUPERVISOR</th>
-                    <th>FECHA</th>
+                    <th>ENTREGA</th>
+                    <th>CLASIFICACION</th>
+                    <th>RAMO DEL SEGURO</th>
+                    <th>FOLIO</th>
+                    <th>INICIA</th>
+                    <th>TERMINA</th>
+                    <th>FECHA DE REGISTRO</th>
                 </tr>
                 </tfoot>
             </table>
-            <form id="abrirPdf" action="pdf_memo_rango_fecha.php" method="post" target="_blank">
+            <form id="abrirPdf" action="pdf_incapacidad_rango_fecha.php" method="post" target="_blank">
                 <input id="fecha_inicio" name="fecha_inicio" type="hidden" value="">
                 <input id="fecha_fin" name="fecha_fin" type="hidden" value="">
                 <input id="fecha_inicio_mostrar" name="fecha_inicio_mostrar" type="hidden" value="">
@@ -105,9 +109,9 @@ else
                 timepicker:false
             });
         });
-        $("#reporteVisitas").submit(function(e){
+        $("#reporteIncapacidades").submit(function(e){
             e.preventDefault();
-            var form1 = $("#reporteVisitas").find("input").serializeArray();
+            var form1 = $("#reporteIncapacidades").find("input").serializeArray();
             var datosTabla1 = {};
             form1.forEach(function(input) {
                 datosTabla1[input.name] = input.value;
@@ -118,6 +122,7 @@ else
             }
             else{
                 exitoso = function(datos){
+                    console.log(datos);
                     $('#example').DataTable( {
                         destroy: true,
                         data: datos,
@@ -130,15 +135,38 @@ else
                                 action: function ( e, dt, node, config ) {
                                     $("#abrirPdf").submit();
                                 }
+                            },{
+                                text: '<i class="fa fa-file-pdf-o"></i> jsPDF ',
+                                titleAttr: 'Genera un archivo PDF con JavaScript',
+                                className:'btn btn-danger',
+                                action: function ( e, dt, node, config ) {
+                                    var columnas = [
+                                        {title:"ID EMPLEADO",dataKey:"id_empleado"},
+                                        {title:"NOMBRE",dataKey:"nombre_completo"},
+                                        {title:"ENTREGA",dataKey:"entrega"},
+                                        {title:"CLASIFICACION",dataKey:"clasificacion"},
+                                        {title:"RAMO DEL SEGURO",dataKey:"ramo_seguro"},
+                                        {title:"FOLIO",dataKey:"folio"},
+                                        {title:"INICIO",dataKey:"inicio"},
+                                        {title:"FIN",dataKey:"fin"},
+                                        {title:"FECHA",dataKey:"fecha"},
+                                    ];
+                                    var nombre = 'Incapacidades_'+$('#fecha_inicio').val()+'_'+$('#fecha_inicio').val();
+                                    var header1 = 'INCAPACIDADES DE '+$("#abrirPdf #fecha_inicio_mostrar").val()+' A '+$("#abrirPdf #fecha_fin_mostrar").val();
+                                    var header2 = 'Reporte de Incapacidades';
+                                    generarPDF(columnas,datos,nombre,header1,header2,'l' );
+                                }
                             }
                         ],
                         columns: [
                             { "data": "id_empleado" },
                             { "data": "nombre_completo" },
-                            { "data": "solicita" },
-                            { "data": "respetar" },
-                            { "data": "motivo" },
-                            { "data": "supervisor" },
+                            { "data": "entrega" },
+                            { "data": "clasificacion" },
+                            { "data": "ramo_seguro" },
+                            { "data": "folio" },
+                            { "data": "inicio" },
+                            { "data": "fin" },
                             { "data": "fecha" }
                         ]
                     } );
@@ -146,14 +174,14 @@ else
 
                     if(datos.success)
                         notificacionSuccess(datos.success);
-                    $("#abrirPdf #fecha_inicio").val($("#reporteVisitas #fecha_inicio").val());
-                    $("#abrirPdf #fecha_fin").val($("#reporteVisitas #fecha_fin").val());
+                    $("#abrirPdf #fecha_inicio").val($("#reporteIncapacidades #fecha_inicio").val());
+                    $("#abrirPdf #fecha_fin").val($("#reporteIncapacidades #fecha_fin").val());
                     moment.locale('es');
-                    var inicio = moment($("#reporteVisitas #fecha_inicio").val(),'YYYY/MM/DD');
-                    var fin = moment($("#reporteVisitas #fecha_fin").val(),'YYYY/MM/DD');
+                    var inicio = moment($("#reporteIncapacidades #fecha_inicio").val(),'YYYY/MM/DD');
+                    var fin = moment($("#reporteIncapacidades #fecha_fin").val(),'YYYY/MM/DD');
                     $("#abrirPdf #fecha_inicio_mostrar").val(moment(inicio).format('LL'));
                     $("#abrirPdf #fecha_fin_mostrar").val(moment(fin).format('LL'));
-                    //$("#reporteVisitas")[0].reset();
+                    //$("#reporteIncapacidades")[0].reset();
                 };
                 fallo = function(datos){
                     if(datos.error)

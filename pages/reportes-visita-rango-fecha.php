@@ -131,6 +131,33 @@ else
                                 action: function ( e, dt, node, config ) {
                                     $("#abrirPdf").submit();
                                 }
+                            },
+                            {
+                                text: '<i class="fa fa-file-pdf-o"></i> jsPDF ',
+                                titleAttr: 'Genera un archivo PDF con JavaScript',
+                                className:'btn btn-danger',
+                                action: function ( e, dt, node, config ) {
+                                    datos.forEach(function(element, index) {
+                                        var medicamentos = '';
+                                        element.medicamentos.forEach(function(element,index){
+                                            medicamentos += element.descripcion+'\n'
+                                        });
+                                        element.medicamentos2 = medicamentos;
+                                    });
+                                    var columnas = [
+                                        {title:"ID EMPLEADO",dataKey:"id_empleado"},
+                                        {title:"NOMBRE",dataKey:"nombre"},
+                                        {title:"TURNO",dataKey:"turno"},
+                                        {title:"AREA",dataKey:"area"},
+                                        {title:"DEPARTAMENTO",dataKey:"departamento"},
+                                        {title:"MEDICAMENTOS",dataKey:"medicamentos2"},
+                                        {title:"FECHA",dataKey:"fecha"}
+                                    ];
+                                    var nombre = 'Visitas_'+$('#fecha_inicio').val()+'_'+$('#fecha_inicio').val();
+                                    var header1 = 'VISITAS DE '+$("#abrirPdf #fecha_inicio_mostrar").val()+' A '+$("#abrirPdf #fecha_fin_mostrar").val();
+                                    var header2 = 'Reporte de Visitas';
+                                    generarPDF(columnas,datos,nombre,header1,header2,'l' );
+                                }
                             }
                         ],
                         columns: [

@@ -131,6 +131,25 @@ else
                                 action: function ( e, dt, node, config ) {
                                     $("#abrirPdf").submit();
                                 }
+                            },{
+                                text: '<i class="fa fa-file-pdf-o"></i> jsPDF ',
+                                titleAttr: 'Genera un archivo PDF con JavaScript',
+                                className:'btn btn-danger',
+                                action: function ( e, dt, node, config ) {
+                                    var columnas = [
+                                        {title:"ID EMPLEADO",dataKey:"id_empleado"},
+                                        {title:"NOMBRE",dataKey:"nombre_completo"},
+                                        {title:"TURNO",dataKey:"turno"},
+                                        {title:"AREA",dataKey:"area"},
+                                        {title:"DEPARTAMENTO",dataKey:"departamento"},
+                                        {title:"MOTIVO",dataKey:"motivo"},
+                                        {title:"FECHA",dataKey:"fecha"}
+                                    ];
+                                    var nombre = 'Pases_Salida_'+$('#fecha_inicio').val()+'_'+$('#fecha_inicio').val();
+                                    var header1 = 'PASES DE SALIDA DE '+$("#abrirPdf #fecha_inicio_mostrar").val()+' A '+$("#abrirPdf #fecha_fin_mostrar").val();
+                                    var header2 = 'Reporte de Pases de Salida';
+                                    generarPDF(columnas,datos,nombre,header1,header2,'l' );
+                                }
                             }
                         ],
                         columns: [
@@ -144,36 +163,6 @@ else
                         ]
                     } );
                     $('#example').show();
-                    /*
-                     console.log(datos);
-                     var tabla = $("<table></table>",{class:"table table-bordered table-striped table-condensed"});
-                     var tr = $("<tr></tr>");
-                     agregarTHaTR(tr,'ID EMPLEADO');
-                     agregarTHaTR(tr,'EMPLEADO');
-                     agregarTHaTR(tr,'TURNO');
-                     agregarTHaTR(tr,'AREA');
-                     agregarTHaTR(tr,'DEPARTAMENTO');
-                     agregarTHaTR(tr,'MEDICAMENTO(S)');
-                     agregarTHaTR(tr,'FECHA');
-                     $(tabla).append(tr);
-
-                     datos.forEach(function(element, index) {
-                     var tr = $("<tr></tr>");
-                     agregarTDaTR(tr,element.id_empleado);
-                     agregarTDaTR(tr,element.nombre);
-                     agregarTDaTR(tr,element.turno);
-                     agregarTDaTR(tr,element.area);
-                     agregarTDaTR(tr,element.departamento);
-                     var medicamentos = '';
-                     element.medicamentos.forEach(function(element,index){
-                     medicamentos += element.descripcion+'<br>'
-                     });
-                     agregarTDaTR(tr,medicamentos);
-                     agregarTDaTR(tr,element.fecha);
-                     $(tabla).append(tr);
-                     });
-                     $("#resultados").append(tabla);
-                     //$("#resultados table").DataTable();*/
                     if(datos.success)
                         notificacionSuccess(datos.success);
                     $("#abrirPdf #fecha_inicio").val($("#reporteVisitas #fecha_inicio").val());
@@ -183,7 +172,7 @@ else
                     var fin = moment($("#reporteVisitas #fecha_fin").val(),'YYYY/MM/DD');
                     $("#abrirPdf #fecha_inicio_mostrar").val(moment(inicio).format('LL'));
                     $("#abrirPdf #fecha_fin_mostrar").val(moment(fin).format('LL'));
-                    $("#reporteVisitas")[0].reset();
+                    //$("#reporteVisitas")[0].reset();
                 };
                 fallo = function(datos){
                     if(datos.error)
