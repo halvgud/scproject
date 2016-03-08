@@ -75,9 +75,7 @@ else
                                         <td>
                                             <div class="form-group">
                                                 <label for="diagnostico">Diagnostico</label>
-                                                <select name="diagnostico" id ="diagnostico" class="form-control" required>
-                                                    <option value="">Seleccione un valor</option>
-                                                </select>
+                                                <textarea name="diagnostico" id="diagnostico" class="form-control" maxlength="1000" rows="3" required="required"></textarea>
                                             </div>
                                         </td>
                                         <td>

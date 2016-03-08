@@ -25,7 +25,7 @@ else
             <div class="col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4">
             <form id="reporteVisitas">
                 <input type="hidden" name="tabla" id="tabla" value="visita">
-                <input type="hidden" name="idTransaccion"  value="14">
+                <input type="hidden" name="idTransaccion"  value="26">
                 <table class="table">
                     <tbody>
                     <tr>
@@ -72,6 +72,12 @@ else
                 </tr>
                 </tfoot>
             </table>
+            <form id="abrirPdf" action="pdf_consulta_rango_fecha.php" method="post" target="_blank">
+                <input id="fecha_inicio" name="fecha_inicio" type="hidden" value="">
+                <input id="fecha_fin" name="fecha_fin" type="hidden" value="">
+                <input id="fecha_inicio_mostrar" name="fecha_inicio_mostrar" type="hidden" value="">
+                <input id="fecha_fin_mostrar" name="fecha_fin_mostrar" type="hidden" value="">
+            </form>
         </div>
         <!-- /#page-wrapper -->
 
@@ -113,6 +119,7 @@ else
             }
             else{
                 exitoso = function(datos){
+                    console.log(datos);
                     $('#example').DataTable( {
                         destroy: true,
                         data: datos,
@@ -123,7 +130,34 @@ else
                                 titleAttr: 'Genera un archivo PDF',
                                 className:'btn btn-danger',
                                 action: function ( e, dt, node, config ) {
-                                    alert( 'Button activated' );
+                                    $("#abrirPdf").submit();
+                                }
+                            },
+                            {
+                                text: '<i class="fa fa-file-pdf-o"></i> jsPDF ',
+                                titleAttr: 'Genera un archivo PDF con JavaScript',
+                                className:'btn btn-danger',
+                                action: function ( e, dt, node, config ) {
+                                    datos.forEach(function(element, index) {
+                                        var medicamentos = '';
+                                        element.medicamentos.forEach(function(element,index){
+                                            medicamentos += element.descripcion+'\n'
+                                        });
+                                        element.medicamentos2 = medicamentos;
+                                    });
+                                    var columnas = [
+                                        {title:"ID EMPLEADO",dataKey:"id_empleado"},
+                                        {title:"NOMBRE",dataKey:"nombre"},
+                                        {title:"TURNO",dataKey:"turno"},
+                                        {title:"AREA",dataKey:"area"},
+                                        {title:"DEPARTAMENTO",dataKey:"departamento"},
+                                        {title:"MEDICAMENTOS",dataKey:"medicamentos2"},
+                                        {title:"FECHA",dataKey:"fecha"}
+                                    ];
+                                    var nombre = 'Consultas_'+$('#fecha_inicio').val()+'_'+$('#fecha_inicio').val();
+                                    var header1 = 'CONSULTAS DE '+$("#abrirPdf #fecha_inicio_mostrar").val()+' A '+$("#abrirPdf #fecha_fin_mostrar").val();
+                                    var header2 = 'Reporte de Consultas';
+                                    generarPDF(columnas,datos,nombre,header1,header2,'l' );
                                 }
                             }
                         ],
@@ -138,39 +172,16 @@ else
                         ]
                     } );
                     $('#example').show();
-                    /*
-                    console.log(datos);
-                    var tabla = $("<table></table>",{class:"table table-bordered table-striped table-condensed"});
-                    var tr = $("<tr></tr>");
-                    agregarTHaTR(tr,'ID EMPLEADO');
-                    agregarTHaTR(tr,'EMPLEADO');
-                    agregarTHaTR(tr,'TURNO');
-                    agregarTHaTR(tr,'AREA');
-                    agregarTHaTR(tr,'DEPARTAMENTO');
-                    agregarTHaTR(tr,'MEDICAMENTO(S)');
-                    agregarTHaTR(tr,'FECHA');
-                    $(tabla).append(tr);
-
-                    datos.forEach(function(element, index) {
-                        var tr = $("<tr></tr>");
-                        agregarTDaTR(tr,element.id_empleado);
-                        agregarTDaTR(tr,element.nombre);
-                        agregarTDaTR(tr,element.turno);
-                        agregarTDaTR(tr,element.area);
-                        agregarTDaTR(tr,element.departamento);
-                        var medicamentos = '';
-                        element.medicamentos.forEach(function(element,index){
-                            medicamentos += element.descripcion+'<br>'
-                        });
-                        agregarTDaTR(tr,medicamentos);
-                        agregarTDaTR(tr,element.fecha);
-                        $(tabla).append(tr);
-                    });
-                    $("#resultados").append(tabla);
-                    //$("#resultados table").DataTable();*/
                     if(datos.success)
                         notificacionSuccess(datos.success);
-                    $("#reporteVisitas")[0].reset();
+                    $("#abrirPdf #fecha_inicio").val($("#reporteVisitas #fecha_inicio").val());
+                    $("#abrirPdf #fecha_fin").val($("#reporteVisitas #fecha_fin").val());
+                    moment.locale('es');
+                    var inicio = moment($("#reporteVisitas #fecha_inicio").val(),'YYYY/MM/DD');
+                    var fin = moment($("#reporteVisitas #fecha_fin").val(),'YYYY/MM/DD');
+                    $("#abrirPdf #fecha_inicio_mostrar").val(moment(inicio).format('LL'));
+                    $("#abrirPdf #fecha_fin_mostrar").val(moment(fin).format('LL'));
+                    //$("#reporteVisitas")[0].reset();
                 };
                 fallo = function(datos){
                     if(datos.error)

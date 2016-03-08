@@ -1,7 +1,4 @@
 <?php
-
-
-
 require_once 'data/testselect.php';
 $data =  new ArrayObject();
 $data->idTransaccion = '19';
@@ -21,35 +18,29 @@ $tabla = '<table class="bpmTopnTail" border="1" style="margin:0 auto;"><thead><t
 <th>NOMBRE</th>
 <th>TOTAL</th>
 </tr></thead><tbody>'.$tabla.'</tbody></table>';
-$html = '
-<div style="text-align: right; position: fixed; top: 0pt;right: 20pt;"><img src="img/header.png" style="height 80pt; width: 110pt;" alt="Cardinal Healt"></div>
-<h1>Cirpro de Delicias</h1>
-<h2>Visitas Por Emleado de '.$_POST['fecha_inicio_mostrar'].' a '.$_POST['fecha_fin_mostrar'].' </h2>
 
-<h4>Reporte de Visitas Por Empleado</h4>
- <div style="text-align: center;">'
-.$tabla.'</div>
-';
-
+$html = $tabla;
 //==============================================================
 //==============================================================
 //==============================================================
+define('_MPDF_URI','data/lib/mpdf60/');
 include("data/lib/mpdf60/mpdf.php");
-//function mPDF($mode='',$format='A4',$default_font_size=0,$default_font='',$mgl=15,$mgr=15,$mgt=16,$mgb=16,$mgh=9,$mgf=9, $orientation='P') {
 
-//$mpdf=new mPDF('c','Letter','','',15,15,16,16,9,9,'L');
-$mpdf=new mPDF('utf-8', 'Leter-L');
-
+$mpdf=new mPDF('utf-8', 'Leter-P',0,'',15,15,40,16,5,9);
 $mpdf->SetDisplayMode('fullpage');
 
+$mpdf->SetHTMLHeader('
+<table style="width: 100%;"><tr><td><h1>Cirpro de Delicias</h1></td><td style="text-align: right"> <img src="img/header.png" style="height 80pt; width: 110pt; margin 0 0 0 0;" alt="Cardinal Healt"></td></tr></table>
+<h2>Visitas Por Emleado de '.$_POST['fecha_inicio_mostrar'].' a '.$_POST['fecha_fin_mostrar'].' </h2>
+<h4>Reporte de Visitas Por Empleado</h4>');
+$mpdf->setFooter('Pagina {PAGENO} de {nbpg}');
 $mpdf->list_indent_first_level = 0;	// 1 or 0 - whether to indent the first level of a list
 
-    // LOAD a stylesheet
+// LOAD a stylesheet
 $stylesheet = file_get_contents('mpdfstyletables.css');
 $mpdf->WriteHTML($stylesheet,1);	// The parameter 1 tells that this is css/style only and no body/html/text
 
 $mpdf->WriteHTML($html,2);
-
 
 //print $html;
 $mpdf->Output('mpdf.pdf','I');
@@ -57,6 +48,4 @@ exit;
 //==============================================================
 //==============================================================
 //==============================================================
-
-
 ?>
