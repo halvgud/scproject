@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a9adb31-820b-4d1b-b2cb-c650b08990f1" name="Default" comment="core and test files">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/data/testselect.php" afterPath="$PROJECT_DIR$/pages/data/testselect.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/medicamento-edicion.php" afterPath="$PROJECT_DIR$/pages/medicamento-edicion.php" />
     </list>

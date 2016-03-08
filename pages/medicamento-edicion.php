@@ -99,11 +99,11 @@ else
                     result.forEach( function(element, index) {
                         find = true;
                         var tr = $("<tr></tr>");
-
                         var id_medicamento = element['id_medicamento'];
                         var clave = element['clave'];
                         var descripcion = element['descripcion'];
                         var precio = element['precio'];
+                        var cantidad_entrada = element['cantidad_entrada'];
                         var input_agregar = $("<input>",{class:'form-control',type:'number',min:'0'});
 
                         var agregar = $("<button></button>",{class:'btn btn-success'});
@@ -111,7 +111,7 @@ else
                         agregar.append(icono_agregar);
                         agregar.append(" Agregar");
                         $(agregar).click(function(){
-                            agregarCantidad(id_medicamento,input_agregar);
+                            agregarCantidad(id_medicamento,input_agregar,cantidad_entrada);
                         })
                         var editar = $("<button></button>",{class:'btn btn-primary'});
                         var icono_editar = $("<i></i>",{class:'fa fa-pencil-square-o'});
@@ -127,7 +127,7 @@ else
                         $(eliminar).click(function(){
                             eliminarMedicamento(element,tr);
                         })
-                        
+
                         agregarTDaTR(tr,clave);
                         agregarTDaTR(tr,descripcion);
                         agregarTDaTR(tr,precio);
@@ -151,10 +151,11 @@ else
                 $(td).append(element);
                 $(tr).append(td);
             }
-            function agregarCantidad(id_medicamento,input_cantidad){
+            function agregarCantidad(id_medicamento,input_cantidad,cantidad_entrada){
                 var datos = {};
                 datos.id_medicamento = id_medicamento;
                 datos.cantidad = $(input_cantidad).val();
+                datos.cantidad = datos.cantidad*cantidad_entrada;
                 datos.idTransaccion = 1;
                 exitoso = function(datos){
                     notificacionSuccess(datos.success);
@@ -165,6 +166,9 @@ else
                 };
                 peticionAjax('data/test-actualizar.php',datos,exitoso,fallo);
             }
+
+
+
             function eliminarMedicamento(element,tr){
                 BootstrapDialog.show({
                     title: 'Peligro',

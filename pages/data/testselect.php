@@ -59,20 +59,20 @@ function obtenerSelect($data)
     } else if ($data->idTransaccion == '7') {//Select de los datos del empleado
         $db = new Conexion();
         $db->abrirConexion();
-        $db->seleccion('medicamento', 'id_medicamento,clave,descripcion,precio,cantidad'
-            , null, 'estado="A" and clave like "%' . $data->clave . '%" and descripcion like "%' . $data->descripcion . '%"', 'id_medicamento asc', null);
+        $db->seleccion('medicamento', 'm.id_medicamento,m.clave,m.descripcion,m.precio,m.cantidad,pm.descripcion presentacion,pm.cantidad cantidad_entrada'
+            , 'm inner join presentacion_medicamento pm on m.id_presentacion_entrada = pm.id_presentacion', 'm.estado="A" and m.clave like "%' . $data->clave . '%" and m.descripcion like "%' . $data->descripcion . '%"', 'm.id_medicamento asc', null);
         return ($db->obtenerResultado());
     } else if ($data->idTransaccion == '8') {//Select de los datos del empleado
         $db = new Conexion();
         $db->abrirConexion();
-        $db->seleccion('medicamento', 'id_medicamento,clave,descripcion,precio,cantidad'
-            , null, 'estado="A" and clave like "%' . $data->clave . '%"', 'id_medicamento asc', null);
+        $db->seleccion('medicamento', 'm.id_medicamento,m.clave,m.descripcion,m.precio,m.cantidad,pm.descripcion presentacion,pm.cantidad cantidad_entrada'
+            , 'm inner join presentacion_medicamento pm on m.id_presentacion_entrada = pm.id_presentacion', 'm.estado="A" and m.clave like "%' . $data->clave . '%"', 'm.id_medicamento asc', null);
         return ($db->obtenerResultado());
     } else if ($data->idTransaccion == '9') {//Select de los datos del empleado
         $db = new Conexion();
         $db->abrirConexion();
-        $db->seleccion('medicamento', 'id_medicamento,clave,descripcion,precio,cantidad'
-            , null, 'estado="A" and descripcion like "%' . $data->descripcion . '%"', 'id_medicamento asc', null);
+        $db->seleccion('medicamento', 'm.id_medicamento,m.clave,m.descripcion,m.precio,m.cantidad,pm.descripcion presentacion,pm.cantidad cantidad_entrada'
+            , 'm inner join presentacion_medicamento pm on m.id_presentacion_entrada = pm.id_presentacion', 'm.estado="A" and m.descripcion like "%' . $data->descripcion . '%"', 'id_medicamento asc', null);
         return ($db->obtenerResultado());
     } else if ($data->idTransaccion == '10') {//Select de los datos del empleado
         $db = new Conexion();
