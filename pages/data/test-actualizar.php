@@ -45,7 +45,7 @@ if(isset($data) /*&& isset($data->tabla)*/ &&isset($data->idTransaccion)) {
             $data->id_usuario_creacion = $_SESSION['id_usuario'];
         }
         if ($db->iniciarTransaccion()) {
-            if($db->Actualizar('medicamento','clave="'.$data->clave.'",descripcion="'.$data->descripcion.'",precio='.$data->precio,'id_medicamento='.$data->id_medicamento)){
+            if($db->Actualizar('medicamento','cantidad_minima="'.$data->cantidad_minima.'",clave="'.$data->clave.'",descripcion="'.$data->descripcion.'",precio='.$data->precio,'id_medicamento='.$data->id_medicamento)){
                 mensajeSuccess(null);
             } else {
                 mensajeError(1,$db->obtenerResultado());

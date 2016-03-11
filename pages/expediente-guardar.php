@@ -158,7 +158,15 @@ else
                                         <option value="">Seleccione un valor</option>
                                     </select>
                                 </div>
-                            </td> 
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <label for="proceso">Proceso</label>
+                                    <select name="proceso" id ="proceso" class="form-control" required>
+                                        <option value="">Seleccione un valor</option>
+                                    </select>
+                                </div>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -324,6 +332,7 @@ else
             cargarDropDownListDescripcion(('#id_ramo_seguro'),'expediente_ramo_seguro');
             cargarDropDownListDescripcion(('#id_otras_indicaciones'),'expediente_otras_indicaciones');
             cargarDropDownListDescripcion(('#id_pase_imss'),'expediente_pase_imss');
+            cargarDropDownListDescripcion(('#proceso'),'proceso');
             cargarDropDownList(('#clklst'),'id_medicamento','descripcion',2);
         });
         $("#agregar_medicamento").click(function(){

@@ -60,12 +60,6 @@ else
                             </td>
                         </tr>
                         <tr>
-                            <!--<td>
-                                <div class="form-group">
-                                    <label for="costo_unitario">Costo Unitario</label>
-                                    <input type="text" class="form-control" name="costo_unitario">
-                                </div> ps si no las vendemos jaja
-                            </td>-->
                             <td>
                                 <div class="form-group">
                                     <label for="fecha_ingresp">Fecha Ingreso:</label>
@@ -88,6 +82,14 @@ else
                                 <div class="form-group">
                                     <label for="cantidad">Cantidad:</label>
                                     <input type="number" min="0" class="form-control" name="cantidad" placeholder="Cantidad inicial de entrada" required>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <label for="cantidad_minima">Cantidad Minima:</label>
+                                    <input type="number" min="1" class="form-control" name="cantidad_minima" placeholder="Cantidad minima aceptable" required>
                                 </div>
                             </td>
                         </tr>

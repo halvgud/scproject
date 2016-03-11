@@ -77,7 +77,8 @@ class Conexion
         self::$conn = NewADOConnection('mysqli');//se inicializa constructor tipo  mysqli
         try {
             self::$conn->Connect(self::$db_host, self::$db_user, self::$db_pass, self::$db_name);//se realiza la conexion
-          } 
+            self::$conn->EXECUTE("set names 'utf8'");
+        }
           catch (exception $e) {//si la conexion falla se atrapa la excepcion
             print_r($e);//se imprime el error
         }

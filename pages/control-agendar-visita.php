@@ -60,6 +60,12 @@ else
                     <tr>
                         <td>
                             <div class="form-group">
+                                <label for="fecha">Fecha de Visita</label>
+                                <input type="text" class="form-control" id="fecha" name="fecha" required>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
                                 <label for="diagnostico">Diagnostico</label>
                                 <select name="diagnostico" id ="diagnostico" class="form-control" required>
                                     <option value="">Seleccione un valor</option>
@@ -68,8 +74,10 @@ else
                         </td>
                         <td>
                             <div class="form-group">
-                                <label for="fecha">Fecha de Visita</label>
-                                <input type="text" class="form-control" id="fecha" name="fecha" required>
+                                <label for="proceso">Proceso</label>
+                                <select name="proceso" id ="proceso" class="form-control" required>
+                                    <option value="">Seleccione un valor</option>
+                                </select>
                             </div>
                         </td>
                     </tr>
@@ -126,7 +134,10 @@ else
             }
             else{
                 exitoso = function(datos){
-                    notificacionSuccess(datos.success);
+                    if(datos.success)
+                        notificacionSuccess(datos.success);
+                    else if(datos.warning)
+                        notificacionWarning(datos.warning);
                     $("#agendarVisitaForm")[0].reset();
                     $("#tabl2_visita tbody").empty();
                     contador = 0;
@@ -186,6 +197,7 @@ else
             $.datetimepicker.setLocale('es');
             $("#fecha").datetimepicker();
             cargarDropDownListDescripcion(('#diagnostico'),'diagnostico');
+            cargarDropDownListDescripcion(('#proceso'),'proceso');
             cargarDropDownList(('#clklst'),'id_medicamento','descripcion',2);
 
         });

@@ -36,7 +36,7 @@ function notificacionError(mensaje){
 	$.notify({
 	// options
 	icon: 'fa fa-exclamation-circle',
-	title: 'Error',
+	title: '<strong>Error</strong><br>',
 	message: mensaje,
 },{
 	// settings
@@ -51,8 +51,8 @@ function notificacionError(mensaje){
 		align: "right"
 	},
 	z_index: 2000,
-	delay: 5000,
-	timer: 4500,
+	delay: 0,
+	timer: 1000,
 	animate: {
 		enter: 'animated fadeInDown',
 		exit: 'animated fadeOutUp'
@@ -61,11 +61,40 @@ function notificacionError(mensaje){
 
 }
 
+	function notificacionWarning(mensaje){
+		$.notify({
+			// options
+			icon: 'fa fa-exclamation-triangle',
+			title: '<strong>Advertencia</strong><br>',
+			message: mensaje,
+		},{
+			// settings
+			element: 'body',
+			position: null,
+			type: "warning",
+			allow_dismiss: true,
+			newest_on_top: true,
+			showProgressbar: false,
+			placement: {
+				from: "top",
+				align: "right"
+			},
+			z_index: 2000,
+			delay: 8000,
+			timer: 1000,
+			animate: {
+				enter: 'animated fadeInDown',
+				exit: 'animated fadeOutUp'
+			}
+		});
+
+	}
+
 function notificacionSuccess(mensaje){
 	$.notify({
 	// options
 	icon: 'fa fa-thumbs-o-up',
-	title: 'Correcto',
+	title: '<strong>Correcto</strong><br>',
 	message: mensaje,
 },{
 	// settings
@@ -81,7 +110,7 @@ function notificacionSuccess(mensaje){
 	},
 	z_index: 2000,
 	delay: 5000,
-	timer: 4500,
+	timer: 1000,
 	animate: {
 		enter: 'animated fadeInDown',
 		exit: 'animated fadeOutUp'

@@ -34,29 +34,14 @@ if(isset($data) /*&& isset($data->tabla)*/ &&isset($data->tipo_transaccion)) {
             $datosMedicamento=array();
             $datosVisita['fecha'] = $visita->fecha;
             $datosVisita['id_empleado'] = $visita->id_empleado;
-            $datosVisita['id_descripcion'] = $visita->diagnostico;
+            $datosVisita['id_diagnostico'] = $visita->diagnostico;
+            $datosVisita['id_proceso'] = $visita->proceso;
             $datosVisita['id_usuario_creacion'] = $_SESSION['id_usuario'];
             $arregloVisitaMedico= json_decode(json_encode($relacion_visita_medicamento), true);
             if ($db->Insertar($tabla1,$datosVisita)) {
                 $separado_por_comas = implode(",", $db->obtenerResultado());
-                for ($x = 1; $x <= $data->contador; $x++) {
-                    $datosMedicamento['id_tabla']=$separado_por_comas;
-                    $datosMedicamento['id_medicamento'] =$arregloVisitaMedico['id_medicamento'.$x];
-                    $datosMedicamento['cantidad'] = $arregloVisitaMedico['cantidad'.$x];
-                    $datosMedicamento['fecha'] = $visita->fecha;
-                    $datosMedicamento['descripcion_tabla'] = 'visita';
-                    if($db->Insertar('relacion_medicamento_tablas',$datosMedicamento))
-                    {
-                        if($db->Actualizar('medicamento','cantidad=cantidad-'.$datosMedicamento['cantidad'],'id_medicamento='.$datosMedicamento['id_medicamento'])){
-                            $bandera=true;
-                        }
-                    }
-                    else{
-                        mensajeError(1,$db->obtenerResultado());
-                        $bandera=false;
-                        break;
-                    }
-                }//for
+                $resultado = actualizarMedicamento($db,$data,$separado_por_comas,$visita,$arregloVisitaMedico,'visita');
+                $bandera = $resultado['bandera'];
             }else{
                 mensajeError(1,$db->obtenerResultado());
             }
@@ -66,7 +51,12 @@ if(isset($data) /*&& isset($data->tabla)*/ &&isset($data->tipo_transaccion)) {
             mensajeError(1,$db->obtenerResultado());
         }
         if($bandera){
-            mensajeSuccess();
+            if(isset($resultado['warning'])){
+                mensajeWarning($resultado['warning']);
+            }
+            else{
+                mensajeSuccess();
+            }
         }else
         {
             //mensajeError(1,$db->obtenerResultado());
@@ -92,7 +82,8 @@ if(isset($data) /*&& isset($data->tabla)*/ &&isset($data->tipo_transaccion)) {
                 $datosConsulta = array();
                 $datosMedicamento=array();
                 $datosConsulta['fecha'] = $consulta->fecha;
-                $datosConsulta['diagnostico'] = $consulta->diagnostico;
+                $datosConsulta['id_diagnostico'] = $consulta->diagnostico;
+                $datosConsulta['id_proceso'] = $consulta->proceso;
                 $datosConsulta['fecha_inicio'] = $consulta->fecha_consulta.' '.$consulta->hora_inicio;
                 $datosConsulta['fecha_fin'] = $consulta->fecha_consulta.' '.$consulta->hora_fin;
                 $datosConsulta['asistencia'] = 'N';
@@ -107,24 +98,7 @@ if(isset($data) /*&& isset($data->tabla)*/ &&isset($data->tipo_transaccion)) {
                 $arregloVisitaMedico= json_decode(json_encode($relacion_consulta_medicamento), true);
                 if ($db->Insertar($tabla1,$datosConsulta)) {
                     $separado_por_comas = implode(",", $db->obtenerResultado());
-                    for ($x = 1; $x <= $data->contador; $x++) {
-                        $datosMedicamento['id_tabla']=$separado_por_comas;
-                        $datosMedicamento['id_medicamento'] =$arregloVisitaMedico['id_medicamento'.$x];
-                        $datosMedicamento['cantidad'] = $arregloVisitaMedico['cantidad'.$x];
-                        $datosMedicamento['fecha'] = $consulta->fecha;
-                        $datosMedicamento['descripcion_tabla'] = 'consulta';
-                        if($db->Insertar('relacion_medicamento_tablas',$datosMedicamento))
-                        {
-                            if($db->Actualizar('medicamento','cantidad=cantidad-'.$datosMedicamento['cantidad'],'id_medicamento='.$datosMedicamento['id_medicamento'])){
-                                $bandera=true;
-                            }
-                        }
-                        else{
-                            mensajeError(1,$db->obtenerResultado());
-                            $bandera=false;
-                            break;
-                        }
-                    }//for
+                    $bandera = actualizarMedicamento($db,$data,$separado_por_comas,$consulta,$arregloVisitaMedico,'consulta');
                 }else{
                     mensajeError(1,$db->obtenerResultado());
                 }
@@ -179,27 +153,11 @@ if(isset($data) /*&& isset($data->tabla)*/ &&isset($data->tipo_transaccion)) {
             $tabla1 = 'expediente';
             $tabla2 = 'consulta';
             $expediente->id_usuario_creacion = $_SESSION['id_usuario'];
+            $expediente->id_proceso = $expediente->proceso;
             $arregloMedicamentoTabla= json_decode(json_encode($relacion_medicamento_tablas), true);
             if ($db->Insertar($tabla1,$expediente)) {
                 $separado_por_comas = implode(",", $db->obtenerResultado());
-                for ($x = 1; $x <= $data->contador; $x++) {
-                    $datosMedicamento['id_tabla']=$separado_por_comas;
-                    $datosMedicamento['id_medicamento'] =$arregloMedicamentoTabla['id_medicamento'.$x];
-                    $datosMedicamento['cantidad'] = $arregloMedicamentoTabla['cantidad'.$x];
-                    $datosMedicamento['fecha'] = $expediente->fecha;
-                    $datosMedicamento['descripcion_tabla'] = 'expediente';
-                    if($db->Insertar('relacion_medicamento_tablas',$datosMedicamento))
-                    {
-                        if($db->Actualizar('medicamento','cantidad=cantidad-'.$datosMedicamento['cantidad'],'id_medicamento='.$datosMedicamento['id_medicamento'])){
-                            $bandera=true;
-                        }
-                    }
-                    else{
-                        mensajeError(1,$db->obtenerResultado());
-                        $bandera=false;
-                        break;
-                    }
-                }//for
+                $bandera = actualizarMedicamento($db,$data,$separado_por_comas,$expediente,$arregloMedicamentoTabla,'expediente');
                 if($bandera && $db->Actualizar($tabla2,'asistencia="A"','id_consulta='.$expediente->id_consulta)){
                     $bandera=true;
                 }else{
@@ -275,6 +233,48 @@ function mensajeSuccess(){
     $resArray = array();
     $resArray['success'] = 'Se ha insertado el registro. ';
     print json_encode($resArray);
+}
+function mensajeWarning($mensaje){
+    $resArray = array();
+    $resArray['warning'] = $mensaje;
+    print json_encode($resArray);
+}
+function actualizarMedicamento($db,$data,$idTabla,$tabla,$arregloMedicamentoTabla,$descripcionTabla){
+    $bandera = true;
+    $warning = '';
+    $resultado = Array();
+    $result = Array();
+    for ($x = 1; $x <= $data->contador; $x++) {
+        $datosMedicamento['id_tabla']=$idTabla;
+        $datosMedicamento['id_medicamento'] =$arregloMedicamentoTabla['id_medicamento'.$x];
+        $datosMedicamento['cantidad'] = $arregloMedicamentoTabla['cantidad'.$x];
+        $datosMedicamento['fecha'] = $tabla->fecha;
+        $datosMedicamento['descripcion_tabla'] = $descripcionTabla;
+        if($db->Insertar('relacion_medicamento_tablas',$datosMedicamento))
+        {
+            if($db->Actualizar('medicamento','cantidad=cantidad-'.$datosMedicamento['cantidad'],'id_medicamento='.$datosMedicamento['id_medicamento'])){
+                $bandera=true;
+                $db->seleccion('medicamento', 'cantidad,cantidad_minima,descripcion'
+                    , null, 'id_medicamento='.$datosMedicamento['id_medicamento'], null, null);
+                $result = $db->obtenerResultado();
+                $cantidad = $result['0']['cantidad'];
+                $cantidadMinima = $result['0']['cantidad_minima'];
+                if($cantidad <= $cantidadMinima){
+                    $warning .= 'Cantidad actual para '.$result['0']['descripcion'].' es '.$cantidad.' cantidad minima es '.$cantidadMinima.'<br>';
+                }
+            }
+        }
+        else{
+            $resultado['error'] = $db->obtenerResultado();
+            $bandera=false;
+            break;
+        }
+    }//for
+    if($warning != ''){
+        $resultado['warning'] = $warning;
+    }
+    $resultado['bandera'] = $bandera;
+    return $resultado;
 }
 ?>
 

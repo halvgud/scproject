@@ -41,6 +41,7 @@ else
                             <th class="text-center">CLAVE</th>
                             <th class="text-center">DESCRIPCION</th>
                             <th class="text-center">PRECIO</th>
+                            <th class="text-center">CANTIDAD MINIMA</th>
                             <th class="text-center">CANTIDAD</th>
                             <th class="text-center" colspan="2">AGREAGAR CANTIDAD</th>
                         </tr>
@@ -102,6 +103,7 @@ else
                         var descripcion = element['descripcion'];
                         var precio = element['precio'];
                         var cantidadActual = element['cantidad'];
+                        var cantidadMinima = element['cantidad_minima'];
                         var cantidad_entrada = element['cantidad_entrada'];
                         var input_agregar = $("<input>",{class:'form-control',type:'number',min:'0'});
 
@@ -130,6 +132,7 @@ else
                         agregarTDaTR(tr,clave);
                         agregarTDaTR(tr,descripcion);
                         agregarTDaTR(tr,precio);
+                        agregarTDaTR(tr,cantidadMinima);
                         agregarTDaTR(tr,cantidadActual);
                         agregarTDaTR(tr,input_agregar);
                         agregarTDaTR(tr,agregar);
@@ -222,6 +225,12 @@ else
                 $form_group.append(label);
                 $form_group.append(precio);
                 $contenido.append($form_group);
+                var $form_group = $("<div></div>",{class:'form-group'});
+                var label = $("<label></label>",{for:'cantidad_minima',text:'Cantidad Minima'});
+                var cantidadMinima = $("<input>",{name:'cantidad_minima',value:element['cantidad_minima'],type:'number',class:'form-control'});
+                $form_group.append(label);
+                $form_group.append(cantidadMinima);
+                $contenido.append($form_group);
                 
     
                 BootstrapDialog.show({
@@ -247,6 +256,7 @@ else
                             datos.clave = $(clave).val();
                             datos.descripcion = $(descripcion).val();
                             datos.precio = $(precio).val();
+                            datos.cantidad_minima = $(cantidadMinima).val();
                             datos.idTransaccion = 3;
                             exitoso = function(datos){
                                 notificacionSuccess(datos.success);

@@ -138,6 +138,16 @@ else
                                             <input type="hidden" id="fecha"  name="fecha"/>
                                         </td>
                                     </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <label for="proceso">Proceso</label>
+                                            <select name="proceso" id ="proceso" class="form-control" required>
+                                                <option value="">Seleccione un valor</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                </tr>
                                 </tbody>
                             </table>
                             <table name="tabl2_consulta" id="tabl2_consulta">
@@ -349,6 +359,7 @@ else
             }
             $("#fecha_visita").datetimepicker();
             cargarDropDownListDescripcion(('#diagnostico'),'diagnostico');
+            cargarDropDownListDescripcion(('#proceso'),'proceso');
             cargarDropDownList(('#clklst'),'id_medicamento','descripcion',2);
         });
     </script>
