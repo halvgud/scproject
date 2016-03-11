@@ -244,7 +244,6 @@ else
                  datos.fecha_fin = moment().format('YYYY/MM/DD')+' 23:59:59';
                  datos.idTransaccion = 13;
                  exitoso = function(datos){
-                     console.log(datos);
                      if(datos.success)
                         notificacionSuccess(datos.success);
                      BootstrapDialog.show({
@@ -317,7 +316,6 @@ else
             form1.forEach(function(input) {
                 datosTabla1[input.name] = input.value;
             });
-            console.warn(datosTabla1);
             cargarInputs(datosTabla1,5,$("#id_empleado").val())
         }
         $(function() {
