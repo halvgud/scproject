@@ -41,6 +41,7 @@ else
                             <th class="text-center">CLAVE</th>
                             <th class="text-center">DESCRIPCION</th>
                             <th class="text-center">PRECIO</th>
+                            <th class="text-center">CANTIDAD</th>
                             <th class="text-center" colspan="2">AGREAGAR CANTIDAD</th>
                         </tr>
                     </thead>
@@ -54,7 +55,7 @@ else
     <?php require_once('footer-comun.html'); ?>
     <script type="text/javascript">
         $(function() {
-            $("#descripcion").enterKey(function(){
+            $("#descripcion").enterKey(function(e){
                 e.preventDefault();
                 buscar();
             });
@@ -74,17 +75,14 @@ else
                 if(clave && clave !== '' && descripcion && descripcion !== ''){
                     datosTabla1['clave'] = clave;
                     datosTabla1['descripcion'] = descripcion;
-                    console.warn(datosTabla1);
                     cargarTabla(datosTabla1,7);
                 }
                 else if(clave && clave !== ''){
                     datosTabla1['clave'] = clave;
-                    console.warn(datosTabla1);
                     cargarTabla(datosTabla1,8);
                 }
                 else if(descripcion && descripcion !== ''){
                     datosTabla1['descripcion'] = descripcion;
-                    console.warn(datosTabla1);
                     cargarTabla(datosTabla1,9);
                 }
 
@@ -103,6 +101,7 @@ else
                         var clave = element['clave'];
                         var descripcion = element['descripcion'];
                         var precio = element['precio'];
+                        var cantidadActual = element['cantidad'];
                         var cantidad_entrada = element['cantidad_entrada'];
                         var input_agregar = $("<input>",{class:'form-control',type:'number',min:'0'});
 
@@ -131,13 +130,13 @@ else
                         agregarTDaTR(tr,clave);
                         agregarTDaTR(tr,descripcion);
                         agregarTDaTR(tr,precio);
+                        agregarTDaTR(tr,cantidadActual);
                         agregarTDaTR(tr,input_agregar);
                         agregarTDaTR(tr,agregar);
                         agregarTDaTR(tr,editar);
                         agregarTDaTR(tr,eliminar);
                         $(tbody).append(tr);
                     });
-                    console.log(find);
                     if(find)
                         $('#resultados').show();
                 };

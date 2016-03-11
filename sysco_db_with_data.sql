@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-03-2016 a las 04:21:26
+-- Tiempo de generación: 11-03-2016 a las 02:39:01
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -19,6 +19,7 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `sys_co_db`
 --
+DROP DATABASE `sys_co_db`;
 CREATE DATABASE IF NOT EXISTS `sys_co_db` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
 USE `sys_co_db`;
 
@@ -32,7 +33,6 @@ DROP TABLE IF EXISTS `consulta`;
 CREATE TABLE IF NOT EXISTS `consulta` (
   `id_consulta` int(11) NOT NULL,
   `fecha` datetime DEFAULT NULL,
-  `id_descripcion` int(11) DEFAULT NULL COMMENT 'este campo sirve para relacionar con la tabla de descripciones y asi obtener la descripcion del diagnostico de las enfermeras',
   `id_usuario_creacion` int(11) DEFAULT NULL,
   `id_empleado` varchar(10) COLLATE utf8_spanish_ci DEFAULT NULL,
   `peso` decimal(6,3) DEFAULT NULL,
@@ -43,23 +43,25 @@ CREATE TABLE IF NOT EXISTS `consulta` (
   `temperatura` decimal(6,3) DEFAULT NULL,
   `asistencia` char(1) COLLATE utf8_spanish_ci DEFAULT NULL,
   `fecha_inicio` datetime DEFAULT NULL,
-  `fecha_fin` datetime DEFAULT NULL
+  `fecha_fin` datetime DEFAULT NULL,
+  `id_diagnostico` int(11) DEFAULT NULL COMMENT 'este campo sirve para relacionar con la tabla de descripciones y asi obtener la descripcion del diagnostico de las enfermeras',
+  `id_proceso` int(11) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `consulta`
 --
 
-INSERT INTO `consulta` (`id_consulta`, `fecha`, `id_descripcion`, `id_usuario_creacion`, `id_empleado`, `peso`, `talla`, `altura`, `frecuencia_respiratoria`, `frecuencia_cardiaca`, `temperatura`, `asistencia`, `fecha_inicio`, `fecha_fin`) VALUES
-(1, '2016-02-17 22:33:11', NULL, 1, '1', '1.000', '1.000', '1.000', 1, 1, '1.000', 'N', '2016-02-18 10:15:00', '2016-02-18 10:25:00'),
-(2, '2016-02-17 22:34:27', 5, 1, '1', '1.000', '1.000', '1.000', 1, 1, '1.000', 'N', '2016-02-18 10:25:00', '2016-02-18 10:35:00'),
-(3, '2016-02-23 19:33:00', 3, 1, '1', '2.000', '2.000', '2.000', 2, 2, '2.000', 'A', '2016-02-24 18:50:00', '2016-02-24 19:00:00'),
-(4, '2016-02-24 21:42:46', 3, 1, '1', '1.000', '1.000', '1.000', 1, 1, '1.000', 'N', '2016-02-25 22:45:00', '2016-02-25 22:50:00'),
-(5, '2016-02-24 21:43:05', 4, 1, '1', '1.000', '1.000', '1.000', 1, 1, '1.000', 'N', '2016-02-25 22:50:00', '2016-02-25 23:00:00'),
-(6, '2016-02-24 22:07:08', 4, 1, '1', '1.000', '1.000', '1.000', 1, 1, '1.000', 'A', '2016-02-24 19:05:00', '2016-02-24 19:15:00'),
-(7, '2016-02-24 22:48:53', 3, 1, '2', '2.000', '2.000', '2.000', 2, 2, '2.000', 'A', '2016-02-24 19:20:00', '2016-02-24 19:30:00'),
-(8, '2016-03-02 18:09:25', 3, 1, '1', '1.000', '1.000', '1.000', 1, 1, '1.000', 'A', '2016-03-02 18:15:00', '2016-03-02 18:25:00'),
-(9, '2016-03-02 19:22:29', 3, 1, '2', '1.000', '1.000', '1.000', 1, 1, '1.000', 'N', '2016-03-02 19:30:00', '2016-03-02 19:40:00');
+INSERT INTO `consulta` (`id_consulta`, `fecha`, `id_usuario_creacion`, `id_empleado`, `peso`, `talla`, `altura`, `frecuencia_respiratoria`, `frecuencia_cardiaca`, `temperatura`, `asistencia`, `fecha_inicio`, `fecha_fin`, `id_diagnostico`, `id_proceso`) VALUES
+(1, '2016-02-17 22:33:11', 1, '1', '1.000', '1.000', '1.000', 1, 1, '1.000', 'N', '2016-02-18 10:15:00', '2016-02-18 10:25:00', NULL, NULL),
+(2, '2016-02-17 22:34:27', 1, '1', '1.000', '1.000', '1.000', 1, 1, '1.000', 'N', '2016-02-18 10:25:00', '2016-02-18 10:35:00', 5, NULL),
+(3, '2016-02-23 19:33:00', 1, '1', '2.000', '2.000', '2.000', 2, 2, '2.000', 'A', '2016-02-24 18:50:00', '2016-02-24 19:00:00', 3, NULL),
+(4, '2016-02-24 21:42:46', 1, '1', '1.000', '1.000', '1.000', 1, 1, '1.000', 'N', '2016-02-25 22:45:00', '2016-02-25 22:50:00', 3, NULL),
+(5, '2016-02-24 21:43:05', 1, '1', '1.000', '1.000', '1.000', 1, 1, '1.000', 'N', '2016-02-25 22:50:00', '2016-02-25 23:00:00', 4, NULL),
+(6, '2016-02-24 22:07:08', 1, '1', '1.000', '1.000', '1.000', 1, 1, '1.000', 'A', '2016-02-24 19:05:00', '2016-02-24 19:15:00', 4, NULL),
+(7, '2016-02-24 22:48:53', 1, '2', '2.000', '2.000', '2.000', 2, 2, '2.000', 'A', '2016-02-24 19:20:00', '2016-02-24 19:30:00', 3, NULL),
+(8, '2016-03-02 18:09:25', 1, '1', '1.000', '1.000', '1.000', 1, 1, '1.000', 'A', '2016-03-02 18:15:00', '2016-03-02 18:25:00', 3, NULL),
+(9, '2016-03-02 19:22:29', 1, '2', '1.000', '1.000', '1.000', 1, 1, '1.000', 'N', '2016-03-02 19:30:00', '2016-03-02 19:40:00', 3, NULL);
 
 -- --------------------------------------------------------
 
@@ -166,18 +168,19 @@ CREATE TABLE IF NOT EXISTS `expediente` (
   `diagnostico` varchar(1000) COLLATE utf8_spanish_ci DEFAULT NULL,
   `id_ramo_seguro` int(11) DEFAULT NULL,
   `id_otras_indicaciones` int(11) DEFAULT NULL,
-  `id_pase_imss` int(11) DEFAULT NULL
+  `id_pase_imss` int(11) DEFAULT NULL,
+  `id_proceso` int(11) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `expediente`
 --
 
-INSERT INTO `expediente` (`id_expediente`, `fecha`, `id_usuario_creacion`, `id_empleado`, `peso`, `talla`, `altura`, `frecuencia_respiratoria`, `frecuencia_cardiaca`, `temperatura`, `imc`, `interrogatorio`, `exploracion_fisica`, `tratamiento`, `diagnostico`, `id_ramo_seguro`, `id_otras_indicaciones`, `id_pase_imss`) VALUES
-(1, '2016-02-24 23:39:46', 1, '1', '1.000', '1.000', NULL, NULL, 1, '1.000', '1.000', 'lo que sea', 'aksdaksdjasjdajsdklj|', 'asdaldÃ±asdÃ±asdÃ±lasldÃ±kasldlÃ±askd', '4', 22, 27, 32),
-(2, '2016-02-24 23:48:50', 1, '1', '62.500', '32.400', '175.400', 12, 12, '37.500', '24.300', 'estamos haciendo una pruebba para guardar la consulta 6 de Roberto', 'Este texto es una prueba de lo que se guardarÃ¡ en una exploraciÃ³n fisica', 'Este texto es una prueba de lo que se guardarÃ¡ en una tratamiento recomendado por el doctor', '3', 23, 28, 31),
-(3, '2016-02-24 23:51:13', 1, '2', '1.000', '1.000', '1.000', 1, 1, '1.000', '1.000', 'asdasd', '1', '1', '5', 22, 28, 31),
-(7, '2016-03-02 20:36:17', 1, '1', '1.000', '1.000', '1.000', 1, 1, '1.000', '1.000', '1', '1', '1', '4', 22, 27, 32);
+INSERT INTO `expediente` (`id_expediente`, `fecha`, `id_usuario_creacion`, `id_empleado`, `peso`, `talla`, `altura`, `frecuencia_respiratoria`, `frecuencia_cardiaca`, `temperatura`, `imc`, `interrogatorio`, `exploracion_fisica`, `tratamiento`, `diagnostico`, `id_ramo_seguro`, `id_otras_indicaciones`, `id_pase_imss`, `id_proceso`) VALUES
+(1, '2016-02-24 23:39:46', 1, '1', '1.000', '1.000', NULL, NULL, 1, '1.000', '1.000', 'lo que sea', 'aksdaksdjasjdajsdklj|', 'asdaldÃ±asdÃ±asdÃ±lasldÃ±kasldlÃ±askd', '4', 22, 27, 32, NULL),
+(2, '2016-02-24 23:48:50', 1, '1', '62.500', '32.400', '175.400', 12, 12, '37.500', '24.300', 'estamos haciendo una pruebba para guardar la consulta 6 de Roberto', 'Este texto es una prueba de lo que se guardarÃ¡ en una exploraciÃ³n fisica', 'Este texto es una prueba de lo que se guardarÃ¡ en una tratamiento recomendado por el doctor', '3', 23, 28, 31, NULL),
+(3, '2016-02-24 23:51:13', 1, '2', '1.000', '1.000', '1.000', 1, 1, '1.000', '1.000', 'asdasd', '1', '1', '5', 22, 28, 31, NULL),
+(7, '2016-03-02 20:36:17', 1, '1', '1.000', '1.000', '1.000', 1, 1, '1.000', '1.000', '1', '1', '1', '4', 22, 27, 32, NULL);
 
 -- --------------------------------------------------------
 
@@ -198,7 +201,7 @@ CREATE TABLE IF NOT EXISTS `incapacidad` (
   `id_ramo_seguro` int(11) DEFAULT NULL,
   `id_usuario_creacion` int(11) DEFAULT NULL,
   `fecha_creacion` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `incapacidad`
@@ -208,7 +211,9 @@ INSERT INTO `incapacidad` (`id_incapacidad`, `id_empleado`, `folio`, `dias_autor
 (1, '1', '123', 2, '2016-02-17', '2016-02-19', 8, 10, 13, 1, '2016-02-17 23:20:50'),
 (2, '1', '123asd', 2, '2016-02-02', '2016-02-27', 8, 10, 14, 1, '2016-02-18 19:21:37'),
 (3, '1', 'des12', 1, '2016-02-18', '2016-02-19', 8, 11, 13, 1, '2016-02-18 19:22:42'),
-(4, '1', 'test prueba', 2, '2016-02-23', '2016-02-25', 8, 10, 13, 1, '2016-02-23 19:49:55');
+(4, '1', 'test prueba', 2, '2016-02-23', '2016-02-25', 8, 10, 13, 1, '2016-02-23 19:49:55'),
+(5, '1', 'sdfsdf', 2, '2016-03-07', '2016-03-09', 9, 10, 14, 1, '2016-03-07 22:08:53'),
+(6, '2', 'sdfsdf', 2, '2016-03-07', '2016-03-09', 9, 11, 15, 1, '2016-03-07 22:09:07');
 
 -- --------------------------------------------------------
 
@@ -223,6 +228,7 @@ CREATE TABLE IF NOT EXISTS `medicamento` (
   `descripcion` varchar(150) COLLATE utf8_spanish_ci DEFAULT NULL,
   `precio` decimal(10,0) DEFAULT NULL,
   `cantidad` int(11) DEFAULT NULL,
+  `cantidad_minima` int(11) DEFAULT NULL,
   `id_presentacion_entrada` int(11) DEFAULT NULL,
   `id_presentacion_salida` int(11) DEFAULT NULL,
   `fecha_alta` datetime DEFAULT NULL,
@@ -235,17 +241,17 @@ CREATE TABLE IF NOT EXISTS `medicamento` (
 -- Volcado de datos para la tabla `medicamento`
 --
 
-INSERT INTO `medicamento` (`id_medicamento`, `clave`, `descripcion`, `precio`, `cantidad`, `id_presentacion_entrada`, `id_presentacion_salida`, `fecha_alta`, `fecha_baja`, `estado`, `id_usuario_creacion`) VALUES
-(1, '705', 'Diclofenaco (20 tabletas 75 mg)', '40', 228, 0, 0, '2016-02-10 00:00:00', '2016-02-10 00:00:00', 'A', 1),
-(2, '41251', 'ketorolaco (25 tabletas 10 mg) ', '120', 205, 0, 0, '2016-02-10 00:00:00', '2016-02-10 00:00:00', 'A', 1),
-(3, 'PA500', 'Paracetamol (20 pastillas 500 mg)', '20', 342, 0, 0, '2016-02-10 00:00:00', '2016-02-10 00:00:00', 'A', 1),
-(4, '13123123', 'test the fucking medicamento catalog', '123', 12, 0, 0, '2016-02-18 00:00:00', '2016-02-18 00:00:00', 'A', 1),
-(5, 'testingsku', 'PruebaInsercion', '120', 20, 2, 1, '2016-02-18 00:00:00', '2016-10-19 00:00:00', 'I', 1),
-(6, 'qwe', 'qwe', '12', 12, 2, 2, '2016-02-02 00:00:00', '2016-02-03 00:00:00', 'I', 1),
-(7, '131231231', 'llesoad', '231', 59, 2, 1, '2016-02-18 00:00:00', '2018-08-10 00:00:00', 'A', 0),
-(9, 'prueba', 'prueba', '200', 443, 2, 1, '2016-02-23 00:00:00', '2018-02-23 00:00:00', 'A', NULL),
-(10, 'prueba2', 'prueba2', '30', 599, 2, 1, '2016-02-23 00:00:00', '2018-02-09 00:00:00', 'A', 0),
-(11, 'prueba3 mod', 'Cambio de descripcion', '35', 299, 3, 1, '2016-02-23 00:00:00', '2018-04-12 00:00:00', 'A', 1);
+INSERT INTO `medicamento` (`id_medicamento`, `clave`, `descripcion`, `precio`, `cantidad`, `cantidad_minima`, `id_presentacion_entrada`, `id_presentacion_salida`, `fecha_alta`, `fecha_baja`, `estado`, `id_usuario_creacion`) VALUES
+(1, '705', 'Diclofenaco (20 tabletas 75 mg)', '40', 228, NULL, 0, 0, '2016-02-10 00:00:00', '2016-02-10 00:00:00', 'A', 1),
+(2, '41251', 'ketorolaco (25 tabletas 10 mg) ', '120', 205, NULL, 0, 0, '2016-02-10 00:00:00', '2016-02-10 00:00:00', 'A', 1),
+(3, 'PA500', 'Paracetamol (20 pastillas 500 mg)', '20', 342, NULL, 0, 0, '2016-02-10 00:00:00', '2016-02-10 00:00:00', 'A', 1),
+(4, '13123123', 'test the fucking medicamento catalog', '123', 12, NULL, 0, 0, '2016-02-18 00:00:00', '2016-02-18 00:00:00', 'A', 1),
+(5, 'testingsku', 'PruebaInsercion', '120', 20, NULL, 2, 1, '2016-02-18 00:00:00', '2016-10-19 00:00:00', 'I', 1),
+(6, 'qwe', 'qwe', '12', 12, NULL, 2, 2, '2016-02-02 00:00:00', '2016-02-03 00:00:00', 'I', 1),
+(7, '131231231', 'llesoad', '231', 59, NULL, 2, 1, '2016-02-18 00:00:00', '2018-08-10 00:00:00', 'A', 0),
+(9, 'prueba', 'prueba', '200', 443, NULL, 2, 1, '2016-02-23 00:00:00', '2018-02-23 00:00:00', 'I', NULL),
+(10, 'prueba2', 'prueba2', '30', 599, NULL, 2, 1, '2016-02-23 00:00:00', '2018-02-09 00:00:00', 'A', 0),
+(11, 'prueba3 mod', 'Cambio de descripcion', '35', 299, NULL, 3, 1, '2016-02-23 00:00:00', '2018-04-12 00:00:00', 'A', 1);
 
 -- --------------------------------------------------------
 
@@ -1612,7 +1618,16 @@ CREATE TABLE IF NOT EXISTS `pase_salida` (
   `estado` char(1) COLLATE utf8_spanish_ci DEFAULT NULL,
   `id_usuario_creacion` int(11) DEFAULT NULL,
   `fecha_creacion` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `pase_salida`
+--
+
+INSERT INTO `pase_salida` (`id_pase`, `id_empleado`, `motivo`, `estado`, `id_usuario_creacion`, `fecha_creacion`) VALUES
+(1, '1', 'porque andaba crudo', 'A', 1, '2016-03-05'),
+(2, '2', 'sdfdfsdfsdf', 'A', 1, '2016-03-07'),
+(3, '1', 'sdfsdf', 'A', 1, '2016-03-07');
 
 -- --------------------------------------------------------
 
@@ -1824,31 +1839,32 @@ CREATE TABLE IF NOT EXISTS `visita` (
   `fecha` datetime DEFAULT NULL,
   `id_empleado` varchar(10) COLLATE utf8_spanish_ci DEFAULT NULL,
   `id_usuario_creacion` int(11) DEFAULT NULL,
-  `id_descripcion` int(11) DEFAULT NULL
+  `id_diagnostico` int(11) DEFAULT NULL,
+  `id_proceso` int(11) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `visita`
 --
 
-INSERT INTO `visita` (`id_visita`, `fecha`, `id_empleado`, `id_usuario_creacion`, `id_descripcion`) VALUES
-(1, '2016-02-17 21:00:00', '1', 1, 3),
-(2, '2016-02-23 20:00:00', '1', 1, 4),
-(3, '2016-02-25 20:14:00', '2', 1, 4),
-(4, '2016-02-25 22:49:00', '2', 1, 3),
-(5, '2016-03-01 21:35:00', '1', 1, 3),
-(6, '2016-03-01 21:35:00', '1', 1, 4),
-(7, '2016-03-01 21:35:00', '2', 1, 5),
-(8, '2016-03-01 21:35:00', '2', 1, 3),
-(9, '2016-03-08 21:35:00', '1', 1, 5),
-(10, '2016-03-08 21:35:00', '1', 1, 5),
-(11, '2016-03-01 21:36:00', '2', 1, 4),
-(12, '2016-03-08 21:36:00', '1', 1, 4),
-(13, '2016-03-08 21:36:00', '1', 1, 4),
-(15, '2016-03-02 19:12:00', '1', 1, 3),
-(16, '2016-03-02 19:13:00', '2', 1, 3),
-(17, '2016-03-02 19:16:00', '1', 1, 3),
-(18, '2016-03-02 21:58:00', '2', 1, 4);
+INSERT INTO `visita` (`id_visita`, `fecha`, `id_empleado`, `id_usuario_creacion`, `id_diagnostico`, `id_proceso`) VALUES
+(1, '2016-02-17 21:00:00', '1', 1, 3, NULL),
+(2, '2016-02-23 20:00:00', '1', 1, 4, NULL),
+(3, '2016-02-25 20:14:00', '2', 1, 4, NULL),
+(4, '2016-02-25 22:49:00', '2', 1, 3, NULL),
+(5, '2016-03-01 21:35:00', '1', 1, 3, NULL),
+(6, '2016-03-01 21:35:00', '1', 1, 4, NULL),
+(7, '2016-03-01 21:35:00', '2', 1, 5, NULL),
+(8, '2016-03-01 21:35:00', '2', 1, 3, NULL),
+(9, '2016-03-08 21:35:00', '1', 1, 5, NULL),
+(10, '2016-03-08 21:35:00', '1', 1, 5, NULL),
+(11, '2016-03-01 21:36:00', '2', 1, 4, NULL),
+(12, '2016-03-08 21:36:00', '1', 1, 4, NULL),
+(13, '2016-03-08 21:36:00', '1', 1, 4, NULL),
+(15, '2016-03-02 19:12:00', '1', 1, 3, NULL),
+(16, '2016-03-02 19:13:00', '2', 1, 3, NULL),
+(17, '2016-03-02 19:16:00', '1', 1, 3, NULL),
+(18, '2016-03-02 21:58:00', '2', 1, 4, NULL);
 
 --
 -- Índices para tablas volcadas
@@ -1968,7 +1984,7 @@ ALTER TABLE `expediente`
 -- AUTO_INCREMENT de la tabla `incapacidad`
 --
 ALTER TABLE `incapacidad`
-  MODIFY `id_incapacidad` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id_incapacidad` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `medicamento`
 --
@@ -1983,7 +1999,7 @@ ALTER TABLE `memo`
 -- AUTO_INCREMENT de la tabla `pase_salida`
 --
 ALTER TABLE `pase_salida`
-  MODIFY `id_pase` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pase` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `presentacion_medicamento`
 --
