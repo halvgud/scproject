@@ -254,7 +254,10 @@ else
             else{
                 eventData.title = $("#id_empleado").val()+' - '+$("#nombre").val();
                 exitoso = function(datos){
-                    notificacionSuccess(datos.success);
+                    if(datos.success)
+                        notificacionSuccess(datos.success);
+                    else if(datos.warning)
+                        notificacionWarning(datos.warning);
                     $("#agendarConsultaForm")[0].reset();
                     $("#tabl2_consulta tbody").empty();
                     $('#agregarConsultasModal').modal('toggle');

@@ -220,6 +220,8 @@ else
                 exitoso = function(datos){
                     if(datos.success)
                         notificacionSuccess(datos.success);
+                    else if(datos.warning)
+                        notificacionWarning(datos.warning);
                     $("#guardarExpediente")[0].reset();
                     $("#tabl2_visita tbody").empty();
                     contador = 0;

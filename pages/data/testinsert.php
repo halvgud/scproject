@@ -98,14 +98,20 @@ if(isset($data) /*&& isset($data->tabla)*/ &&isset($data->tipo_transaccion)) {
                 $arregloVisitaMedico= json_decode(json_encode($relacion_consulta_medicamento), true);
                 if ($db->Insertar($tabla1,$datosConsulta)) {
                     $separado_por_comas = implode(",", $db->obtenerResultado());
-                    $bandera = actualizarMedicamento($db,$data,$separado_por_comas,$consulta,$arregloVisitaMedico,'consulta');
+                    $resultado = actualizarMedicamento($db,$data,$separado_por_comas,$consulta,$arregloVisitaMedico,'consulta');
+                    $bandera = $resultado['bandera'];
                 }else{
                     mensajeError(1,$db->obtenerResultado());
                 }
                 $db->finalizarTransaccion();
             }//iniciarTransaccion
             if($bandera){
-                mensajeSuccess();
+                if(isset($resultado['warning'])){
+                    mensajeWarning($resultado['warning']);
+                }
+                else{
+                    mensajeSuccess();
+                }
             }else
             {
                 mensajeError(1,$db->obtenerResultado());
@@ -157,7 +163,8 @@ if(isset($data) /*&& isset($data->tabla)*/ &&isset($data->tipo_transaccion)) {
             $arregloMedicamentoTabla= json_decode(json_encode($relacion_medicamento_tablas), true);
             if ($db->Insertar($tabla1,$expediente)) {
                 $separado_por_comas = implode(",", $db->obtenerResultado());
-                $bandera = actualizarMedicamento($db,$data,$separado_por_comas,$expediente,$arregloMedicamentoTabla,'expediente');
+                $resultado = actualizarMedicamento($db,$data,$separado_por_comas,$expediente,$arregloMedicamentoTabla,'expediente');
+                $bandera = $resultado['bandera'];
                 if($bandera && $db->Actualizar($tabla2,'asistencia="A"','id_consulta='.$expediente->id_consulta)){
                     $bandera=true;
                 }else{
@@ -169,7 +176,12 @@ if(isset($data) /*&& isset($data->tabla)*/ &&isset($data->tipo_transaccion)) {
             $db->finalizarTransaccion();
         }//iniciarTransaccion
         if($bandera){
-            mensajeSuccess();
+            if(isset($resultado['warning'])){
+                mensajeWarning($resultado['warning']);
+            }
+            else{
+                mensajeSuccess();
+            }
         }else
         {
             mensajeError(1,$db->obtenerResultado());
