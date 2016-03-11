@@ -289,7 +289,7 @@ function obtenerSelect($data)
     else if ($data->idTransaccion == '28') {//Select de los datos del empleado
         $db = new Conexion();
         $db->abrirConexion();
-        $db->seleccion('medicamento', 'm.id_medicamento,m.clave,m.descripcion,m.precio,m.cantidad,pm.descripcion presentacion,pm.cantidad cantidad_entrada'
+        $db->seleccion('medicamento', 'm.id_medicamento,m.clave,m.descripcion,m.precio,m.cantidad,pm.descripcion presentacion,pm.cantidad cantidad_entrada,cantidad_minima '
             , 'm inner join presentacion_medicamento pm on m.id_presentacion_entrada = pm.id_presentacion', 'm.estado="A"', 'm.id_medicamento asc', null);
         return ($db->obtenerResultado());
     }

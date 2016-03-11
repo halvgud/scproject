@@ -35,6 +35,7 @@ else
                     <TH>CANTIDAD</TH>
                     <TH>PRESENTACION</TH>
                     <TH>CANTIDAD ENTRADA</TH>
+                    <TH>CANTIDAD MINIMA</TH>
                 </tr>
                 </thead>
                 <tfoot>
@@ -45,10 +46,11 @@ else
                     <TH>CANTIDAD</TH>
                     <TH>PRESENTACION</TH>
                     <TH>CANTIDAD ENTRADA</TH>
+                    <TH>CANTIDAD MINIMA</TH>
                 </tr>
                 </tfoot>
             </table>
-            <form id="abrirPdf" action="pdf_ran_medicamento_rango_fecha.php" method="post" target="_blank">
+            <form id="abrirPdf" action="pdf_ran_medicamento_inventario.php" method="post" target="_blank">
                 <input id="fecha_inicio" name="fecha_inicio" type="hidden" value="">
                 <input id="fecha_fin" name="fecha_fin" type="hidden" value="">
                 <input id="fecha_inicio_mostrar" name="fecha_inicio_mostrar" type="hidden" value="">
@@ -86,6 +88,7 @@ else
                                 }
                             },
                             {
+
                                 text: '<i class="fa fa-file-pdf-o"></i> jsPDF ',
                                 titleAttr: 'Genera un archivo PDF con JavaScript',
                                 className:'btn btn-danger',
@@ -95,8 +98,9 @@ else
                                         {title:"descripcion",dataKey:"descripcion"},
                                         {title:"precio",dataKey:"precio"},
                                         {title:"cantidad",dataKey:"cantidad"},
-                                        {title:"descripcion presentacion",dataKey:"presentacion"},
-                                        {title:"cantidad cantidad_entrada",dataKey:"cantidad_entrada"}
+                                        {title:"presentacion",dataKey:"presentacion"},
+                                        {title:"cantidad ",dataKey:"cantidad_entrada"},
+                                        {title:"cantidad minima",dataKey:"cantidad_minima"}
                                     ];
                                     var nombre = 'Inventario_de_Medicamentos';
                                     var header1 = 'Inventario de Medicamentos';
@@ -112,7 +116,8 @@ else
                             {data:"precio"},
                             {data:"cantidad"},
                             {data:"presentacion"},
-                            {data:"cantidad_entrada"}
+                            {data:"cantidad_entrada"},
+                            {data:"cantidad_minima"}
                         ]
                     } );
                     $('#example').show();
