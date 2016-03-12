@@ -128,14 +128,15 @@ function obtenerSelect($data)
     } else if ($data->idTransaccion == '14') {//Select para traerse las visitas en un rango de fechas
         $db = new Conexion();
         $db->abrirConexion();
-        $db->seleccion('visita', 'v.id_visita,v.fecha, v.id_empleado, v.id_usuario_creacion, v.id_descripcion,' .
+        $db->seleccion('visita', 'v.id_visita,v.fecha, v.id_empleado, v.id_usuario_creacion, v.id_diagnostico,' .
             'upper(d.descripcion),upper(concat(e.nombre," ",e.paterno," ",e.materno)) nombre,' .
-            't.descripcion turno,dep.descripcion departamento, a.descripcion area'
-            , 'v inner join descripcion d on v.id_descripcion = d.id_descripcion ' .
+            't.descripcion turno,dep.descripcion departamento, a.descripcion area,p.descripcion proceso '
+            , 'v inner join descripcion d on v.id_diagnostico = d.id_descripcion ' .
             'inner join empleado e on e.id_empleado = v.id_empleado ' .
             'inner join descripcion t on e.id_turno = t.id_descripcion ' .
             'inner join descripcion dep on e.id_departamento = dep.id_descripcion ' .
-            'inner join descripcion a on e.id_area = a.id_descripcion',
+            'inner join descripcion a on e.id_area = a.id_descripcion '.
+            'left join descripcion p on v.id_proceso = p.id_descripcion ',
             'v.fecha>="' . $data->fecha_inicio . '" and v.fecha<="' . $data->fecha_fin . '"', 'v.fecha asc', null);
         ///print $db->obtenerSQL();
         $visitas = $db->obtenerResultado();
@@ -232,10 +233,12 @@ function obtenerSelect($data)
         $db->abrirConexion();
         $db->seleccion('empleado', "m.id_empleado,concat(e.nombre,' ',materno,' ',paterno) as nombre_completo,fecha,peso,talla,altura,frecuencia_respiratoria,
         frecuencia_cardiaca,temperatura,imc,interrogatorio,exploracion_fisica,tratamiento,m.diagnostico,d1.descripcion as ramo_seguro,
-        d2.descripcion as otras_indicaciones, d3.descripcion as pase_imss",
+        d2.descripcion as otras_indicaciones, d3.descripcion as pase_imss,p.descripcion as proceso",
             "e inner join expediente m on (e.id_empleado = m.id_empleado)
              inner join descripcion d1 on (m.id_ramo_seguro=d1.id_descripcion) inner join descripcion d2 on (m.id_otras_indicaciones = d2.id_descripcion)
-             inner join descripcion d3 on (m.id_pase_imss=d3.id_descripcion) ",
+             inner join descripcion d3 on (m.id_pase_imss=d3.id_descripcion) ".
+             'left join descripcion p on m.id_proceso = p.id_descripcion '
+            ,
             ' m.fecha >= "'.$data->fecha_inicio.'" and m.fecha <= "'.$data->fecha_fin.'"'
             , null, null);
         return ($db->obtenerResultado());
@@ -255,14 +258,15 @@ function obtenerSelect($data)
     }else if ($data->idTransaccion == '26') {//Select para traerse las visitas en un rango de fechas
         $db = new Conexion();
         $db->abrirConexion();
-        $db->seleccion('consulta', 'c.id_consulta,c.fecha,c.id_empleado, c.id_usuario_creacion, c.id_descripcion,' .
+        $db->seleccion('consulta', 'c.id_consulta,c.fecha,c.id_empleado, c.id_usuario_creacion, c.id_diagnostico,' .
             'upper(d.descripcion),upper(concat(e.nombre," ",e.paterno," ",e.materno)) nombre,' .
-            't.descripcion turno,dep.descripcion departamento, a.descripcion area'
-            , 'c inner join descripcion d on c.id_descripcion = d.id_descripcion ' .
+            't.descripcion turno,dep.descripcion departamento, a.descripcion area, p.descripcion proceso'
+            , 'c inner join descripcion d on c.id_diagnostico = d.id_descripcion ' .
             'inner join empleado e on e.id_empleado = c.id_empleado ' .
-            'inner join descripcion t on e.id_turno = t.id_descripcion ' .
-            'inner join descripcion dep on e.id_departamento = dep.id_descripcion ' .
-            'inner join descripcion a on e.id_area = a.id_descripcion',
+            'left join descripcion t on e.id_turno = t.id_descripcion ' .
+            'left join descripcion dep on e.id_departamento = dep.id_descripcion ' .
+            'left join descripcion a on e.id_area = a.id_descripcion '.
+            'left join descripcion p on c.id_proceso = p.id_descripcion ',
             'c.fecha>="' . $data->fecha_inicio . '" and c.fecha<="' . $data->fecha_fin . '"', 'c.fecha asc', null);
         $consultas = $db->obtenerResultado();
         foreach ($consultas as &$consulta) {

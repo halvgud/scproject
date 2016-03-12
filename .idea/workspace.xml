@@ -5,10 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a9adb31-820b-4d1b-b2cb-c650b08990f1" name="Default" comment="core and test files">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/pdf_ran_medicamento_inventario.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/data/testselect.php" afterPath="$PROJECT_DIR$/pages/data/testselect.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/reportes-inventario.php" afterPath="$PROJECT_DIR$/pages/reportes-inventario.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/pdf_consulta_rango_fecha.php" afterPath="$PROJECT_DIR$/pages/pdf_consulta_rango_fecha.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/pdf_expedientes_rango_fecha.php" afterPath="$PROJECT_DIR$/pages/pdf_expedientes_rango_fecha.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/pdf_visita_rango_fecha.php" afterPath="$PROJECT_DIR$/pages/pdf_visita_rango_fecha.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/reportes-consulta-rango-fecha.php" afterPath="$PROJECT_DIR$/pages/reportes-consulta-rango-fecha.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/reportes-expediente-por-fecha.php" afterPath="$PROJECT_DIR$/pages/reportes-expediente-por-fecha.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/reportes-visita-rango-fecha.php" afterPath="$PROJECT_DIR$/pages/reportes-visita-rango-fecha.php" />
     </list>
     <ignored path="scproject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,65 +33,53 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="control-agendar-visita.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/control-agendar-visita.php">
+      <file leaf-file-name="reportes-consulta-rango-fecha.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/reportes-consulta-rango-fecha.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-88.92308">
-              <caret line="136" column="20" selection-start-line="136" selection-start-column="20" selection-end-line="139" selection-end-column="59" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="testselect.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/data/testselect.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.307692">
-              <caret line="291" column="171" selection-start-line="291" selection-start-column="171" selection-end-line="291" selection-end-column="171" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="testinsert.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/data/testinsert.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="183" column="13" selection-start-line="183" selection-start-column="13" selection-end-line="183" selection-end-column="13" />
+            <state vertical-scroll-proportion="-0.65384614">
+              <caret line="60" column="20" selection-start-line="60" selection-start-column="20" selection-end-line="60" selection-end-column="36" />
               <folding>
-                <element signature="e#11524#11723#0#PHP" expanded="false" />
+                <element signature="n#style#0;n#table#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="control-agendar-consulta.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/control-agendar-consulta.php">
+      <file leaf-file-name="reportes-expediente-por-fecha.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/reportes-expediente-por-fecha.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.65384614">
-              <caret line="259" column="59" selection-start-line="259" selection-start-column="59" selection-end-line="259" selection-end-column="59" />
+            <state vertical-scroll-proportion="-9.461538">
+              <caret line="93" column="58" selection-start-line="93" selection-start-column="58" selection-end-line="93" selection-end-column="58" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="expediente-guardar.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/expediente-guardar.php">
+      <file leaf-file-name="reportes-visita-rango-fecha.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/reportes-visita-rango-fecha.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.8076923">
-              <caret line="302" column="30" selection-start-line="302" selection-start-column="30" selection-end-line="302" selection-end-column="30" />
+            <state vertical-scroll-proportion="-14.384615">
+              <caret line="76" column="53" selection-start-line="76" selection-start-column="53" selection-end-line="76" selection-end-column="53" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reportes-consulta-rango-fecha.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/reportes-consulta-rango-fecha.php">
+      <file leaf-file-name="pdf_visita_rango_fecha.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/pdf_visita_rango_fecha.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.5636363">
-              <caret line="74" column="61" selection-start-line="74" selection-start-column="61" selection-end-line="74" selection-end-column="61" />
+            <state vertical-scroll-proportion="-2.6153846">
+              <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
               <folding>
-                <element signature="n#style#0;n#table#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1457740095016" expanded="true" signature="767:781" placeholder="..." />
+                <marker date="1457740095016" expanded="true" signature="782:923" placeholder="..." />
+                <marker date="1457740095016" expanded="true" signature="782:998" placeholder="..." />
+                <marker date="1457740095016" expanded="true" signature="782:1220" placeholder="..." />
+                <marker date="1457740095016" expanded="true" signature="789:923" placeholder="..." />
+                <marker date="1457740095016" expanded="true" signature="811:923" placeholder="..." />
+                <marker date="1457740095016" expanded="false" signature="1422:1434" placeholder="..." />
+                <marker date="1457740095016" expanded="false" signature="1487:1504" placeholder="..." />
+                <marker date="1457740095016" expanded="false" signature="1540:1582" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -104,19 +95,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pdf_ran_medicamento_inventario.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/pdf_ran_medicamento_inventario.php">
+      <file leaf-file-name="testselect.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pages/data/testselect.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.39593908">
+              <caret line="271" column="42" selection-start-line="271" selection-start-column="42" selection-end-line="271" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pdf_expedientes_rango_fecha.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/pdf_expedientes_rango_fecha.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.6153846">
+              <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
               <folding>
-                <marker date="1457737130755" expanded="false" signature="554:568" placeholder="..." />
-                <marker date="1457737130755" expanded="true" signature="569:788" placeholder="..." />
-                <marker date="1457737130755" expanded="true" signature="576:755" placeholder="..." />
-                <marker date="1457737130755" expanded="true" signature="598:747" placeholder="..." />
-                <marker date="1457737130755" expanded="false" signature="1212:1224" placeholder="..." />
-                <marker date="1457737130755" expanded="false" signature="1277:1294" placeholder="..." />
-                <marker date="1457737130755" expanded="false" signature="1330:1372" placeholder="..." />
+                <marker date="1457740554006" expanded="true" signature="378:1142" placeholder="..." />
+                <marker date="1457740554006" expanded="true" signature="378:1179" placeholder="..." />
+                <marker date="1457740554006" expanded="false" signature="1240:1254" placeholder="..." />
+                <marker date="1457740554006" expanded="true" signature="1255:1826" placeholder="..." />
+                <marker date="1457740554006" expanded="true" signature="1262:1793" placeholder="..." />
+                <marker date="1457740554006" expanded="true" signature="1284:1785" placeholder="..." />
+                <marker date="1457740554006" expanded="true" signature="1874:2194" placeholder="..." />
+                <marker date="1457740554006" expanded="false" signature="1888:1945" placeholder="..." />
+                <marker date="1457740554006" expanded="false" signature="1980:2006" placeholder="..." />
+                <marker date="1457740554006" expanded="false" signature="2209:2228" placeholder="..." />
+                <marker date="1457740554006" expanded="false" signature="2892:2904" placeholder="..." />
+                <marker date="1457740554006" expanded="false" signature="2957:2974" placeholder="..." />
+                <marker date="1457740554006" expanded="false" signature="3010:3052" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -125,25 +132,35 @@
       <file leaf-file-name="pdf_consulta_rango_fecha.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/pdf_consulta_rango_fecha.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.807693">
-              <caret line="24" column="1" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="1" />
+            <state vertical-scroll-proportion="-2.6153846">
+              <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
               <folding>
-                <marker date="1457715147036" expanded="false" signature="756:770" placeholder="..." />
-                <marker date="1457715147036" expanded="true" signature="771:973" placeholder="..." />
-                <marker date="1457715147036" expanded="true" signature="778:940" placeholder="..." />
-                <marker date="1457715147036" expanded="true" signature="800:932" placeholder="..." />
-                <marker date="1457715147036" expanded="true" signature="1397:1409" placeholder="..." />
-                <marker date="1457715147036" expanded="true" signature="1462:1479" placeholder="..." />
-                <marker date="1457715147036" expanded="true" signature="1515:1557" placeholder="..." />
+                <marker date="1457739137298" expanded="false" signature="789:803" placeholder="..." />
+                <marker date="1457739137298" expanded="true" signature="804:1023" placeholder="..." />
+                <marker date="1457739137298" expanded="true" signature="811:990" placeholder="..." />
+                <marker date="1457739137298" expanded="true" signature="833:982" placeholder="..." />
+                <marker date="1457739137298" expanded="true" signature="1447:1459" placeholder="..." />
+                <marker date="1457739137298" expanded="true" signature="1512:1529" placeholder="..." />
+                <marker date="1457739137298" expanded="true" signature="1565:1607" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reportes-memo-por-fecha.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="medicamento-nuevo.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/medicamento-nuevo.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="61" column="28" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="reportes-memo-por-fecha.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/reportes-memo-por-fecha.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.027419355">
+            <state vertical-scroll-proportion="-0.65384614">
               <caret line="108" column="31" selection-start-line="108" selection-start-column="31" selection-end-line="108" selection-end-column="31" />
               <folding />
             </state>
@@ -179,19 +196,14 @@
         <option value="$PROJECT_DIR$/pages/pdf_visita_empleado_rango_fecha.php" />
         <option value="$PROJECT_DIR$/pages/pdf_consulta_empleado_rango_fecha.php" />
         <option value="$PROJECT_DIR$/pages/reportes-empleados-visitas.php" />
-        <option value="$PROJECT_DIR$/pages/pdf_visita_rango_fecha.php" />
-        <option value="$PROJECT_DIR$/pages/reportes-visita-rango-fecha.php" />
         <option value="$PROJECT_DIR$/pages/pdf_memo_rango_fecha.php" />
         <option value="$PROJECT_DIR$/pages/reportes-incapacidad-por-fecha.php" />
         <option value="$PROJECT_DIR$/pages/footer-comun.html" />
         <option value="$PROJECT_DIR$/pages/reportes-memo-por-fecha.php" />
         <option value="$PROJECT_DIR$/pages/reportes-empleados-pases.php" />
         <option value="$PROJECT_DIR$/pages/pdf_pasesalida_empleado_rango_fecha.php" />
-        <option value="$PROJECT_DIR$/pages/pdf_expedientes_rango_fecha.php" />
-        <option value="$PROJECT_DIR$/pages/reportes-expediente-por-fecha.php" />
         <option value="$PROJECT_DIR$/pages/expediente-revisar-consulta.php" />
         <option value="$PROJECT_DIR$/pages/medicamento-nuevo.php" />
-        <option value="$PROJECT_DIR$/pages/medicamento-edicion.php" />
         <option value="$PROJECT_DIR$/pages/data/test-actualizar.php" />
         <option value="$PROJECT_DIR$/pages/data/core.php" />
         <option value="$PROJECT_DIR$/pages/control-agendar-visita.php" />
@@ -199,11 +211,16 @@
         <option value="$PROJECT_DIR$/pages/data/testinsert.php" />
         <option value="$PROJECT_DIR$/pages/control-agendar-consulta.php" />
         <option value="$PROJECT_DIR$/pages/expediente-guardar.php" />
-        <option value="$PROJECT_DIR$/pages/pdf_consulta_rango_fecha.php" />
-        <option value="$PROJECT_DIR$/pages/reportes-consulta-rango-fecha.php" />
         <option value="$PROJECT_DIR$/pages/pdf_ran_medicamento_rango_fecha.php" />
         <option value="$PROJECT_DIR$/pages/reportes-inventario.php" />
         <option value="$PROJECT_DIR$/pages/pdf_ran_medicamento_inventario.php" />
+        <option value="$PROJECT_DIR$/pages/medicamento-edicion.php" />
+        <option value="$PROJECT_DIR$/pages/pdf_consulta_rango_fecha.php" />
+        <option value="$PROJECT_DIR$/pages/reportes-consulta-rango-fecha.php" />
+        <option value="$PROJECT_DIR$/pages/reportes-visita-rango-fecha.php" />
+        <option value="$PROJECT_DIR$/pages/pdf_visita_rango_fecha.php" />
+        <option value="$PROJECT_DIR$/pages/reportes-expediente-por-fecha.php" />
+        <option value="$PROJECT_DIR$/pages/pdf_expedientes_rango_fecha.php" />
         <option value="$PROJECT_DIR$/pages/data/testselect.php" />
       </list>
     </option>
@@ -558,25 +575,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/pdf_visita_rango_fecha.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5604396">
-          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/reportes-visita-rango-fecha.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.346154">
-          <caret line="172" column="41" selection-start-line="172" selection-start-column="41" selection-end-line="172" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/menu.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="30" column="21" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -630,21 +633,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/pdf_expedientes_rango_fecha.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="44" column="28" selection-start-line="44" selection-start-column="28" selection-end-line="44" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/reportes-expediente-por-fecha.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-68.65385">
-          <caret line="105" column="21" selection-start-line="105" selection-start-column="21" selection-end-line="105" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/expediente-revisar-consulta.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.03267974">
@@ -672,22 +660,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0372807">
           <caret line="18" column="22" selection-start-line="0" selection-start-column="0" selection-end-line="171" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/medicamento-nuevo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-25.5">
-          <caret line="61" column="28" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/medicamento-edicion.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.7454545">
-          <caret line="258" column="68" selection-start-line="258" selection-start-column="68" selection-end-line="258" selection-end-column="68" />
           <folding />
         </state>
       </provider>
@@ -726,34 +698,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/control-agendar-visita.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-88.92308">
-          <caret line="136" column="20" selection-start-line="136" selection-start-column="20" selection-end-line="139" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/tools/flot/examples/axes-time-zones/tz/asia">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3317647">
           <caret line="2354" column="39" selection-start-line="2354" selection-start-column="39" selection-end-line="2354" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/control-agendar-consulta.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.65384614">
-          <caret line="259" column="59" selection-start-line="259" selection-start-column="59" selection-end-line="259" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/expediente-guardar.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.8076923">
-          <caret line="302" column="30" selection-start-line="302" selection-start-column="30" selection-end-line="302" selection-end-column="30" />
           <folding />
         </state>
       </provider>
@@ -774,22 +722,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/data/testselect.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.307692">
-          <caret line="291" column="171" selection-start-line="291" selection-start-column="171" selection-end-line="291" selection-end-column="171" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/reportes-inventario.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-22.538462">
-          <caret line="71" column="10" selection-start-line="71" selection-start-column="10" selection-end-line="71" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/pdf_ran_medicamento_inventario.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -806,36 +738,148 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pages/reportes-memo-por-fecha.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.65384614">
+          <caret line="108" column="31" selection-start-line="108" selection-start-column="31" selection-end-line="108" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/medicamento-nuevo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="61" column="28" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/medicamento-edicion.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43548387">
+          <caret line="41" column="29" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/control-agendar-consulta.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.85806453">
+          <caret line="264" column="33" selection-start-line="264" selection-start-column="33" selection-end-line="264" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/control-agendar-visita.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36451614">
+          <caret line="77" column="53" selection-start-line="77" selection-start-column="46" selection-end-line="77" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/expediente-guardar.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="334" column="52" selection-start-line="334" selection-start-column="45" selection-end-line="334" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/pdf_consulta_rango_fecha.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.6153846">
+          <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
+          <folding>
+            <marker date="1457739137298" expanded="false" signature="789:803" placeholder="..." />
+            <marker date="1457739137298" expanded="true" signature="804:1023" placeholder="..." />
+            <marker date="1457739137298" expanded="true" signature="811:990" placeholder="..." />
+            <marker date="1457739137298" expanded="true" signature="833:982" placeholder="..." />
+            <marker date="1457739137298" expanded="true" signature="1447:1459" placeholder="..." />
+            <marker date="1457739137298" expanded="true" signature="1512:1529" placeholder="..." />
+            <marker date="1457739137298" expanded="true" signature="1565:1607" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/reportes-inventario.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-22.538462">
+          <caret line="71" column="10" selection-start-line="71" selection-start-column="10" selection-end-line="71" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pages/reportes-consulta-rango-fecha.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.5636363">
-          <caret line="74" column="61" selection-start-line="74" selection-start-column="61" selection-end-line="74" selection-end-column="61" />
+        <state vertical-scroll-proportion="-0.65384614">
+          <caret line="60" column="20" selection-start-line="60" selection-start-column="20" selection-end-line="60" selection-end-column="36" />
           <folding>
             <element signature="n#style#0;n#table#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/pdf_consulta_rango_fecha.php">
+    <entry file="file://$PROJECT_DIR$/pages/reportes-visita-rango-fecha.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.807693">
-          <caret line="24" column="1" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="1" />
+        <state vertical-scroll-proportion="-14.384615">
+          <caret line="76" column="53" selection-start-line="76" selection-start-column="53" selection-end-line="76" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/pdf_visita_rango_fecha.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.6153846">
+          <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
           <folding>
-            <marker date="1457715147036" expanded="false" signature="756:770" placeholder="..." />
-            <marker date="1457715147036" expanded="true" signature="771:973" placeholder="..." />
-            <marker date="1457715147036" expanded="true" signature="778:940" placeholder="..." />
-            <marker date="1457715147036" expanded="true" signature="800:932" placeholder="..." />
-            <marker date="1457715147036" expanded="true" signature="1397:1409" placeholder="..." />
-            <marker date="1457715147036" expanded="true" signature="1462:1479" placeholder="..." />
-            <marker date="1457715147036" expanded="true" signature="1515:1557" placeholder="..." />
+            <marker date="1457740095016" expanded="true" signature="767:781" placeholder="..." />
+            <marker date="1457740095016" expanded="true" signature="782:923" placeholder="..." />
+            <marker date="1457740095016" expanded="true" signature="782:998" placeholder="..." />
+            <marker date="1457740095016" expanded="true" signature="782:1220" placeholder="..." />
+            <marker date="1457740095016" expanded="true" signature="789:923" placeholder="..." />
+            <marker date="1457740095016" expanded="true" signature="811:923" placeholder="..." />
+            <marker date="1457740095016" expanded="false" signature="1422:1434" placeholder="..." />
+            <marker date="1457740095016" expanded="false" signature="1487:1504" placeholder="..." />
+            <marker date="1457740095016" expanded="false" signature="1540:1582" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/reportes-memo-por-fecha.php">
+    <entry file="file://$PROJECT_DIR$/pages/reportes-expediente-por-fecha.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.027419355">
-          <caret line="108" column="31" selection-start-line="108" selection-start-column="31" selection-end-line="108" selection-end-column="31" />
+        <state vertical-scroll-proportion="-9.461538">
+          <caret line="93" column="58" selection-start-line="93" selection-start-column="58" selection-end-line="93" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/pdf_expedientes_rango_fecha.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.6153846">
+          <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
+          <folding>
+            <marker date="1457740554006" expanded="true" signature="378:1142" placeholder="..." />
+            <marker date="1457740554006" expanded="true" signature="378:1179" placeholder="..." />
+            <marker date="1457740554006" expanded="false" signature="1240:1254" placeholder="..." />
+            <marker date="1457740554006" expanded="true" signature="1255:1826" placeholder="..." />
+            <marker date="1457740554006" expanded="true" signature="1262:1793" placeholder="..." />
+            <marker date="1457740554006" expanded="true" signature="1284:1785" placeholder="..." />
+            <marker date="1457740554006" expanded="true" signature="1874:2194" placeholder="..." />
+            <marker date="1457740554006" expanded="false" signature="1888:1945" placeholder="..." />
+            <marker date="1457740554006" expanded="false" signature="1980:2006" placeholder="..." />
+            <marker date="1457740554006" expanded="false" signature="2209:2228" placeholder="..." />
+            <marker date="1457740554006" expanded="false" signature="2892:2904" placeholder="..." />
+            <marker date="1457740554006" expanded="false" signature="2957:2974" placeholder="..." />
+            <marker date="1457740554006" expanded="false" signature="3010:3052" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/data/testselect.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39593908">
+          <caret line="271" column="42" selection-start-line="271" selection-start-column="42" selection-end-line="271" selection-end-column="42" />
           <folding />
         </state>
       </provider>

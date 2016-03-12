@@ -21,14 +21,14 @@ foreach ($visitas as &$visita) {
         $tabla .= $medicamento['descripcion'].'<br>';
     }
 
-    $tabla .= '</td><td>'.$visita['fecha'].'</td></tr>';
+    $tabla .= '</td><td>'.$visita['fecha'].'</td><td>'.$visita['proceso'].'</td></tr>';
 }
 $tabla = '<table class="bpmTopnTail" border="1" style="margin:0 auto;"><thead><tr class="headerrow"><th>ID EMPLEADO</th><th>NOMBRE</th>
 <th>TURNO</th>
 <th>AREA</th>
 <th>DEPARTAMENTO</th>
 <th>MEDICAMENTO(S)</th>
-<th>FECHA</th></tr></thead><tbody>'.$tabla.'</tbody></table>';
+<th>FECHA</th><th>PROCESO</th></tr></thead><tbody>'.$tabla.'</tbody></table>';
 
 $html = $tabla;
 //==============================================================

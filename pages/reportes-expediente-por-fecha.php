@@ -66,6 +66,7 @@ else
                     <th>RAMO SEGURO</th>
                     <th>OTRAS INDICACIONES</th>
                     <th>PASE IMSS</th>
+                    <th>PROCESO</th>
                 </tr>
                 </thead>
                 <tfoot>
@@ -86,6 +87,7 @@ else
                     <th>RAMO SEGURO</th>
                     <th>OTRAS INDICACIONES</th>
                     <th>PASE IMSS</th>
+                    <th>PROCESO</th>
                 </tr>
                 </tfoot>
             </table>
@@ -166,7 +168,8 @@ else
                             { "data": "diagnostico"},
                             { "data": "ramo_seguro"},
                             { "data": "otras_indicaciones"},
-                            { "data": "pase_imss"}
+                            { "data": "pase_imss"},
+                            { "data": "proceso"}
                         ]
                     } );
                     $('#example').show();

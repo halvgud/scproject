@@ -27,7 +27,8 @@ foreach ($visitas as &$visita) {
         '<td>'.$visita['diagnostico'].'</td>'.
         '<td>'.$visita['ramo_seguro'].'</td>'.
         '<td>'.$visita['otras_indicaciones'].'</td>'.
-        '<td>'.$visita['pase_imss'].'</td></tr>';
+        '<td>'.$visita['pase_imss'].'</td>'.
+        '<td>'.$visita['proceso'].'</td></tr>';
 }
 $tabla = '<table class="bpmTopnTail" border="1" style="margin:0 auto;"><thead><tr class="headerrow">
         <th>ID EMPLEADO</th>
@@ -46,6 +47,7 @@ $tabla = '<table class="bpmTopnTail" border="1" style="margin:0 auto;"><thead><t
         <th>RAMO SEGURO</th>
         <th>OTRAS INDICACIONES</th>
         <th>PASE IMSS</th>
+        <th>PROCESO</th>
 </tr></thead><tbody>'.$tabla.'</tbody></table>';
 $html = '
 <htmlpageheader name=\"MyHeader1\">

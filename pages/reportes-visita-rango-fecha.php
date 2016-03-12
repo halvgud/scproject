@@ -58,6 +58,7 @@ else
                     <th>DEPARTAMENTO</th>
                     <th>MEDICAMENTO(S)</th>
                     <th>FECHA</th>
+                    <th>PROCESO</th>
                 </tr>
                 </thead>
                 <tfoot>
@@ -69,6 +70,7 @@ else
                     <th>DEPARTAMENTO</th>
                     <th>MEDICAMENTO(S)</th>
                     <th>FECHA</th>
+                    <th>PROCESO</th>
                 </tr>
                 </tfoot>
             </table>
@@ -151,7 +153,8 @@ else
                                         {title:"AREA",dataKey:"area"},
                                         {title:"DEPARTAMENTO",dataKey:"departamento"},
                                         {title:"MEDICAMENTOS",dataKey:"medicamentos2"},
-                                        {title:"FECHA",dataKey:"fecha"}
+                                        {title:"FECHA",dataKey:"fecha"},
+                                        {title:"PROCESO",dataKey:"proceso"}
                                     ];
                                     var nombre = 'Visitas_'+$('#fecha_inicio').val()+'_'+$('#fecha_inicio').val();
                                     var header1 = 'VISITAS DE '+$("#abrirPdf #fecha_inicio_mostrar").val()+' A '+$("#abrirPdf #fecha_fin_mostrar").val();
@@ -167,40 +170,12 @@ else
                             { "data": "area" },
                             { "data": "departamento" },
                             { "data": "medicamentos[<br>].descripcion" },
-                            { "data": "fecha" }
+                            { "data": "fecha" },
+                            { "data": "proceso" }
                         ]
                     } );
                     $('#example').show();
-                    /*
-                     console.log(datos);
-                     var tabla = $("<table></table>",{class:"table table-bordered table-striped table-condensed"});
-                     var tr = $("<tr></tr>");
-                     agregarTHaTR(tr,'ID EMPLEADO');
-                     agregarTHaTR(tr,'EMPLEADO');
-                     agregarTHaTR(tr,'TURNO');
-                     agregarTHaTR(tr,'AREA');
-                     agregarTHaTR(tr,'DEPARTAMENTO');
-                     agregarTHaTR(tr,'MEDICAMENTO(S)');
-                     agregarTHaTR(tr,'FECHA');
-                     $(tabla).append(tr);
 
-                     datos.forEach(function(element, index) {
-                     var tr = $("<tr></tr>");
-                     agregarTDaTR(tr,element.id_empleado);
-                     agregarTDaTR(tr,element.nombre);
-                     agregarTDaTR(tr,element.turno);
-                     agregarTDaTR(tr,element.area);
-                     agregarTDaTR(tr,element.departamento);
-                     var medicamentos = '';
-                     element.medicamentos.forEach(function(element,index){
-                     medicamentos += element.descripcion+'<br>'
-                     });
-                     agregarTDaTR(tr,medicamentos);
-                     agregarTDaTR(tr,element.fecha);
-                     $(tabla).append(tr);
-                     });
-                     $("#resultados").append(tabla);
-                     //$("#resultados table").DataTable();*/
                     if(datos.success)
                         notificacionSuccess(datos.success);
                     $("#abrirPdf #fecha_inicio").val($("#reporteVisitas #fecha_inicio").val());

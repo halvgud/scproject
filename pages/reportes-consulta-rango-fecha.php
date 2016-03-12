@@ -58,6 +58,7 @@ else
                     <th>DEPARTAMENTO</th>
                     <th>MEDICAMENTO(S)</th>
                     <th>FECHA</th>
+                    <th>PROCESO</th>
                 </tr>
                 </thead>
                 <tfoot>
@@ -69,6 +70,7 @@ else
                     <th>DEPARTAMENTO</th>
                     <th>MEDICAMENTO(S)</th>
                     <th>FECHA</th>
+                    <th>PROCESO</th>
                 </tr>
                 </tfoot>
             </table>
@@ -152,7 +154,8 @@ else
                                         {title:"AREA",dataKey:"area"},
                                         {title:"DEPARTAMENTO",dataKey:"departamento"},
                                         {title:"MEDICAMENTOS",dataKey:"medicamentos2"},
-                                        {title:"FECHA",dataKey:"fecha"}
+                                        {title:"FECHA",dataKey:"fecha"},
+                                        {title:"PROCESO",dataKey:"proceso"}
                                     ];
                                     var nombre = 'Consultas_'+$('#fecha_inicio').val()+'_'+$('#fecha_inicio').val();
                                     var header1 = 'CONSULTAS DE '+$("#abrirPdf #fecha_inicio_mostrar").val()+' A '+$("#abrirPdf #fecha_fin_mostrar").val();
@@ -168,7 +171,8 @@ else
                             { "data": "area" },
                             { "data": "departamento" },
                             { "data": "medicamentos[<br>].descripcion" },
-                            { "data": "fecha" }
+                            { "data": "fecha" },
+                            { "data": "proceso" }
                         ]
                     } );
                     $('#example').show();
