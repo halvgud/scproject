@@ -19,9 +19,9 @@ else
     <div id="wrapper">
     <?php require_once('menu.php'); ?> 
         <div id="page-wrapper">
-            <div class="page-header">
-                <h1>Pase de Salida</h1>
-            </div>
+            <br/>
+            <h1>Pase de Salida</h1>
+            <hr>
             <form name="pase_salida" id="pase_salida">
                 <table class="table" name="tabl_pasesalida" id="tabl_pasesalida">
                     <tbody>

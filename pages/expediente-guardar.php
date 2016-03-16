@@ -19,9 +19,9 @@ else
     <div id="wrapper">
     <?php require_once('menu.php'); ?> 
         <div id="page-wrapper">
-            <div class="page-header">
-                <h1>Expediente Nuevo</h1>
-            </div>
+            <br/>
+            <h1>Expediente Nuevo</h1>
+            <hr>
             <button type="button" id="revisarCitas" class="btn btn-outline btn-success"><i class="fa fa-calendar fa-fw"></i> Revisar Citas</button>
             <input type="hidden" id="id_consulta" name="id_consulta">
             <form id="guardarExpediente">

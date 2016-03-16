@@ -20,8 +20,9 @@ else
         <?php require_once('menu.php'); ?>
         <div id="page-wrapper">
             <br/>
-            <h1>Reporte Incapacidad Guardados</h1>
+            <h1>Reporte Expedientes Agendados</h1>
             <hr>
+            <div class="row">
             <div class="col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4">
                 <form id="reporteExpediente">
                     <input type="hidden" name="idTransaccion"  value="24">
@@ -47,6 +48,9 @@ else
                 </form>
             </div>
             <div id="resultados"></div>
+        </div>
+            <div class="row">
+                <div class="table-responsive">
             <table id="example" class="table table-condensed table-bordered table-striped" cellspacing="0" width="100%" style="display:none;">
                 <thead>
                 <tr>
@@ -91,6 +95,8 @@ else
                 </tr>
                 </tfoot>
             </table>
+                </div>
+            </div>
             <form id="abrirPdf" action="pdf_expedientes_rango_fecha.php" method="post" target="_blank">
                 <input id="fecha_inicio" name="fecha_inicio" type="hidden" value="">
                 <input id="fecha_fin" name="fecha_fin" type="hidden" value="">

@@ -18,9 +18,9 @@ else
     <div id="wrapper">
     <?php require_once('menu.php'); ?>
         <div id="page-wrapper">
-            <div class="page-header">
-                <h1>Agendar Consulta</h1>
-            </div>
+            <br/>
+            <h1>Agendar Consulta</h1>
+            <hr>
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <div  id='calendario'></div>

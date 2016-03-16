@@ -139,7 +139,8 @@ else
                                 action: function ( e, dt, node, config ) {
                                     $("#abrirPdf").submit();
                                 }
-                            },
+                            }
+                            /* ,
                             {
                                 text: '<i class="fa fa-file-pdf-o"></i> jsPDF ',
                                 titleAttr: 'Genera un archivo PDF con JavaScript',
@@ -158,9 +159,9 @@ else
                                     var nombre = 'Memos_'+$('#fecha_inicio').val()+'_'+$('#fecha_inicio').val();
                                     var header1 = 'MEMOS DE '+$("#abrirPdf #fecha_inicio_mostrar").val()+' A '+$("#abrirPdf #fecha_fin_mostrar").val();
                                     var header2 = 'Reporte de Memos';
-                                    generarPDF(columnas,datos,nombre,header1,header2,'l' );
+                                    generarPDFMemo(columnas,datos,nombre,header1,header2,'l' );
                                 }
-                            }
+                            }*/
                         ],
                         columns: [
                             { "data": "id_empleado" },
