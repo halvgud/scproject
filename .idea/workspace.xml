@@ -6,12 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5a9adb31-820b-4d1b-b2cb-c650b08990f1" name="Default" comment="core and test files">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/control-agendar-consulta.php" afterPath="$PROJECT_DIR$/pages/control-agendar-consulta.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/expediente-guardar.php" afterPath="$PROJECT_DIR$/pages/expediente-guardar.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/js/funciones.js" afterPath="$PROJECT_DIR$/pages/js/funciones.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/pase-salida.php" afterPath="$PROJECT_DIR$/pages/pase-salida.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/reportes-expediente-por-fecha.php" afterPath="$PROJECT_DIR$/pages/reportes-expediente-por-fecha.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/reportes-memo-por-fecha.php" afterPath="$PROJECT_DIR$/pages/reportes-memo-por-fecha.php" />
-    </list>
+    <list default="true" id="5a9adb31-820b-4d1b-b2cb-c650b08990f1" name="Default" comment="core and test files" />
     <ignored path="scproject.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
