@@ -22,6 +22,7 @@ else
             <br/>
             <h1>Reporte Memo Guardados</h1>
             <hr>
+            <div class="row">
             <div class="col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4">
                 <form id="reporteVisitas">
                     <input type="hidden" name="idTransaccion"  value="20">
@@ -46,13 +47,17 @@ else
                     <button type="submit" class="btn btn-outline btn-success"><i class="fa fa-floppy-o"></i> Buscar</button>
                 </form>
             </div>
-            <div id="resultados"></div>
+            </div>
+            <BR>
+            <div class="row">
+            <div class="table-responsive">
             <table id="example" class="table table-condensed table-bordered table-striped" cellspacing="0" width="100%" style="display:none;">
                 <thead>
                 <tr>
                     <th>ID EMPLEADO</th>
                     <th>EMPLEADO</th>
                     <th>SOLICITA</th>
+                    <th>SEMANA</th>
                     <th>RESPETAR</th>
                     <th>MOTIVO</th>
                     <th>SUPERVISOR</th>
@@ -64,6 +69,7 @@ else
                     <th>ID EMPLEADO</th>
                     <th>EMPLEADO</th>
                     <th>SOLICITA</th>
+                    <th>SEMANA</th>
                     <th>RESPETAR</th>
                     <th>MOTIVO</th>
                     <th>SUPERVISOR</th>
@@ -71,6 +77,8 @@ else
                 </tr>
                 </tfoot>
             </table>
+                </div>
+            </div>
             <form id="abrirPdf" action="pdf_memo_rango_fecha.php" method="post" target="_blank">
                 <input id="fecha_inicio" name="fecha_inicio" type="hidden" value="">
                 <input id="fecha_fin" name="fecha_fin" type="hidden" value="">
@@ -118,6 +126,7 @@ else
             }
             else{
                 exitoso = function(datos){
+                    console.log(datos);
                     $('#example').DataTable( {
                         destroy: true,
                         data: datos,
@@ -140,6 +149,7 @@ else
                                         {title:"ID EMPLEADO",dataKey:"id_empleado"},
                                         {title:"NOMBRE",dataKey:"nombre_completo"},
                                         {title:"SOLICITA",dataKey:"solicita"},
+                                        {title:"SEMANA",dataKey:"semana"},
                                         {title:"RESPETAR",dataKey:"respetar"},
                                         {title:"MOTIVO",dataKey:"motivo"},
                                         {title:"SUPERVISOR",dataKey:"supervisor"},
@@ -156,6 +166,7 @@ else
                             { "data": "id_empleado" },
                             { "data": "nombre_completo" },
                             { "data": "solicita" },
+                            { "data": "semana" },
                             { "data": "respetar" },
                             { "data": "motivo" },
                             { "data": "supervisor" },
