@@ -197,9 +197,9 @@ function obtenerSelect($data)
     else if ($data->idTransaccion == '20') {
         $db = new Conexion();
         $db->abrirConexion();
-        $db->seleccion('empleado', "concat(e.nombre,' ',materno,' ',paterno) as nombre_completo,e.id_empleado,d.descripcion solicita,m.respetar,m.motivo,m.supervisor,m.fecha_creacion fecha",
+        $db->seleccion('empleado', "concat(e.nombre,' ',materno,' ',paterno) as nombre_completo,e.id_empleado,d.descripcion solicita,m.semana,m.respetar,m.motivo,m.supervisor,m.fecha_creacion fecha",
             "e inner join memo m on e.id_empleado = m.id_empleado inner join descripcion d on d.id_descripcion = m.id_solicita",
-            ' m.fecha_creacion >= "'.$data->fecha_inicio.'" and m.fecha_creacion <= "'.$data->fecha_fin.'"'
+            ' m.fecha_creacion >= "'.$data->fecha_inicio.' 00:00:00" and m.fecha_creacion <= "'.$data->fecha_fin.' 23:59:59"'
             , null, null);
         return ($db->obtenerResultado());
     }
