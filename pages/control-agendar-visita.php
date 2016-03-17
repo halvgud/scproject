@@ -191,7 +191,6 @@ else
                 form1.forEach(function(input) {
                     datosTabla1[input.name] = input.value;
                 });
-                console.warn(datosTabla1);
                 cargarInputs(datosTabla1,5,$("#id_empleado").val())
             }
             $.datetimepicker.setLocale('es');

@@ -172,7 +172,6 @@ function notificacionSuccess(mensaje){
 		fallo = function(datos){
 			console.log(datos);
 		};
-
 		peticionAjax('data/testselect.php',arregloConInputs,exitoso,fallo);
 	}
 
